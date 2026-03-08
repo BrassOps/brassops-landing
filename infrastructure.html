@@ -1,0 +1,1189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Infrastructure — BrassOps</title>
+  <meta name="description" content="The full tech stack, tooling, hosting, and architecture powering BrassOps.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+    /* ── Tokens ── */
+    :root {
+      --bg: #0a0a0a;
+      --fg: #ededed;
+      --fg-secondary: #a1a1aa;
+      --fg-tertiary: #71717a;
+      --fg-quaternary: #52525b;
+      --red: #ef4444;
+      --red-dim: rgba(239, 68, 68, 0.15);
+      --red-glow: rgba(239, 68, 68, 0.35);
+      --glass-bg: rgba(255, 255, 255, 0.04);
+      --glass-border: rgba(255, 255, 255, 0.07);
+      --glass-bg-hover: rgba(255, 255, 255, 0.07);
+      --font-heading: 'Rajdhani', 'Barlow Condensed', sans-serif;
+      --font-body: 'Barlow', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--font-body);
+      min-height: 100dvh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.25); }
+
+    /* ── Background: Tactical Target Rings ── */
+    .hero-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 200vmax;
+      height: 200vmax;
+      transform: translate(-50%, -50%);
+      background:
+        radial-gradient(circle, transparent 18%, rgba(239,68,68,0.03) 18.5%, transparent 19%),
+        radial-gradient(circle, transparent 30%, rgba(239,68,68,0.025) 30.5%, transparent 31%),
+        radial-gradient(circle, transparent 42%, rgba(239,68,68,0.02) 42.5%, transparent 43%),
+        radial-gradient(circle, transparent 54%, rgba(255,255,255,0.015) 54.5%, transparent 55%),
+        radial-gradient(circle, transparent 66%, rgba(255,255,255,0.01) 66.5%, transparent 67%);
+      animation: pulseRings 8s ease-in-out infinite;
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 6px;
+      height: 6px;
+      background: var(--red);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 30px var(--red-glow), 0 0 60px rgba(239,68,68,0.15);
+      animation: pulseDot 4s ease-in-out infinite;
+    }
+
+    .crosshair-h, .crosshair-v {
+      position: absolute;
+      background: rgba(239, 68, 68, 0.06);
+    }
+    .crosshair-h {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100vw;
+      height: 1px;
+    }
+    .crosshair-v {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 1px;
+      height: 100vh;
+    }
+
+    @keyframes pulseRings {
+      0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.03); }
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.5); }
+    }
+
+    /* ── Noise texture overlay ── */
+    .noise {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px 256px;
+    }
+
+    /* ── Vignette ── */
+    .vignette {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.5) 100%);
+    }
+
+    /* ── Content wrapper ── */
+    .content {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ── TOP NAV ── */
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 2rem;
+      height: 56px;
+      background: rgba(10, 10, 10, 0.8);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--glass-border);
+    }
+
+    .nav-brand {
+      font-family: var(--font-heading);
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--fg);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-brand:hover {
+      color: var(--red);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .nav-link {
+      font-family: var(--font-heading);
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--fg-tertiary);
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+
+    .nav-link:hover { color: var(--fg); }
+
+    .nav-link.active {
+      color: var(--red);
+    }
+
+    /* ── PAGE HERO (compact) ── */
+    .page-hero {
+      padding: 8rem 1.5rem 4rem;
+      text-align: center;
+    }
+
+    .page-hero-title {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 800;
+      color: var(--fg);
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    }
+
+    .page-hero-subtitle {
+      font-size: 1rem;
+      color: var(--fg-secondary);
+      max-width: 440px;
+      margin: 0 auto 1.5rem;
+      line-height: 1.7;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-family: var(--font-heading);
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--fg-quaternary);
+      text-decoration: none;
+      transition: color 0.3s;
+      opacity: 0;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
+    }
+
+    .back-link:hover { color: var(--red); }
+
+    .back-link svg {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .back-link:hover svg {
+      transform: translateX(-3px);
+    }
+
+    /* ── SECTIONS ── */
+    .section {
+      padding: 4rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: var(--font-heading);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--fg-quaternary);
+      text-align: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 700;
+      text-align: center;
+      color: var(--fg);
+      margin-bottom: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: var(--fg-secondary);
+      text-align: center;
+      max-width: 640px;
+      margin: 0 auto 3.5rem;
+      line-height: 1.7;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+    }
+
+    /* ── TECH STACK GRID ── */
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+
+    @media (min-width: 900px) {
+      .tech-grid {
+        grid-template-columns: repeat(3, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      .tech-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+
+    .tech-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 1.75rem 1.5rem;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .tech-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .tech-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(239,68,68,0.2), transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .tech-card:hover {
+      background: var(--glass-bg-hover);
+      border-color: rgba(255,255,255,0.12);
+      transform: translateY(-2px);
+    }
+
+    .tech-card:hover::before { opacity: 1; }
+
+    .tech-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--red-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1rem;
+      transition: background 0.3s;
+    }
+
+    .tech-card:hover .tech-icon {
+      background: rgba(239, 68, 68, 0.22);
+    }
+
+    .tech-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--red);
+      stroke-width: 1.8;
+      fill: none;
+    }
+
+    .tech-name {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--fg);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.01em;
+    }
+
+    .tech-role {
+      display: inline-block;
+      font-family: var(--font-heading);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--red);
+      background: var(--red-dim);
+      border: 1px solid rgba(239, 68, 68, 0.15);
+      border-radius: 100px;
+      padding: 0.2rem 0.7rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .tech-desc {
+      font-size: 0.85rem;
+      color: var(--fg-secondary);
+      line-height: 1.65;
+    }
+
+    /* Staggered transition delays for tech cards */
+    .tech-card:nth-child(1)  { transition-delay: 0s; }
+    .tech-card:nth-child(2)  { transition-delay: 0.07s; }
+    .tech-card:nth-child(3)  { transition-delay: 0.14s; }
+    .tech-card:nth-child(4)  { transition-delay: 0.21s; }
+    .tech-card:nth-child(5)  { transition-delay: 0.28s; }
+    .tech-card:nth-child(6)  { transition-delay: 0.35s; }
+    .tech-card:nth-child(7)  { transition-delay: 0.42s; }
+    .tech-card:nth-child(8)  { transition-delay: 0.49s; }
+    .tech-card:nth-child(9)  { transition-delay: 0.56s; }
+    .tech-card:nth-child(10) { transition-delay: 0.63s; }
+
+    /* ── ARCHITECTURE DIAGRAM ── */
+    .arch-diagram {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .arch-row {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 0;
+      position: relative;
+    }
+
+    .arch-connector {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 1rem 0;
+      position: relative;
+    }
+
+    .arch-connector-line {
+      width: 2px;
+      height: 32px;
+      background: linear-gradient(to bottom, rgba(239,68,68,0.3), rgba(239,68,68,0.08));
+    }
+
+    .arch-connector-split {
+      position: relative;
+      width: 320px;
+      height: 40px;
+    }
+
+    .arch-connector-split::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      width: 2px;
+      height: 20px;
+      background: rgba(239,68,68,0.25);
+      transform: translateX(-50%);
+    }
+
+    .arch-connector-split::after {
+      content: '';
+      position: absolute;
+      top: 20px;
+      left: calc(50% - 160px);
+      width: 320px;
+      height: 2px;
+      background: linear-gradient(90deg, rgba(239,68,68,0.25), rgba(239,68,68,0.15) 50%, rgba(239,68,68,0.25));
+    }
+
+    .arch-connector-split-legs {
+      position: relative;
+      width: 320px;
+      height: 20px;
+    }
+
+    .arch-connector-split-legs::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: calc(50% - 160px);
+      width: 2px;
+      height: 20px;
+      background: rgba(239,68,68,0.25);
+    }
+
+    .arch-connector-split-legs::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: calc(50% - 162px);
+      width: 2px;
+      height: 20px;
+      background: rgba(239,68,68,0.25);
+    }
+
+    .arch-box {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: 12px;
+      padding: 1rem 1.5rem;
+      text-align: center;
+      font-family: var(--font-heading);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: var(--fg);
+      letter-spacing: 0.03em;
+      transition: all 0.3s;
+      min-width: 150px;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+
+    .arch-box.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .arch-box:hover {
+      background: var(--glass-bg-hover);
+      border-color: rgba(255,255,255,0.12);
+    }
+
+    .arch-box-label {
+      font-size: 0.55rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--fg-quaternary);
+      margin-top: 0.25rem;
+    }
+
+    .arch-box.highlight {
+      border-color: rgba(239, 68, 68, 0.2);
+    }
+
+    .arch-box.highlight .arch-box-label {
+      color: var(--red);
+    }
+
+    /* Arrow character styling */
+    .arch-arrow {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: var(--fg-quaternary);
+      font-size: 1.2rem;
+      padding: 0.25rem 0;
+    }
+
+    @media (max-width: 600px) {
+      .arch-row {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      .arch-connector-split,
+      .arch-connector-split-legs {
+        display: none;
+      }
+      .arch-box {
+        width: 100%;
+        max-width: 280px;
+      }
+    }
+
+    /* ── SECURITY LIST ── */
+    .security-list {
+      list-style: none;
+      max-width: 640px;
+      margin: 0 auto;
+      display: grid;
+      gap: 0.75rem;
+    }
+
+    .security-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      font-size: 0.9rem;
+      color: var(--fg-secondary);
+      line-height: 1.6;
+      opacity: 0;
+      transform: translateX(-15px);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .security-item.visible {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .security-dot {
+      width: 8px;
+      height: 8px;
+      min-width: 8px;
+      border-radius: 50%;
+      background: var(--red);
+      margin-top: 0.45rem;
+      box-shadow: 0 0 8px rgba(239, 68, 68, 0.3);
+    }
+
+    /* Stagger security items */
+    .security-item:nth-child(1) { transition-delay: 0s; }
+    .security-item:nth-child(2) { transition-delay: 0.05s; }
+    .security-item:nth-child(3) { transition-delay: 0.1s; }
+    .security-item:nth-child(4) { transition-delay: 0.15s; }
+    .security-item:nth-child(5) { transition-delay: 0.2s; }
+    .security-item:nth-child(6) { transition-delay: 0.25s; }
+    .security-item:nth-child(7) { transition-delay: 0.3s; }
+    .security-item:nth-child(8) { transition-delay: 0.35s; }
+    .security-item:nth-child(9) { transition-delay: 0.4s; }
+
+    /* ── STATS ROW ── */
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      gap: 1.25rem;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+
+    @media (max-width: 700px) {
+      .stats-row {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.5rem 1rem;
+      }
+    }
+
+    @media (max-width: 400px) {
+      .stats-row {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .stat-item {
+      text-align: center;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .stat-item.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stat-number {
+      font-family: var(--font-heading);
+      font-size: clamp(1.8rem, 4vw, 2.4rem);
+      font-weight: 800;
+      color: var(--fg);
+      letter-spacing: -0.02em;
+      line-height: 1;
+      margin-bottom: 0.35rem;
+    }
+
+    .stat-label {
+      font-family: var(--font-heading);
+      font-size: 0.6rem;
+      font-weight: 600;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--fg-quaternary);
+    }
+
+    /* Stagger stat items */
+    .stat-item:nth-child(1) { transition-delay: 0s; }
+    .stat-item:nth-child(2) { transition-delay: 0.08s; }
+    .stat-item:nth-child(3) { transition-delay: 0.16s; }
+    .stat-item:nth-child(4) { transition-delay: 0.24s; }
+    .stat-item:nth-child(5) { transition-delay: 0.32s; }
+    .stat-item:nth-child(6) { transition-delay: 0.4s; }
+
+    /* ── FOOTER ── */
+    .footer {
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--fg-tertiary);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-tagline {
+      font-size: 0.8rem;
+      color: var(--fg-quaternary);
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .footer-copy {
+      font-size: 0.7rem;
+      color: var(--fg-quaternary);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeInScale {
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Selection color ── */
+    ::selection {
+      background: rgba(239, 68, 68, 0.3);
+      color: #fff;
+    }
+
+    /* ── Focus-visible ── */
+    :focus-visible {
+      outline: 2px solid var(--red);
+      outline-offset: 2px;
+    }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .tech-card, .arch-box, .security-item, .stat-item { opacity: 1; transform: none; }
+      .page-hero-title, .page-hero-subtitle, .back-link { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Background layers -->
+  <div class="hero-bg" aria-hidden="true">
+    <div class="crosshair-h"></div>
+    <div class="crosshair-v"></div>
+  </div>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <!-- Top navigation -->
+  <nav class="top-nav">
+    <a href="index.html" class="nav-brand">BrassOps</a>
+    <div class="nav-links">
+      <a href="index.html" class="nav-link">Home</a>
+      <span class="nav-link active">Infrastructure</span>
+    </div>
+  </nav>
+
+  <!-- Content -->
+  <div class="content">
+
+    <!-- ═══════════ PAGE HERO ═══════════ -->
+    <section class="page-hero">
+      <h1 class="page-hero-title">Infrastructure</h1>
+      <p class="page-hero-subtitle">The systems and tools powering BrassOps</p>
+      <a href="index.html" class="back-link">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M13 8H3M7 4l-4 4 4 4"/>
+        </svg>
+        Back to home
+      </a>
+    </section>
+
+    <!-- ═══════════ ARCHITECTURE OVERVIEW ═══════════ -->
+    <section class="section">
+      <p class="section-label">Overview</p>
+      <h2 class="section-title">Architecture</h2>
+      <p class="section-subtitle">BrassOps is a modern full-stack web application built for performance, security, and scale. Multi-tenant by design with row-level security, real-time data, and AI-powered analysis.</p>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <!-- ═══════════ TECH STACK ═══════════ -->
+    <section class="section">
+      <p class="section-label">Stack</p>
+      <h2 class="section-title">Tech Stack</h2>
+      <p class="section-subtitle">Every layer of BrassOps — from the framework to the hosting edge.</p>
+
+      <div class="tech-grid">
+
+        <!-- 1. Next.js 16 -->
+        <div class="tech-card">
+          <div class="tech-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="16 18 22 12 16 6"/>
+              <polyline points="8 6 2 12 8 18"/>
+              <line x1="14" y1="4" x2="10" y2="20"/>
+            </svg>
+          </div>
+          <h3 class="tech-name">Next.js 16</h3>
+          <span class="tech-role">Framework</span>
+          <p class="tech-desc">App Router, React 19, TypeScript strict mode. Server and client components. API routes for all mutations.</p>
+        </div>
+
+        <!-- 2. React 19 -->
+        <div class="tech-card">
+          <div class="tech-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"/>
+              <ellipse cx="12" cy="12" rx="10" ry="4.5"/>
+              <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(60 12 12)"/>
+              <ellipse cx="12" cy="12" rx="10" ry="4.5" transform="rotate(120 12 12)"/>
+            </svg>
+          </div>
+          <h3 class="tech-name">React 19</h3>
+          <span class="tech-role">UI Library</span>
+          <p class="tech-desc">Latest React with server components, concurrent features, and streaming SSR.</p>
+        </div>
+
+        <!-- 3. TypeScript -->
+        <div class="tech-card">
+          <div class="tech-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <rect x="3" y="3" width="18" height="18" rx="2" ry="2"/>
+              <path d="M8 17V11h4"/>
+              <path d="M8 14h4"/>
+              <path d="M16 17v-4a2 2 0 0 0-2-2"/>
+            </svg>
+          </div>
+          <h3 class="tech-name">TypeScript</h3>
+          <span class="tech-role">Language</span>
+          <p class="tech-desc">Strict mode enforced. Zero type errors at build time. Full type coverage across 79 source files.</p>
+        </div>
+
+        <!-- 4. Tailwind CSS 4 -->
+        <div class="tech-card">
+          <div class="tech-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3 class="tech-name">Tailwind CSS 4</h3>
+          <span class="tech-role">Styling</span>
+          <p class="tech-desc">Utility-first CSS with custom dark theme. Glass morphism design system with 17 reusable components.</p>
+        </div>
+
+        <!-- 5. Supabase -->
+        <div class="tech-card">
+          <div class="tech-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <ellipse cx="12" cy="5" rx="9" ry="3"/>
+              <path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3"/>
+              <path d="M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/>
+            </svg>
+          </div>
+          <h3 class="tech-name">Supabase</h3>
+          <span class="tech-role">Database &amp; Auth &amp; Storage</span>
+          <p class="tech-desc">PostgreSQL database with Row-Level Security for multi-tenant data isolation. Built-in auth, real-time subscriptions, file storage.</p>
+        </div>
+
+        <!-- 6. Claude AI -->
+        <div class="tech-card">
+          <div class="tech-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2a4 4 0 0 1 4 4v2a4 4 0 0 1-8 0V6a4 4 0 0 1 4-4z"/>
+              <path d="M9 14h6"/>
+              <path d="M12 14v4"/>
+              <circle cx="8" cy="20" r="2"/>
+              <circle cx="16" cy="20" r="2"/>
+              <path d="M6 6a6 6 0 0 0-4 5.5"/>
+              <path d="M18 6a6 6 0 0 1 4 5.5"/>
+            </svg>
+          </div>
+          <h3 class="tech-name">Claude AI (Anthropic)</h3>
+          <span class="tech-role">AI / Computer Vision</span>
+          <p class="tech-desc">Vision API for target analysis. Automatic bullet hole detection and shot group grading from uploaded target photos.</p>
+        </div>
+
+        <!-- 7. Recharts -->
+        <div class="tech-card">
+          <div class="tech-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="18" y1="20" x2="18" y2="10"/>
+              <line x1="12" y1="20" x2="12" y2="4"/>
+              <line x1="6" y1="20" x2="6" y2="14"/>
+              <line x1="2" y1="20" x2="22" y2="20"/>
+            </svg>
+          </div>
+          <h3 class="tech-name">Recharts</h3>
+          <span class="tech-role">Data Visualization</span>
+          <p class="tech-desc">React charting library. Powers all analytics dashboards — bar charts, radar charts, pie charts, line charts.</p>
+        </div>
+
+        <!-- 8. SMTP2GO -->
+        <div class="tech-card">
+          <div class="tech-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+              <polyline points="22 6 12 13 2 6"/>
+            </svg>
+          </div>
+          <h3 class="tech-name">SMTP2GO</h3>
+          <span class="tech-role">Email</span>
+          <p class="tech-desc">Transactional email delivery. Flagged officer alerts, remedial follow-up reminders, automated notifications.</p>
+        </div>
+
+        <!-- 9. Vercel -->
+        <div class="tech-card">
+          <div class="tech-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <polygon points="12 2 22 20 2 20"/>
+            </svg>
+          </div>
+          <h3 class="tech-name">Vercel</h3>
+          <span class="tech-role">Hosting &amp; CI/CD</span>
+          <p class="tech-desc">Edge-optimized hosting with automatic deployments from GitHub. Global CDN, serverless functions, preview deployments.</p>
+        </div>
+
+        <!-- 10. GitHub -->
+        <div class="tech-card">
+          <div class="tech-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <path d="M14.5 9a3.5 3.5 0 0 0-5 0"/>
+              <path d="M9.5 15.5a3.5 3.5 0 0 0 5 0"/>
+              <line x1="12" y1="9" x2="12" y2="15"/>
+              <path d="M8 12h1.5"/>
+              <path d="M14.5 12H16"/>
+            </svg>
+          </div>
+          <h3 class="tech-name">GitHub</h3>
+          <span class="tech-role">Version Control</span>
+          <p class="tech-desc">Source control, issue tracking, CI integration. Private repository under the BrassOps organization.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <!-- ═══════════ ARCHITECTURE DIAGRAM ═══════════ -->
+    <section class="section">
+      <p class="section-label">Flow</p>
+      <h2 class="section-title">Architecture Diagram</h2>
+      <p class="section-subtitle">How a request flows through the BrassOps platform, from the browser to the data layer.</p>
+
+      <div class="arch-diagram">
+
+        <!-- Row 1: Browser -->
+        <div class="arch-row">
+          <div class="arch-box">
+            Browser
+            <div class="arch-box-label">Client</div>
+          </div>
+        </div>
+
+        <!-- Connector -->
+        <div class="arch-connector">
+          <div class="arch-connector-line"></div>
+        </div>
+
+        <!-- Row 2: Vercel Edge -->
+        <div class="arch-row">
+          <div class="arch-box highlight">
+            Vercel Edge
+            <div class="arch-box-label">CDN &amp; Edge Network</div>
+          </div>
+        </div>
+
+        <!-- Connector -->
+        <div class="arch-connector">
+          <div class="arch-connector-line"></div>
+        </div>
+
+        <!-- Row 3: Next.js App Router -->
+        <div class="arch-row">
+          <div class="arch-box highlight">
+            Next.js App Router
+            <div class="arch-box-label">Server Runtime</div>
+          </div>
+        </div>
+
+        <!-- Split connector -->
+        <div class="arch-connector">
+          <div class="arch-connector-split"></div>
+        </div>
+        <div class="arch-connector" style="padding-top: 0;">
+          <div class="arch-connector-split-legs"></div>
+        </div>
+
+        <!-- Row 4: Server Components / API Routes -->
+        <div class="arch-row">
+          <div class="arch-box">
+            Server Components
+            <div class="arch-box-label">React RSC</div>
+          </div>
+          <div class="arch-box">
+            API Routes
+            <div class="arch-box-label">Mutations &amp; Logic</div>
+          </div>
+        </div>
+
+        <!-- Dual connectors -->
+        <div class="arch-connector" style="display: flex; gap: 1.5rem;">
+          <div style="flex: 1; display: flex; justify-content: center;">
+            <div class="arch-connector-line"></div>
+          </div>
+          <div style="flex: 1; display: flex; justify-content: center;">
+            <div class="arch-connector-line"></div>
+          </div>
+        </div>
+
+        <!-- Row 5: Supabase (RLS) / Supabase (RLS) -->
+        <div class="arch-row">
+          <div class="arch-box highlight">
+            Supabase (RLS)
+            <div class="arch-box-label">PostgreSQL</div>
+          </div>
+          <div class="arch-box highlight">
+            Supabase (RLS)
+            <div class="arch-box-label">PostgreSQL</div>
+          </div>
+        </div>
+
+        <!-- Dual connectors -->
+        <div class="arch-connector" style="display: flex; gap: 1.5rem;">
+          <div style="flex: 1; display: flex; justify-content: center;">
+            <div class="arch-connector-line"></div>
+          </div>
+          <div style="flex: 1; display: flex; justify-content: center;">
+            <div class="arch-connector-line"></div>
+          </div>
+        </div>
+
+        <!-- Row 6: PostgreSQL / Claude AI & SMTP2GO -->
+        <div class="arch-row">
+          <div class="arch-box">
+            PostgreSQL
+            <div class="arch-box-label">Data Store</div>
+          </div>
+          <div class="arch-box">
+            Claude AI / SMTP2GO
+            <div class="arch-box-label">External Services</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <!-- ═══════════ SECURITY ═══════════ -->
+    <section class="section">
+      <p class="section-label">Hardened</p>
+      <h2 class="section-title">Security</h2>
+      <p class="section-subtitle">Defense-in-depth measures protecting every layer of the platform.</p>
+
+      <ul class="security-list">
+        <li class="security-item">
+          <div class="security-dot"></div>
+          <span>Row-Level Security on all data tables</span>
+        </li>
+        <li class="security-item">
+          <div class="security-dot"></div>
+          <span>Agency-scoped data isolation</span>
+        </li>
+        <li class="security-item">
+          <div class="security-dot"></div>
+          <span>IDOR protection on all API endpoints</span>
+        </li>
+        <li class="security-item">
+          <div class="security-dot"></div>
+          <span>XSS prevention with HTML escaping</span>
+        </li>
+        <li class="security-item">
+          <div class="security-dot"></div>
+          <span>Security headers (X-Frame-Options, CSP, HSTS)</span>
+        </li>
+        <li class="security-item">
+          <div class="security-dot"></div>
+          <span>File upload validation and size limits</span>
+        </li>
+        <li class="security-item">
+          <div class="security-dot"></div>
+          <span>Input validation and enum enforcement</span>
+        </li>
+        <li class="security-item">
+          <div class="security-dot"></div>
+          <span>Error message sanitization</span>
+        </li>
+        <li class="security-item">
+          <div class="security-dot"></div>
+          <span>CSV formula injection prevention</span>
+        </li>
+      </ul>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <!-- ═══════════ STATS ═══════════ -->
+    <section class="section">
+      <p class="section-label">By the Numbers</p>
+      <h2 class="section-title">Codebase</h2>
+      <p class="section-subtitle" style="margin-bottom: 2.5rem;">A snapshot of the BrassOps codebase.</p>
+
+      <div class="stats-row">
+        <div class="stat-item">
+          <div class="stat-number">79</div>
+          <div class="stat-label">Source Files</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">26</div>
+          <div class="stat-label">API Routes</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">12</div>
+          <div class="stat-label">Pages</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">17</div>
+          <div class="stat-label">UI Components</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">20+</div>
+          <div class="stat-label">Database Tables</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number">16K+</div>
+          <div class="stat-label">Lines of Code</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer class="footer">
+      <p class="footer-brand">BrassOps</p>
+      <p class="footer-tagline">Built for those who train to protect.</p>
+      <p class="footer-copy">&copy; 2025 BrassOps. All rights reserved.</p>
+    </footer>
+
+  </div>
+
+  <!-- ═══════════ SCRIPTS ═══════════ -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // All elements that should animate in on scroll
+      const animTargets = document.querySelectorAll(
+        '.tech-card, .arch-box, .security-item, .stat-item'
+      );
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.15,
+          rootMargin: '0px 0px -40px 0px'
+        });
+
+        animTargets.forEach(el => observer.observe(el));
+      } else {
+        // Fallback: show all immediately
+        animTargets.forEach(el => el.classList.add('visible'));
+      }
+    });
+  </script>
+
+</body>
+</html>

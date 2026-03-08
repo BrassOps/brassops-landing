@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrassOps — Range Intelligence Platform</title>
+  <meta name="description" content="Firearms qualification, training, and performance tracking for law enforcement and military organizations.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+    /* ── Tokens ── */
+    :root {
+      --bg: #0a0a0a;
+      --fg: #ededed;
+      --fg-secondary: #a1a1aa;
+      --fg-tertiary: #71717a;
+      --fg-quaternary: #52525b;
+      --red: #ef4444;
+      --red-dim: rgba(239, 68, 68, 0.15);
+      --red-glow: rgba(239, 68, 68, 0.35);
+      --glass-bg: rgba(255, 255, 255, 0.04);
+      --glass-border: rgba(255, 255, 255, 0.07);
+      --glass-bg-hover: rgba(255, 255, 255, 0.07);
+      --font-heading: 'Rajdhani', 'Barlow Condensed', sans-serif;
+      --font-body: 'Barlow', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--font-body);
+      min-height: 100dvh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.25); }
+
+    /* ── Background: Tactical Target Rings ── */
+    .hero-bg {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .hero-bg::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 200vmax;
+      height: 200vmax;
+      transform: translate(-50%, -50%);
+      background:
+        radial-gradient(circle, transparent 18%, rgba(239,68,68,0.03) 18.5%, transparent 19%),
+        radial-gradient(circle, transparent 30%, rgba(239,68,68,0.025) 30.5%, transparent 31%),
+        radial-gradient(circle, transparent 42%, rgba(239,68,68,0.02) 42.5%, transparent 43%),
+        radial-gradient(circle, transparent 54%, rgba(255,255,255,0.015) 54.5%, transparent 55%),
+        radial-gradient(circle, transparent 66%, rgba(255,255,255,0.01) 66.5%, transparent 67%);
+      animation: pulseRings 8s ease-in-out infinite;
+    }
+
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      width: 6px;
+      height: 6px;
+      background: var(--red);
+      border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 30px var(--red-glow), 0 0 60px rgba(239,68,68,0.15);
+      animation: pulseDot 4s ease-in-out infinite;
+    }
+
+    /* Crosshair lines */
+    .crosshair-h, .crosshair-v {
+      position: absolute;
+      background: rgba(239, 68, 68, 0.06);
+    }
+    .crosshair-h {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 100vw;
+      height: 1px;
+    }
+    .crosshair-v {
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 1px;
+      height: 100vh;
+    }
+
+    @keyframes pulseRings {
+      0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.03); }
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.5); }
+    }
+
+    /* ── Noise texture overlay ── */
+    .noise {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: 256px 256px;
+    }
+
+    /* ── Vignette ── */
+    .vignette {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.5) 100%);
+    }
+
+    /* ── Content wrapper ── */
+    .content {
+      position: relative;
+      z-index: 2;
+    }
+
+    /* ── HERO SECTION ── */
+    .hero {
+      min-height: 100dvh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 2rem 1.5rem;
+      text-align: center;
+      position: relative;
+    }
+
+    /* Scan line effect */
+    .hero::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(239,68,68,0.15), transparent);
+      animation: scanLine 6s linear infinite;
+    }
+
+    @keyframes scanLine {
+      0% { top: 0; opacity: 0; }
+      10% { opacity: 1; }
+      90% { opacity: 1; }
+      100% { top: 100%; opacity: 0; }
+    }
+
+    /* Logo */
+    .logo-container {
+      opacity: 0;
+      transform: scale(0.9);
+      animation: fadeInScale 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+      margin-bottom: 2.5rem;
+    }
+
+    .logo {
+      width: min(340px, 75vw);
+      height: auto;
+      border-radius: 16px;
+      /* Give the white-bg logo a subtle treatment */
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.06),
+        0 25px 60px -15px rgba(0,0,0,0.7),
+        0 0 80px -20px rgba(239,68,68,0.12);
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.4s ease;
+    }
+
+    .logo:hover {
+      transform: scale(1.02);
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.1),
+        0 30px 70px -15px rgba(0,0,0,0.8),
+        0 0 100px -20px rgba(239,68,68,0.2);
+    }
+
+    /* Tagline */
+    .tagline {
+      font-family: var(--font-heading);
+      font-size: clamp(0.7rem, 2vw, 0.85rem);
+      font-weight: 600;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--fg-tertiary);
+      margin-bottom: 3rem;
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+    }
+
+    .tagline span {
+      color: var(--red);
+    }
+
+    /* CTA Button */
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.85rem 2.4rem;
+      background: #ededed;
+      color: #0a0a0a;
+      font-family: var(--font-heading);
+      font-size: 0.95rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 0;
+      transform: translateY(12px);
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.2s forwards;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-btn::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(239,68,68,0.1), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .cta-btn:hover {
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 0 30px rgba(237,237,237,0.15), 0 10px 40px -10px rgba(0,0,0,0.5);
+    }
+
+    .cta-btn:hover::before { opacity: 1; }
+
+    .cta-btn:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    .cta-arrow {
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .cta-btn:hover .cta-arrow {
+      transform: translateX(3px);
+    }
+
+    /* Scroll indicator */
+    .scroll-hint {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+      opacity: 0;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 1.8s forwards;
+    }
+
+    .scroll-hint span {
+      font-family: var(--font-heading);
+      font-size: 0.6rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--fg-quaternary);
+    }
+
+    .scroll-chevron {
+      width: 20px;
+      height: 20px;
+      border-right: 1.5px solid var(--fg-quaternary);
+      border-bottom: 1.5px solid var(--fg-quaternary);
+      transform: rotate(45deg);
+      animation: scrollBounce 2s ease-in-out infinite;
+    }
+
+    @keyframes scrollBounce {
+      0%, 100% { transform: rotate(45deg) translateY(0); opacity: 0.5; }
+      50% { transform: rotate(45deg) translateY(5px); opacity: 1; }
+    }
+
+    /* ── FEATURES SECTION ── */
+    .features {
+      padding: 6rem 1.5rem 8rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-label {
+      font-family: var(--font-heading);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--fg-quaternary);
+      text-align: center;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: var(--font-heading);
+      font-size: clamp(1.5rem, 4vw, 2.2rem);
+      font-weight: 700;
+      text-align: center;
+      color: var(--fg);
+      margin-bottom: 1rem;
+      letter-spacing: 0.02em;
+    }
+
+    .section-subtitle {
+      font-size: 0.95rem;
+      color: var(--fg-secondary);
+      text-align: center;
+      max-width: 520px;
+      margin: 0 auto 3.5rem;
+      line-height: 1.7;
+    }
+
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+    }
+
+    @media (max-width: 700px) {
+      .feature-grid {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+    }
+
+    .feature-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 2rem 1.75rem;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      overflow: hidden;
+
+      /* Scroll animation setup */
+      opacity: 0;
+      transform: translateY(30px);
+    }
+
+    .feature-card.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(239,68,68,0.2), transparent);
+      opacity: 0;
+      transition: opacity 0.4s;
+    }
+
+    .feature-card:hover {
+      background: var(--glass-bg-hover);
+      border-color: rgba(255,255,255,0.12);
+      transform: translateY(-2px);
+    }
+
+    .feature-card:hover::before { opacity: 1; }
+
+    .feature-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      background: var(--red-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.25rem;
+      transition: background 0.3s;
+    }
+
+    .feature-card:hover .feature-icon {
+      background: rgba(239, 68, 68, 0.22);
+    }
+
+    .feature-icon svg {
+      width: 22px;
+      height: 22px;
+      stroke: var(--red);
+      stroke-width: 1.8;
+      fill: none;
+    }
+
+    .feature-name {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--fg);
+      margin-bottom: 0.5rem;
+      letter-spacing: 0.01em;
+    }
+
+    .feature-desc {
+      font-size: 0.875rem;
+      color: var(--fg-secondary);
+      line-height: 1.65;
+    }
+
+    /* ── DIVIDER ── */
+    .divider {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+    }
+
+    /* ── FOOTER ── */
+    .footer {
+      padding: 3rem 1.5rem 2.5rem;
+      text-align: center;
+    }
+
+    .footer-brand {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--fg-tertiary);
+      margin-bottom: 0.5rem;
+    }
+
+    .footer-tagline {
+      font-size: 0.8rem;
+      color: var(--fg-quaternary);
+      margin-bottom: 1.5rem;
+      font-style: italic;
+    }
+
+    .footer-copy {
+      font-size: 0.7rem;
+      color: var(--fg-quaternary);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── Animations ── */
+    @keyframes fadeInScale {
+      to { opacity: 1; transform: scale(1); }
+    }
+
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ── Transition delays for feature cards ── */
+    .feature-card:nth-child(1) { transition-delay: 0s; }
+    .feature-card:nth-child(2) { transition-delay: 0.1s; }
+    .feature-card:nth-child(3) { transition-delay: 0.2s; }
+    .feature-card:nth-child(4) { transition-delay: 0.3s; }
+
+    /* ── Selection color ── */
+    ::selection {
+      background: rgba(239, 68, 68, 0.3);
+      color: #fff;
+    }
+
+    /* ── Focus-visible ── */
+    :focus-visible {
+      outline: 2px solid var(--red);
+      outline-offset: 2px;
+    }
+
+    /* ── Reduced motion ── */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .feature-card { opacity: 1; transform: none; }
+      .logo-container { opacity: 1; transform: none; }
+      .tagline, .cta-btn, .scroll-hint { opacity: 1; transform: none; }
+    }
+
+    /* ── Top Nav ── */
+    .top-nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1rem, 4vw, 3rem);
+      height: 56px;
+      background: rgba(10, 10, 10, 0.7);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .top-nav .nav-brand {
+      font-family: var(--font-heading);
+      font-weight: 700;
+      font-size: 1.1rem;
+      color: var(--fg);
+      text-decoration: none;
+      letter-spacing: 0.04em;
+    }
+    .top-nav .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+    .top-nav .nav-links a {
+      font-family: var(--font-body);
+      font-size: 0.85rem;
+      font-weight: 500;
+      color: var(--fg-tertiary);
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .top-nav .nav-links a:hover { color: var(--fg); }
+    .top-nav .nav-links a.active { color: var(--fg); }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="top-nav">
+    <a href="index.html" class="nav-brand">BrassOps</a>
+    <div class="nav-links">
+      <a href="infrastructure.html">Infrastructure</a>
+      <a href="https://app.brassops.com">Launch App</a>
+    </div>
+  </nav>
+
+  <!-- Background layers -->
+  <div class="hero-bg" aria-hidden="true">
+    <div class="crosshair-h"></div>
+    <div class="crosshair-v"></div>
+  </div>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <!-- Content -->
+  <div class="content">
+
+    <!-- ═══════════ HERO ═══════════ -->
+    <section class="hero">
+      <div class="logo-container">
+        <img
+          src="logo.jpeg"
+          alt="BrassOps — Range Intelligence Platform"
+          class="logo"
+          width="340"
+          height="190"
+          draggable="false"
+        >
+      </div>
+
+      <p class="tagline">Range <span>Intelligence</span> Platform</p>
+
+      <a href="https://app.brassops.com" class="cta-btn">
+        Launch App
+        <svg class="cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 8h10M9 4l4 4-4 4"/>
+        </svg>
+      </a>
+
+      <div class="scroll-hint" aria-hidden="true">
+        <span>Scroll</span>
+        <div class="scroll-chevron"></div>
+      </div>
+    </section>
+
+    <!-- ═══════════ FEATURES ═══════════ -->
+    <section class="features">
+      <p class="section-label">Capabilities</p>
+      <h2 class="section-title">Mission-Critical Intelligence</h2>
+      <p class="section-subtitle">Purpose-built tools for firearms training programs that demand precision, accountability, and data-driven decisions.</p>
+
+      <div class="feature-grid">
+
+        <!-- Card 1: Qualification Tracking -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+              <path d="M2 17l10 5 10-5"/>
+              <path d="M2 12l10 5 10-5"/>
+            </svg>
+          </div>
+          <h3 class="feature-name">Qualification Tracking</h3>
+          <p class="feature-desc">Track scores, pass rates, and officer readiness across every drill and qualification cycle. Full audit trail.</p>
+        </div>
+
+        <!-- Card 2: AI Target Analysis -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <circle cx="12" cy="12" r="6"/>
+              <circle cx="12" cy="12" r="2"/>
+              <line x1="12" y1="2" x2="12" y2="4"/>
+              <line x1="12" y1="20" x2="12" y2="22"/>
+              <line x1="2" y1="12" x2="4" y2="12"/>
+              <line x1="20" y1="12" x2="22" y2="12"/>
+            </svg>
+          </div>
+          <h3 class="feature-name">AI Target Analysis</h3>
+          <p class="feature-desc">Computer vision powered shot group analysis. Upload a target photo, get precision grades, grouping metrics, and diagnostic feedback.</p>
+        </div>
+
+        <!-- Card 3: Remedial Training -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+              <polyline points="14 2 14 8 20 8"/>
+              <line x1="16" y1="13" x2="8" y2="13"/>
+              <line x1="16" y1="17" x2="8" y2="17"/>
+              <polyline points="10 9 9 9 8 9"/>
+            </svg>
+          </div>
+          <h3 class="feature-name">Remedial Training</h3>
+          <p class="feature-desc">Structured remediation protocols with step-by-step documentation. Court-ready records for every training intervention.</p>
+        </div>
+
+        <!-- Card 4: Real-Time Analytics -->
+        <div class="feature-card">
+          <div class="feature-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+            </svg>
+          </div>
+          <h3 class="feature-name">Real-Time Analytics</h3>
+          <p class="feature-desc">Department-wide performance intelligence. Trend analysis, behavioral assessments, and readiness dashboards — all in real time.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <!-- ═══════════ FOOTER ═══════════ -->
+    <footer class="footer">
+      <p class="footer-brand">BrassOps</p>
+      <p class="footer-tagline">Built for those who train to protect.</p>
+      <p class="footer-copy">&copy; 2025 BrassOps. All rights reserved.</p>
+    </footer>
+
+  </div>
+
+  <!-- ═══════════ SCRIPTS ═══════════ -->
+  <script>
+    // IntersectionObserver for feature card slide-in
+    document.addEventListener('DOMContentLoaded', () => {
+      const cards = document.querySelectorAll('.feature-card');
+
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, {
+          threshold: 0.15,
+          rootMargin: '0px 0px -40px 0px'
+        });
+
+        cards.forEach(card => observer.observe(card));
+      } else {
+        // Fallback: show all cards immediately
+        cards.forEach(card => card.classList.add('visible'));
+      }
+
+      // Parallax-lite: fade out scroll hint on scroll
+      const scrollHint = document.querySelector('.scroll-hint');
+      if (scrollHint) {
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+          if (!ticking) {
+            window.requestAnimationFrame(() => {
+              const scrollY = window.scrollY;
+              scrollHint.style.opacity = Math.max(0, 1 - scrollY / 200);
+              ticking = false;
+            });
+            ticking = true;
+          }
+        }, { passive: true });
+      }
+    });
+  </script>
+
+</body>
+</html>
