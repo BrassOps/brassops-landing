@@ -1111,6 +1111,76 @@
 
     <div class="divider" aria-hidden="true"></div>
 
+    <!-- ═══════════ WORKFLOW ═══════════ -->
+    <section class="section">
+      <p class="section-label">How It's Built</p>
+      <h2 class="section-title" style="font-size: clamp(1.6rem, 3vw, 2.2rem);">Development Workflow</h2>
+      <p class="section-subtitle">BrassOps is built entirely through conversational AI development. No traditional IDE — just natural language and Claude Code.</p>
+
+      <div style="max-width: 800px; margin: 2.5rem auto 0; position: relative;">
+
+        <!-- Vertical connector line -->
+        <div style="position: absolute; left: 28px; top: 28px; bottom: 28px; width: 2px; background: linear-gradient(to bottom, var(--red), var(--red-dim), transparent); border-radius: 1px; z-index: 0;"></div>
+
+        <!-- Step 1 -->
+        <div class="glass-card" style="padding: 1.25rem 1.5rem 1.25rem 4.5rem; position: relative; margin-bottom: 1rem;">
+          <div style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 26px; height: 26px; border-radius: 50%; background: var(--red-dim); border: 2px solid var(--red); display: flex; align-items: center; justify-content: center; z-index: 1;">
+            <span style="font-family: var(--font-heading); font-weight: 700; font-size: 0.8rem; color: var(--red);">1</span>
+          </div>
+          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 1.05rem; margin-bottom: 0.25rem;">Describe the Feature</h3>
+          <p style="color: var(--fg-tertiary); font-size: 0.85rem; line-height: 1.5;">Developer describes what needs to be built in plain English to Claude Code — a feature, a fix, a new page, an API route. Claude reads the codebase, understands the patterns, and writes production code.</p>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="glass-card" style="padding: 1.25rem 1.5rem 1.25rem 4.5rem; position: relative; margin-bottom: 1rem;">
+          <div style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 26px; height: 26px; border-radius: 50%; background: var(--red-dim); border: 2px solid var(--red); display: flex; align-items: center; justify-content: center; z-index: 1;">
+            <span style="font-family: var(--font-heading); font-weight: 700; font-size: 0.8rem; color: var(--red);">2</span>
+          </div>
+          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 1.05rem; margin-bottom: 0.25rem;">Build &amp; Verify</h3>
+          <p style="color: var(--fg-tertiary); font-size: 0.85rem; line-height: 1.5;">Claude writes the code, runs TypeScript strict mode checks (<code style="color: var(--fg-secondary); background: rgba(255,255,255,0.06); padding: 0.1em 0.4em; border-radius: 4px; font-size: 0.8rem;">tsc --noEmit</code>), and runs the production build (<code style="color: var(--fg-secondary); background: rgba(255,255,255,0.06); padding: 0.1em 0.4em; border-radius: 4px; font-size: 0.8rem;">npm run build</code>). Zero errors required before moving on.</p>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="glass-card" style="padding: 1.25rem 1.5rem 1.25rem 4.5rem; position: relative; margin-bottom: 1rem;">
+          <div style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 26px; height: 26px; border-radius: 50%; background: var(--red-dim); border: 2px solid var(--red); display: flex; align-items: center; justify-content: center; z-index: 1;">
+            <span style="font-family: var(--font-heading); font-weight: 700; font-size: 0.8rem; color: var(--red);">3</span>
+          </div>
+          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 1.05rem; margin-bottom: 0.25rem;">Security Review</h3>
+          <p style="color: var(--fg-tertiary); font-size: 0.85rem; line-height: 1.5;">Claude runs automated security audits — checking for IDOR vulnerabilities, XSS vectors, missing auth, input validation gaps, and more. Issues are fixed before code ships.</p>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="glass-card" style="padding: 1.25rem 1.5rem 1.25rem 4.5rem; position: relative; margin-bottom: 1rem;">
+          <div style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 26px; height: 26px; border-radius: 50%; background: var(--red-dim); border: 2px solid var(--red); display: flex; align-items: center; justify-content: center; z-index: 1;">
+            <span style="font-family: var(--font-heading); font-weight: 700; font-size: 0.8rem; color: var(--red);">4</span>
+          </div>
+          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 1.05rem; margin-bottom: 0.25rem;">Push to GitHub</h3>
+          <p style="color: var(--fg-tertiary); font-size: 0.85rem; line-height: 1.5;">Code is committed and pushed to the BrassOps GitHub repository via CLI. Descriptive commit messages, no secrets in source control.</p>
+        </div>
+
+        <!-- Step 5 -->
+        <div class="glass-card" style="padding: 1.25rem 1.5rem 1.25rem 4.5rem; position: relative; margin-bottom: 1rem;">
+          <div style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 26px; height: 26px; border-radius: 50%; background: var(--red-dim); border: 2px solid var(--red); display: flex; align-items: center; justify-content: center; z-index: 1;">
+            <span style="font-family: var(--font-heading); font-weight: 700; font-size: 0.8rem; color: var(--red);">5</span>
+          </div>
+          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 1.05rem; margin-bottom: 0.25rem;">Auto-Deploy to Vercel</h3>
+          <p style="color: var(--fg-tertiary); font-size: 0.85rem; line-height: 1.5;">Every push to <code style="color: var(--fg-secondary); background: rgba(255,255,255,0.06); padding: 0.1em 0.4em; border-radius: 4px; font-size: 0.8rem;">master</code> triggers an automatic deployment on Vercel. Build runs in the cloud, app goes live at <strong style="color: var(--fg);">app.brassops.com</strong> within minutes.</p>
+        </div>
+
+        <!-- Step 6 -->
+        <div class="glass-card" style="padding: 1.25rem 1.5rem 1.25rem 4.5rem; position: relative;">
+          <div style="position: absolute; left: 16px; top: 50%; transform: translateY(-50%); width: 26px; height: 26px; border-radius: 50%; background: var(--red-dim); border: 2px solid var(--red); display: flex; align-items: center; justify-content: center; z-index: 1;">
+            <span style="font-family: var(--font-heading); font-weight: 700; font-size: 0.8rem; color: var(--red);">6</span>
+          </div>
+          <h3 style="font-family: var(--font-heading); font-weight: 600; font-size: 1.05rem; margin-bottom: 0.25rem;">Database &amp; Services</h3>
+          <p style="color: var(--fg-tertiary); font-size: 0.85rem; line-height: 1.5;">Supabase handles the database (PostgreSQL with Row-Level Security), authentication, and file storage. Schema migrations are managed via Supabase CLI and pushed directly to the hosted instance. Email alerts route through SMTP2GO.</p>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
     <!-- ═══════════ STATS ═══════════ -->
     <section class="section">
       <p class="section-label">By the Numbers</p>
