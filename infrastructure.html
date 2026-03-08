@@ -886,8 +886,8 @@
             </svg>
           </div>
           <h3 class="tech-name">Claude AI (Anthropic)</h3>
-          <span class="tech-role">AI / Computer Vision</span>
-          <p class="tech-desc">Vision API for target analysis. Automatic bullet hole detection and shot group grading from uploaded target photos.</p>
+          <span class="tech-role">AI / Computer Vision — Optional</span>
+          <p class="tech-desc">Vision API for target analysis. Automatic bullet hole detection and shot group grading from uploaded target photos. Pay-per-use (~$0.02-0.06 per analysis). Optional — manual shot marking works fully client-side with zero API cost.</p>
         </div>
 
         <!-- 7. Recharts -->
@@ -1141,6 +1141,44 @@
         <div class="stat-item">
           <div class="stat-number">16K+</div>
           <div class="stat-label">Lines of Code</div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <!-- ═══════════ COSTS ═══════════ -->
+    <section class="section" style="padding-bottom: 2rem;">
+      <p class="section-label">Operational Costs</p>
+      <h2 class="section-title" style="font-size: clamp(1.6rem, 3vw, 2.2rem);">Service Breakdown</h2>
+      <div style="max-width: 720px; margin: 2rem auto 0; display: grid; gap: 1rem;">
+        <div class="glass-card" style="padding: 1.25rem 1.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+            <span style="font-family: var(--font-heading); font-weight: 600; font-size: 1.05rem;">Supabase</span>
+            <span style="color: var(--green, #22c55e); font-weight: 600; font-size: 0.9rem;">Free tier available</span>
+          </div>
+          <p style="color: var(--fg-tertiary); font-size: 0.85rem;">Database, auth, storage, and real-time. Free tier includes 500MB database, 1GB storage, 50K monthly active users.</p>
+        </div>
+        <div class="glass-card" style="padding: 1.25rem 1.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+            <span style="font-family: var(--font-heading); font-weight: 600; font-size: 1.05rem;">Vercel</span>
+            <span style="color: var(--green, #22c55e); font-weight: 600; font-size: 0.9rem;">Free tier available</span>
+          </div>
+          <p style="color: var(--fg-tertiary); font-size: 0.85rem;">Hosting with global CDN, serverless functions, automatic deployments. Free for hobby projects, Pro at $20/mo for teams.</p>
+        </div>
+        <div class="glass-card" style="padding: 1.25rem 1.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+            <span style="font-family: var(--font-heading); font-weight: 600; font-size: 1.05rem;">Claude AI (Anthropic)</span>
+            <span style="color: var(--fg-quaternary); font-weight: 600; font-size: 0.9rem;">Optional — Pay per use</span>
+          </div>
+          <p style="color: var(--fg-tertiary); font-size: 0.85rem;">~$0.02–0.06 per target analysis. Only used for AI auto-detection of bullet holes. Manual shot marking works entirely client-side at zero cost.</p>
+        </div>
+        <div class="glass-card" style="padding: 1.25rem 1.5rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.25rem;">
+            <span style="font-family: var(--font-heading); font-weight: 600; font-size: 1.05rem;">SMTP2GO</span>
+            <span style="color: var(--green, #22c55e); font-weight: 600; font-size: 0.9rem;">Free tier available</span>
+          </div>
+          <p style="color: var(--fg-tertiary); font-size: 0.85rem;">Transactional email delivery. Free tier includes 1,000 emails/month. Used for flagged officer alerts and remedial reminders.</p>
         </div>
       </div>
     </section>
