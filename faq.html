@@ -123,6 +123,16 @@
     }
     .top-nav .nav-links a:hover { color: var(--fg); }
     .top-nav .nav-links .active { color: var(--fg); }
+    .top-nav .nav-links .nav-launch {
+      background: linear-gradient(135deg, var(--red), #dc2626);
+      color: #fff !important; padding: 0.35rem 1rem;
+      border-radius: 8px; font-weight: 600; font-size: 0.8rem;
+      letter-spacing: 0.04em; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .top-nav .nav-links .nav-launch:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 20px rgba(239,68,68,0.3);
+    }
 
     /* ── Page Hero ── */
     .page-hero {
@@ -348,6 +358,7 @@
       <a href="why-brassops.html">Why BrassOps</a>
       <span class="active">FAQ</span>
       <a href="contact.html">Contact</a>
+      <a href="https://app.brassops.com" class="nav-launch" target="_blank" rel="noopener">Launch App</a>
     </div>
   </nav>
 
@@ -541,6 +552,16 @@
             Yes. BrassOps includes dedicated <strong>instructor tools</strong> that let you assign instructors, track coaching history, and measure officer progress over time. Your training cadre gets the visibility they need to be effective and accountable.
           </div></div>
         </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What is the Armory section?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            The Armory gives you <strong>full weapon inventory management</strong> — track every firearm by serial number, see which officer it's assigned to, schedule and log inspections, and maintain a complete repair history. Know the status of every weapon in your fleet from issue to retirement, all in one place.
+          </div></div>
+        </div>
       </div>
 
       <!-- ═══════════ SECURITY, COMPLIANCE & DATA ═══════════ -->
@@ -559,11 +580,11 @@
 
         <div class="faq-item">
           <div class="faq-question">
-            <h3>Is BrassOps CJIS-compliant?</h3>
+            <h3>How does BrassOps handle security for law enforcement data?</h3>
             <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
           </div>
           <div class="faq-answer"><div class="faq-answer-inner">
-            BrassOps is designed with <strong>CJIS Security Policy guidelines</strong> in mind, including encryption standards, access controls, and audit logging. If your agency has specific CJIS requirements, our team will work with you to ensure alignment.
+            BrassOps is built with <strong>law enforcement-grade security</strong> from the ground up — AES-256 encryption at rest, TLS in transit, role-based access controls, and comprehensive audit logging. Training and qualification data is sensitive, and we treat it that way. If your agency has specific compliance requirements, our team will work with you to ensure alignment.
           </div></div>
         </div>
 
@@ -861,7 +882,7 @@
         <div class="tc-quote">&ldquo;</div>
         <p class="tc-text">BrassOps gave us something we never had before — confidence that every officer's training record is complete, current, and defensible. It's not just a tool, it's peace of mind.</p>
         <div class="tc-author">Lt. David K.</div>
-        <div class="tc-role">Training Division Commander, Metro PD</div>
+        <div class="tc-role">Training Division Commander</div>
       </div>
     </div>
 

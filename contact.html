@@ -123,6 +123,16 @@
     }
     .top-nav .nav-links a:hover { color: var(--fg); }
     .top-nav .nav-links .active { color: var(--fg); }
+    .top-nav .nav-links .nav-launch {
+      background: linear-gradient(135deg, var(--red), #dc2626);
+      color: #fff !important; padding: 0.35rem 1rem;
+      border-radius: 8px; font-weight: 600; font-size: 0.8rem;
+      letter-spacing: 0.04em; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .top-nav .nav-links .nav-launch:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 20px rgba(239,68,68,0.3);
+    }
 
     /* ── Page Hero ── */
     .page-hero {
@@ -453,6 +463,7 @@
       <a href="why-brassops.html">Why BrassOps</a>
       <a href="faq.html">FAQ</a>
       <span class="active">Contact</span>
+      <a href="https://app.brassops.com" class="nav-launch" target="_blank" rel="noopener">Launch App</a>
     </div>
   </nav>
 
@@ -617,7 +628,7 @@
       <div class="trust-strip-inner">
         <div class="trust-strip-item">
           <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          CJIS-Aligned Security
+          Law Enforcement-Grade Security
         </div>
         <div class="trust-strip-item">
           <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>

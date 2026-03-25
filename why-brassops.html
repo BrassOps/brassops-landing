@@ -122,6 +122,16 @@
     }
     .top-nav .nav-links a:hover { color: var(--fg); }
     .top-nav .nav-links .active { color: var(--fg); }
+    .top-nav .nav-links .nav-launch {
+      background: linear-gradient(135deg, var(--red), #dc2626);
+      color: #fff !important; padding: 0.35rem 1rem;
+      border-radius: 8px; font-weight: 600; font-size: 0.8rem;
+      letter-spacing: 0.04em; transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .top-nav .nav-links .nav-launch:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 0 20px rgba(239,68,68,0.3);
+    }
 
     /* ── Page Hero ── */
     .page-hero {
@@ -395,6 +405,7 @@
       <span class="active">Why BrassOps</span>
       <a href="faq.html">FAQ</a>
       <a href="contact.html">Contact</a>
+      <a href="https://app.brassops.com" class="nav-launch" target="_blank" rel="noopener">Launch App</a>
     </div>
   </nav>
 
