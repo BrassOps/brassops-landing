@@ -508,7 +508,7 @@
         <div class="form-panel">
           <div class="form-card">
 
-            <form id="contactForm" action="https://formspree.io/f/xovadgwz" method="POST">
+            <form id="contactForm">
 
               <div class="form-row">
                 <div class="form-group">
@@ -618,11 +618,21 @@
         btnArrow.style.display = 'none';
         btnSpinner.style.display = 'block';
 
+        const payload = {
+          firstName: form.firstName.value,
+          lastName: form.lastName.value,
+          email: form.email.value,
+          department: form.department.value,
+          role: form.role.value,
+          interest: form.interest.value,
+          message: form.message.value,
+        };
+
         try {
-          const response = await fetch(form.action, {
+          const response = await fetch('/api/contact', {
             method: 'POST',
-            body: new FormData(form),
-            headers: { 'Accept': 'application/json' }
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload),
           });
 
           if (response.ok) {
