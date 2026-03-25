@@ -15,7 +15,7 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Server configuration error' });
   }
 
-  const recipient = process.env.CONTACT_EMAIL || 'contact@brassops.com';
+  const recipient = 'brassops01@gmail.com';
 
   const htmlBody = `
     <h2>New Contact Form Submission</h2>
