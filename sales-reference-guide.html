@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrassOps — Sales Reference Guide</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Rajdhani:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    @page {
+      size: letter;
+      margin: 0;
+    }
+
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #ffffff;
+      --fg: #1a1a1a;
+      --fg-sec: #444444;
+      --fg-dim: #777777;
+      --red: #dc2626;
+      --red-dim: rgba(220,38,38,0.07);
+      --red-border: rgba(220,38,38,0.18);
+      --card-bg: #f8f8f9;
+      --card-border: #e4e4e7;
+      --font-h: 'Rajdhani', sans-serif;
+      --font-b: 'Barlow', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--font-b);
+      -webkit-font-smoothing: antialiased;
+      width: 8.5in;
+      margin: 0 auto;
+      padding: 0;
+      line-height: 1.5;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .page {
+      width: 8.5in;
+      min-height: 11in;
+      padding: 0.4in 0.5in 0.35in;
+      display: flex;
+      flex-direction: column;
+      page-break-after: always;
+    }
+    .page:last-child { page-break-after: auto; }
+
+    /* ── HEADER ── */
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-bottom: 0.2in;
+      border-bottom: 2px solid var(--red);
+      margin-bottom: 0.25in;
+    }
+    .brand {
+      font-family: var(--font-h);
+      font-size: 22pt;
+      font-weight: 800;
+      letter-spacing: 0.06em;
+      color: var(--fg);
+    }
+    .brand span { color: var(--red); }
+    .doc-title {
+      font-family: var(--font-h);
+      font-size: 8pt;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--fg-dim);
+      text-align: right;
+    }
+
+    /* ── PAGE TITLE ── */
+    .page-title {
+      font-family: var(--font-h);
+      font-size: 16pt;
+      font-weight: 800;
+      color: var(--fg);
+      margin-bottom: 3pt;
+      letter-spacing: 0.01em;
+    }
+    .page-subtitle {
+      font-size: 8.5pt;
+      color: var(--fg-sec);
+      margin-bottom: 0.22in;
+      line-height: 1.55;
+      max-width: 6in;
+    }
+
+    /* ── SECTION DIVIDER ── */
+    .sec-divider {
+      height: 1px;
+      background: var(--card-border);
+      margin: 0.18in 0;
+    }
+
+    /* ── FEATURE BLOCK ── */
+    .feature-block {
+      margin-bottom: 0.18in;
+    }
+    .feature-header {
+      display: flex;
+      align-items: center;
+      gap: 7pt;
+      margin-bottom: 5pt;
+    }
+    .feature-dot {
+      width: 7pt; height: 7pt;
+      border-radius: 50%;
+      background: var(--red);
+      flex-shrink: 0;
+    }
+    .feature-name {
+      font-family: var(--font-h);
+      font-size: 11pt;
+      font-weight: 700;
+      color: var(--fg);
+      letter-spacing: 0.01em;
+    }
+    .feature-desc {
+      font-size: 8pt;
+      color: var(--fg-sec);
+      line-height: 1.6;
+      margin-bottom: 6pt;
+      padding-left: 14pt;
+    }
+    .feature-bullets {
+      list-style: none;
+      padding-left: 14pt;
+      display: flex;
+      flex-direction: column;
+      gap: 3pt;
+    }
+    .feature-bullets li {
+      font-size: 7.5pt;
+      color: var(--fg-sec);
+      line-height: 1.5;
+      padding-left: 10pt;
+      position: relative;
+    }
+    .feature-bullets li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 5pt;
+      width: 4pt; height: 4pt;
+      border-radius: 50%;
+      background: var(--red);
+      opacity: 0.5;
+    }
+
+    /* ── AUTOMATION CALLOUT ── */
+    .auto-callout {
+      background: var(--red-dim);
+      border-left: 3px solid var(--red);
+      border-radius: 0 6px 6px 0;
+      padding: 6pt 10pt;
+      margin: 6pt 0 0 14pt;
+    }
+    .auto-label {
+      font-family: var(--font-h);
+      font-size: 6pt;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 2pt;
+    }
+    .auto-text {
+      font-size: 7.5pt;
+      color: var(--fg-sec);
+      line-height: 1.55;
+    }
+
+    /* ── TWO-COL LAYOUT ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.2in;
+    }
+
+    /* ── TALK TRACK TIP ── */
+    .tip-box {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      padding: 10pt 12pt;
+      margin-top: 0.15in;
+    }
+    .tip-label {
+      font-family: var(--font-h);
+      font-size: 6pt;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 4pt;
+    }
+    .tip-text {
+      font-size: 7.5pt;
+      color: var(--fg-sec);
+      line-height: 1.6;
+      font-style: italic;
+    }
+
+    /* ── FOOTER ── */
+    .page-footer {
+      margin-top: auto;
+      padding-top: 0.12in;
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 6.5pt;
+      color: var(--fg-dim);
+    }
+    .page-footer .confidential {
+      font-family: var(--font-h);
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--red);
+    }
+
+    @media print {
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- PAGE 1: Core Features & Automations         -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="header">
+      <div class="brand">Brass<span>Ops</span></div>
+      <div class="doc-title">Sales Reference Guide<br>Internal Use Only</div>
+    </div>
+
+    <div class="page-title">Features &amp; Automations Reference</div>
+    <div class="page-subtitle">A quick-reference guide for sales conversations. Each section explains what the feature does, what it automates, and why it matters to the agency. Use this to speak confidently about the platform without needing a live demo.</div>
+
+    <!-- Qualification Tracking -->
+    <div class="feature-block">
+      <div class="feature-header">
+        <span class="feature-dot"></span>
+        <span class="feature-name">Qualification Tracking</span>
+      </div>
+      <div class="feature-desc">The backbone of BrassOps. Every firearms qualification session is logged with scores, dates, weapon used, course of fire, and instructor. The system automatically calculates pass/fail against the agency's configured thresholds and maintains a time-stamped record for every officer.</div>
+      <ul class="feature-bullets">
+        <li>Scores logged per officer with full session metadata (date, weapon, course, instructor)</li>
+        <li>Pass/fail auto-calculated against agency-defined qualification thresholds</li>
+        <li>Qualification expiration dates tracked automatically — no manual date math</li>
+        <li>Complete historical record for every officer, searchable and exportable</li>
+      </ul>
+      <div class="auto-callout">
+        <div class="auto-label">Automation</div>
+        <div class="auto-text">When a score is logged, the system instantly determines pass/fail status, updates the officer's qualification expiration date, and recalculates their readiness status on the department dashboard — all without any manual steps.</div>
+      </div>
+    </div>
+
+    <div class="sec-divider"></div>
+
+    <!-- Auto Remedial Enrollment -->
+    <div class="feature-block">
+      <div class="feature-header">
+        <span class="feature-dot"></span>
+        <span class="feature-name">Auto Remedial Enrollment</span>
+      </div>
+      <div class="feature-desc">When an officer fails a qualification, BrassOps automatically creates a remedial training case and enrolls the officer — the moment the score is logged. No range master action required. The remedial workflow includes issue tracking, coaching notes, progress milestones, and escalation paths.</div>
+      <ul class="feature-bullets">
+        <li>Triggered immediately on qualification failure — zero delay, zero manual steps</li>
+        <li>Remedial case created with structured workflow: issue identification, coaching plan, re-qualification</li>
+        <li>Instructors assigned automatically or manually to remedial cases</li>
+        <li>Escalation paths for officers who don't meet remedial milestones within set timeframes</li>
+        <li>Every step time-stamped and documented for legal defensibility</li>
+      </ul>
+      <div class="auto-callout">
+        <div class="auto-label">Automation</div>
+        <div class="auto-text">The entire remedial enrollment pipeline is hands-free. Score logged &rarr; fail detected &rarr; remedial case created &rarr; officer notified &rarr; instructor assigned &rarr; training tracked until re-qualification. If escalation thresholds are breached, command staff is alerted automatically.</div>
+      </div>
+    </div>
+
+    <div class="sec-divider"></div>
+
+    <!-- Automated Alerts -->
+    <div class="feature-block">
+      <div class="feature-header">
+        <span class="feature-dot"></span>
+        <span class="feature-name">Automated Alerts &amp; Notifications</span>
+      </div>
+      <div class="feature-desc">BrassOps continuously monitors qualification dates, remedial progress, and officer status across the entire department. When something needs attention, the right people are notified automatically — before it becomes a problem.</div>
+      <ul class="feature-bullets">
+        <li>Qualification expiration warnings sent at configurable intervals (e.g. 90, 60, 30 days out)</li>
+        <li>Remedial case status alerts when milestones are due or overdue</li>
+        <li>Officer flagging notifications sent to range masters and command staff</li>
+        <li>Configurable notification channels and recipients per alert type</li>
+      </ul>
+      <div class="auto-callout">
+        <div class="auto-label">Automation</div>
+        <div class="auto-text">No one has to remember to check spreadsheets. The system monitors every officer's status continuously and pushes alerts to the right people at the right time. Qualifications can't silently lapse.</div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="confidential">Confidential — Internal Sales Use Only</span>
+      <span>BrassOps Sales Reference Guide &mdash; Page 1 of 3</span>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- PAGE 2: More Features                        -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="header">
+      <div class="brand">Brass<span>Ops</span></div>
+      <div class="doc-title">Sales Reference Guide<br>Internal Use Only</div>
+    </div>
+
+    <!-- Officer Readiness Monitoring -->
+    <div class="feature-block">
+      <div class="feature-header">
+        <span class="feature-dot"></span>
+        <span class="feature-name">Officer Readiness Monitoring</span>
+      </div>
+      <div class="feature-desc">A real-time, color-coded dashboard showing the qualification and training status of every officer in the department. Green (qualified), yellow (expiring soon), red (non-compliant or in remedial). Command staff and range masters see the same live picture without generating reports.</div>
+      <ul class="feature-bullets">
+        <li>Department-wide readiness view updated in real time as scores and dates change</li>
+        <li>Filter by unit, shift, rank, or status to drill into specific groups</li>
+        <li>Individual officer detail pages with full qualification history and trend data</li>
+      </ul>
+      <div class="auto-callout">
+        <div class="auto-label">Automation</div>
+        <div class="auto-text">Readiness status recalculates automatically whenever a qualification is logged, an expiration date passes, or a remedial case changes state. The dashboard is always current — no one has to update it.</div>
+      </div>
+    </div>
+
+    <div class="sec-divider"></div>
+
+    <!-- AI Shot Analysis -->
+    <div class="feature-block">
+      <div class="feature-header">
+        <span class="feature-dot"></span>
+        <span class="feature-name">AI-Powered Shot Analysis</span>
+      </div>
+      <div class="feature-desc">Officers or instructors upload a photo of a target, and BrassOps AI analyzes the shot grouping to provide an instant diagnostic — including probable cause of dispersion and recommended corrective drills. It's like having an expert coach evaluate every target.</div>
+      <ul class="feature-bullets">
+        <li>Upload a target photo from any device (phone camera on the firing line works great)</li>
+        <li>AI identifies shot pattern, grouping tightness, and point-of-impact shift</li>
+        <li>Returns probable cause (trigger control, flinch, grip, sight alignment, etc.)</li>
+        <li>Suggests specific corrective drills tailored to the identified issue</li>
+        <li>Analysis saved to the officer's profile for tracking improvement over time</li>
+      </ul>
+    </div>
+
+    <div class="sec-divider"></div>
+
+    <!-- Performance Analytics -->
+    <div class="feature-block">
+      <div class="feature-header">
+        <span class="feature-dot"></span>
+        <span class="feature-name">Performance Analytics &amp; Behavioral Scoring</span>
+      </div>
+      <div class="feature-desc">Deep analytics that go beyond basic pass/fail. BrassOps tracks performance trends over time at both the individual officer and department-wide level. Behavioral scoring identifies specific strengths and weaknesses — giving leadership the data to design targeted training rather than one-size-fits-all programs.</div>
+      <ul class="feature-bullets">
+        <li>Per-officer score trends, session history, and improvement tracking</li>
+        <li>Department-wide statistics: average scores, qualification rates, common deficiencies</li>
+        <li>Behavioral scoring surfaces patterns (e.g. consistent trigger issues across multiple officers)</li>
+        <li>Drill leaderboards and achievement badges to drive engagement and healthy competition</li>
+        <li>Data exportable for reports to command staff, oversight, or budget justifications</li>
+      </ul>
+      <div class="auto-callout">
+        <div class="auto-label">Automation</div>
+        <div class="auto-text">Analytics update in real time as new data flows in. Behavioral scores recalculate after every session. Leaderboards and badges are awarded automatically when officers hit milestones — no admin configuration needed.</div>
+      </div>
+    </div>
+
+    <div class="sec-divider"></div>
+
+    <!-- Armory -->
+    <div class="feature-block">
+      <div class="feature-header">
+        <span class="feature-dot"></span>
+        <span class="feature-name">Armory — Weapon Inventory Management</span>
+      </div>
+      <div class="feature-desc">A complete weapon fleet management system. Every department-issued firearm is tracked from acquisition to retirement — including which officer it's assigned to, when it was last inspected, and its full repair history.</div>
+      <ul class="feature-bullets">
+        <li>Full inventory with serial numbers, make/model, and acquisition date</li>
+        <li>Officer assignment tracking — know who has what at all times</li>
+        <li>Inspection scheduling with due-date tracking and completion logging</li>
+        <li>Repair history log tied to each weapon for lifecycle management</li>
+      </ul>
+      <div class="auto-callout">
+        <div class="auto-label">Automation</div>
+        <div class="auto-text">Inspection due dates are tracked automatically and surface alerts when weapons are due. Assignment changes are logged with timestamps for full chain-of-custody documentation.</div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="confidential">Confidential — Internal Sales Use Only</span>
+      <span>BrassOps Sales Reference Guide &mdash; Page 2 of 3</span>
+    </div>
+  </div>
+
+  <!-- ════════════════════════════════════════════ -->
+  <!-- PAGE 3: Remaining Features + Talk Track      -->
+  <!-- ════════════════════════════════════════════ -->
+  <div class="page">
+    <div class="header">
+      <div class="brand">Brass<span>Ops</span></div>
+      <div class="doc-title">Sales Reference Guide<br>Internal Use Only</div>
+    </div>
+
+    <div class="two-col">
+      <div>
+        <!-- Dry-Fire Training -->
+        <div class="feature-block">
+          <div class="feature-header">
+            <span class="feature-dot"></span>
+            <span class="feature-name">Dry-Fire Training</span>
+          </div>
+          <div class="feature-desc">Officers log dry-fire practice sessions between range days. Sessions are tracked with duration, drill type, and notes. Achievement badges unlock at milestones to keep officers engaged and building consistent habits.</div>
+          <ul class="feature-bullets">
+            <li>Structured session logging with drill type and duration</li>
+            <li>Progress tracking visible to officers and instructors</li>
+            <li>Achievement badges awarded automatically at milestones</li>
+          </ul>
+        </div>
+
+        <div class="sec-divider"></div>
+
+        <!-- Instructor Tools -->
+        <div class="feature-block">
+          <div class="feature-header">
+            <span class="feature-dot"></span>
+            <span class="feature-name">Instructor Tools</span>
+          </div>
+          <div class="feature-desc">Assign instructors to officers, sessions, or remedial cases. Instructors can log coaching notes, track officer progress over time, and see their full assigned roster with status indicators.</div>
+          <ul class="feature-bullets">
+            <li>Instructor assignment to sessions and remedial cases</li>
+            <li>Coaching notes tied to officers with full history</li>
+            <li>Instructor workload visibility for training coordinators</li>
+          </ul>
+        </div>
+
+        <div class="sec-divider"></div>
+
+        <!-- Range Ops -->
+        <div class="feature-block">
+          <div class="feature-header">
+            <span class="feature-dot"></span>
+            <span class="feature-name">Range Ops</span>
+          </div>
+          <div class="feature-desc">Operational management for the range itself — scheduling, automations, inventory, and day-of logistics. Designed to streamline the admin side so the team can focus on running training.</div>
+          <ul class="feature-bullets">
+            <li>Range day scheduling and calendar management</li>
+            <li>Ammo and supply inventory tracking</li>
+            <li>Configurable automations for recurring range workflows</li>
+          </ul>
+        </div>
+      </div>
+
+      <div>
+        <!-- BrassLink -->
+        <div class="feature-block">
+          <div class="feature-header">
+            <span class="feature-dot"></span>
+            <span class="feature-name">BrassLink Community</span>
+          </div>
+          <div class="feature-desc">A built-in community platform connecting firearms instructors across agencies nationwide. Every BrassOps user gets access — it's a retention driver and a genuine value-add.</div>
+          <ul class="feature-bullets">
+            <li><strong>N.A.R.M.S.</strong> — National Anonymous Range Metrics System for cross-agency benchmarking</li>
+            <li><strong>MythBusters</strong> — Community-driven debunking of training myths with data</li>
+            <li><strong>Training Resources</strong> — Shared library of drills, studies, and best practices</li>
+            <li><strong>Instructor Assessment Tool</strong> — Peer-informed framework for evaluating instructor effectiveness</li>
+            <li><strong>Equipment Reviews</strong> — Honest, unsponsored gear reviews from verified instructors</li>
+          </ul>
+        </div>
+
+        <div class="sec-divider"></div>
+
+        <!-- Security -->
+        <div class="feature-block">
+          <div class="feature-header">
+            <span class="feature-dot"></span>
+            <span class="feature-name">Security &amp; Access</span>
+          </div>
+          <div class="feature-desc">Law enforcement-grade security designed for sensitive training data. No special hardware or installs — it's web-based and works on any device.</div>
+          <ul class="feature-bullets">
+            <li>AES-256 encryption at rest, TLS in transit</li>
+            <li>Role-based access: officers, instructors, range masters, command staff each see only what's appropriate</li>
+            <li>Full audit log of every action for oversight and legal defensibility</li>
+            <li>U.S.-based cloud hosting with redundancy</li>
+            <li>Agency data fully isolated — no cross-agency visibility</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <!-- Talk Track Tips -->
+    <div class="tip-box">
+      <div class="tip-label">Sales Talk Track — Key Objection Handlers</div>
+      <div class="tip-text">
+        <strong>"We don't have budget."</strong> &rarr; Ask: "What would one negligent training lawsuit cost? BrassOps is a fraction of that." Reframe from expense to liability insurance.<br><br>
+        <strong>"We already use spreadsheets."</strong> &rarr; "Spreadsheets can't auto-enroll officers in remedial, alert you before a qual expires, or survive an audit. What happens when your range master retires and the knowledge walks out the door?"<br><br>
+        <strong>"Our department is too small."</strong> &rarr; "BrassOps scales down just as well as it scales up. A 20-officer department has the same compliance obligations as a 2,000-officer agency — and the same liability exposure."<br><br>
+        <strong>"We need to go through procurement."</strong> &rarr; "We work with municipal, county, and state procurement regularly — including sole-source justifications, cooperative contracts, and standard RFP responses. We'll help you through the process."
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="confidential">Confidential — Internal Sales Use Only</span>
+      <span>BrassOps Sales Reference Guide &mdash; Page 3 of 3</span>
+    </div>
+  </div>
+
+</body>
+</html>
