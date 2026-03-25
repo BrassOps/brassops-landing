@@ -332,6 +332,132 @@
     }
 
     /* ── Risk Timeline ── */
+
+    /* ── Documentation Failures Grid ── */
+    .failures-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+      margin-bottom: 2.5rem;
+    }
+    @media (max-width: 700px) { .failures-grid { grid-template-columns: 1fr; } }
+
+    .failure-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 1.75rem 1.5rem;
+      position: relative; overflow: hidden;
+      opacity: 0; transform: translateY(30px);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .failure-card.visible { opacity: 1; transform: translateY(0); }
+    .failure-card:nth-child(1) { transition-delay: 0s; }
+    .failure-card:nth-child(2) { transition-delay: 0.08s; }
+    .failure-card:nth-child(3) { transition-delay: 0.1s; }
+    .failure-card:nth-child(4) { transition-delay: 0.16s; }
+    .failure-card:nth-child(5) { transition-delay: 0.2s; }
+
+    .failure-header {
+      display: flex; align-items: flex-start; gap: 0.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .failure-num {
+      flex-shrink: 0;
+      width: 28px; height: 28px; border-radius: 50%;
+      background: rgba(239, 68, 68, 0.12);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-heading); font-size: 0.85rem; font-weight: 800;
+      color: var(--red);
+    }
+    .failure-title {
+      font-family: var(--font-heading); font-size: 1.05rem; font-weight: 700;
+      color: var(--fg); line-height: 1.3;
+    }
+    .failure-risk {
+      font-size: 0.85rem; color: var(--fg-secondary); line-height: 1.65;
+      margin-bottom: 0.75rem; padding-left: 0.25rem;
+      border-left: 2px solid rgba(239,68,68,0.2);
+      padding-left: 0.75rem;
+    }
+    .failure-fix {
+      display: flex; align-items: flex-start; gap: 0.5rem;
+      background: rgba(34, 197, 94, 0.06);
+      border: 1px solid rgba(34, 197, 94, 0.12);
+      border-radius: 10px; padding: 0.65rem 0.85rem;
+    }
+    .failure-fix svg {
+      flex-shrink: 0; width: 16px; height: 16px;
+      stroke: var(--green); stroke-width: 2.5; fill: none;
+      margin-top: 2px;
+    }
+    .failure-fix-text {
+      font-size: 0.82rem; color: var(--fg-secondary); line-height: 1.55;
+    }
+    .failure-fix-text strong { color: var(--fg); }
+
+    /* ── Court Evaluation ── */
+    .court-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    @media (max-width: 800px) { .court-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 500px) { .court-grid { grid-template-columns: 1fr; } }
+
+    .court-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+      padding: 1.5rem 1.25rem;
+      text-align: center;
+      position: relative; overflow: hidden;
+      opacity: 0; transform: translateY(20px);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .court-card.visible { opacity: 1; transform: translateY(0); }
+    .court-card:hover {
+      background: var(--glass-bg-hover);
+      border-color: rgba(255,255,255,0.12);
+    }
+    .court-card:nth-child(1) { transition-delay: 0s; }
+    .court-card:nth-child(2) { transition-delay: 0.08s; }
+    .court-card:nth-child(3) { transition-delay: 0.16s; }
+    .court-card:nth-child(4) { transition-delay: 0.24s; }
+
+    .court-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--green), transparent);
+    }
+    .court-num {
+      font-family: var(--font-heading); font-size: 1.6rem; font-weight: 800;
+      color: var(--green); line-height: 1; margin-bottom: 0.5rem;
+    }
+    .court-test {
+      font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700;
+      color: var(--fg); margin-bottom: 0.5rem; line-height: 1.3;
+    }
+    .court-how {
+      font-size: 0.8rem; color: var(--fg-secondary); line-height: 1.6;
+    }
+    .court-how strong { color: var(--fg); }
+
+    .court-summary {
+      max-width: 700px; margin: 2rem auto 0;
+      background: rgba(34, 197, 94, 0.06);
+      border: 1px solid rgba(34, 197, 94, 0.12);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      text-align: center;
+      opacity: 0; transform: translateY(20px);
+    }
+    .court-summary.visible { opacity: 1; transform: translateY(0); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); }
+    .court-summary p {
+      font-size: 0.95rem; color: var(--fg-secondary); line-height: 1.7;
+    }
+    .court-summary strong { color: var(--fg); }
+
+    /* ── Risk Timeline ── */
     .timeline {
       max-width: 700px; margin: 0 auto;
       position: relative; padding-left: 2.5rem;
@@ -430,7 +556,8 @@
         transition-duration: 0.01ms !important;
       }
       .page-hero h1, .page-hero .hero-lead,
-      .compare-card, .roi-card, .timeline-item { opacity: 1; transform: none; }
+      .compare-card, .roi-card, .timeline-item, .failure-card,
+      .court-card, .court-summary { opacity: 1; transform: none; }
     }
   </style>
 </head>
@@ -597,6 +724,115 @@
 
     <div class="divider" aria-hidden="true"></div>
 
+    <!-- ═══════════ DOCUMENTATION FAILURES ═══════════ -->
+    <section class="section">
+      <p class="section-label">Legal Liability</p>
+      <h2 class="section-title">The 5 Documentation Failures That Lose Lawsuits</h2>
+      <p class="section-subtitle">These are the gaps that consistently blow up agencies in court. Every one of them is preventable with the right system.</p>
+
+      <div class="failures-grid">
+
+        <div class="failure-card">
+          <div class="failure-header">
+            <div class="failure-num">1</div>
+            <div class="failure-title">Missing Qualification Records</div>
+          </div>
+          <div class="failure-risk">The agency can't prove the officer was current on qualifications at the time of an incident. Attorneys exploit the gap — and juries notice.</div>
+          <div class="failure-fix">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <div class="failure-fix-text"><strong>BrassOps automatically logs every qualification</strong> with date, score, weapon, course of fire, and instructor — creating a time-stamped, tamper-proof record that proves exactly when each officer qualified.</div>
+          </div>
+        </div>
+
+        <div class="failure-card">
+          <div class="failure-header">
+            <div class="failure-num">2</div>
+            <div class="failure-title">No Remedial Training Logs</div>
+          </div>
+          <div class="failure-risk">An officer failed or struggled — but there's no documented follow-up. The agency knew about the deficiency and did nothing. That's negligence in court.</div>
+          <div class="failure-fix">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <div class="failure-fix-text"><strong>Auto remedial enrollment creates a documented case instantly</strong> when an officer fails. Every coaching session, milestone, and escalation is logged with timestamps — proving the agency acted immediately.</div>
+          </div>
+        </div>
+
+        <div class="failure-card">
+          <div class="failure-header">
+            <div class="failure-num">3</div>
+            <div class="failure-title">Incomplete Lesson Plans</div>
+          </div>
+          <div class="failure-risk">The department can't show what was actually taught during training sessions. Without documented curriculum, there's no way to prove training was appropriate for the situation.</div>
+          <div class="failure-fix">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <div class="failure-fix-text"><strong>BrassOps ties every session to specific courses of fire and training plans.</strong> Instructors log what was covered, drills conducted, and coaching notes — creating a complete record of what was taught and why.</div>
+          </div>
+        </div>
+
+        <div class="failure-card">
+          <div class="failure-header">
+            <div class="failure-num">4</div>
+            <div class="failure-title">No Attendance Verification</div>
+          </div>
+          <div class="failure-risk">"He was scheduled" is not the same as "He attended." Without verified attendance records, an agency can't prove an officer was actually present for required training.</div>
+          <div class="failure-fix">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <div class="failure-fix-text"><strong>Every score logged in BrassOps is attendance verification.</strong> The officer was there, they fired, their score was recorded by an instructor. No ambiguity, no gaps between "scheduled" and "attended."</div>
+          </div>
+        </div>
+
+        <div class="failure-card">
+          <div class="failure-header">
+            <div class="failure-num">5</div>
+            <div class="failure-title">No Performance Metrics</div>
+          </div>
+          <div class="failure-risk">A simple pass/fail with no actual scoring data is a weak defense. Courts want to see measurable competency — not a checkbox that says "completed."</div>
+          <div class="failure-fix">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            <div class="failure-fix-text"><strong>BrassOps captures granular scoring data, behavioral patterns, and trend analytics.</strong> Every session has real numbers — not just pass/fail. AI shot analysis adds diagnostic depth that demonstrates genuine competency evaluation.</div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <!-- ═══════════ WHAT COURTS EVALUATE ═══════════ -->
+    <section class="section">
+      <p class="section-label">The Legal Standard</p>
+      <h2 class="section-title">What Courts Are Really Evaluating</h2>
+      <p class="section-subtitle">To win a negligent training case, agencies must prove all four of these. Documentation is the only way to prove them. BrassOps handles every one.</p>
+
+      <div class="court-grid">
+        <div class="court-card">
+          <div class="court-num">1</div>
+          <div class="court-test">Training Existed</div>
+          <div class="court-how">BrassOps logs every qualification session, dry-fire practice, and training event with <strong>time-stamped records</strong> proving the program was active and ongoing.</div>
+        </div>
+        <div class="court-card">
+          <div class="court-num">2</div>
+          <div class="court-test">Training Was Appropriate</div>
+          <div class="court-how">Courses of fire, lesson plans, and coaching notes document <strong>what was taught and why</strong> — showing training matched the officer's duties and deficiencies.</div>
+        </div>
+        <div class="court-card">
+          <div class="court-num">3</div>
+          <div class="court-test">Officer Received It</div>
+          <div class="court-how">Score-based attendance verification proves the officer <strong>was physically present and participated.</strong> No gap between "scheduled" and "attended."</div>
+        </div>
+        <div class="court-card">
+          <div class="court-num">4</div>
+          <div class="court-test">Officer Demonstrated Competency</div>
+          <div class="court-how">Granular scores, pass/fail thresholds, behavioral analytics, and AI shot analysis prove <strong>measurable competency</strong> — not just a checkbox.</div>
+        </div>
+      </div>
+
+      <div class="court-summary">
+        <p><strong>Documentation is the only way to prove all four.</strong> Paper records fail under scrutiny. Spreadsheets get lost. Institutional memory retires. BrassOps creates an automatic, continuous, defensible record that protects your agency — before you ever need it.</p>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
     <!-- ═══════════ RISK TIMELINE ═══════════ -->
     <section class="section">
       <p class="section-label">The Domino Effect</p>
@@ -681,7 +917,7 @@
       }
 
       const animElements = document.querySelectorAll(
-        '.compare-card, .roi-card, .timeline-item'
+        '.compare-card, .roi-card, .timeline-item, .failure-card, .court-card, .court-summary'
       );
 
       if ('IntersectionObserver' in window) {
