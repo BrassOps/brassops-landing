@@ -1,0 +1,892 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrassOps — FAQ</title>
+  <meta name="description" content="Frequently asked questions about BrassOps, the range intelligence platform built for law enforcement firearms programs.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="BrassOps — FAQ">
+  <meta property="og:description" content="Frequently asked questions about BrassOps, the range intelligence platform built for law enforcement firearms programs.">
+  <meta property="og:url" content="https://brassops.com/faq">
+  <meta property="og:site_name" content="BrassOps">
+  <meta property="og:image" content="https://app.brassops.com/opengraph-image">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    /* ── Reset ── */
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+    /* ── Tokens ── */
+    :root {
+      --bg: #0a0a0a;
+      --fg: #ededed;
+      --fg-secondary: #a1a1aa;
+      --fg-tertiary: #71717a;
+      --fg-quaternary: #52525b;
+      --red: #ef4444;
+      --red-dim: rgba(239, 68, 68, 0.15);
+      --red-glow: rgba(239, 68, 68, 0.35);
+      --glass-bg: rgba(255, 255, 255, 0.04);
+      --glass-border: rgba(255, 255, 255, 0.07);
+      --glass-bg-hover: rgba(255, 255, 255, 0.07);
+      --font-heading: 'Rajdhani', 'Barlow Condensed', sans-serif;
+      --font-body: 'Barlow', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--fg);
+      font-family: var(--font-body);
+      min-height: 100dvh;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* ── Scrollbar ── */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
+    ::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.25); }
+
+    /* ── Background ── */
+    .hero-bg {
+      position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none;
+    }
+    .hero-bg::before {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      width: 200vmax; height: 200vmax; transform: translate(-50%, -50%);
+      background:
+        radial-gradient(circle, transparent 18%, rgba(239,68,68,0.03) 18.5%, transparent 19%),
+        radial-gradient(circle, transparent 30%, rgba(239,68,68,0.025) 30.5%, transparent 31%),
+        radial-gradient(circle, transparent 42%, rgba(239,68,68,0.02) 42.5%, transparent 43%),
+        radial-gradient(circle, transparent 54%, rgba(255,255,255,0.015) 54.5%, transparent 55%),
+        radial-gradient(circle, transparent 66%, rgba(255,255,255,0.01) 66.5%, transparent 67%);
+      animation: pulseRings 8s ease-in-out infinite;
+    }
+    .hero-bg::after {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      width: 6px; height: 6px; background: var(--red); border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 30px var(--red-glow), 0 0 60px rgba(239,68,68,0.15);
+      animation: pulseDot 4s ease-in-out infinite;
+    }
+    .crosshair-h, .crosshair-v { position: absolute; background: rgba(239, 68, 68, 0.06); }
+    .crosshair-h { top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100vw; height: 1px; }
+    .crosshair-v { top: 50%; left: 50%; transform: translate(-50%, -50%); width: 1px; height: 100vh; }
+    @keyframes pulseRings {
+      0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.03); }
+    }
+    @keyframes pulseDot {
+      0%, 100% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); }
+      50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.5); }
+    }
+
+    .noise {
+      position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat; background-size: 256px 256px;
+    }
+    .vignette {
+      position: fixed; inset: 0; z-index: 1; pointer-events: none;
+      background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.5) 100%);
+    }
+
+    .content { position: relative; z-index: 2; }
+
+    /* ── Top Nav ── */
+    .top-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(1rem, 4vw, 3rem); height: 56px;
+      background: rgba(10, 10, 10, 0.7);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .top-nav .nav-brand {
+      font-family: var(--font-heading); font-weight: 700; font-size: 1.1rem;
+      color: var(--fg); text-decoration: none; letter-spacing: 0.04em;
+    }
+    .top-nav .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+    .top-nav .nav-links a,
+    .top-nav .nav-links span {
+      font-family: var(--font-body); font-size: 0.85rem; font-weight: 500;
+      color: var(--fg-tertiary); text-decoration: none; transition: color 0.2s;
+    }
+    .top-nav .nav-links a:hover { color: var(--fg); }
+    .top-nav .nav-links .active { color: var(--fg); }
+
+    /* ── Page Hero ── */
+    .page-hero {
+      padding: 7rem 1.5rem 3rem;
+      text-align: center;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .page-hero h1 {
+      font-family: var(--font-heading);
+      font-size: clamp(2rem, 5vw, 3rem);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      margin-bottom: 1rem;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+    }
+    .page-hero h1 span { color: var(--red); }
+    .page-hero .hero-lead {
+      font-size: clamp(0.95rem, 2.5vw, 1.1rem);
+      color: var(--fg-secondary);
+      line-height: 1.75;
+      max-width: 540px;
+      margin: 0 auto;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.45s forwards;
+    }
+
+    /* ── FAQ Layout ── */
+    .faq-section {
+      padding: 2rem 1.5rem 4rem;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+
+    .faq-category {
+      margin-bottom: 3rem;
+      opacity: 0; transform: translateY(20px);
+    }
+    .faq-category.visible { opacity: 1; transform: translateY(0); transition: opacity 0.6s cubic-bezier(0.16, 1, 0.3, 1), transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+
+    .faq-category-label {
+      font-family: var(--font-heading);
+      font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.2em; text-transform: uppercase;
+      color: var(--red);
+      margin-bottom: 1.25rem;
+      padding-left: 0.25rem;
+    }
+
+    .faq-item {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 14px;
+      margin-bottom: 0.75rem;
+      overflow: hidden;
+      transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .faq-item:hover {
+      background: var(--glass-bg-hover);
+      border-color: rgba(255,255,255,0.1);
+    }
+    .faq-item.open {
+      border-color: rgba(239, 68, 68, 0.15);
+    }
+
+    .faq-question {
+      display: flex; align-items: center; justify-content: space-between;
+      gap: 1rem;
+      padding: 1.15rem 1.4rem;
+      cursor: pointer;
+      -webkit-user-select: none; user-select: none;
+    }
+    .faq-question h3 {
+      font-family: var(--font-heading);
+      font-size: 1rem; font-weight: 600;
+      color: var(--fg);
+      letter-spacing: 0.01em;
+      line-height: 1.4;
+    }
+    .faq-item.open .faq-question h3 { color: var(--red); }
+
+    .faq-chevron {
+      flex-shrink: 0;
+      width: 20px; height: 20px;
+      stroke: var(--fg-tertiary);
+      transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1), stroke 0.2s;
+    }
+    .faq-item.open .faq-chevron {
+      transform: rotate(180deg);
+      stroke: var(--red);
+    }
+
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s cubic-bezier(0.16, 1, 0.3, 1), padding 0.35s;
+    }
+    .faq-item.open .faq-answer {
+      max-height: 600px;
+    }
+
+    .faq-answer-inner {
+      padding: 0 1.4rem 1.3rem;
+      font-size: 0.9rem;
+      color: var(--fg-secondary);
+      line-height: 1.75;
+    }
+    .faq-answer-inner strong { color: var(--fg); font-weight: 600; }
+
+    /* ── CTA Banner ── */
+    .cta-banner {
+      text-align: center;
+      padding: 4rem 1.5rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    .cta-banner h2 {
+      font-family: var(--font-heading);
+      font-size: clamp(1.4rem, 3.5vw, 2rem);
+      font-weight: 700; color: var(--fg);
+      margin-bottom: 1rem;
+    }
+    .cta-banner p {
+      font-size: 0.95rem; color: var(--fg-secondary);
+      line-height: 1.7; margin-bottom: 2rem;
+    }
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      padding: 0.85rem 2.4rem;
+      background: #ededed; color: #0a0a0a;
+      font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+      border: none; border-radius: 12px; cursor: pointer;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative; overflow: hidden;
+    }
+    .cta-btn::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(239,68,68,0.1), transparent);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .cta-btn:hover {
+      transform: translateY(-2px) scale(1.04);
+      box-shadow: 0 0 30px rgba(237,237,237,0.15), 0 10px 40px -10px rgba(0,0,0,0.5);
+    }
+    .cta-btn:hover::before { opacity: 1; }
+    .cta-btn:active { transform: translateY(0) scale(0.98); }
+    .cta-arrow { transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1); }
+    .cta-btn:hover .cta-arrow { transform: translateX(3px); }
+
+    /* ── Divider ── */
+    .divider {
+      width: 100%; max-width: 1100px; margin: 0 auto;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--glass-border), transparent);
+    }
+
+    /* ── Footer ── */
+    .footer { padding: 3rem 1.5rem 2.5rem; text-align: center; }
+    .footer-brand {
+      font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-tertiary);
+      margin-bottom: 0.5rem;
+    }
+    .footer-tagline {
+      font-size: 0.8rem; color: var(--fg-quaternary); margin-bottom: 1.5rem; font-style: italic;
+    }
+    .footer-copy { font-size: 0.7rem; color: var(--fg-quaternary); letter-spacing: 0.04em; }
+
+    /* ── Animations ── */
+    @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+
+    ::selection { background: rgba(239, 68, 68, 0.3); color: #fff; }
+    :focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      .page-hero h1, .page-hero .hero-lead { opacity: 1; transform: none; }
+      .faq-category { opacity: 1; transform: none; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Navigation -->
+  <nav class="top-nav">
+    <a href="index.html" class="nav-brand">BrassOps</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <span class="active">FAQ</span>
+      <a href="contact.html">Contact</a>
+    </div>
+  </nav>
+
+  <!-- Background layers -->
+  <div class="hero-bg" aria-hidden="true">
+    <div class="crosshair-h"></div>
+    <div class="crosshair-v"></div>
+  </div>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <!-- Content -->
+  <div class="content">
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <h1>Frequently Asked <span>Questions</span></h1>
+      <p class="hero-lead">Everything you need to know about BrassOps — from platform basics to security, onboarding, and beyond.</p>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <!-- FAQ CONTENT -->
+    <section class="faq-section">
+
+      <!-- ═══════════ GENERAL ═══════════ -->
+      <div class="faq-category">
+        <p class="faq-category-label">General</p>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What is BrassOps?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            BrassOps is a <strong>range intelligence platform</strong> purpose-built for law enforcement firearms programs. It replaces spreadsheets, paper targets, and institutional memory with a single system that tracks every shot, every officer, and every qualification — so nothing falls through the cracks. From logging scores to managing remedial workflows to analyzing shot patterns with AI, everything lives in one place.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Who is BrassOps built for?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            BrassOps is designed for <strong>law enforcement agencies</strong> of any size — from 20-officer departments to 2,000+ officer agencies. The platform is used by range masters, firearms instructors, training coordinators, command staff, and IT administrators.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What problems does BrassOps solve?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            Most departments still manage firearms qualifications with binders, spreadsheets, and institutional memory. When an officer's certification lapses or a training deficiency goes unaddressed, the consequences can be serious — legally, operationally, and personally. BrassOps eliminates that risk by providing <strong>real-time visibility</strong> into officer readiness, automated compliance tracking, structured remedial workflows, and a complete audit trail.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Is BrassOps a web app or desktop software?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            BrassOps is a <strong>modern, web-based platform</strong> accessible from any device with a browser — desktop, laptop, tablet, or phone. There's nothing to install. You log in and get to work.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Can BrassOps scale for large agencies?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            Absolutely. Whether you run a small-town PD or a large metropolitan agency, BrassOps scales to fit your program. The architecture is built to handle thousands of officers, tens of thousands of qualification records, and high-concurrency usage during range days — without breaking a sweat.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Do I need to be tech-savvy to use BrassOps?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            Not at all. BrassOps is designed by people who understand the range, not just software. The interface is intuitive and built for <strong>practical use</strong> — not tech demos. If you can use a smartphone, you can use BrassOps.
+          </div></div>
+        </div>
+      </div>
+
+      <!-- ═══════════ FEATURES & CAPABILITIES ═══════════ -->
+      <div class="faq-category">
+        <p class="faq-category-label">Features &amp; Capabilities</p>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What is qualification tracking?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            BrassOps lets you log qualification sessions, record scores, and <strong>automatically track compliance</strong> against your agency's requirements. Every session is time-stamped with a full audit trail — no guesswork, no gaps.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>How does the AI-powered shot analysis work?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            Upload a photo of a target, and BrassOps delivers an <strong>instant diagnostic</strong> on shot grouping, probable cause of dispersion, and recommended corrections. It's like having an expert coach on every lane — powered by AI that's trained on firearms-specific pattern recognition.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What is auto remedial enrollment?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            When an officer falls below your agency's qualification threshold, BrassOps <strong>automatically enrolls them in remedial training</strong>. No manual intervention, no missed cases — the system handles it the moment a score is logged. Remedial workflows include issue tracking, coaching notes, and escalation paths for complete defensibility.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What does officer readiness monitoring look like?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            Color-coded dashboards let you see at a glance which officers are <strong>mission-ready, developing, or at risk</strong> — before it becomes a problem. You get a real-time picture of your entire department's readiness without digging through spreadsheets.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What kind of analytics does BrassOps provide?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            BrassOps delivers <strong>trend data, department-wide statistics, and per-officer history</strong> that tells the full story. Identify patterns, measure progress, and make data-backed decisions. Department drill leaderboards and achievement badges add a competitive edge — motivating officers to stay sharp and giving top performers the recognition they've earned.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What is officer behavioral scoring?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            Behavioral scoring tracks individual officer and agency-wide <strong>strengths and weaknesses over time</strong>. It pinpoints skill gaps, surfaces patterns, and gives you the data to design targeted trainings that address real deficiencies — not just check a box.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Does BrassOps support dry-fire training?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            Yes. Officers can <strong>log and track dry-fire sessions</strong> to maintain readiness between range days. Build consistent habits with structured practice that gets recorded and measured. Achievement badges unlock as officers hit milestones, keeping training engaging.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What are the automated alerts?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            BrassOps notifies you when officers are flagged, qualifications are lapsing, or remedial cases need attention. <strong>The system watches so you don't have to</strong> — no more manually checking spreadsheets to catch expiring certifications.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What does Range Ops include?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            Range Ops lets you manage <strong>scheduling, automations, inventory, and day-of logistics</strong> from one place. Streamline the operational side of your range so your team can focus on what matters — training.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Are there tools specifically for instructors?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            Yes. BrassOps includes dedicated <strong>instructor tools</strong> that let you assign instructors, track coaching history, and measure officer progress over time. Your training cadre gets the visibility they need to be effective and accountable.
+          </div></div>
+        </div>
+      </div>
+
+      <!-- ═══════════ SECURITY, COMPLIANCE & DATA ═══════════ -->
+      <div class="faq-category">
+        <p class="faq-category-label">Security, Compliance &amp; Data</p>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Is BrassOps secure enough for law enforcement data?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            Yes. BrassOps is built from the ground up with <strong>law enforcement data security</strong> in mind. All data is encrypted in transit and at rest, access is role-based, and the platform is hosted on infrastructure designed to meet the compliance requirements of government and public safety agencies.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Is BrassOps CJIS-compliant?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            BrassOps is designed with <strong>CJIS Security Policy guidelines</strong> in mind, including encryption standards, access controls, and audit logging. If your agency has specific CJIS requirements, our team will work with you to ensure alignment.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Where is my data stored?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            BrassOps data is stored on <strong>secure, U.S.-based cloud infrastructure</strong> with redundancy and backups to ensure availability. Your data never leaves the country and is isolated per agency.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Who can access our department's data?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            Only authorized personnel within your department can access your data. BrassOps uses <strong>role-based access controls</strong>, so range masters, instructors, command staff, and officers each see only what's appropriate for their role. No other agency can see your data.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Does BrassOps maintain an audit trail?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            Yes. Every action — qualification scores logged, remedial enrollments, coaching notes, status changes — is <strong>time-stamped and recorded</strong>. This creates a complete, defensible record for audits, legal proceedings, and internal reviews.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Can we export our data?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            Absolutely. Your data is <strong>your data</strong>. BrassOps supports data exports so you can generate reports, share records with oversight bodies, or maintain local backups whenever needed.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What happens to our data if we cancel?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            If you ever decide to leave BrassOps, we provide a <strong>full data export</strong> so you retain all your records. After a reasonable transition period, your data is permanently deleted from our systems per our data retention policy.
+          </div></div>
+        </div>
+      </div>
+
+      <!-- ═══════════ PRICING, ONBOARDING & SUPPORT ═══════════ -->
+      <div class="faq-category">
+        <p class="faq-category-label">Pricing, Onboarding &amp; Support</p>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>How much does BrassOps cost?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            Pricing depends on the size of your agency and the features you need. We offer <strong>flexible plans</strong> designed to fit departments of all sizes. Contact our team for a personalized quote — no pressure, no obligation.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Is there a free trial?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            We offer <strong>personalized demos</strong> and pilot programs so you can see BrassOps in action with your own data and workflows before committing. Reach out to our team to get started.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>How long does onboarding take?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            Most departments are <strong>up and running within days</strong>, not weeks. Our team handles setup, data migration (if needed), and initial configuration. We also provide training sessions so your team feels confident from day one.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Can we migrate data from our existing system?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            Yes. Whether you're coming from spreadsheets, paper records, or another system, our team will work with you to <strong>migrate your historical data</strong> into BrassOps so you don't lose any of your existing records.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What kind of support is available?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            BrassOps provides <strong>dedicated customer support</strong> to every agency. Whether you have a technical question, need help with a feature, or want to adjust your configuration, our team is responsive and available to help.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Do you offer training for our staff?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            Absolutely. We provide <strong>onboarding training</strong> for range masters, instructors, and administrators during setup. Ongoing training resources are also available so new team members can get up to speed quickly.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Is there a contract or long-term commitment?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            We offer <strong>flexible terms</strong> to fit your agency's procurement process. Whether you need an annual subscription or a multi-year agreement, we'll work with your budget cycle and requirements.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Can BrassOps work with our procurement process?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            Yes. We understand that government procurement can be complex. Our team has experience working with <strong>municipal, county, and state purchasing processes</strong>, including sole-source justifications, cooperative contracts, and standard RFP responses.
+          </div></div>
+        </div>
+      </div>
+
+      <!-- ═══════════ BRASSLINK COMMUNITY ═══════════ -->
+      <div class="faq-category">
+        <p class="faq-category-label">BrassLink Community</p>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What is BrassLink?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            <strong>BrassLink</strong> is the community backbone of BrassOps — built by instructors, for instructors. It's where firearms training professionals from agencies across the country come together to share knowledge, challenge assumptions, and push each other to be better. Every resource, review, and discussion is community-driven.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What is N.A.R.M.S.?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            N.A.R.M.S. stands for the <strong>National Anonymous Range Metrics System</strong>. It provides community-powered benchmarking and trend analysis aggregated across participating agencies — giving instructors real data to measure against, while keeping individual agency data completely anonymous.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What is MythBusters in BrassLink?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            MythBusters is a community feature where instructors <strong>submit, debate, and dismantle common training myths</strong> using data-backed analysis. The goal is to stop bad information from spreading and help good, evidence-based practices take its place.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Are the equipment reviews sponsored?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            No. Equipment reviews in BrassLink are written by <strong>verified instructors and range operators</strong>. There are no paid placements or sponsorships — just honest, community-sourced assessments from the people who put the equipment to work every day.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What training resources are available through BrassLink?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            BrassLink offers a shared library of <strong>curated studies, white papers, drills, and evidence-based best practices</strong> contributed by the instructor community. Stay current with the science and learn from what's actually working at agencies nationwide.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What is the Instructor Assessment Tool?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            It's a <strong>community-developed evaluation framework</strong> for measuring instructor effectiveness. Peer-informed criteria help training programs identify strengths, uncover growth areas, and develop stronger instructors across the board.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Is BrassLink included with BrassOps?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            Yes. BrassLink is a <strong>built-in part of the BrassOps platform</strong>. Every BrassOps user gets access to the full community — resources, discussions, reviews, and benchmarking tools.
+          </div></div>
+        </div>
+      </div>
+
+      <!-- ═══════════ TECHNICAL & INTEGRATION ═══════════ -->
+      <div class="faq-category">
+        <p class="faq-category-label">Technical &amp; Integration</p>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What devices and browsers does BrassOps support?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            BrassOps works on <strong>any modern browser</strong> — Chrome, Edge, Safari, Firefox — across desktops, laptops, tablets, and smartphones. There's nothing to install; just log in and go.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Can I use BrassOps on my phone at the range?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            Absolutely. BrassOps is fully <strong>mobile-responsive</strong>. Log scores, snap target photos for AI analysis, and check officer status right from your phone — ideal for on-the-line use during range days.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Does BrassOps require an internet connection?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            BrassOps is a cloud-based platform, so an <strong>internet connection is required</strong> for full functionality. Most ranges have cellular coverage, and the platform is optimized to work well even on slower connections.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Can BrassOps integrate with our existing systems?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            We're always expanding our integration capabilities. If you have specific systems you'd like BrassOps to connect with — RMS, scheduling, or HR platforms — <strong>contact our team</strong> to discuss your integration needs.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>How often is BrassOps updated?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            BrassOps is <strong>continuously improved</strong> with regular updates. Because it's web-based, you always have the latest version — no downloads, no manual upgrades. New features and improvements are rolled out seamlessly.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>Can we customize BrassOps for our agency's specific requirements?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            Yes. BrassOps is designed to be <strong>configurable to your agency's needs</strong>. Qualification thresholds, scoring criteria, remedial workflows, alert rules, and role permissions can all be tailored to match your department's specific policies and procedures.
+          </div></div>
+        </div>
+
+        <div class="faq-item">
+          <div class="faq-question">
+            <h3>What kind of uptime and reliability can we expect?</h3>
+            <svg class="faq-chevron" viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+          <div class="faq-answer"><div class="faq-answer-inner">
+            BrassOps is built on <strong>redundant, high-availability infrastructure</strong> designed for maximum uptime. We take reliability seriously — your range program can't afford downtime, and neither can we.
+          </div></div>
+        </div>
+      </div>
+
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <!-- CTA -->
+    <section class="cta-banner">
+      <h2>Still Have Questions?</h2>
+      <p>Our team is happy to walk you through the platform, answer questions, or set up a personalized demo for your department.</p>
+      <a href="contact.html" class="cta-btn">
+        Contact Us
+        <svg class="cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M3 8h10M9 4l4 4-4 4"/>
+        </svg>
+      </a>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <p class="footer-brand">BrassOps</p>
+      <p class="footer-tagline">Built for those who train to protect.</p>
+      <p class="footer-copy">&copy; 2026 BrassOps. All rights reserved.</p>
+    </footer>
+
+  </div>
+
+  <!-- SCRIPTS -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Accordion toggle
+      document.querySelectorAll('.faq-question').forEach(btn => {
+        btn.addEventListener('click', () => {
+          const item = btn.parentElement;
+          const wasOpen = item.classList.contains('open');
+
+          // Close all items in the same category
+          item.closest('.faq-category').querySelectorAll('.faq-item.open').forEach(el => {
+            el.classList.remove('open');
+          });
+
+          // Toggle the clicked one
+          if (!wasOpen) item.classList.add('open');
+        });
+      });
+
+      // Scroll reveal for categories
+      const categories = document.querySelectorAll('.faq-category');
+      if ('IntersectionObserver' in window) {
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+        categories.forEach(el => observer.observe(el));
+      } else {
+        categories.forEach(el => el.classList.add('visible'));
+      }
+    });
+  </script>
+
+</body>
+</html>
