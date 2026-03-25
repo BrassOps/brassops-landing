@@ -133,6 +133,44 @@
       box-shadow: 0 0 20px rgba(239,68,68,0.3);
     }
 
+    /* ── Hamburger Button ── */
+    .nav-hamburger {
+      display: none; background: none; border: none; cursor: pointer;
+      padding: 0.4rem; position: relative; z-index: 110;
+    }
+    .nav-hamburger svg { width: 22px; height: 22px; stroke: var(--fg); stroke-width: 2; fill: none; }
+
+    @media (max-width: 768px) {
+      .nav-hamburger { display: block; }
+      .top-nav .nav-links {
+        display: none; flex-direction: column; align-items: stretch; gap: 0;
+        position: fixed; top: 56px; left: 0; right: 0;
+        background: rgba(10, 10, 10, 0.95);
+        backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+        padding: 0.5rem 0;
+        max-height: 0; overflow: hidden;
+        transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+                    padding 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      .top-nav .nav-links.open {
+        display: flex; max-height: 400px; padding: 0.75rem 0;
+      }
+      .top-nav .nav-links a,
+      .top-nav .nav-links span {
+        padding: 0.75rem clamp(1rem, 4vw, 3rem);
+        font-size: 0.95rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.04);
+      }
+      .top-nav .nav-links a:last-child,
+      .top-nav .nav-links span:last-child { border-bottom: none; }
+      .top-nav .nav-links .nav-launch {
+        margin: 0.5rem clamp(1rem, 4vw, 3rem) 0.25rem;
+        text-align: center; padding: 0.65rem 1rem;
+        border-radius: 10px; font-size: 0.9rem;
+      }
+    }
+
     /* ── Page Hero ── */
     .page-hero {
       padding: 7rem 1.5rem 3rem;
@@ -401,6 +439,9 @@
   <!-- Top Navigation -->
   <nav class="top-nav">
     <a href="index.html" class="nav-brand">BrassOps</a>
+    <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
     <div class="nav-links">
       <span class="active">Why BrassOps</span>
       <a href="faq.html">FAQ</a>
@@ -619,6 +660,26 @@
   <!-- SCRIPTS -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
+      // Mobile nav toggle
+      const hamburger = document.querySelector('.nav-hamburger');
+      const navLinks = document.querySelector('.nav-links');
+      if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+          const isOpen = navLinks.classList.toggle('open');
+          hamburger.setAttribute('aria-expanded', isOpen);
+          hamburger.innerHTML = isOpen
+            ? '<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>'
+            : '<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
+        });
+        navLinks.querySelectorAll('a:not(.nav-launch)').forEach(link => {
+          link.addEventListener('click', () => {
+            navLinks.classList.remove('open');
+            hamburger.setAttribute('aria-expanded', 'false');
+            hamburger.innerHTML = '<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
+          });
+        });
+      }
+
       const animElements = document.querySelectorAll(
         '.compare-card, .roi-card, .timeline-item'
       );
