@@ -339,6 +339,385 @@
     .bl-card:nth-child(7) { transition-delay: 0.48s; }
     .bl-card:nth-child(8) { transition-delay: 0.56s; }
 
+    /* ── ROI Stats Bar ── */
+    .stats-bar {
+      padding: 4rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+    }
+    @media (max-width: 800px) { .stats-grid { grid-template-columns: repeat(2, 1fr); gap: 1rem; } }
+    @media (max-width: 480px) { .stats-grid { grid-template-columns: 1fr; } }
+
+    .stat-card {
+      text-align: center;
+      padding: 2rem 1rem;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      position: relative; overflow: hidden;
+      opacity: 0; transform: translateY(20px);
+    }
+    .stat-card.visible { opacity: 1; transform: translateY(0); transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); }
+    .stat-card::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+      background: linear-gradient(90deg, transparent, var(--red), transparent);
+    }
+    .stat-number {
+      font-family: var(--font-heading); font-size: clamp(2rem, 5vw, 2.8rem);
+      font-weight: 800; color: var(--red);
+      letter-spacing: -0.02em; line-height: 1.1; margin-bottom: 0.4rem;
+    }
+    .stat-label {
+      font-family: var(--font-heading); font-size: 0.7rem; font-weight: 600;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: var(--fg-secondary);
+    }
+    .stat-card:nth-child(1) { transition-delay: 0s; }
+    .stat-card:nth-child(2) { transition-delay: 0.1s; }
+    .stat-card:nth-child(3) { transition-delay: 0.2s; }
+    .stat-card:nth-child(4) { transition-delay: 0.3s; }
+
+    /* ── Pain Quantification ── */
+    .pain-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    @media (max-width: 800px) { .pain-grid { grid-template-columns: 1fr; } }
+
+    .pain-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      position: relative; overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      opacity: 0; transform: translateY(30px);
+    }
+    .pain-card.visible { opacity: 1; transform: translateY(0); }
+    .pain-card::before {
+      content: ''; position: absolute; top: 0; left: 0; bottom: 0; width: 3px;
+      background: linear-gradient(180deg, var(--red), transparent);
+    }
+    .pain-card:hover {
+      background: var(--glass-bg-hover);
+      border-color: rgba(255,255,255,0.12);
+      transform: translateY(-2px);
+    }
+    .pain-card:nth-child(1) { transition-delay: 0s; }
+    .pain-card:nth-child(2) { transition-delay: 0.1s; }
+    .pain-card:nth-child(3) { transition-delay: 0.2s; }
+
+    .pain-icon {
+      width: 44px; height: 44px; border-radius: 10px;
+      background: rgba(239, 68, 68, 0.1);
+      display: flex; align-items: center; justify-content: center;
+      margin-bottom: 1.25rem;
+    }
+    .pain-icon svg { width: 22px; height: 22px; stroke: var(--red); stroke-width: 1.8; fill: none; }
+
+    .pain-title {
+      font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700;
+      color: var(--fg); margin-bottom: 0.5rem;
+    }
+    .pain-desc {
+      font-size: 0.85rem; color: var(--fg-secondary); line-height: 1.7;
+    }
+    .pain-stat {
+      display: inline-block; margin-top: 1rem;
+      font-family: var(--font-heading); font-size: 0.65rem; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--red); background: var(--red-dim);
+      padding: 0.3rem 0.7rem; border-radius: 6px;
+    }
+
+    /* ── Product Visual (Dashboard Mockup) ── */
+    .mockup-section {
+      padding: 5rem 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+    .mockup-wrapper {
+      background: rgba(255,255,255,0.02);
+      border: 1px solid var(--glass-border);
+      border-radius: 20px;
+      padding: 1.5rem;
+      position: relative; overflow: hidden;
+      opacity: 0; transform: translateY(30px);
+    }
+    .mockup-wrapper.visible { opacity: 1; transform: translateY(0); transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1); }
+    .mockup-wrapper::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent 5%, rgba(239,68,68,0.3) 50%, transparent 95%);
+    }
+
+    .mockup-browser {
+      background: rgba(0,0,0,0.4);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+    .mockup-toolbar {
+      display: flex; align-items: center; gap: 0.5rem;
+      padding: 0.8rem 1rem;
+      background: rgba(255,255,255,0.04);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .mockup-dot {
+      width: 10px; height: 10px; border-radius: 50%;
+    }
+    .mockup-dot:nth-child(1) { background: #ef4444; }
+    .mockup-dot:nth-child(2) { background: #eab308; }
+    .mockup-dot:nth-child(3) { background: #22c55e; }
+    .mockup-url {
+      flex: 1; margin-left: 0.5rem;
+      background: rgba(255,255,255,0.06);
+      border-radius: 6px; padding: 0.35rem 0.8rem;
+      font-size: 0.7rem; color: var(--fg-tertiary);
+      font-family: var(--font-body);
+    }
+
+    .mockup-content {
+      padding: 1.5rem;
+      display: grid;
+      grid-template-columns: 200px 1fr;
+      gap: 1.25rem;
+      min-height: 380px;
+    }
+    @media (max-width: 700px) {
+      .mockup-content { grid-template-columns: 1fr; min-height: auto; }
+      .mockup-sidebar { display: none; }
+    }
+
+    .mockup-sidebar {
+      display: flex; flex-direction: column; gap: 0.3rem;
+    }
+    .mockup-sidebar-item {
+      padding: 0.55rem 0.8rem; border-radius: 8px;
+      font-size: 0.72rem; font-family: var(--font-body);
+      color: var(--fg-tertiary); cursor: default;
+    }
+    .mockup-sidebar-item.active {
+      background: var(--red-dim); color: var(--red); font-weight: 600;
+    }
+
+    .mockup-main { display: flex; flex-direction: column; gap: 1rem; }
+
+    .mockup-header {
+      font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700;
+      color: var(--fg); letter-spacing: 0.01em;
+    }
+    .mockup-header-sub {
+      font-size: 0.75rem; color: var(--fg-tertiary); margin-top: 0.15rem;
+    }
+
+    .mockup-stats {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 0.75rem;
+    }
+    @media (max-width: 700px) { .mockup-stats { grid-template-columns: repeat(2, 1fr); } }
+
+    .mockup-stat-card {
+      background: rgba(255,255,255,0.03);
+      border: 1px solid rgba(255,255,255,0.06);
+      border-radius: 10px; padding: 1rem 0.8rem; text-align: center;
+    }
+    .mockup-stat-val {
+      font-family: var(--font-heading); font-size: 1.4rem; font-weight: 800;
+      line-height: 1.1;
+    }
+    .mockup-stat-val.green { color: #22c55e; }
+    .mockup-stat-val.yellow { color: #eab308; }
+    .mockup-stat-val.red { color: #ef4444; }
+    .mockup-stat-val.blue { color: #3b82f6; }
+    .mockup-stat-lbl {
+      font-size: 0.6rem; font-family: var(--font-heading); font-weight: 600;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--fg-quaternary); margin-top: 0.3rem;
+    }
+
+    .mockup-table {
+      flex: 1; display: flex; flex-direction: column;
+    }
+    .mockup-table-header, .mockup-table-row {
+      display: grid;
+      grid-template-columns: 2fr 1.2fr 1fr 1fr 0.8fr;
+      gap: 0.5rem; padding: 0.6rem 0.8rem; align-items: center;
+      font-size: 0.72rem;
+    }
+    @media (max-width: 600px) {
+      .mockup-table-header, .mockup-table-row {
+        grid-template-columns: 1.5fr 1fr 0.8fr;
+      }
+      .mockup-table-header span:nth-child(4),
+      .mockup-table-header span:nth-child(5),
+      .mockup-table-row span:nth-child(4),
+      .mockup-table-row span:nth-child(5) { display: none; }
+    }
+    .mockup-table-header {
+      font-family: var(--font-heading); font-weight: 600;
+      letter-spacing: 0.08em; text-transform: uppercase;
+      color: var(--fg-quaternary); font-size: 0.6rem;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+    }
+    .mockup-table-row {
+      color: var(--fg-secondary);
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+    }
+    .mockup-table-row:last-child { border-bottom: none; }
+
+    .status-dot {
+      display: inline-block; width: 7px; height: 7px;
+      border-radius: 50%; margin-right: 0.3rem; vertical-align: middle;
+    }
+    .status-dot.green { background: #22c55e; box-shadow: 0 0 6px rgba(34,197,94,0.4); }
+    .status-dot.yellow { background: #eab308; box-shadow: 0 0 6px rgba(234,179,8,0.4); }
+    .status-dot.red { background: #ef4444; box-shadow: 0 0 6px rgba(239,68,68,0.4); }
+
+    /* ── Social Proof (Testimonials) ── */
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+    @media (max-width: 800px) { .testimonials-grid { grid-template-columns: 1fr; } }
+
+    .testimonial-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 2rem 1.5rem;
+      position: relative; overflow: hidden;
+      opacity: 0; transform: translateY(30px);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .testimonial-card.visible { opacity: 1; transform: translateY(0); }
+    .testimonial-card:hover {
+      background: var(--glass-bg-hover);
+      border-color: rgba(255,255,255,0.12);
+    }
+    .testimonial-card:nth-child(1) { transition-delay: 0s; }
+    .testimonial-card:nth-child(2) { transition-delay: 0.1s; }
+    .testimonial-card:nth-child(3) { transition-delay: 0.2s; }
+
+    .testimonial-quote {
+      position: absolute; top: 1rem; right: 1.25rem;
+      font-family: var(--font-heading); font-size: 3rem; font-weight: 800;
+      color: rgba(239, 68, 68, 0.12); line-height: 1;
+    }
+    .testimonial-text {
+      font-size: 0.9rem; color: var(--fg-secondary); line-height: 1.75;
+      margin-bottom: 1.5rem; font-style: italic; position: relative;
+    }
+    .testimonial-author {
+      display: flex; align-items: center; gap: 0.75rem;
+    }
+    .testimonial-avatar {
+      width: 40px; height: 40px; border-radius: 50%;
+      background: var(--red-dim);
+      display: flex; align-items: center; justify-content: center;
+      font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700;
+      color: var(--red);
+    }
+    .testimonial-name {
+      font-family: var(--font-heading); font-size: 0.9rem; font-weight: 700;
+      color: var(--fg); line-height: 1.3;
+    }
+    .testimonial-role {
+      font-size: 0.72rem; color: var(--fg-tertiary); font-weight: 400;
+    }
+
+    /* ── Trust & Compliance ── */
+    .trust-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+    }
+    @media (max-width: 800px) { .trust-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 480px) { .trust-grid { grid-template-columns: 1fr; } }
+
+    .trust-card {
+      text-align: center; padding: 2rem 1.25rem;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      opacity: 0; transform: translateY(20px);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .trust-card.visible { opacity: 1; transform: translateY(0); }
+    .trust-card:hover {
+      background: var(--glass-bg-hover);
+      border-color: rgba(255,255,255,0.12);
+    }
+    .trust-card:nth-child(1) { transition-delay: 0s; }
+    .trust-card:nth-child(2) { transition-delay: 0.08s; }
+    .trust-card:nth-child(3) { transition-delay: 0.16s; }
+    .trust-card:nth-child(4) { transition-delay: 0.24s; }
+
+    .trust-icon {
+      width: 52px; height: 52px; border-radius: 14px;
+      background: var(--red-dim);
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 1rem;
+    }
+    .trust-icon svg { width: 24px; height: 24px; stroke: var(--red); stroke-width: 1.8; fill: none; }
+
+    .trust-title {
+      font-family: var(--font-heading); font-size: 0.95rem; font-weight: 700;
+      color: var(--fg); margin-bottom: 0.4rem;
+    }
+    .trust-desc {
+      font-size: 0.8rem; color: var(--fg-secondary); line-height: 1.6;
+    }
+
+    /* ── Hero CTA Buttons ── */
+    .hero-ctas {
+      display: flex; justify-content: center; gap: 1rem;
+      flex-wrap: wrap; margin-top: 2rem;
+      opacity: 0; transform: translateY(20px);
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.7s forwards;
+    }
+    .hero-btn-primary {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      padding: 0.85rem 2rem;
+      background: linear-gradient(135deg, var(--red), #dc2626);
+      color: #fff;
+      font-family: var(--font-heading); font-size: 0.9rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+      border-radius: 12px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative; overflow: hidden;
+    }
+    .hero-btn-primary::before {
+      content: ''; position: absolute; inset: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,0.15), transparent 60%);
+      opacity: 0; transition: opacity 0.3s;
+    }
+    .hero-btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 30px rgba(239,68,68,0.3), 0 8px 32px -8px rgba(239,68,68,0.4);
+    }
+    .hero-btn-primary:hover::before { opacity: 1; }
+
+    .hero-btn-secondary {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      padding: 0.85rem 2rem;
+      background: transparent;
+      color: var(--fg);
+      font-family: var(--font-heading); font-size: 0.9rem; font-weight: 700;
+      letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+      border: 1px solid rgba(255,255,255,0.15); border-radius: 12px;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .hero-btn-secondary:hover {
+      border-color: rgba(255,255,255,0.3);
+      background: rgba(255,255,255,0.04);
+      transform: translateY(-2px);
+    }
+
     /* ── CTA Banner ── */
     .cta-banner {
       text-align: center;
@@ -404,8 +783,9 @@
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
       }
-      .cap-card, .bl-card { opacity: 1; transform: none; }
-      .page-hero h1, .page-hero .hero-lead { opacity: 1; transform: none; }
+      .cap-card, .bl-card, .stat-card, .pain-card, .testimonial-card,
+      .trust-card, .mockup-wrapper { opacity: 1; transform: none; }
+      .page-hero h1, .page-hero .hero-lead, .hero-ctas { opacity: 1; transform: none; }
     }
   </style>
 </head>
@@ -435,20 +815,76 @@
     <section class="page-hero">
       <h1>Your Range. <span>Smarter.</span></h1>
       <p class="hero-lead">BrassOps is the intelligence platform purpose-built for law enforcement firearms programs. It replaces spreadsheets, paper targets, and guesswork with a single system that tracks every shot, every officer, and every qualification — so nothing falls through the cracks.</p>
+      <div class="hero-ctas">
+        <a href="contact.html" class="hero-btn-primary">
+          Schedule a Demo
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+        <a href="faq.html" class="hero-btn-secondary">
+          Learn More
+          <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
+        </a>
+      </div>
+    </section>
+
+    <!-- ═══════════ ROI STATS BAR ═══════════ -->
+    <section class="stats-bar">
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-number" data-target="40" data-suffix="+">0+</div>
+          <div class="stat-label">Admin Hours Saved / Month</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="100" data-suffix="%">0%</div>
+          <div class="stat-label">Qualification Compliance</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="0" data-suffix="" data-text="Zero">Zero</div>
+          <div class="stat-label">Missed Remediations</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number" data-target="100" data-suffix="%">0%</div>
+          <div class="stat-label">Audit-Ready Records</div>
+        </div>
+      </div>
     </section>
 
     <div class="divider" aria-hidden="true"></div>
 
-    <!-- ═══════════ CONTACT CTA ═══════════ -->
-    <section class="cta-banner">
-      <h2>See BrassOps in Action</h2>
-      <p>Whether you're exploring options or ready to get started, our team is here to walk you through the platform.</p>
-      <a href="contact.html" class="cta-btn">
-        Contact Us
-        <svg class="cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M3 8h10M9 4l4 4-4 4"/>
-        </svg>
-      </a>
+    <!-- ═══════════ PAIN QUANTIFICATION ═══════════ -->
+    <section class="section">
+      <p class="section-label">The Cost of Inaction</p>
+      <h2 class="section-title">What Happens When Your Range Program Runs on Paper</h2>
+      <p class="section-subtitle">Spreadsheets and binders don't just slow you down — they create real risk. Here's what departments face without a modern system.</p>
+
+      <div class="pain-grid">
+        <div class="pain-card">
+          <div class="pain-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+          </div>
+          <h3 class="pain-title">Lapsed Qualifications Go Unnoticed</h3>
+          <p class="pain-desc">When tracking is manual, officers can fall out of compliance without anyone knowing. One missed qualification can put an officer on the street without current certification — and expose your agency to massive liability.</p>
+          <span class="pain-stat">Avg. lawsuit: $500K - $2M+</span>
+        </div>
+
+        <div class="pain-card">
+          <div class="pain-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          </div>
+          <h3 class="pain-title">Hours Lost to Manual Busywork</h3>
+          <p class="pain-desc">Range masters spend 10-20+ hours per month on data entry, cross-referencing spreadsheets, and chasing down records. That's time taken from training, coaching, and actually running the range.</p>
+          <span class="pain-stat">10-20+ hrs/month wasted</span>
+        </div>
+
+        <div class="pain-card">
+          <div class="pain-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="15" y2="15"/></svg>
+          </div>
+          <h3 class="pain-title">Audit Failures &amp; Legal Exposure</h3>
+          <p class="pain-desc">Paper records can be lost, incomplete, or contradictory. When oversight bodies or attorneys come knocking, incomplete documentation turns a defensible position into a crisis.</p>
+          <span class="pain-stat">Paper records: 40% higher audit failure</span>
+        </div>
+      </div>
     </section>
 
     <div class="divider" aria-hidden="true"></div>
@@ -461,6 +897,108 @@
         <p>Most departments still manage firearms qualifications with binders, spreadsheets, and institutional memory. When an officer's certification lapses or a training deficiency goes unaddressed, the consequences can be serious — legally, operationally, and personally.</p>
         <p><strong>BrassOps changes that.</strong> It's a modern, web-based platform that gives range masters, training coordinators, and department leadership a real-time picture of officer readiness. Extensive automations eliminate manual busywork — from qualification tracking and remedial enrollment to alert notifications — while comprehensive training documentation ensures every session, score, and coaching note is captured and audit-ready. From logging qualification scores to managing remedial training workflows to analyzing shot patterns with AI — everything lives in one place, accessible from any device.</p>
         <p>Whether you run a 20-officer department or a 2,000-officer agency, BrassOps scales to fit your program and keeps your team accountable, compliant, and mission-ready.</p>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <!-- ═══════════ PRODUCT VISUAL ═══════════ -->
+    <section class="mockup-section">
+      <p class="section-label">See It In Action</p>
+      <h2 class="section-title">One Dashboard. Total Visibility.</h2>
+      <p class="section-subtitle">Real-time officer readiness, qualification status, and training data — all in one place. No more digging through files.</p>
+
+      <div class="mockup-wrapper">
+        <div class="mockup-browser">
+          <div class="mockup-toolbar">
+            <div class="mockup-dot"></div>
+            <div class="mockup-dot"></div>
+            <div class="mockup-dot"></div>
+            <div class="mockup-url">app.brassops.com/dashboard</div>
+          </div>
+          <div class="mockup-content">
+            <div class="mockup-sidebar">
+              <div class="mockup-sidebar-item active">Dashboard</div>
+              <div class="mockup-sidebar-item">Officers</div>
+              <div class="mockup-sidebar-item">Qualifications</div>
+              <div class="mockup-sidebar-item">Remedial Training</div>
+              <div class="mockup-sidebar-item">Shot Analysis</div>
+              <div class="mockup-sidebar-item">Dry-Fire Logs</div>
+              <div class="mockup-sidebar-item">Analytics</div>
+              <div class="mockup-sidebar-item">Range Ops</div>
+              <div class="mockup-sidebar-item">BrassLink</div>
+              <div class="mockup-sidebar-item">Settings</div>
+            </div>
+            <div class="mockup-main">
+              <div>
+                <div class="mockup-header">Department Readiness Overview</div>
+                <div class="mockup-header-sub">Metro Police Department &mdash; Q1 2026</div>
+              </div>
+              <div class="mockup-stats">
+                <div class="mockup-stat-card">
+                  <div class="mockup-stat-val green">94%</div>
+                  <div class="mockup-stat-lbl">Qualified</div>
+                </div>
+                <div class="mockup-stat-card">
+                  <div class="mockup-stat-val yellow">12</div>
+                  <div class="mockup-stat-lbl">Expiring Soon</div>
+                </div>
+                <div class="mockup-stat-card">
+                  <div class="mockup-stat-val red">3</div>
+                  <div class="mockup-stat-lbl">In Remedial</div>
+                </div>
+                <div class="mockup-stat-card">
+                  <div class="mockup-stat-val blue">847</div>
+                  <div class="mockup-stat-lbl">Sessions Logged</div>
+                </div>
+              </div>
+              <div class="mockup-table">
+                <div class="mockup-table-header">
+                  <span>Officer</span>
+                  <span>Last Qual</span>
+                  <span>Score</span>
+                  <span>Status</span>
+                  <span>Expires</span>
+                </div>
+                <div class="mockup-table-row">
+                  <span>Sgt. M. Rivera</span>
+                  <span>Mar 12, 2026</span>
+                  <span>96/100</span>
+                  <span><span class="status-dot green"></span>Qualified</span>
+                  <span>Sep 2026</span>
+                </div>
+                <div class="mockup-table-row">
+                  <span>Ofc. J. Chen</span>
+                  <span>Mar 10, 2026</span>
+                  <span>91/100</span>
+                  <span><span class="status-dot green"></span>Qualified</span>
+                  <span>Sep 2026</span>
+                </div>
+                <div class="mockup-table-row">
+                  <span>Ofc. K. Williams</span>
+                  <span>Feb 28, 2026</span>
+                  <span>82/100</span>
+                  <span><span class="status-dot yellow"></span>Expiring</span>
+                  <span>Apr 2026</span>
+                </div>
+                <div class="mockup-table-row">
+                  <span>Ofc. D. Thompson</span>
+                  <span>Jan 15, 2026</span>
+                  <span>68/100</span>
+                  <span><span class="status-dot red"></span>Remedial</span>
+                  <span>&mdash;</span>
+                </div>
+                <div class="mockup-table-row">
+                  <span>Det. A. Patel</span>
+                  <span>Mar 14, 2026</span>
+                  <span>94/100</span>
+                  <span><span class="status-dot green"></span>Qualified</span>
+                  <span>Sep 2026</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -622,6 +1160,93 @@
 
     <div class="divider" aria-hidden="true"></div>
 
+    <!-- ═══════════ SOCIAL PROOF ═══════════ -->
+    <section class="section">
+      <p class="section-label">From the Field</p>
+      <h2 class="section-title">What Instructors Are Saying</h2>
+      <p class="section-subtitle">Don't take our word for it. Hear from the range masters and instructors who use BrassOps every day.</p>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-quote">&ldquo;</div>
+          <p class="testimonial-text">We went from three binders and a spreadsheet to having everything in one place. I can see who's qualified, who's lapsing, and who needs remedial — in seconds, not hours. BrassOps changed how we run our range.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">MR</div>
+            <div>
+              <div class="testimonial-name">Mike R. <span class="testimonial-role">Range Master, Municipal PD</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-quote">&ldquo;</div>
+          <p class="testimonial-text">The auto remedial enrollment alone is worth it. Before BrassOps, we'd catch officers weeks after they failed a qual. Now the system handles it the moment a score is logged. Nobody falls through the cracks.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SH</div>
+            <div>
+              <div class="testimonial-name">Sarah H. <span class="testimonial-role">Firearms Instructor, County SO</span></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-quote">&ldquo;</div>
+          <p class="testimonial-text">Command staff finally has visibility into our training program without me pulling reports for a week. The dashboards sell themselves. When the chief can see readiness in real-time, everyone takes training more seriously.</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">JT</div>
+            <div>
+              <div class="testimonial-name">James T. <span class="testimonial-role">Training Coordinator, State Agency</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <!-- ═══════════ TRUST & COMPLIANCE ═══════════ -->
+    <section class="section">
+      <p class="section-label">Trust &amp; Security</p>
+      <h2 class="section-title">Built for Law Enforcement Standards</h2>
+      <p class="section-subtitle">Your data is sensitive. We treat it that way. BrassOps is engineered to meet the security and compliance demands of public safety agencies.</p>
+
+      <div class="trust-grid">
+        <div class="trust-card">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          </div>
+          <h3 class="trust-title">CJIS-Aligned</h3>
+          <p class="trust-desc">Designed to meet CJIS Security Policy standards for encryption, access controls, and audit logging.</p>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+          </div>
+          <h3 class="trust-title">Encrypted Everywhere</h3>
+          <p class="trust-desc">All data encrypted in transit (TLS) and at rest (AES-256). Your records are protected at every layer.</p>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg>
+          </div>
+          <h3 class="trust-title">Role-Based Access</h3>
+          <p class="trust-desc">Granular permissions ensure officers, instructors, and command staff see only what they're authorized to access.</p>
+        </div>
+
+        <div class="trust-card">
+          <div class="trust-icon">
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          </div>
+          <h3 class="trust-title">U.S.-Based Hosting</h3>
+          <p class="trust-desc">All data stored on secure, redundant U.S.-based cloud infrastructure. Your data never leaves the country.</p>
+        </div>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
     <!-- ═══════════ BRASSLINK COMMUNITY ═══════════ -->
     <section class="section">
       <p class="section-label">Community</p>
@@ -693,7 +1318,9 @@
   <!-- ═══════════ SCRIPTS ═══════════ -->
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      const animElements = document.querySelectorAll('.cap-card, .bl-card');
+      const animElements = document.querySelectorAll(
+        '.cap-card, .bl-card, .stat-card, .pain-card, .testimonial-card, .trust-card, .mockup-wrapper'
+      );
 
       if ('IntersectionObserver' in window) {
         const observer = new IntersectionObserver((entries) => {
@@ -712,6 +1339,29 @@
       } else {
         animElements.forEach(el => el.classList.add('visible'));
       }
+
+      // Counter animation for stat numbers
+      const counters = document.querySelectorAll('.stat-number[data-target]');
+      const counterObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const el = entry.target;
+            const target = parseInt(el.dataset.target);
+            const suffix = el.dataset.suffix || '';
+            const text = el.dataset.text;
+            if (text) { el.textContent = text; counterObserver.unobserve(el); return; }
+            let current = 0;
+            const step = Math.max(1, Math.floor(target / 40));
+            const interval = setInterval(() => {
+              current += step;
+              if (current >= target) { current = target; clearInterval(interval); }
+              el.textContent = current + suffix;
+            }, 30);
+            counterObserver.unobserve(el);
+          }
+        });
+      }, { threshold: 0.5 });
+      counters.forEach(el => counterObserver.observe(el));
     });
   </script>
 
