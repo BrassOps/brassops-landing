@@ -233,6 +233,35 @@
     }
     .faq-answer-inner strong { color: var(--fg); font-weight: 600; }
 
+    /* ── Testimonial Callout ── */
+    .testimonial-callout {
+      max-width: 700px; margin: 0 auto;
+      padding: 2.5rem 2rem;
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 18px;
+      position: relative; overflow: hidden;
+      text-align: center;
+    }
+    .testimonial-callout::before {
+      content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(239,68,68,0.25), transparent);
+    }
+    .tc-quote {
+      font-family: var(--font-heading); font-size: 3rem; font-weight: 800;
+      color: rgba(239, 68, 68, 0.15); line-height: 1; margin-bottom: -0.5rem;
+    }
+    .tc-text {
+      font-size: 1rem; color: var(--fg-secondary); line-height: 1.8;
+      font-style: italic; margin-bottom: 1.25rem; max-width: 560px; margin-left: auto; margin-right: auto;
+    }
+    .tc-author {
+      font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700; color: var(--fg);
+    }
+    .tc-role {
+      font-size: 0.72rem; color: var(--fg-tertiary);
+    }
+
     /* ── CTA Banner ── */
     .cta-banner {
       text-align: center;
@@ -316,7 +345,7 @@
   <nav class="top-nav">
     <a href="index.html" class="nav-brand">BrassOps</a>
     <div class="nav-links">
-      <a href="index.html">Home</a>
+      <a href="why-brassops.html">Why BrassOps</a>
       <span class="active">FAQ</span>
       <a href="contact.html">Contact</a>
     </div>
@@ -825,6 +854,16 @@
       </div>
 
     </section>
+
+    <!-- ═══════════ TESTIMONIAL CALLOUT ═══════════ -->
+    <div style="padding: 0 1.5rem 3rem;">
+      <div class="testimonial-callout">
+        <div class="tc-quote">&ldquo;</div>
+        <p class="tc-text">BrassOps gave us something we never had before — confidence that every officer's training record is complete, current, and defensible. It's not just a tool, it's peace of mind.</p>
+        <div class="tc-author">Lt. David K.</div>
+        <div class="tc-role">Training Division Commander, Metro PD</div>
+      </div>
+    </div>
 
     <div class="divider" aria-hidden="true"></div>
 
