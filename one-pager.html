@@ -36,12 +36,12 @@
       font-family: var(--font-b);
       -webkit-font-smoothing: antialiased;
       width: 8.5in;
-      min-height: 11in;
+      height: 11in;
       margin: 0 auto;
-      padding: 0.4in 0.45in 0.35in;
+      padding: 0.35in 0.4in 0.3in;
       display: flex;
       flex-direction: column;
-      line-height: 1.45;
+      line-height: 1.4;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
     }
@@ -51,13 +51,13 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding-bottom: 0.25in;
+      padding-bottom: 0.15in;
       border-bottom: 2px solid var(--red);
-      margin-bottom: 0.2in;
+      margin-bottom: 0.14in;
     }
     .brand {
       font-family: var(--font-h);
-      font-size: 26pt;
+      font-size: 24pt;
       font-weight: 800;
       letter-spacing: 0.06em;
       color: var(--fg);
@@ -65,7 +65,7 @@
     .brand span { color: var(--red); }
     .tagline {
       font-family: var(--font-h);
-      font-size: 9.5pt;
+      font-size: 8.5pt;
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
@@ -77,74 +77,74 @@
     .hero-strip {
       background: linear-gradient(135deg, rgba(220,38,38,0.05), rgba(220,38,38,0.02));
       border: 1px solid rgba(220,38,38,0.12);
-      border-radius: 10px;
-      padding: 0.15in 0.25in;
-      margin-bottom: 0.18in;
+      border-radius: 8px;
+      padding: 0.1in 0.2in;
+      margin-bottom: 0.12in;
       text-align: center;
     }
     .hero-strip h1 {
       font-family: var(--font-h);
-      font-size: 15pt;
+      font-size: 14pt;
       font-weight: 800;
       color: var(--fg);
       letter-spacing: 0.02em;
-      margin-bottom: 4pt;
+      margin-bottom: 3pt;
     }
     .hero-strip p {
-      font-size: 9pt;
+      font-size: 8pt;
       color: var(--fg-sec);
-      max-width: 6.5in;
+      max-width: 6.8in;
       margin: 0 auto;
-      line-height: 1.5;
+      line-height: 1.45;
     }
 
     /* ── STATS BAR ── */
     .stats-bar {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 8pt;
-      margin-bottom: 0.18in;
+      gap: 6pt;
+      margin-bottom: 0.12in;
     }
     .stat {
       text-align: center;
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 8px;
-      padding: 8pt 6pt;
+      border-radius: 6px;
+      padding: 6pt 4pt;
     }
     .stat-num {
       font-family: var(--font-h);
-      font-size: 18pt;
+      font-size: 16pt;
       font-weight: 800;
       color: var(--red);
       line-height: 1;
     }
     .stat-lbl {
       font-family: var(--font-h);
-      font-size: 6.5pt;
+      font-size: 6pt;
       font-weight: 600;
       letter-spacing: 0.12em;
       text-transform: uppercase;
       color: var(--fg-sec);
-      margin-top: 4pt;
+      margin-top: 3pt;
     }
 
     /* ── SECTION LABEL ── */
     .sec-label {
       font-family: var(--font-h);
-      font-size: 7pt;
+      font-size: 6.5pt;
       font-weight: 700;
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--red);
-      margin-bottom: 5pt;
+      margin-bottom: 3pt;
     }
     .sec-title {
       font-family: var(--font-h);
-      font-size: 12.5pt;
+      font-size: 11.5pt;
       font-weight: 700;
       color: var(--fg);
-      margin-bottom: 8pt;
+      margin-bottom: 6pt;
       letter-spacing: 0.01em;
     }
 
@@ -152,65 +152,65 @@
     .features-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 7pt;
-      margin-bottom: 0.16in;
+      gap: 5pt;
+      margin-bottom: 0.12in;
     }
     .feature {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 8px;
-      padding: 8pt 9pt;
+      border-radius: 6px;
+      padding: 6pt 7pt;
     }
     .feature-name {
       font-family: var(--font-h);
-      font-size: 9pt;
+      font-size: 8pt;
       font-weight: 700;
       color: var(--fg);
-      margin-bottom: 3pt;
+      margin-bottom: 2pt;
       display: flex;
       align-items: center;
-      gap: 5pt;
+      gap: 4pt;
     }
     .feature-dot {
-      width: 5pt;
-      height: 5pt;
+      width: 4pt;
+      height: 4pt;
       border-radius: 50%;
       background: var(--red);
       flex-shrink: 0;
     }
     .feature-desc {
-      font-size: 7.5pt;
+      font-size: 6.5pt;
       color: var(--fg-sec);
-      line-height: 1.5;
+      line-height: 1.4;
     }
 
     /* ── TWO-COL BOTTOM ── */
     .bottom-row {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 10pt;
-      margin-bottom: 0.16in;
+      gap: 8pt;
+      margin-bottom: 0.1in;
     }
 
     /* ── PAIN / BENEFIT ── */
     .compare-col {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
-      border-radius: 8px;
-      padding: 10pt 12pt;
+      border-radius: 6px;
+      padding: 7pt 9pt;
     }
     .compare-col.pain { border-top: 2px solid var(--red); }
     .compare-col.benefit { border-top: 2px solid var(--green); }
     .compare-badge {
       display: inline-block;
       font-family: var(--font-h);
-      font-size: 6.5pt;
+      font-size: 6pt;
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      padding: 2pt 7pt;
-      border-radius: 4pt;
-      margin-bottom: 7pt;
+      padding: 2pt 6pt;
+      border-radius: 3pt;
+      margin-bottom: 5pt;
     }
     .pain .compare-badge { background: var(--red-dim); color: var(--red); }
     .benefit .compare-badge { background: var(--green-dim); color: var(--green); }
@@ -218,48 +218,48 @@
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 5pt;
+      gap: 3pt;
     }
     .compare-list li {
-      font-size: 7.5pt;
+      font-size: 7pt;
       color: var(--fg-sec);
-      line-height: 1.45;
-      padding-left: 11pt;
+      line-height: 1.35;
+      padding-left: 10pt;
       position: relative;
     }
     .compare-list li::before {
       position: absolute;
       left: 0;
       top: 0;
-      font-size: 8pt;
+      font-size: 7pt;
       font-weight: 700;
     }
-    .pain .compare-list li::before { content: '\2717'; color: var(--red); font-weight: 700; }
-    .benefit .compare-list li::before { content: '\2713'; color: var(--green); font-weight: 700; }
+    .pain .compare-list li::before { content: '\2717'; color: var(--red); }
+    .benefit .compare-list li::before { content: '\2713'; color: var(--green); }
 
     /* ── TRUST ROW ── */
     .trust-row {
       display: flex;
       justify-content: center;
-      gap: 20pt;
-      padding: 8pt 0;
-      margin-bottom: 0.1in;
+      gap: 16pt;
+      padding: 6pt 0;
+      margin-bottom: 0.08in;
       border-top: 1px solid var(--card-border);
       border-bottom: 1px solid var(--card-border);
     }
     .trust-item {
       font-family: var(--font-h);
-      font-size: 7.5pt;
+      font-size: 6.5pt;
       font-weight: 600;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--fg-dim);
       display: flex;
       align-items: center;
-      gap: 5pt;
+      gap: 4pt;
     }
     .trust-dot {
-      width: 4pt; height: 4pt;
+      width: 3.5pt; height: 3.5pt;
       background: var(--red);
       border-radius: 50%;
     }
@@ -270,29 +270,29 @@
       display: flex;
       justify-content: space-between;
       align-items: flex-end;
-      padding-top: 0.12in;
+      padding-top: 0.08in;
       border-top: 1px solid var(--card-border);
     }
     .footer-left {
       font-family: var(--font-h);
-      font-size: 8.5pt;
+      font-size: 8pt;
       color: var(--fg-dim);
     }
     .footer-left strong {
       color: var(--fg);
-      font-size: 9.5pt;
+      font-size: 9pt;
     }
     .footer-cta {
       text-align: right;
     }
     .footer-cta .cta-label {
       font-family: var(--font-h);
-      font-size: 7pt;
+      font-size: 6.5pt;
       font-weight: 600;
       letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--fg-dim);
-      margin-bottom: 3pt;
+      margin-bottom: 2pt;
     }
     .footer-cta .cta-url {
       font-family: var(--font-h);
@@ -302,12 +302,8 @@
       letter-spacing: 0.02em;
     }
 
-    /* Print overrides */
     @media print {
-      body {
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }
+      body { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
     }
   </style>
 </head>
@@ -378,16 +374,28 @@
       <div class="feature-desc">Get notified when qualifications are lapsing, officers are flagged, or remedial cases need attention.</div>
     </div>
     <div class="feature">
-      <div class="feature-name"><span class="feature-dot"></span>Armory</div>
-      <div class="feature-desc">Full weapon inventory with serial tracking, officer assignments, inspection scheduling, and repair history.</div>
+      <div class="feature-name"><span class="feature-dot"></span>Armory Inventory</div>
+      <div class="feature-desc">Full weapon fleet management with serial number tracking, officer assignments, and lifecycle records.</div>
     </div>
     <div class="feature">
-      <div class="feature-name"><span class="feature-dot"></span>Range Ops</div>
-      <div class="feature-desc">Manage scheduling, automations, inventory, and day-of logistics from one place.</div>
+      <div class="feature-name"><span class="feature-dot"></span>Weapon Inspections &amp; Repairs</div>
+      <div class="feature-desc">Schedule inspections, log completions, and track full repair history for every firearm in your fleet.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-name"><span class="feature-dot"></span>Weapon Performance Monitor</div>
+      <div class="feature-desc">Per-weapon accuracy trends, round counts, and reliability flagging. Separate shooter issues from equipment issues.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-name"><span class="feature-dot"></span>Officer / Instructor Pairing</div>
+      <div class="feature-desc">Match officers with instructors based on skill gaps and specialties. Full pairing history and coaching continuity.</div>
     </div>
     <div class="feature">
       <div class="feature-name"><span class="feature-dot"></span>Instructor Tools</div>
-      <div class="feature-desc">Assign instructors, track coaching history, and measure officer progress over time.</div>
+      <div class="feature-desc">Assign instructors, log coaching notes, track officer progress, and manage workloads across the training cadre.</div>
+    </div>
+    <div class="feature">
+      <div class="feature-name"><span class="feature-dot"></span>Range Ops</div>
+      <div class="feature-desc">Manage scheduling, automations, ammo inventory, and day-of logistics from one place.</div>
     </div>
     <div class="feature">
       <div class="feature-name"><span class="feature-dot"></span>Dry-Fire Training</div>
