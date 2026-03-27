@@ -1,0 +1,681 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrassOps — Sales Proposal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Rajdhani:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    @page { size: letter portrait; margin: 0; }
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #ffffff; --fg: #111111; --fg-sec: #222222; --fg-dim: #555555;
+      --red: #dc2626; --red-dim: rgba(220,38,38,0.06); --red-light: rgba(220,38,38,0.03);
+      --green: #16a34a; --green-dim: rgba(22,163,74,0.06);
+      --blue: #2563eb; --blue-dim: rgba(37,99,235,0.06);
+      --card-bg: #f8f8f9; --card-border: #e4e4e7; --divider: #e8e8eb;
+      --font-h: 'Rajdhani', sans-serif; --font-b: 'Barlow', sans-serif;
+    }
+
+    body {
+      background: var(--bg); color: var(--fg); font-family: var(--font-b);
+      -webkit-font-smoothing: antialiased; width: 8.5in; margin: 0 auto;
+      line-height: 1.5;
+      -webkit-print-color-adjust: exact; print-color-adjust: exact;
+    }
+
+    .page {
+      width: 8.5in; height: 11in; padding: 0.5in 0.6in 0.4in;
+      display: flex; flex-direction: column;
+      page-break-after: always; overflow: hidden; position: relative;
+    }
+    .page:last-child { page-break-after: auto; }
+
+    /* ── SHARED ── */
+    .page-header {
+      display: flex; justify-content: space-between; align-items: center;
+      padding-bottom: 8pt; border-bottom: 2px solid var(--red);
+      margin-bottom: 20pt; flex-shrink: 0;
+    }
+    .page-brand { font-family: var(--font-h); font-size: 14pt; font-weight: 800; letter-spacing: 0.06em; color: var(--fg); }
+    .page-brand span { color: var(--red); }
+    .page-num { font-family: var(--font-h); font-size: 8pt; font-weight: 600; color: var(--fg-dim); letter-spacing: 0.08em; }
+
+    .page-footer {
+      margin-top: auto; padding-top: 8pt; border-top: 1px solid var(--divider);
+      display: flex; justify-content: space-between; align-items: center;
+      font-size: 7pt; color: var(--fg-dim); flex-shrink: 0;
+    }
+    .page-footer .conf { font-family: var(--font-h); font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--red); }
+
+    .sec-label {
+      font-family: var(--font-h); font-size: 8pt; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase; color: var(--red);
+      margin-bottom: 4pt;
+    }
+    .sec-title {
+      font-family: var(--font-h); font-size: 16pt; font-weight: 800;
+      color: var(--fg); margin-bottom: 8pt; line-height: 1.2;
+    }
+    .sec-subtitle {
+      font-size: 10pt; color: var(--fg-sec); line-height: 1.6;
+      margin-bottom: 18pt; max-width: 6in;
+    }
+    .divider { height: 1px; background: var(--divider); margin: 16pt 0; flex-shrink: 0; }
+
+    /* ── COVER ── */
+    .cover {
+      width: 8.5in; height: 11in;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      text-align: center; position: relative; overflow: hidden;
+      background: linear-gradient(180deg, #0a0a0a 0%, #1a1a1a 100%);
+      page-break-after: always;
+    }
+    .cover::before {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      width: 500pt; height: 500pt; transform: translate(-50%, -50%);
+      border-radius: 50%; border: 1px solid rgba(239,68,68,0.08);
+    }
+    .cover::after {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      width: 300pt; height: 300pt; transform: translate(-50%, -50%);
+      border-radius: 50%; border: 1px solid rgba(239,68,68,0.05);
+    }
+    .cover-content { position: relative; z-index: 1; }
+    .cover-brand {
+      font-family: var(--font-h); font-size: 48pt; font-weight: 800;
+      letter-spacing: 0.08em; color: #ededed; margin-bottom: 8pt;
+    }
+    .cover-brand span { color: var(--red); }
+    .cover-tagline {
+      font-family: var(--font-h); font-size: 14pt; font-weight: 600;
+      letter-spacing: 0.15em; text-transform: uppercase;
+      color: #888; margin-bottom: 40pt;
+    }
+    .cover-title {
+      font-family: var(--font-h); font-size: 20pt; font-weight: 700;
+      color: #ededed; margin-bottom: 6pt; letter-spacing: 0.02em;
+    }
+    .cover-subtitle {
+      font-size: 11pt; color: #999; line-height: 1.6; max-width: 4.5in; margin: 0 auto 40pt;
+    }
+    .cover-meta {
+      font-family: var(--font-h); font-size: 8pt; font-weight: 600;
+      letter-spacing: 0.12em; text-transform: uppercase; color: #666;
+    }
+    .cover-dot {
+      width: 6pt; height: 6pt; background: var(--red); border-radius: 50%;
+      margin: 0 auto 20pt;
+      box-shadow: 0 0 20pt rgba(239,68,68,0.4);
+    }
+
+    /* ── PAIN CARDS ── */
+    .pain-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10pt;
+    }
+    .pain-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 8pt; padding: 12pt 14pt;
+      border-left: 3px solid var(--red);
+    }
+    .pain-card h3 {
+      font-family: var(--font-h); font-size: 11pt; font-weight: 700;
+      color: var(--fg); margin-bottom: 4pt;
+    }
+    .pain-card p { font-size: 9pt; color: var(--fg-sec); line-height: 1.5; }
+    .pain-card .pain-tag {
+      display: inline-block; font-family: var(--font-h); font-size: 6pt; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase;
+      background: var(--red-dim); color: var(--red);
+      padding: 2pt 6pt; border-radius: 3pt; margin-bottom: 6pt;
+    }
+
+    /* ── AUDIENCE SPLIT ── */
+    .audience-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 14pt;
+    }
+    .audience-col {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 10pt; padding: 16pt 18pt;
+    }
+    .audience-col.admin { border-top: 3px solid var(--red); }
+    .audience-col.instructor { border-top: 3px solid var(--blue); }
+    .audience-badge {
+      display: inline-block; font-family: var(--font-h); font-size: 6pt; font-weight: 700;
+      letter-spacing: 0.14em; text-transform: uppercase;
+      padding: 2pt 8pt; border-radius: 3pt; margin-bottom: 8pt;
+    }
+    .admin .audience-badge { background: var(--red-dim); color: var(--red); }
+    .instructor .audience-badge { background: var(--blue-dim); color: var(--blue); }
+    .audience-col h3 {
+      font-family: var(--font-h); font-size: 12pt; font-weight: 700;
+      color: var(--fg); margin-bottom: 8pt;
+    }
+    .audience-list { list-style: none; display: flex; flex-direction: column; gap: 6pt; }
+    .audience-list li {
+      font-size: 9.5pt; color: var(--fg-sec); line-height: 1.45;
+      padding-left: 14pt; position: relative;
+    }
+    .audience-list li::before {
+      content: ''; position: absolute; left: 0; top: 6pt;
+      width: 5pt; height: 5pt; border-radius: 50%;
+    }
+    .admin .audience-list li::before { background: var(--red); }
+    .instructor .audience-list li::before { background: var(--blue); }
+
+    /* ── OVERVIEW BLOCK ── */
+    .overview-block {
+      font-size: 10.5pt; color: var(--fg-sec); line-height: 1.7;
+      max-width: 6.5in; margin-bottom: 16pt;
+    }
+    .overview-block strong { color: var(--fg); }
+
+    /* ── STAT ROW ── */
+    .stat-row {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 8pt;
+      margin-bottom: 16pt;
+    }
+    .stat-box {
+      text-align: center; background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 8pt; padding: 10pt 6pt; position: relative; overflow: hidden;
+    }
+    .stat-box::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2pt; background: var(--red); }
+    .stat-box-num { font-family: var(--font-h); font-size: 22pt; font-weight: 800; color: var(--red); line-height: 1; }
+    .stat-box-lbl { font-family: var(--font-h); font-size: 7pt; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-sec); margin-top: 4pt; }
+
+    /* ── FEATURE LIST (for proposal) ── */
+    .prop-features {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4pt 16pt;
+    }
+    .prop-feat {
+      padding: 5pt 0; border-bottom: 1px solid var(--divider);
+    }
+    .prop-feat-name {
+      font-family: var(--font-h); font-size: 11pt; font-weight: 700;
+      color: var(--red); margin-bottom: 2pt;
+    }
+    .prop-feat-desc { font-size: 9.5pt; color: var(--fg-sec); line-height: 1.4; }
+
+    /* ── FAILURE CARDS ── */
+    .fail-grid {
+      display: grid; grid-template-columns: 1fr; gap: 8pt;
+    }
+    .fail-row {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 10pt;
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 8pt; overflow: hidden;
+    }
+    .fail-problem {
+      padding: 10pt 12pt; border-left: 3px solid var(--red);
+    }
+    .fail-solution {
+      padding: 10pt 12pt; border-left: 3px solid var(--green);
+      background: rgba(22,163,74,0.02);
+    }
+    .fail-label {
+      font-family: var(--font-h); font-size: 6pt; font-weight: 700;
+      letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 3pt;
+    }
+    .fail-problem .fail-label { color: var(--red); }
+    .fail-solution .fail-label { color: var(--green); }
+    .fail-title {
+      font-family: var(--font-h); font-size: 10pt; font-weight: 700;
+      color: var(--fg); margin-bottom: 3pt;
+    }
+    .fail-text { font-size: 8.5pt; color: var(--fg-sec); line-height: 1.45; }
+
+    /* ── COURT GRID ── */
+    .court-row {
+      display: grid; grid-template-columns: repeat(4, 1fr); gap: 8pt;
+      margin-bottom: 14pt;
+    }
+    .court-box {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 8pt; padding: 12pt 10pt; text-align: center;
+      border-top: 2px solid var(--green);
+    }
+    .court-box-num { font-family: var(--font-h); font-size: 18pt; font-weight: 800; color: var(--green); line-height: 1; margin-bottom: 4pt; }
+    .court-box-test { font-family: var(--font-h); font-size: 9pt; font-weight: 700; color: var(--fg); margin-bottom: 4pt; }
+    .court-box-how { font-size: 8pt; color: var(--fg-sec); line-height: 1.45; }
+
+    .callout-box {
+      background: var(--green-dim); border: 1px solid rgba(22,163,74,0.15);
+      border-radius: 8pt; padding: 12pt 16pt; text-align: center;
+    }
+    .callout-box p { font-size: 10pt; color: var(--fg-sec); line-height: 1.6; }
+    .callout-box strong { color: var(--fg); }
+
+    /* ── SECURITY GRID ── */
+    .security-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 8pt;
+      margin-bottom: 16pt;
+    }
+    .security-card {
+      background: var(--card-bg); border: 1px solid var(--card-border);
+      border-radius: 8pt; padding: 12pt; text-align: center;
+    }
+    .security-card h4 {
+      font-family: var(--font-h); font-size: 10pt; font-weight: 700;
+      color: var(--fg); margin-bottom: 3pt;
+    }
+    .security-card p { font-size: 8.5pt; color: var(--fg-sec); line-height: 1.45; }
+
+    /* ── CTA BOX ── */
+    .cta-box {
+      background: linear-gradient(135deg, var(--red-dim), var(--red-light));
+      border: 1px solid rgba(220,38,38,0.12); border-radius: 10pt;
+      padding: 20pt 24pt; text-align: center;
+    }
+    .cta-box h3 { font-family: var(--font-h); font-size: 16pt; font-weight: 800; color: var(--fg); margin-bottom: 6pt; }
+    .cta-box p { font-size: 10pt; color: var(--fg-sec); line-height: 1.6; margin-bottom: 10pt; }
+    .cta-box .cta-url { font-family: var(--font-h); font-size: 14pt; font-weight: 700; color: var(--red); }
+
+    @media print { body { -webkit-print-color-adjust: exact; print-color-adjust: exact; } }
+  </style>
+</head>
+<body>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- PAGE 1: COVER                          -->
+  <!-- ══════════════════════════════════════ -->
+  <div class="cover">
+    <div class="cover-content">
+      <div class="cover-brand">Brass<span>Ops</span></div>
+      <div class="cover-tagline">Range Intelligence Platform</div>
+      <div class="cover-dot"></div>
+      <div class="cover-title">Modernize Your Firearms Training Program</div>
+      <div class="cover-subtitle">A proposal for eliminating liability gaps, automating compliance, and giving your department complete visibility into officer readiness — from the firing line to the command office.</div>
+      <div class="cover-meta">brassops.com &nbsp;&bull;&nbsp; Confidential</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- PAGE 2: THE PROBLEM                    -->
+  <!-- ══════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <div class="page-brand">Brass<span>Ops</span></div>
+      <div class="page-num">02</div>
+    </div>
+
+    <div class="sec-label">The Problem</div>
+    <div class="sec-title">Your Range Program Is Running on Hope</div>
+    <div class="sec-subtitle">Most departments still manage firearms qualifications with binders, spreadsheets, and the institutional memory of one or two people. That creates real risk — for the agency and for the officers on the line.</div>
+
+    <div class="pain-grid">
+      <div class="pain-card">
+        <div class="pain-tag">Liability</div>
+        <h3>Qualifications Lapse Unnoticed</h3>
+        <p>When tracking is manual, officers can fall out of compliance without anyone knowing — putting a non-qualified officer on the street with a department-issued firearm.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-tag">Time</div>
+        <h3>Hours Lost to Manual Busywork</h3>
+        <p>Range masters spend 10-20+ hours per month on data entry, cross-referencing spreadsheets, and chasing records instead of training officers.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-tag">Compliance</div>
+        <h3>Audit Failures &amp; Legal Exposure</h3>
+        <p>Paper records get lost, become incomplete, or contradict each other. When attorneys or oversight bodies come knocking, weak documentation turns a defensible position into a crisis.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-tag">Visibility</div>
+        <h3>Leadership Is Flying Blind</h3>
+        <p>Command staff has no real-time picture of department readiness. Getting a status report requires the range master to manually compile data — if they have time.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-tag">Risk</div>
+        <h3>Remedial Training Falls Through Cracks</h3>
+        <p>An officer fails or struggles, but the follow-up is inconsistent or undocumented. If an incident occurs, the agency can't prove it addressed the known deficiency.</p>
+      </div>
+      <div class="pain-card">
+        <div class="pain-tag">Cost</div>
+        <h3>One Lawsuit Can Cost $2M+</h3>
+        <p>A single negligent training lawsuit can cost $500K to $2M+ in settlements, legal fees, and reputational damage. Incomplete documentation is the #1 reason agencies lose these cases.</p>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="conf">Confidential</span>
+      <span>BrassOps Sales Proposal &mdash; Page 2</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- PAGE 3: THE SOLUTION                   -->
+  <!-- ══════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <div class="page-brand">Brass<span>Ops</span></div>
+      <div class="page-num">03</div>
+    </div>
+
+    <div class="sec-label">The Solution</div>
+    <div class="sec-title">BrassOps Changes Everything</div>
+
+    <div class="overview-block">
+      <strong>BrassOps is the range intelligence platform purpose-built for law enforcement firearms programs.</strong> We are a modern, web-based system that gives range masters, training coordinators, and department leadership a real-time picture of officer readiness. Extensive automations eliminate manual busywork — from qualification tracking and remedial enrollment to alert notifications — while comprehensive training documentation creates a defensible record of every session, score, and coaching note. From logging qualification scores to managing remedial training workflows to analyzing shot patterns with AI — everything lives in one place, accessible from any device.
+    </div>
+
+    <div class="stat-row">
+      <div class="stat-box"><div class="stat-box-num">40+</div><div class="stat-box-lbl">Hours Saved / Month</div></div>
+      <div class="stat-box"><div class="stat-box-num">100%</div><div class="stat-box-lbl">Qual Compliance</div></div>
+      <div class="stat-box"><div class="stat-box-num">Zero</div><div class="stat-box-lbl">Missed Remediations</div></div>
+      <div class="stat-box"><div class="stat-box-num">$2M+</div><div class="stat-box-lbl">Liability Reduced</div></div>
+    </div>
+
+    <div class="sec-label">Who It's For</div>
+    <div class="sec-title" style="font-size:13pt; margin-bottom: 10pt;">Built for Two Audiences — One Platform</div>
+
+    <div class="audience-grid">
+      <div class="audience-col admin">
+        <span class="audience-badge">Command Staff &amp; Administration</span>
+        <h3>Visibility, Compliance &amp; Protection</h3>
+        <ul class="audience-list">
+          <li>Real-time department readiness dashboards — no manual reports</li>
+          <li>Complete audit trail for legal defensibility</li>
+          <li>Automated compliance tracking eliminates liability gaps</li>
+          <li>Budget justification backed by training data and analytics</li>
+          <li>Proof that training programs meet legal standards</li>
+        </ul>
+      </div>
+      <div class="audience-col instructor">
+        <span class="audience-badge">Range Masters &amp; Instructors</span>
+        <h3>Time Savings, Tools &amp; Automation</h3>
+        <ul class="audience-list">
+          <li>40+ hours/month reclaimed from manual tracking</li>
+          <li>Log scores from your phone on the firing line</li>
+          <li>AI shot analysis gives instant coaching feedback</li>
+          <li>Auto remedial enrollment — no officers slip through</li>
+          <li>Coaching tools, pairing, and progress tracking built in</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="conf">Confidential</span>
+      <span>BrassOps Sales Proposal &mdash; Page 3</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- PAGE 4: PLATFORM CAPABILITIES          -->
+  <!-- ══════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <div class="page-brand">Brass<span>Ops</span></div>
+      <div class="page-num">04</div>
+    </div>
+
+    <div class="sec-label">Platform Capabilities</div>
+    <div class="sec-title">Everything Your Range Program Needs</div>
+    <div class="sec-subtitle">Every feature is designed to save time, reduce risk, or create defensible documentation. Most do all three.</div>
+
+    <div class="prop-features">
+      <div class="prop-feat"><div class="prop-feat-name">Qualification Tracking</div><div class="prop-feat-desc">Log every session with scores, weapon, course of fire, and instructor. Pass/fail auto-calculated against your thresholds with automatic expiration tracking.</div></div>
+      <div class="prop-feat"><div class="prop-feat-name">Officer Readiness Dashboard</div><div class="prop-feat-desc">Live color-coded view of every officer: green (qualified), yellow (expiring), red (non-compliant). Filter by unit, shift, or rank.</div></div>
+      <div class="prop-feat"><div class="prop-feat-name">Auto Remedial Enrollment</div><div class="prop-feat-desc">The moment a score fails, a remedial case is created with a structured workflow — coaching plan, milestones, and escalation paths. Zero missed cases.</div></div>
+      <div class="prop-feat"><div class="prop-feat-name">AI-Powered Shot Analysis</div><div class="prop-feat-desc">Snap a target photo from your phone. AI identifies grouping patterns, probable cause, and recommends corrective drills. Results saved to the officer's profile.</div></div>
+      <div class="prop-feat"><div class="prop-feat-name">Performance Analytics</div><div class="prop-feat-desc">Per-officer score trends and department-wide statistics. Behavioral scoring pinpoints skill gaps. Drill leaderboards and badges drive engagement.</div></div>
+      <div class="prop-feat"><div class="prop-feat-name">Automated Alerts</div><div class="prop-feat-desc">Configurable warnings at 90, 60, and 30 days before qualifications expire. Remedial milestone alerts and escalation notifications sent automatically.</div></div>
+      <div class="prop-feat"><div class="prop-feat-name">Armory Inventory</div><div class="prop-feat-desc">Every firearm tracked by serial number with make, model, acquisition date, and officer assignment. Full lifecycle management from issue to retirement.</div></div>
+      <div class="prop-feat"><div class="prop-feat-name">Weapon Inspections &amp; Repairs</div><div class="prop-feat-desc">Schedule inspections with due-date alerts. Log completions and maintain a full repair history tied to each firearm.</div></div>
+      <div class="prop-feat"><div class="prop-feat-name">Weapon Performance Monitor</div><div class="prop-feat-desc">Link qualification data to specific weapons by serial. Track per-weapon accuracy trends, round counts, and reliability. Flags firearms with declining performance.</div></div>
+      <div class="prop-feat"><div class="prop-feat-name">Officer / Instructor Pairing</div><div class="prop-feat-desc">Match officers with instructors based on skill gaps and specialties. Same instructor follows through remedial to re-qualification for coaching continuity.</div></div>
+      <div class="prop-feat"><div class="prop-feat-name">Instructor Tools</div><div class="prop-feat-desc">Assign instructors to sessions and remedial cases. Log coaching notes tied to officers. Full roster and workload visibility for training coordinators.</div></div>
+      <div class="prop-feat"><div class="prop-feat-name">Range Ops</div><div class="prop-feat-desc">Range day scheduling, ammo and supply inventory, configurable automations for recurring workflows, and day-of logistics — all in one place.</div></div>
+      <div class="prop-feat"><div class="prop-feat-name">Dry-Fire Training</div><div class="prop-feat-desc">Officers log structured dry-fire practice between range days. Achievement badges unlock at milestones to keep training consistent and engaging.</div></div>
+      <div class="prop-feat"><div class="prop-feat-name">BrassLink Community</div><div class="prop-feat-desc">Built-in instructor network with anonymous cross-agency benchmarking (N.A.R.M.S.), shared training resources, peer reviews, and equipment assessments.</div></div>
+    </div>
+
+    <div class="page-footer">
+      <span class="conf">Confidential</span>
+      <span>BrassOps Sales Proposal &mdash; Page 4</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- PAGE 5: DOCUMENTATION FAILURES         -->
+  <!-- ══════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <div class="page-brand">Brass<span>Ops</span></div>
+      <div class="page-num">05</div>
+    </div>
+
+    <div class="sec-label">Legal Liability</div>
+    <div class="sec-title">The 5 Documentation Failures That Lose Lawsuits</div>
+    <div class="sec-subtitle">These are the gaps that consistently expose agencies in court. Every one is preventable.</div>
+
+    <div class="fail-grid">
+      <div class="fail-row">
+        <div class="fail-problem">
+          <div class="fail-label">Failure</div>
+          <div class="fail-title">1. Missing Qualification Records</div>
+          <div class="fail-text">Agency can't prove the officer was current at the time of an incident. Attorneys exploit the gap — juries notice.</div>
+        </div>
+        <div class="fail-solution">
+          <div class="fail-label">How BrassOps Solves It</div>
+          <div class="fail-title">Every qual auto-logged</div>
+          <div class="fail-text">Date, score, weapon, course of fire, and instructor — time-stamped and tamper-proof. Proves exactly when each officer qualified.</div>
+        </div>
+      </div>
+
+      <div class="fail-row">
+        <div class="fail-problem">
+          <div class="fail-label">Failure</div>
+          <div class="fail-title">2. No Remedial Training Logs</div>
+          <div class="fail-text">Officer failed or struggled — but no follow-up documented. The agency knew about the deficiency and did nothing. That's negligence.</div>
+        </div>
+        <div class="fail-solution">
+          <div class="fail-label">How BrassOps Solves It</div>
+          <div class="fail-title">Auto remedial with full trail</div>
+          <div class="fail-text">Remedial case created instantly on failure. Every coaching session, milestone, and escalation logged with timestamps.</div>
+        </div>
+      </div>
+
+      <div class="fail-row">
+        <div class="fail-problem">
+          <div class="fail-label">Failure</div>
+          <div class="fail-title">3. Incomplete Lesson Plans</div>
+          <div class="fail-text">Department can't show what was actually taught. Without documented curriculum, there's no way to prove training was appropriate.</div>
+        </div>
+        <div class="fail-solution">
+          <div class="fail-label">How BrassOps Solves It</div>
+          <div class="fail-title">Sessions tied to training plans</div>
+          <div class="fail-text">Every session linked to specific courses of fire. Instructors log what was covered, drills conducted, and coaching notes.</div>
+        </div>
+      </div>
+
+      <div class="fail-row">
+        <div class="fail-problem">
+          <div class="fail-label">Failure</div>
+          <div class="fail-title">4. No Attendance Verification</div>
+          <div class="fail-text">"He was scheduled" is not "He attended." Without verified attendance, the agency can't prove the officer was actually present.</div>
+        </div>
+        <div class="fail-solution">
+          <div class="fail-label">How BrassOps Solves It</div>
+          <div class="fail-title">Scores = verified attendance</div>
+          <div class="fail-text">Every score logged is proof the officer was there, fired, and was evaluated by an instructor. No gap between scheduled and attended.</div>
+        </div>
+      </div>
+
+      <div class="fail-row">
+        <div class="fail-problem">
+          <div class="fail-label">Failure</div>
+          <div class="fail-title">5. No Performance Metrics</div>
+          <div class="fail-text">Pass/fail with no scoring data is a weak defense. Courts want measurable competency — not a checkbox that says "completed."</div>
+        </div>
+        <div class="fail-solution">
+          <div class="fail-label">How BrassOps Solves It</div>
+          <div class="fail-title">Granular data + AI diagnostics</div>
+          <div class="fail-text">Real scores, behavioral analytics, and AI shot analysis. Every session has measurable data that demonstrates genuine competency evaluation.</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="conf">Confidential</span>
+      <span>BrassOps Sales Proposal &mdash; Page 5</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- PAGE 6: WHAT COURTS EVALUATE + ROI     -->
+  <!-- ══════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <div class="page-brand">Brass<span>Ops</span></div>
+      <div class="page-num">06</div>
+    </div>
+
+    <div class="sec-label">The Legal Standard</div>
+    <div class="sec-title">What Courts Are Really Evaluating</div>
+    <div class="sec-subtitle">To win a negligent training case, agencies must prove all four of these. Documentation is the only way. BrassOps handles every one.</div>
+
+    <div class="court-row">
+      <div class="court-box">
+        <div class="court-box-num">1</div>
+        <div class="court-box-test">Training Existed</div>
+        <div class="court-box-how">Every qual session, dry-fire practice, and training event logged with time-stamped records proving the program was active.</div>
+      </div>
+      <div class="court-box">
+        <div class="court-box-num">2</div>
+        <div class="court-box-test">Training Was Appropriate</div>
+        <div class="court-box-how">Courses of fire, lesson plans, and coaching notes document what was taught and why — tied to duties and deficiencies.</div>
+      </div>
+      <div class="court-box">
+        <div class="court-box-num">3</div>
+        <div class="court-box-test">Officer Received It</div>
+        <div class="court-box-how">Score-based attendance verification proves the officer was physically present and participated. No ambiguity.</div>
+      </div>
+      <div class="court-box">
+        <div class="court-box-num">4</div>
+        <div class="court-box-test">Officer Showed Competency</div>
+        <div class="court-box-how">Granular scores, pass/fail thresholds, behavioral analytics, and AI diagnostics prove measurable competency.</div>
+      </div>
+    </div>
+
+    <div class="callout-box">
+      <p><strong>Documentation is the only way to prove all four.</strong> Paper records fail under scrutiny. Spreadsheets get lost. Institutional memory retires. BrassOps creates an automatic, continuous, defensible record that protects your agency — before you ever need it.</p>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="sec-label">Before &amp; After</div>
+    <div class="sec-title" style="font-size:14pt;">The Transformation at a Glance</div>
+
+    <div class="audience-grid" style="margin-top:8pt;">
+      <div class="audience-col" style="border-top: 3px solid var(--red);">
+        <span class="audience-badge" style="background:var(--red-dim);color:var(--red);">Without BrassOps</span>
+        <ul class="audience-list">
+          <li style="padding-left:14pt;">Qualifications lapse without anyone noticing</li>
+          <li style="padding-left:14pt;">10-20+ hours/month lost to manual data entry</li>
+          <li style="padding-left:14pt;">No real-time visibility into readiness</li>
+          <li style="padding-left:14pt;">Remedial training tracked inconsistently</li>
+          <li style="padding-left:14pt;">Paper records won't survive legal scrutiny</li>
+          <li style="padding-left:14pt;">Command staff gets stale, manual reports</li>
+        </ul>
+      </div>
+      <div class="audience-col" style="border-top: 3px solid var(--green);">
+        <span class="audience-badge" style="background:var(--green-dim);color:var(--green);">With BrassOps</span>
+        <ul class="audience-list">
+          <li style="padding-left:14pt;">Automated alerts before any qualification lapses</li>
+          <li style="padding-left:14pt;">40+ admin hours reclaimed every month</li>
+          <li style="padding-left:14pt;">Real-time dashboards show status at a glance</li>
+          <li style="padding-left:14pt;">Auto remedial enrollment — zero missed cases</li>
+          <li style="padding-left:14pt;">Every record audit-ready and defensible</li>
+          <li style="padding-left:14pt;">Command staff gets live visibility, no waiting</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="page-footer">
+      <span class="conf">Confidential</span>
+      <span>BrassOps Sales Proposal &mdash; Page 6</span>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════ -->
+  <!-- PAGE 7: SECURITY, ONBOARDING & CTA     -->
+  <!-- ══════════════════════════════════════ -->
+  <div class="page">
+    <div class="page-header">
+      <div class="page-brand">Brass<span>Ops</span></div>
+      <div class="page-num">07</div>
+    </div>
+
+    <div class="sec-label">Trust &amp; Security</div>
+    <div class="sec-title">Built for Law Enforcement Standards</div>
+    <div class="sec-subtitle">Your data is sensitive. We treat it that way. BrassOps is engineered to meet the security demands of public safety agencies.</div>
+
+    <div class="security-grid">
+      <div class="security-card">
+        <h4>AES-256 Encryption</h4>
+        <p>All data encrypted at rest and in transit (TLS). Your records are protected at every layer.</p>
+      </div>
+      <div class="security-card">
+        <h4>Role-Based Access</h4>
+        <p>Officers, instructors, range masters, and command staff each see only what they're authorized to access.</p>
+      </div>
+      <div class="security-card">
+        <h4>Full Audit Trail</h4>
+        <p>Every action time-stamped and logged for oversight, legal proceedings, and internal reviews.</p>
+      </div>
+      <div class="security-card">
+        <h4>U.S.-Based Hosting</h4>
+        <p>All data stored on secure, redundant U.S.-based cloud infrastructure. Your data never leaves the country.</p>
+      </div>
+      <div class="security-card">
+        <h4>Multi-Server Redundancy</h4>
+        <p>Data stored across multiple servers with automated backups to prevent loss. Always available.</p>
+      </div>
+      <div class="security-card">
+        <h4>Agency Data Isolation</h4>
+        <p>Your department's data is fully isolated. No other agency can see your records. Period.</p>
+      </div>
+    </div>
+
+    <div class="divider"></div>
+
+    <div class="sec-label">Getting Started</div>
+    <div class="sec-title" style="font-size:14pt;">Onboarding Is Simple</div>
+
+    <div class="audience-grid" style="margin-top:8pt; margin-bottom: 16pt;">
+      <div class="audience-col" style="border-top: 3px solid var(--green);">
+        <span class="audience-badge" style="background:var(--green-dim);color:var(--green);">What We Handle</span>
+        <ul class="audience-list">
+          <li style="padding-left:14pt;">Personalized demo tailored to your department</li>
+          <li style="padding-left:14pt;">Data migration from existing records</li>
+          <li style="padding-left:14pt;">System configuration to match your policies</li>
+          <li style="padding-left:14pt;">Training for range masters, instructors, and admin</li>
+        </ul>
+      </div>
+      <div class="audience-col" style="border-top: 3px solid var(--green);">
+        <span class="audience-badge" style="background:var(--green-dim);color:var(--green);">What You Get</span>
+        <ul class="audience-list">
+          <li style="padding-left:14pt;">Up and running in days, not weeks</li>
+          <li style="padding-left:14pt;">Web-based — works on any device, nothing to install</li>
+          <li style="padding-left:14pt;">Scales from 10 officers to 100,000+</li>
+          <li style="padding-left:14pt;">Dedicated support and ongoing training resources</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="cta-box">
+      <h3>Ready to Protect Your Department?</h3>
+      <p>Every day without a modern system is another day of liability exposure, lost time, and gaps in officer readiness. Let us show you how BrassOps eliminates all three.</p>
+      <div class="cta-url">brassops.com/contact</div>
+    </div>
+
+    <div class="page-footer">
+      <span class="conf">Confidential</span>
+      <span>BrassOps Sales Proposal &mdash; Page 7</span>
+    </div>
+  </div>
+
+</body>
+</html>
