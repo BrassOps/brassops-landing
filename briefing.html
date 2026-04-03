@@ -286,8 +286,16 @@
 
     /* ── Empty State ── */
     .blog-empty {
-      text-align: center; padding: 4rem 1.5rem;
-      color: var(--fg-tertiary); font-size: 1rem;
+      text-align: center; padding: 5rem 1.5rem;
+      color: var(--fg-secondary); font-size: 1rem;
+    }
+    .blog-empty h3 {
+      font-family: var(--font-heading); font-size: 1.5rem; font-weight: 700;
+      color: var(--fg); margin-bottom: 0.75rem;
+    }
+    .blog-empty p {
+      font-size: 0.95rem; color: var(--fg-secondary); line-height: 1.7;
+      max-width: 450px; margin: 0 auto;
     }
 
     /* ── CTA Banner ── */
@@ -399,7 +407,10 @@
           <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3v10M4 9l4 4 4-4"/></svg>
         </button>
       </div>
-      <div class="blog-empty" id="blogEmpty" style="display:none;">No articles found.</div>
+      <div class="blog-empty" id="blogEmpty" style="display:none;">
+        <h3>Coming <span style="color:var(--red);">Soon</span></h3>
+        <p>We're putting together expert briefings on firearms training, liability protection, and range operations. Check back shortly.</p>
+      </div>
     </section>
 
     <div class="divider" aria-hidden="true"></div>
