@@ -340,6 +340,9 @@
       margin-bottom: 0.5rem;
     }
     .footer-tagline { font-size: 0.8rem; color: var(--fg-quaternary); margin-bottom: 1.5rem; font-style: italic; }
+    .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 0.75rem; }
+    .footer-links a { font-size: 0.75rem; color: var(--fg-quaternary); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--fg-secondary); }
     .footer-copy { font-size: 0.7rem; color: var(--fg-quaternary); letter-spacing: 0.04em; }
 
     /* ── Animations ── */
@@ -433,6 +436,7 @@
     <footer class="footer">
       <p class="footer-brand">Brass<span class="brand-ops">Ops</span></p>
       <p class="footer-tagline">Built for those who train to protect.</p>
+      <div class="footer-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div>
       <p class="footer-copy">&copy; 2026 Brass<span class="brand-ops">Ops</span>. All rights reserved.</p>
     </footer>
 

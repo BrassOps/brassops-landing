@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrassOps — Terms of Service</title>
+  <meta name="description" content="BrassOps Terms of Service — the agreement governing your use of the BrassOps platform.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+    :root {
+      --bg: #0a0a0a; --fg: #ededed; --fg-secondary: #a1a1aa; --fg-tertiary: #71717a;
+      --fg-quaternary: #52525b; --red: #ef4444; --red-dim: rgba(239, 68, 68, 0.15);
+      --glass-bg: rgba(255, 255, 255, 0.04); --glass-border: rgba(255, 255, 255, 0.07);
+      --glass-bg-hover: rgba(255, 255, 255, 0.07);
+      --font-heading: 'Rajdhani', 'Barlow Condensed', sans-serif;
+      --font-body: 'Barlow', sans-serif;
+    }
+
+    body { background: var(--bg); color: var(--fg); font-family: var(--font-body); min-height: 100dvh; overflow-x: hidden; line-height: 1.6; }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
+
+    .hero-bg { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+    .hero-bg::before {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      width: 200vmax; height: 200vmax; transform: translate(-50%, -50%);
+      background:
+        radial-gradient(circle, transparent 18%, rgba(239,68,68,0.03) 18.5%, transparent 19%),
+        radial-gradient(circle, transparent 30%, rgba(239,68,68,0.025) 30.5%, transparent 31%),
+        radial-gradient(circle, transparent 42%, rgba(239,68,68,0.02) 42.5%, transparent 43%);
+      animation: pulseRings 8s ease-in-out infinite;
+    }
+    .hero-bg::after {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      width: 6px; height: 6px; background: var(--red); border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 30px rgba(239,68,68,0.35);
+      animation: pulseDot 4s ease-in-out infinite;
+    }
+    .crosshair-h, .crosshair-v { position: absolute; background: rgba(239, 68, 68, 0.06); }
+    .crosshair-h { top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100vw; height: 1px; }
+    .crosshair-v { top: 50%; left: 50%; transform: translate(-50%, -50%); width: 1px; height: 100vh; }
+    @keyframes pulseRings { 0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); } 50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.03); } }
+    @keyframes pulseDot { 0%, 100% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); } 50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.5); } }
+
+    .noise { position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat; background-size: 256px 256px;
+    }
+    .vignette { position: fixed; inset: 0; z-index: 1; pointer-events: none;
+      background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.5) 100%);
+    }
+
+    .content { position: relative; z-index: 2; }
+
+    .top-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(1rem, 4vw, 3rem); height: 56px;
+      background: rgba(10, 10, 10, 0.7);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .top-nav .nav-brand { font-family: var(--font-heading); font-weight: 700; font-size: 1.1rem; color: var(--fg); text-decoration: none; letter-spacing: 0.04em; }
+    .top-nav .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+    .top-nav .nav-links a, .top-nav .nav-links span { font-family: var(--font-body); font-size: 0.85rem; font-weight: 500; color: var(--fg-tertiary); text-decoration: none; transition: color 0.2s; }
+    .top-nav .nav-links a:hover { color: var(--fg); }
+    .top-nav .nav-links .active { color: var(--fg); }
+    .top-nav .nav-links .nav-launch { background: linear-gradient(135deg, var(--red), #dc2626); color: #fff !important; padding: 0.35rem 1rem; border-radius: 8px; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.04em; transition: all 0.3s; }
+    .top-nav .nav-links .nav-launch:hover { transform: translateY(-1px); box-shadow: 0 0 20px rgba(239,68,68,0.3); }
+
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.4rem; position: relative; z-index: 110; }
+    .nav-hamburger svg { width: 22px; height: 22px; stroke: var(--fg); stroke-width: 2; fill: none; }
+    @media (max-width: 768px) {
+      .nav-hamburger { display: block; }
+      .top-nav .nav-links { display: none; flex-direction: column; align-items: stretch; gap: 0; position: fixed; top: 56px; left: 0; right: 0; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(24px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding: 0.5rem 0; max-height: 0; overflow: hidden; transition: max-height 0.35s, padding 0.35s; }
+      .top-nav .nav-links.open { display: flex; max-height: 400px; padding: 0.75rem 0; }
+      .top-nav .nav-links a, .top-nav .nav-links span { padding: 0.75rem clamp(1rem, 4vw, 3rem); font-size: 0.95rem; border-bottom: 1px solid rgba(255, 255, 255, 0.04); }
+      .top-nav .nav-links .nav-launch { margin: 0.5rem clamp(1rem, 4vw, 3rem) 0.25rem; text-align: center; padding: 0.65rem 1rem; border-radius: 10px; font-size: 0.9rem; }
+    }
+
+    .page-hero { padding: 7rem 1.5rem 2rem; text-align: center; max-width: 700px; margin: 0 auto; }
+    .page-hero h1 { font-family: var(--font-heading); font-size: clamp(2rem, 5vw, 2.5rem); font-weight: 700; letter-spacing: 0.02em; margin-bottom: 0.5rem; }
+    .page-hero h1 span { color: var(--red); }
+    .page-hero .hero-lead { font-size: 0.95rem; color: var(--fg-secondary); line-height: 1.7; }
+
+    .divider { width: 100%; max-width: 1100px; margin: 0 auto; height: 1px; background: linear-gradient(90deg, transparent, var(--glass-border), transparent); }
+
+    .legal-section { padding: 2rem 1.5rem 4rem; max-width: 800px; margin: 0 auto; }
+    .legal-section h2 { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; color: var(--fg); margin: 2rem 0 0.75rem; letter-spacing: 0.01em; }
+    .legal-section h3 { font-family: var(--font-heading); font-size: 1.05rem; font-weight: 700; color: var(--fg); margin: 1.5rem 0 0.5rem; }
+    .legal-section p { font-size: 0.9rem; color: var(--fg-secondary); line-height: 1.8; margin-bottom: 0.75rem; }
+    .legal-section ul { list-style: none; margin-bottom: 0.75rem; padding-left: 0; }
+    .legal-section ul li { font-size: 0.9rem; color: var(--fg-secondary); line-height: 1.8; padding-left: 1.25rem; position: relative; margin-bottom: 0.25rem; }
+    .legal-section ul li::before { content: ''; position: absolute; left: 0; top: 0.65rem; width: 5px; height: 5px; border-radius: 50%; background: var(--red); opacity: 0.5; }
+    .legal-section .effective-date { font-size: 0.8rem; color: var(--fg-tertiary); margin-bottom: 2rem; }
+
+    .footer { padding: 3rem 1.5rem 2.5rem; text-align: center; }
+    .footer-brand { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-tertiary); margin-bottom: 0.5rem; }
+    .footer-tagline { font-size: 0.8rem; color: var(--fg-quaternary); margin-bottom: 0.75rem; font-style: italic; }
+    .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 0.75rem; }
+    .footer-links a { font-size: 0.75rem; color: var(--fg-quaternary); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--fg-secondary); }
+    .footer-copy { font-size: 0.7rem; color: var(--fg-quaternary); letter-spacing: 0.04em; }
+
+    ::selection { background: rgba(239, 68, 68, 0.3); color: #fff; }
+    .brand-ops { color: var(--red); }
+    @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a href="index.html" class="nav-brand">Brass<span class="brand-ops">Ops</span></a>
+    <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <div class="nav-links">
+      <a href="why-brassops.html">Why Brass<span class="brand-ops">Ops</span></a>
+      <a href="briefing.html">Briefing</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://app.brassops.com" class="nav-launch" target="_blank" rel="noopener">Launch App</a>
+    </div>
+  </nav>
+
+  <div class="hero-bg" aria-hidden="true"><div class="crosshair-h"></div><div class="crosshair-v"></div></div>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <div class="content">
+
+    <section class="page-hero">
+      <h1>Terms of <span>Service</span></h1>
+      <p class="hero-lead">The agreement governing your use of the Brass<span class="brand-ops">Ops</span> platform.</p>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <section class="legal-section">
+      <p class="effective-date">Effective Date: April 1, 2026</p>
+
+      <h2>1. Agreement to Terms</h2>
+      <p>These Terms of Service ("Terms") constitute a legally binding agreement between you and Brass<span class="brand-ops">Ops</span> ("we," "our," or "us") governing your access to and use of the brassops.com website and the Brass<span class="brand-ops">Ops</span> range intelligence platform (collectively, the "Service").</p>
+      <p>By creating an account, accessing, or using the Service, you agree to be bound by these Terms. If you are entering into these Terms on behalf of a law enforcement agency or organization, you represent that you have the authority to bind that entity.</p>
+
+      <h2>2. Description of Service</h2>
+      <p>Brass<span class="brand-ops">Ops</span> is a web-based range intelligence platform designed for law enforcement firearms programs. The Service includes qualification tracking, officer readiness monitoring, remedial training management, AI-powered shot analysis, weapon inventory management, performance analytics, automated alerts, and community features (BrassLink).</p>
+
+      <h2>3. Account Registration</h2>
+      <ul>
+        <li>You must provide accurate, current, and complete information during registration.</li>
+        <li>You are responsible for maintaining the confidentiality of your account credentials.</li>
+        <li>You are responsible for all activity that occurs under your account.</li>
+        <li>You must notify us immediately of any unauthorized access to your account.</li>
+        <li>Account administrators are responsible for managing user roles and permissions within their agency.</li>
+      </ul>
+
+      <h2>4. Acceptable Use</h2>
+      <p>You agree to use the Service only for lawful purposes related to the management of your agency's firearms training program. You agree not to:</p>
+      <ul>
+        <li>Use the Service for any purpose other than legitimate law enforcement training management</li>
+        <li>Share your account credentials with unauthorized individuals</li>
+        <li>Attempt to access data belonging to other agencies</li>
+        <li>Reverse engineer, decompile, or disassemble any part of the Service</li>
+        <li>Use the Service to store or transmit malicious code</li>
+        <li>Interfere with or disrupt the integrity or performance of the Service</li>
+        <li>Use the Service in violation of any applicable federal, state, or local law</li>
+      </ul>
+
+      <h2>5. Data Ownership</h2>
+      <p><strong>Your data is your data.</strong> All training records, qualification data, officer information, weapon inventory data, and other content entered into the Service by your agency remains the property of your agency. Brass<span class="brand-ops">Ops</span> does not claim ownership of any data you input into the platform.</p>
+      <p>You grant Brass<span class="brand-ops">Ops</span> a limited license to host, store, process, and display your data solely for the purpose of providing and improving the Service. This license terminates when your subscription ends and your data is deleted.</p>
+
+      <h2>6. Anonymized Data and N.A.R.M.S.</h2>
+      <p>Brass<span class="brand-ops">Ops</span> may generate anonymized, aggregated data from platform usage for the National Anonymous Range Metrics System (N.A.R.M.S.) and for improving the Service. This data cannot be used to identify any individual officer, instructor, or agency. Your participation in N.A.R.M.S. benchmarking is part of the Service.</p>
+
+      <h2>7. Subscription and Payment</h2>
+      <ul>
+        <li>Access to the Service requires an active paid subscription.</li>
+        <li>Subscription terms, pricing, and billing frequency are established in your agency's service agreement.</li>
+        <li>Subscriptions renew automatically unless cancelled in writing prior to the renewal date.</li>
+        <li>Fees are non-refundable except as required by law or as specified in your service agreement.</li>
+        <li>We reserve the right to modify pricing with 60 days' written notice before your next renewal period.</li>
+      </ul>
+
+      <h2>8. Service Availability</h2>
+      <p>We strive to maintain high availability of the Service but do not guarantee uninterrupted access. The Service may be temporarily unavailable due to maintenance, updates, or circumstances beyond our control. We will make reasonable efforts to provide advance notice of planned maintenance.</p>
+
+      <h2>9. Data Export and Portability</h2>
+      <p>You may export your data from the Service at any time during your active subscription. Upon cancellation or termination, we will provide a complete data export in a standard, machine-readable format. Data will be retained for 90 days following cancellation to allow for export, after which it will be permanently deleted.</p>
+
+      <h2>10. Intellectual Property</h2>
+      <p>The Service, including its design, code, features, documentation, and branding, is the intellectual property of Brass<span class="brand-ops">Ops</span> and is protected by applicable copyright, trademark, and other intellectual property laws. Your subscription grants you a limited, non-exclusive, non-transferable license to use the Service during your subscription term.</p>
+
+      <h2>11. AI-Powered Features</h2>
+      <p>The Service includes AI-powered shot analysis and other automated features. These tools are designed to assist with training evaluation and coaching. AI-generated recommendations are informational and should be used as a supplement to — not a replacement for — professional instructor judgment. Brass<span class="brand-ops">Ops</span> does not guarantee the accuracy of AI-generated analysis.</p>
+
+      <h2>12. Limitation of Liability</h2>
+      <p>To the maximum extent permitted by law, Brass<span class="brand-ops">Ops</span> shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including but not limited to loss of data, loss of revenue, or damages arising from reliance on the Service.</p>
+      <p>The Service is a training management and documentation tool. It does not provide legal advice, and its use does not guarantee any particular legal outcome in litigation or administrative proceedings. Agencies are responsible for ensuring their training programs meet all applicable legal and regulatory requirements.</p>
+      <p>Our total cumulative liability to you for any claims arising from or related to the Service shall not exceed the total fees paid by your agency in the twelve (12) months preceding the claim.</p>
+
+      <h2>13. Indemnification</h2>
+      <p>You agree to indemnify and hold harmless Brass<span class="brand-ops">Ops</span>, its officers, directors, employees, and agents from any claims, damages, losses, or expenses (including reasonable attorneys' fees) arising from your use of the Service, your violation of these Terms, or your violation of any applicable law.</p>
+
+      <h2>14. Termination</h2>
+      <ul>
+        <li><strong>By You:</strong> You may cancel your subscription at any time by providing written notice. Access continues through the end of your current billing period.</li>
+        <li><strong>By Us:</strong> We may suspend or terminate your access if you violate these Terms, fail to pay fees, or if continued service poses a security risk. We will provide reasonable notice when possible.</li>
+        <li><strong>Effect of Termination:</strong> Upon termination, your right to use the Service ceases. We will provide a data export as described in Section 9.</li>
+      </ul>
+
+      <h2>15. Modifications to Terms</h2>
+      <p>We may update these Terms from time to time. We will notify active users of material changes at least 30 days before they take effect via email or in-app notification. Continued use of the Service after changes take effect constitutes acceptance of the updated Terms.</p>
+
+      <h2>16. Governing Law</h2>
+      <p>These Terms shall be governed by and construed in accordance with the laws of the State of New Jersey, without regard to its conflict of law provisions. Any disputes arising from these Terms or your use of the Service shall be resolved in the state or federal courts located in New Jersey.</p>
+
+      <h2>17. Severability</h2>
+      <p>If any provision of these Terms is found to be unenforceable or invalid, that provision shall be limited or eliminated to the minimum extent necessary, and the remaining provisions shall remain in full force and effect.</p>
+
+      <h2>18. Entire Agreement</h2>
+      <p>These Terms, together with our Privacy Policy and any service agreement executed between your agency and Brass<span class="brand-ops">Ops</span>, constitute the entire agreement between you and Brass<span class="brand-ops">Ops</span> regarding the Service.</p>
+
+      <h2>19. Contact Us</h2>
+      <p>If you have questions about these Terms, please contact us:</p>
+      <p><strong>Brass<span class="brand-ops">Ops</span></strong><br>
+      Email: brassops01@gmail.com<br>
+      Web: <a href="contact.html" style="color: var(--red); text-decoration: none;">brassops.com/contact</a></p>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <footer class="footer">
+      <p class="footer-brand">Brass<span class="brand-ops">Ops</span></p>
+      <p class="footer-tagline">Built for those who train to protect.</p>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Brass<span class="brand-ops">Ops</span>. All rights reserved.</p>
+    </footer>
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const hamburger = document.querySelector('.nav-hamburger');
+      const navLinks = document.querySelector('.nav-links');
+      if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+          const isOpen = navLinks.classList.toggle('open');
+          hamburger.setAttribute('aria-expanded', isOpen);
+          hamburger.innerHTML = isOpen
+            ? '<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>'
+            : '<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>

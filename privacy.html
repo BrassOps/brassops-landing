@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrassOps — Privacy Policy</title>
+  <meta name="description" content="BrassOps Privacy Policy — how we collect, use, and protect your data.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+
+    :root {
+      --bg: #0a0a0a; --fg: #ededed; --fg-secondary: #a1a1aa; --fg-tertiary: #71717a;
+      --fg-quaternary: #52525b; --red: #ef4444; --red-dim: rgba(239, 68, 68, 0.15);
+      --glass-bg: rgba(255, 255, 255, 0.04); --glass-border: rgba(255, 255, 255, 0.07);
+      --glass-bg-hover: rgba(255, 255, 255, 0.07);
+      --font-heading: 'Rajdhani', 'Barlow Condensed', sans-serif;
+      --font-body: 'Barlow', sans-serif;
+    }
+
+    body { background: var(--bg); color: var(--fg); font-family: var(--font-body); min-height: 100dvh; overflow-x: hidden; line-height: 1.6; }
+
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
+
+    .hero-bg { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+    .hero-bg::before {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      width: 200vmax; height: 200vmax; transform: translate(-50%, -50%);
+      background:
+        radial-gradient(circle, transparent 18%, rgba(239,68,68,0.03) 18.5%, transparent 19%),
+        radial-gradient(circle, transparent 30%, rgba(239,68,68,0.025) 30.5%, transparent 31%),
+        radial-gradient(circle, transparent 42%, rgba(239,68,68,0.02) 42.5%, transparent 43%);
+      animation: pulseRings 8s ease-in-out infinite;
+    }
+    .hero-bg::after {
+      content: ''; position: absolute; top: 50%; left: 50%;
+      width: 6px; height: 6px; background: var(--red); border-radius: 50%;
+      transform: translate(-50%, -50%);
+      box-shadow: 0 0 30px rgba(239,68,68,0.35);
+      animation: pulseDot 4s ease-in-out infinite;
+    }
+    .crosshair-h, .crosshair-v { position: absolute; background: rgba(239, 68, 68, 0.06); }
+    .crosshair-h { top: 50%; left: 50%; transform: translate(-50%, -50%); width: 100vw; height: 1px; }
+    .crosshair-v { top: 50%; left: 50%; transform: translate(-50%, -50%); width: 1px; height: 100vh; }
+    @keyframes pulseRings { 0%, 100% { opacity: 1; transform: translate(-50%, -50%) scale(1); } 50% { opacity: 0.6; transform: translate(-50%, -50%) scale(1.03); } }
+    @keyframes pulseDot { 0%, 100% { opacity: 0.8; transform: translate(-50%, -50%) scale(1); } 50% { opacity: 0.4; transform: translate(-50%, -50%) scale(1.5); } }
+
+    .noise { position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.03;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+      background-repeat: repeat; background-size: 256px 256px;
+    }
+    .vignette { position: fixed; inset: 0; z-index: 1; pointer-events: none;
+      background: radial-gradient(ellipse at center, transparent 40%, rgba(0,0,0,0.5) 100%);
+    }
+
+    .content { position: relative; z-index: 2; }
+
+    .top-nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 clamp(1rem, 4vw, 3rem); height: 56px;
+      background: rgba(10, 10, 10, 0.7);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    }
+    .top-nav .nav-brand { font-family: var(--font-heading); font-weight: 700; font-size: 1.1rem; color: var(--fg); text-decoration: none; letter-spacing: 0.04em; }
+    .top-nav .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+    .top-nav .nav-links a, .top-nav .nav-links span { font-family: var(--font-body); font-size: 0.85rem; font-weight: 500; color: var(--fg-tertiary); text-decoration: none; transition: color 0.2s; }
+    .top-nav .nav-links a:hover { color: var(--fg); }
+    .top-nav .nav-links .active { color: var(--fg); }
+    .top-nav .nav-links .nav-launch { background: linear-gradient(135deg, var(--red), #dc2626); color: #fff !important; padding: 0.35rem 1rem; border-radius: 8px; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.04em; transition: all 0.3s; }
+    .top-nav .nav-links .nav-launch:hover { transform: translateY(-1px); box-shadow: 0 0 20px rgba(239,68,68,0.3); }
+
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.4rem; position: relative; z-index: 110; }
+    .nav-hamburger svg { width: 22px; height: 22px; stroke: var(--fg); stroke-width: 2; fill: none; }
+    @media (max-width: 768px) {
+      .nav-hamburger { display: block; }
+      .top-nav .nav-links { display: none; flex-direction: column; align-items: stretch; gap: 0; position: fixed; top: 56px; left: 0; right: 0; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(24px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding: 0.5rem 0; max-height: 0; overflow: hidden; transition: max-height 0.35s, padding 0.35s; }
+      .top-nav .nav-links.open { display: flex; max-height: 400px; padding: 0.75rem 0; }
+      .top-nav .nav-links a, .top-nav .nav-links span { padding: 0.75rem clamp(1rem, 4vw, 3rem); font-size: 0.95rem; border-bottom: 1px solid rgba(255, 255, 255, 0.04); }
+      .top-nav .nav-links .nav-launch { margin: 0.5rem clamp(1rem, 4vw, 3rem) 0.25rem; text-align: center; padding: 0.65rem 1rem; border-radius: 10px; font-size: 0.9rem; }
+    }
+
+    .page-hero { padding: 7rem 1.5rem 2rem; text-align: center; max-width: 700px; margin: 0 auto; }
+    .page-hero h1 { font-family: var(--font-heading); font-size: clamp(2rem, 5vw, 2.5rem); font-weight: 700; letter-spacing: 0.02em; margin-bottom: 0.5rem; }
+    .page-hero h1 span { color: var(--red); }
+    .page-hero .hero-lead { font-size: 0.95rem; color: var(--fg-secondary); line-height: 1.7; }
+
+    .divider { width: 100%; max-width: 1100px; margin: 0 auto; height: 1px; background: linear-gradient(90deg, transparent, var(--glass-border), transparent); }
+
+    .legal-section { padding: 2rem 1.5rem 4rem; max-width: 800px; margin: 0 auto; }
+    .legal-section h2 { font-family: var(--font-heading); font-size: 1.3rem; font-weight: 700; color: var(--fg); margin: 2rem 0 0.75rem; letter-spacing: 0.01em; }
+    .legal-section h3 { font-family: var(--font-heading); font-size: 1.05rem; font-weight: 700; color: var(--fg); margin: 1.5rem 0 0.5rem; }
+    .legal-section p { font-size: 0.9rem; color: var(--fg-secondary); line-height: 1.8; margin-bottom: 0.75rem; }
+    .legal-section ul { list-style: none; margin-bottom: 0.75rem; padding-left: 0; }
+    .legal-section ul li { font-size: 0.9rem; color: var(--fg-secondary); line-height: 1.8; padding-left: 1.25rem; position: relative; margin-bottom: 0.25rem; }
+    .legal-section ul li::before { content: ''; position: absolute; left: 0; top: 0.65rem; width: 5px; height: 5px; border-radius: 50%; background: var(--red); opacity: 0.5; }
+    .legal-section .effective-date { font-size: 0.8rem; color: var(--fg-tertiary); margin-bottom: 2rem; }
+
+    .footer { padding: 3rem 1.5rem 2.5rem; text-align: center; }
+    .footer-brand { font-family: var(--font-heading); font-size: 1.1rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-tertiary); margin-bottom: 0.5rem; }
+    .footer-tagline { font-size: 0.8rem; color: var(--fg-quaternary); margin-bottom: 0.75rem; font-style: italic; }
+    .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 0.75rem; }
+    .footer-links a { font-size: 0.75rem; color: var(--fg-quaternary); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--fg-secondary); }
+    .footer-copy { font-size: 0.7rem; color: var(--fg-quaternary); letter-spacing: 0.04em; }
+
+    ::selection { background: rgba(239, 68, 68, 0.3); color: #fff; }
+    .brand-ops { color: var(--red); }
+    @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+  </style>
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a href="index.html" class="nav-brand">Brass<span class="brand-ops">Ops</span></a>
+    <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <div class="nav-links">
+      <a href="why-brassops.html">Why Brass<span class="brand-ops">Ops</span></a>
+      <a href="briefing.html">Briefing</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://app.brassops.com" class="nav-launch" target="_blank" rel="noopener">Launch App</a>
+    </div>
+  </nav>
+
+  <div class="hero-bg" aria-hidden="true"><div class="crosshair-h"></div><div class="crosshair-v"></div></div>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <div class="content">
+
+    <section class="page-hero">
+      <h1>Privacy <span>Policy</span></h1>
+      <p class="hero-lead">How Brass<span class="brand-ops">Ops</span> collects, uses, and protects your information.</p>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <section class="legal-section">
+      <p class="effective-date">Effective Date: April 1, 2026</p>
+
+      <h2>1. Introduction</h2>
+      <p>Brass<span class="brand-ops">Ops</span> ("we," "our," or "us") operates the brassops.com website and the Brass<span class="brand-ops">Ops</span> range intelligence platform (collectively, the "Service"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our Service.</p>
+      <p>By accessing or using the Service, you agree to the terms of this Privacy Policy. If you do not agree, please do not use the Service.</p>
+
+      <h2>2. Information We Collect</h2>
+
+      <h3>Information You Provide</h3>
+      <ul>
+        <li><strong>Account Information:</strong> Name, email address, department/agency name, role, and contact information when you create an account or submit a contact form.</li>
+        <li><strong>Training Data:</strong> Officer qualification scores, remedial training records, coaching notes, dry-fire session logs, and other training-related data entered into the platform by authorized users.</li>
+        <li><strong>Armory Data:</strong> Weapon inventory records including serial numbers, inspection logs, repair history, and officer assignments.</li>
+        <li><strong>Media Uploads:</strong> Target photographs uploaded for AI shot analysis.</li>
+        <li><strong>Communications:</strong> Messages, feedback, and correspondence you send to us.</li>
+      </ul>
+
+      <h3>Information Collected Automatically</h3>
+      <ul>
+        <li><strong>Usage Data:</strong> Pages visited, features used, time spent on the platform, and interaction patterns.</li>
+        <li><strong>Device Information:</strong> Browser type, operating system, device type, and screen resolution.</li>
+        <li><strong>Log Data:</strong> IP address, access times, and referring URLs.</li>
+      </ul>
+
+      <h2>3. How We Use Your Information</h2>
+      <p>We use the information we collect to:</p>
+      <ul>
+        <li>Provide, operate, and maintain the Service</li>
+        <li>Process and track firearms qualifications, remedial training, and officer readiness</li>
+        <li>Deliver AI-powered shot analysis and performance analytics</li>
+        <li>Send automated alerts and notifications related to qualification expirations, remedial milestones, and officer status changes</li>
+        <li>Generate anonymized, aggregate data for the N.A.R.M.S. benchmarking system (no individually identifiable data is shared)</li>
+        <li>Respond to your inquiries and provide customer support</li>
+        <li>Improve and develop new features for the Service</li>
+        <li>Comply with legal obligations</li>
+      </ul>
+
+      <h2>4. Data Sharing and Disclosure</h2>
+      <p>We do not sell, rent, or trade your personal information or training data to third parties. We may share information only in the following circumstances:</p>
+      <ul>
+        <li><strong>Within Your Agency:</strong> Training data is accessible to authorized users within your department based on their assigned role and permissions.</li>
+        <li><strong>Service Providers:</strong> We use third-party service providers for hosting, email delivery, and analytics. These providers are contractually obligated to protect your data and use it only to perform services on our behalf.</li>
+        <li><strong>Legal Requirements:</strong> We may disclose information if required by law, subpoena, court order, or government request.</li>
+        <li><strong>Aggregated Data:</strong> We may share anonymized, aggregated data that cannot be used to identify any individual officer or agency (e.g., national benchmarking statistics through N.A.R.M.S.).</li>
+      </ul>
+      <p><strong>Your agency's data is fully isolated.</strong> No other agency or department can access your records. Period.</p>
+
+      <h2>5. Data Security</h2>
+      <p>We take the security of your data seriously and implement the following measures:</p>
+      <ul>
+        <li><strong>Encryption:</strong> All data is encrypted in transit using TLS and at rest using AES-256 encryption.</li>
+        <li><strong>Access Controls:</strong> Role-based access controls ensure users only see information appropriate to their role (officer, instructor, range master, command staff, admin).</li>
+        <li><strong>Audit Logging:</strong> Every action within the platform is logged with timestamps for accountability and compliance.</li>
+        <li><strong>Redundancy:</strong> Data is stored across multiple servers with automated backups to prevent loss.</li>
+        <li><strong>U.S.-Based Hosting:</strong> All data is stored on secure, U.S.-based cloud infrastructure. Your data never leaves the country.</li>
+      </ul>
+
+      <h2>6. Data Retention</h2>
+      <p>We retain your data for as long as your agency maintains an active subscription. Training records and qualification history are preserved for the duration of your account to maintain audit-ready compliance records.</p>
+      <p>Upon cancellation, we provide a full data export so you retain all your records. After a reasonable transition period (90 days), your data is permanently deleted from our systems unless retention is required by law.</p>
+
+      <h2>7. Your Rights</h2>
+      <p>Depending on your jurisdiction, you may have the following rights regarding your data:</p>
+      <ul>
+        <li><strong>Access:</strong> Request a copy of the data we hold about you or your agency.</li>
+        <li><strong>Correction:</strong> Request correction of inaccurate or incomplete data.</li>
+        <li><strong>Deletion:</strong> Request deletion of your data, subject to legal retention requirements.</li>
+        <li><strong>Export:</strong> Request your data in a portable, machine-readable format.</li>
+        <li><strong>Objection:</strong> Object to certain processing activities.</li>
+      </ul>
+      <p>To exercise any of these rights, contact us at the email address below.</p>
+
+      <h2>8. Cookies and Tracking</h2>
+      <p>The Brass<span class="brand-ops">Ops</span> website uses minimal cookies necessary for the Service to function. We use Vercel Analytics for anonymous, aggregated website traffic analysis. We do not use third-party advertising trackers or sell browsing data.</p>
+
+      <h2>9. Children's Privacy</h2>
+      <p>The Service is designed for use by law enforcement professionals and is not intended for individuals under the age of 18. We do not knowingly collect personal information from children.</p>
+
+      <h2>10. Changes to This Policy</h2>
+      <p>We may update this Privacy Policy from time to time. We will notify active users of material changes via email or in-app notification. The updated policy will be posted on this page with a revised effective date.</p>
+
+      <h2>11. Contact Us</h2>
+      <p>If you have questions about this Privacy Policy or our data practices, please contact us:</p>
+      <p><strong>Brass<span class="brand-ops">Ops</span></strong><br>
+      Email: brassops01@gmail.com<br>
+      Web: <a href="contact.html" style="color: var(--red); text-decoration: none;">brassops.com/contact</a></p>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <footer class="footer">
+      <p class="footer-brand">Brass<span class="brand-ops">Ops</span></p>
+      <p class="footer-tagline">Built for those who train to protect.</p>
+      <div class="footer-links">
+        <a href="privacy.html">Privacy Policy</a>
+        <a href="terms.html">Terms of Service</a>
+      </div>
+      <p class="footer-copy">&copy; 2026 Brass<span class="brand-ops">Ops</span>. All rights reserved.</p>
+    </footer>
+
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const hamburger = document.querySelector('.nav-hamburger');
+      const navLinks = document.querySelector('.nav-links');
+      if (hamburger && navLinks) {
+        hamburger.addEventListener('click', () => {
+          const isOpen = navLinks.classList.toggle('open');
+          hamburger.setAttribute('aria-expanded', isOpen);
+          hamburger.innerHTML = isOpen
+            ? '<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>'
+            : '<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
+        });
+      }
+    });
+  </script>
+
+</body>
+</html>
