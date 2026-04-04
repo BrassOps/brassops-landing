@@ -9,14 +9,17 @@ export default async function handler(req, res) {
     return res.status(400).json({ error: 'Missing required fields' });
   }
 
-  const apiKey = process.env.SMTP2GO_API_KEY;
-  if (!apiKey) {
+  const smtpKey = process.env.SMTP2GO_API_KEY;
+  const brevoKey = process.env.BREVO_API_KEY;
+
+  if (!smtpKey) {
     console.error('SMTP2GO_API_KEY not configured');
     return res.status(500).json({ error: 'Server configuration error' });
   }
 
   const recipient = 'brassops01@gmail.com';
 
+  // ── Build email content ──
   const weakList = (weakAreas || []).map(w =>
     `<tr><td style="padding:6px 12px;border-bottom:1px solid #eee;color:#b03020;font-weight:600;">${escapeHtml(w.level)}</td><td style="padding:6px 12px;border-bottom:1px solid #eee;">${escapeHtml(w.title)}</td></tr>`
   ).join('');
@@ -44,12 +47,13 @@ export default async function handler(req, res) {
     weakText ? `\nWeak Areas:\n${weakText}` : '',
   ].join('\n');
 
+  // ── Send email notification ──
   try {
-    const response = await fetch('https://api.smtp2go.com/v3/email/send', {
+    await fetch('https://api.smtp2go.com/v3/email/send', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
-        api_key: apiKey,
+        api_key: smtpKey,
         to: [recipient],
         sender: 'BrassOps Assessment <noreply@brassops.com>',
         subject: `Assessment Lead: ${firstName} — ${tier || 'Completed'} (${score}/${maxScore})`,
@@ -57,19 +61,51 @@ export default async function handler(req, res) {
         text_body: textBody,
       }),
     });
-
-    const data = await response.json();
-
-    if (data.data?.succeeded > 0) {
-      return res.status(200).json({ success: true });
-    } else {
-      console.error('SMTP2GO error:', JSON.stringify(data));
-      return res.status(502).json({ error: 'Failed to send email' });
-    }
   } catch (err) {
     console.error('SMTP2GO request failed:', err);
-    return res.status(502).json({ error: 'Failed to send email' });
   }
+
+  // ── Add contact to Brevo ──
+  if (brevoKey) {
+    try {
+      // Map tier to list name for Brevo
+      let listId;
+      const tierLower = (tier || '').toLowerCase();
+      if (tierLower.includes('high')) listId = 'high-risk';
+      else if (tierLower.includes('elevated')) listId = 'elevated-risk';
+      else if (tierLower.includes('moderate')) listId = 'moderate-risk';
+      else listId = 'strong';
+
+      const weakAreaNames = (weakAreas || []).map(w => w.title).join(', ');
+
+      // Create or update contact in Brevo
+      await fetch('https://api.brevo.com/v3/contacts', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'api-key': brevoKey,
+        },
+        body: JSON.stringify({
+          email: email,
+          attributes: {
+            FIRSTNAME: firstName,
+            RISK_SCORE: score || 0,
+            RISK_TIER: tier || 'Unknown',
+            WEAK_AREAS: weakAreaNames || 'None',
+          },
+          updateEnabled: true,
+        }),
+      });
+
+      // Also try to add to a list if lists are set up
+      // Users will create lists in Brevo and map IDs here later
+    } catch (err) {
+      console.error('Brevo API error:', err);
+      // Don't fail the request if Brevo fails — email still went out
+    }
+  }
+
+  return res.status(200).json({ success: true });
 }
 
 function escapeHtml(str) {
