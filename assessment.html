@@ -385,6 +385,41 @@ function submitGate(e) {
   capturedName = document.getElementById('gateName').value;
   capturedEmail = document.getElementById('gateEmail').value;
   document.getElementById('gate-screen').classList.remove('active');
+
+  // Calculate score and weak areas for the email
+  let total = 0;
+  const weakAreas = [];
+  userAnswers.forEach((ai, qi) => {
+    const sc = questions[qi].answers[ai].score;
+    total += sc;
+    if (sc >= 2) {
+      weakAreas.push({
+        level: sc === 3 ? 'High Risk' : 'Moderate Risk',
+        title: findingsData[questions[qi].id].title
+      });
+    }
+  });
+  const max = questions.length * 3;
+  let tierName;
+  if (total <= 5) tierName = 'Strong';
+  else if (total <= 12) tierName = 'Moderate Risk';
+  else if (total <= 20) tierName = 'Elevated Risk';
+  else tierName = 'High Risk';
+
+  // Send lead to API (fire and forget — don't block results)
+  fetch('/api/assessment', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      firstName: capturedName,
+      email: capturedEmail,
+      score: total,
+      maxScore: max,
+      tier: tierName,
+      weakAreas: weakAreas
+    })
+  }).catch(() => {});
+
   showResults();
 }
 
