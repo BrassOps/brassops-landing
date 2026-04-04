@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BrassOps — Training Liability Risk Assessment</title>
+  <meta name="description" content="A 10-question self-assessment that reveals where your firearms training documentation is creating liability exposure.">
+  <meta name="theme-color" content="#0a0a0a">
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="BrassOps — Training Liability Risk Assessment">
+  <meta property="og:description" content="Ten questions that reveal where your firearms training documentation is creating liability exposure.">
+  <meta property="og:url" content="https://brassops.com/assessment">
+  <meta property="og:site_name" content="BrassOps">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+    :root {
+      --bg: #0a0a0a; --fg: #ededed; --fg-sec: #a1a1aa; --fg-ter: #71717a; --fg-quat: #52525b;
+      --red: #ef4444; --red-dim: rgba(239,68,68,0.15); --red-glow: rgba(239,68,68,0.35);
+      --green: #22c55e; --green-dim: rgba(34,197,94,0.12);
+      --amber: #f59e0b; --amber-dim: rgba(245,158,11,0.12);
+      --orange: #f97316; --orange-dim: rgba(249,115,22,0.12);
+      --glass-bg: rgba(255,255,255,0.04); --glass-border: rgba(255,255,255,0.07); --glass-hover: rgba(255,255,255,0.07);
+      --font-h: 'Rajdhani','Barlow Condensed',sans-serif; --font-b: 'Barlow',sans-serif;
+    }
+    body { background: var(--bg); color: var(--fg); font-family: var(--font-b); min-height: 100dvh; overflow-x: hidden; line-height: 1.6; }
+    ::-webkit-scrollbar { width: 6px; } ::-webkit-scrollbar-track { background: transparent; } ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.15); border-radius: 3px; }
+    .hero-bg { position: fixed; inset: 0; z-index: 0; overflow: hidden; pointer-events: none; }
+    .hero-bg::before { content: ''; position: absolute; top: 50%; left: 50%; width: 200vmax; height: 200vmax; transform: translate(-50%,-50%); background: radial-gradient(circle,transparent 18%,rgba(239,68,68,0.03) 18.5%,transparent 19%),radial-gradient(circle,transparent 30%,rgba(239,68,68,0.025) 30.5%,transparent 31%),radial-gradient(circle,transparent 42%,rgba(239,68,68,0.02) 42.5%,transparent 43%); animation: pulseRings 8s ease-in-out infinite; }
+    .hero-bg::after { content: ''; position: absolute; top: 50%; left: 50%; width: 6px; height: 6px; background: var(--red); border-radius: 50%; transform: translate(-50%,-50%); box-shadow: 0 0 30px var(--red-glow); animation: pulseDot 4s ease-in-out infinite; }
+    .crosshair-h,.crosshair-v { position: absolute; background: rgba(239,68,68,0.06); }
+    .crosshair-h { top: 50%; left: 50%; transform: translate(-50%,-50%); width: 100vw; height: 1px; }
+    .crosshair-v { top: 50%; left: 50%; transform: translate(-50%,-50%); width: 1px; height: 100vh; }
+    @keyframes pulseRings { 0%,100% { opacity: 1; transform: translate(-50%,-50%) scale(1); } 50% { opacity: 0.6; transform: translate(-50%,-50%) scale(1.03); } }
+    @keyframes pulseDot { 0%,100% { opacity: 0.8; transform: translate(-50%,-50%) scale(1); } 50% { opacity: 0.4; transform: translate(-50%,-50%) scale(1.5); } }
+    .noise { position: fixed; inset: 0; z-index: 1; pointer-events: none; opacity: 0.03; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-repeat: repeat; background-size: 256px; }
+    .vignette { position: fixed; inset: 0; z-index: 1; pointer-events: none; background: radial-gradient(ellipse at center,transparent 40%,rgba(0,0,0,0.5) 100%); }
+    .content { position: relative; z-index: 2; }
+
+    /* Nav */
+    .top-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(1rem,4vw,3rem); height: 56px; background: rgba(10,10,10,0.7); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+    .top-nav .nav-brand { font-family: var(--font-h); font-weight: 700; font-size: 1.1rem; color: var(--fg); text-decoration: none; letter-spacing: 0.04em; }
+    .top-nav .nav-links { display: flex; gap: 1.5rem; align-items: center; }
+    .top-nav .nav-links a,.top-nav .nav-links span { font-family: var(--font-b); font-size: 0.85rem; font-weight: 500; color: var(--fg-ter); text-decoration: none; transition: color 0.2s; }
+    .top-nav .nav-links a:hover { color: var(--fg); }
+    .top-nav .nav-links .nav-launch { background: linear-gradient(135deg,var(--red),#dc2626); color: #fff !important; padding: 0.35rem 1rem; border-radius: 8px; font-weight: 600; font-size: 0.8rem; letter-spacing: 0.04em; transition: all 0.3s; }
+    .top-nav .nav-links .nav-launch:hover { transform: translateY(-1px); box-shadow: 0 0 20px rgba(239,68,68,0.3); }
+    .nav-hamburger { display: none; background: none; border: none; cursor: pointer; padding: 0.4rem; z-index: 110; }
+    .nav-hamburger svg { width: 22px; height: 22px; stroke: var(--fg); stroke-width: 2; fill: none; }
+    @media (max-width: 768px) {
+      .nav-hamburger { display: block; }
+      .top-nav .nav-links { display: none; flex-direction: column; align-items: stretch; gap: 0; position: fixed; top: 56px; left: 0; right: 0; background: rgba(10,10,10,0.95); backdrop-filter: blur(24px); border-bottom: 1px solid rgba(255,255,255,0.08); padding: 0.5rem 0; max-height: 0; overflow: hidden; transition: max-height 0.35s,padding 0.35s; }
+      .top-nav .nav-links.open { display: flex; max-height: 400px; padding: 0.75rem 0; }
+      .top-nav .nav-links a,.top-nav .nav-links span { padding: 0.75rem clamp(1rem,4vw,3rem); font-size: 0.95rem; border-bottom: 1px solid rgba(255,255,255,0.04); }
+      .top-nav .nav-links .nav-launch { margin: 0.5rem clamp(1rem,4vw,3rem) 0.25rem; text-align: center; padding: 0.65rem 1rem; border-radius: 10px; font-size: 0.9rem; }
+    }
+
+    /* Assessment Container */
+    .assess-wrap { max-width: 720px; margin: 0 auto; padding: 80px 1.5rem 60px; }
+
+    /* Intro */
+    .intro { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2.5rem 2rem; }
+    .intro-badge { display: inline-block; font-family: var(--font-h); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; background: var(--red); color: #fff; padding: 0.25rem 0.75rem; border-radius: 4px; margin-bottom: 1rem; }
+    .intro h1 { font-family: var(--font-h); font-size: clamp(1.6rem,4vw,2.2rem); font-weight: 700; color: var(--fg); line-height: 1.2; margin-bottom: 0.75rem; }
+    .intro h1 span { color: var(--red); }
+    .intro .sub { font-size: 0.95rem; color: var(--fg-sec); line-height: 1.7; margin-bottom: 1.5rem; }
+    .intro .meta-row { display: flex; gap: 1.5rem; flex-wrap: wrap; padding: 1rem 1.25rem; background: rgba(255,255,255,0.03); border: 1px solid var(--glass-border); border-radius: 10px; margin-bottom: 1.5rem; }
+    .intro .meta-item strong { display: block; font-family: var(--font-h); color: var(--red); font-size: 1.4rem; font-weight: 700; }
+    .intro .meta-item span { font-family: var(--font-h); font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--fg-ter); }
+    .intro .disclaimer { font-size: 0.8rem; color: var(--fg-sec); line-height: 1.7; padding: 0.8rem 1rem; background: rgba(239,68,68,0.05); border: 1px solid rgba(239,68,68,0.12); border-left: 3px solid var(--red); border-radius: 0 8px 8px 0; margin-bottom: 1.5rem; }
+    .start-btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-h); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; background: linear-gradient(135deg,var(--red),#dc2626); padding: 0.85rem 2rem; border-radius: 12px; border: none; cursor: pointer; transition: all 0.3s cubic-bezier(0.16,1,0.3,1); }
+    .start-btn:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(239,68,68,0.3); }
+
+    /* Quiz */
+    .quiz { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2rem; display: none; }
+    .quiz.active { display: block; }
+    .progress-bar { height: 6px; background: rgba(255,255,255,0.06); border-radius: 3px; margin-bottom: 1.5rem; overflow: hidden; }
+    .progress-fill { height: 100%; background: linear-gradient(90deg,var(--red),#dc2626); border-radius: 3px; transition: width 0.3s; width: 10%; }
+    .q-counter { font-family: var(--font-h); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-ter); margin-bottom: 0.5rem; }
+    .q-title { font-family: var(--font-h); font-size: 1.35rem; font-weight: 700; color: var(--fg); line-height: 1.3; margin-bottom: 0.5rem; }
+    .q-subtitle { font-size: 0.85rem; color: var(--fg-sec); line-height: 1.6; margin-bottom: 1.25rem; }
+    .answers { display: flex; flex-direction: column; gap: 0.6rem; margin-bottom: 1.5rem; }
+    .answer { padding: 0.9rem 1.1rem; background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 12px; cursor: pointer; font-family: var(--font-b); font-size: 0.88rem; color: var(--fg-sec); line-height: 1.5; text-align: left; transition: all 0.25s cubic-bezier(0.16,1,0.3,1); }
+    .answer:hover { background: var(--glass-hover); border-color: rgba(255,255,255,0.12); color: var(--fg); }
+    .answer.selected { border-color: rgba(239,68,68,0.5); background: var(--red-dim); color: var(--fg); }
+    .answer .label { display: inline-block; width: 26px; height: 26px; border-radius: 50%; background: rgba(255,255,255,0.06); color: var(--fg-ter); font-family: var(--font-h); font-weight: 700; font-size: 0.75rem; text-align: center; line-height: 26px; margin-right: 0.7rem; transition: all 0.2s; }
+    .answer.selected .label { background: var(--red); color: #fff; }
+    .nav-row { display: flex; justify-content: space-between; align-items: center; padding-top: 1rem; border-top: 1px solid var(--glass-border); }
+    .back-btn { font-family: var(--font-h); font-size: 0.85rem; font-weight: 600; color: var(--fg-ter); background: none; border: 1px solid var(--glass-border); padding: 0.6rem 1.2rem; border-radius: 10px; cursor: pointer; transition: all 0.2s; }
+    .back-btn:hover { border-color: rgba(255,255,255,0.15); color: var(--fg); }
+    .back-btn:disabled { opacity: 0.3; cursor: not-allowed; }
+    .next-btn { font-family: var(--font-h); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase; color: #fff; background: linear-gradient(135deg,var(--red),#dc2626); padding: 0.65rem 1.5rem; border-radius: 10px; border: none; cursor: pointer; transition: all 0.3s cubic-bezier(0.16,1,0.3,1); }
+    .next-btn:hover:not(:disabled) { transform: translateY(-1px); box-shadow: 0 0 20px rgba(239,68,68,0.3); }
+    .next-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+
+    /* Email Gate */
+    .email-gate { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 2.5rem 2rem; text-align: center; display: none; }
+    .email-gate.active { display: block; }
+    .email-gate h2 { font-family: var(--font-h); font-size: 1.5rem; font-weight: 700; color: var(--fg); margin-bottom: 0.5rem; }
+    .email-gate h2 span { color: var(--red); }
+    .email-gate p { font-size: 0.9rem; color: var(--fg-sec); line-height: 1.7; margin-bottom: 1.5rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .gate-form { max-width: 400px; margin: 0 auto; }
+    .gate-field { width: 100%; margin-bottom: 0.75rem; }
+    .gate-label { display: block; font-family: var(--font-h); font-size: 0.65rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: var(--fg-ter); margin-bottom: 0.35rem; text-align: left; }
+    .gate-input { width: 100%; background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.08); border-radius: 10px; padding: 0.75rem 1rem; font-family: var(--font-b); font-size: 0.9rem; color: var(--fg); outline: none; transition: all 0.3s; }
+    .gate-input::placeholder { color: var(--fg-quat); }
+    .gate-input:focus { border-color: rgba(239,68,68,0.4); background: rgba(255,255,255,0.05); box-shadow: 0 0 0 3px rgba(239,68,68,0.08); }
+    .gate-submit { width: 100%; margin-top: 0.5rem; font-family: var(--font-h); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; background: linear-gradient(135deg,var(--red),#dc2626); padding: 0.85rem; border-radius: 12px; border: none; cursor: pointer; transition: all 0.3s cubic-bezier(0.16,1,0.3,1); }
+    .gate-submit:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(239,68,68,0.3); }
+
+    /* Results */
+    .results { background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; overflow: hidden; display: none; }
+    .results.active { display: block; }
+    .score-header { padding: 2.5rem 2rem 2rem; text-align: center; color: #fff; }
+    .score-header.tier-1 { background: linear-gradient(135deg,#166534,#15803d); }
+    .score-header.tier-2 { background: linear-gradient(135deg,#92400e,#b45309); }
+    .score-header.tier-3 { background: linear-gradient(135deg,#9a3412,#c2410c); }
+    .score-header.tier-4 { background: linear-gradient(135deg,#991b1b,#dc2626); }
+    .score-label { font-family: var(--font-h); font-size: 0.65rem; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; opacity: 0.7; margin-bottom: 0.75rem; }
+    .score-number { font-family: var(--font-h); font-size: 4rem; font-weight: 700; line-height: 1; margin-bottom: 0.5rem; }
+    .score-number .denom { font-size: 1.5rem; opacity: 0.5; }
+    .score-tier { font-family: var(--font-h); font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem; }
+    .score-desc { font-size: 0.9rem; line-height: 1.6; opacity: 0.85; max-width: 520px; margin: 0 auto; }
+    .results-body { padding: 2rem; }
+    .results-body h2 { font-family: var(--font-h); font-size: 1.3rem; font-weight: 700; color: var(--fg); margin-bottom: 0.4rem; }
+    .results-body .section-sub { font-size: 0.85rem; color: var(--fg-sec); margin-bottom: 1.25rem; }
+
+    .finding { padding: 1rem 1.1rem; margin-bottom: 0.75rem; border-radius: 12px; border-left: 3px solid; background: var(--glass-bg); }
+    .finding.high { border-left-color: var(--red); background: rgba(239,68,68,0.05); }
+    .finding.medium { border-left-color: var(--amber); background: rgba(245,158,11,0.04); }
+    .finding.low { border-left-color: var(--green); background: rgba(34,197,94,0.04); }
+    .finding .risk-level { font-family: var(--font-h); font-size: 0.6rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 0.2rem; }
+    .finding.high .risk-level { color: var(--red); }
+    .finding.medium .risk-level { color: var(--amber); }
+    .finding.low .risk-level { color: var(--green); }
+    .finding h3 { font-family: var(--font-h); font-size: 1rem; font-weight: 700; color: var(--fg); margin-bottom: 0.3rem; }
+    .finding p { font-size: 0.82rem; color: var(--fg-sec); line-height: 1.6; margin-bottom: 0.6rem; }
+
+    .solve-box { display: flex; align-items: flex-start; gap: 0.5rem; background: var(--green-dim); border: 1px solid rgba(34,197,94,0.15); border-radius: 8px; padding: 0.6rem 0.8rem; margin-top: 0.4rem; }
+    .solve-box svg { flex-shrink: 0; width: 16px; height: 16px; stroke: var(--green); stroke-width: 2.5; fill: none; margin-top: 2px; }
+    .solve-box .solve-text { font-size: 0.78rem; color: var(--fg-sec); line-height: 1.5; }
+    .solve-box strong { color: var(--fg); }
+
+    .action-block { margin-top: 1.5rem; padding: 1.5rem; background: linear-gradient(135deg,rgba(239,68,68,0.08),rgba(239,68,68,0.03)); border: 1px solid rgba(239,68,68,0.12); border-radius: 12px; text-align: center; }
+    .action-block h3 { font-family: var(--font-h); font-size: 1.2rem; font-weight: 700; color: var(--fg); margin-bottom: 0.4rem; }
+    .action-block p { font-size: 0.85rem; color: var(--fg-sec); line-height: 1.6; margin-bottom: 1rem; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .action-btn { display: inline-flex; align-items: center; gap: 0.5rem; font-family: var(--font-h); font-size: 0.9rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #fff; background: linear-gradient(135deg,var(--red),#dc2626); padding: 0.75rem 2rem; border-radius: 12px; text-decoration: none; transition: all 0.3s cubic-bezier(0.16,1,0.3,1); }
+    .action-btn:hover { transform: translateY(-2px); box-shadow: 0 0 30px rgba(239,68,68,0.3); }
+    .restart-link { display: block; text-align: center; margin-top: 1rem; font-family: var(--font-h); font-size: 0.8rem; color: var(--fg-ter); text-decoration: none; cursor: pointer; background: none; border: none; }
+    .restart-link:hover { color: var(--fg); }
+
+    /* Footer */
+    .footer { padding: 3rem 1.5rem 2.5rem; text-align: center; }
+    .footer-brand { font-family: var(--font-h); font-size: 1.1rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: var(--fg-ter); margin-bottom: 0.5rem; }
+    .footer-tagline { font-size: 0.8rem; color: var(--fg-quat); margin-bottom: 0.75rem; font-style: italic; }
+    .footer-links { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 0.75rem; }
+    .footer-links a { font-size: 0.75rem; color: var(--fg-quat); text-decoration: none; transition: color 0.2s; }
+    .footer-links a:hover { color: var(--fg-sec); }
+    .footer-copy { font-size: 0.7rem; color: var(--fg-quat); letter-spacing: 0.04em; }
+
+    ::selection { background: rgba(239,68,68,0.3); color: #fff; }
+    .brand-ops { color: var(--red); }
+    @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+    @media (max-width: 600px) { .assess-wrap { padding: 72px 1rem 40px; } .intro,.quiz,.email-gate { padding: 1.5rem 1.25rem; } .q-title { font-size: 1.15rem; } .score-number { font-size: 3rem; } .results-body { padding: 1.5rem 1.25rem; } }
+  </style>
+</head>
+<body>
+
+  <nav class="top-nav">
+    <a href="index.html" class="nav-brand">Brass<span class="brand-ops">Ops</span></a>
+    <button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <div class="nav-links">
+      <a href="why-brassops.html">Why Brass<span class="brand-ops">Ops</span></a>
+      <a href="briefing.html">Briefing</a>
+      <a href="faq.html">FAQ</a>
+      <a href="contact.html">Contact</a>
+      <a href="https://app.brassops.com" class="nav-launch" target="_blank" rel="noopener">Launch App</a>
+    </div>
+  </nav>
+
+  <div class="hero-bg" aria-hidden="true"><div class="crosshair-h"></div><div class="crosshair-v"></div></div>
+  <div class="noise" aria-hidden="true"></div>
+  <div class="vignette" aria-hidden="true"></div>
+
+  <div class="content">
+    <div class="assess-wrap">
+
+      <!-- INTRO -->
+      <div id="intro-screen" class="intro">
+        <div class="intro-badge">Self-Assessment</div>
+        <h1>Training Liability <span>Risk Assessment</span></h1>
+        <p class="sub">Ten questions that reveal where your firearms training documentation is creating liability exposure — and what to do about it. Based on the gaps plaintiff's attorneys routinely exploit in failure-to-train litigation.</p>
+        <div class="meta-row">
+          <div class="meta-item"><strong>10</strong><span>Questions</span></div>
+          <div class="meta-item"><strong>~4 min</strong><span>To Complete</span></div>
+          <div class="meta-item"><strong>Instant</strong><span>Results</span></div>
+        </div>
+        <p class="disclaimer"><strong>How this works:</strong> Answer questions about your agency's current firearms training documentation and processes. You'll receive a risk tier score, specific findings, and how Brass<span class="brand-ops">Ops</span> addresses each gap. Built on case law from Canton, Popow, Zuchel, and Voutour. This is a self-assessment tool, not legal advice.</p>
+        <button class="start-btn" onclick="startQuiz()">Start Assessment <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+      </div>
+
+      <!-- QUIZ -->
+      <div id="quiz-screen" class="quiz">
+        <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+        <div id="q-counter" class="q-counter">Question 1 of 10</div>
+        <h2 id="q-title" class="q-title"></h2>
+        <p id="q-subtitle" class="q-subtitle"></p>
+        <div id="answers" class="answers"></div>
+        <div class="nav-row">
+          <button id="back-btn" class="back-btn" onclick="goBack()">Back</button>
+          <button id="next-btn" class="next-btn" onclick="goNext()" disabled>Next</button>
+        </div>
+      </div>
+
+      <!-- EMAIL GATE -->
+      <div id="gate-screen" class="email-gate">
+        <h2>See Your <span>Results</span></h2>
+        <p>Enter your details below to view your personalized risk assessment findings and recommendations.</p>
+        <form class="gate-form" onsubmit="submitGate(event)">
+          <div class="gate-field">
+            <label class="gate-label" for="gateName">First Name</label>
+            <input class="gate-input" type="text" id="gateName" placeholder="John" required>
+          </div>
+          <div class="gate-field">
+            <label class="gate-label" for="gateEmail">Email</label>
+            <input class="gate-input" type="email" id="gateEmail" placeholder="john@agency.gov" required>
+          </div>
+          <button class="gate-submit" type="submit">View My Results <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align:middle;margin-left:4px"><path d="M3 8h10M9 4l4 4-4 4"/></svg></button>
+        </form>
+      </div>
+
+      <!-- RESULTS -->
+      <div id="results-screen" class="results"></div>
+
+    </div>
+
+    <div style="max-width:1100px;margin:0 auto"><div style="height:1px;background:linear-gradient(90deg,transparent,rgba(255,255,255,0.07),transparent)"></div></div>
+
+    <footer class="footer">
+      <p class="footer-brand">Brass<span class="brand-ops">Ops</span></p>
+      <p class="footer-tagline">Built for those who train to protect.</p>
+      <div class="footer-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms of Service</a></div>
+      <p class="footer-copy">&copy; 2026 Brass<span class="brand-ops">Ops</span>. All rights reserved.</p>
+    </footer>
+  </div>
+
+<script>
+const questions = [
+  { id:'readiness', title:"Can you answer 'who is currently qualified?' in under 30 seconds?", subtitle:"Across every officer and every authorized weapon — without pulling files, opening spreadsheets, or calling the range master.", category:"Readiness Visibility", answers:[
+    {text:"Yes — I can see real-time qualification status on a dashboard across all officers and weapons.",score:0},
+    {text:"I can answer for most officers within a few minutes by checking our tracking system.",score:1},
+    {text:"It takes 15-30 minutes of cross-referencing spreadsheets or files to produce a complete answer.",score:2},
+    {text:"Honestly, it would take hours or require calling the training coordinator directly.",score:3}
+  ]},
+  { id:'weapons', title:"Do you track qualification for every weapon each officer is authorized to carry?", subtitle:"Primary duty handgun, backup weapon, patrol rifle, shotgun, and any specialty weapons.", category:"Weapon Coverage", answers:[
+    {text:"Yes — every officer-weapon pair has a current, documented qualification.",score:0},
+    {text:"We track primary handgun qualifications well but backup and long gun tracking has gaps.",score:2},
+    {text:"We track handgun qualifications. Long gun qualifications happen but aren't always documented separately.",score:3},
+    {text:"We only formally track the primary duty handgun qualification.",score:3}
+  ]},
+  { id:'remedial', title:"When an officer fails a qualification, what happens next?", subtitle:"The documentation chain from failure through remedial training to reattempt.", category:"Remedial Documentation", answers:[
+    {text:"We follow a documented 5-step remedial process: failure logged, deficiency diagnosed, plan created, training delivered, reattempt recorded.",score:0},
+    {text:"The instructor works with the officer and they try again. We record the final passing score but the remedial work isn't always documented.",score:2},
+    {text:"Informal — the instructor handles it same day, the officer passes on a second attempt, and we don't document the failure if they pass.",score:3},
+    {text:"We don't have a formal remedial process. Each failure is handled case-by-case.",score:3}
+  ]},
+  { id:'judgment', title:"Does your agency document judgment-based training separately from qualification scores?", subtitle:"Shoot/don't-shoot training, simulator sessions, force-on-force scenarios, or scenario-based decision-making exercises.", category:"Judgment Training", answers:[
+    {text:"Yes — judgment training is a recurring documented event, separate from qualification, with its own records.",score:0},
+    {text:"We do some judgment training during qualification days but don't document it as a separate training record.",score:2},
+    {text:"We cover judgment in classroom training and legal updates but have no practical scenario-based component.",score:3},
+    {text:"Our firearms training program is primarily marksmanship qualification. We don't have dedicated judgment training.",score:3}
+  ]},
+  { id:'scoring', title:"How does qualification data get entered into your records?", subtitle:"The workflow from the firing line to the permanent training record.", category:"Documentation Timeliness", answers:[
+    {text:"Scores are entered at the firing line on a mobile device, timestamped at the moment of the event.",score:0},
+    {text:"Scores are recorded on paper at the range, then entered into our digital system by end-of-day.",score:1},
+    {text:"Paper scoresheets come back from the range and get transcribed to a spreadsheet days or weeks later.",score:2},
+    {text:"Paper scoresheets get filed in folders. Data entry into any digital system is inconsistent or nonexistent.",score:3}
+  ]},
+  { id:'record_fields', title:"What's captured in a typical qualification record at your agency?", subtitle:"The data points present on a single qualification event in your records.", category:"Record Completeness", answers:[
+    {text:"All seven: officer ID, weapon serial, course of fire, score and threshold, ammunition lot, instructor credential, timestamp.",score:0},
+    {text:"Most of the above — we consistently capture officer, score, weapon, and instructor name but sometimes miss ammunition lot or serial numbers.",score:1},
+    {text:"The basics — officer name, date, score, and whether they passed. We don't track weapon serials or ammunition lots.",score:2},
+    {text:"Just name, date, and score. The scoresheet exists but specifics aren't captured in a searchable system.",score:3}
+  ]},
+  { id:'instructor_certs', title:"How do you track firearms instructor certifications at your agency?", subtitle:"Instructor credentials need to be current on the date they administer a qualification, or the qualification may be invalid.", category:"Instructor Credentials", answers:[
+    {text:"Instructor certs are tracked in the same system as officer qualifications, with automatic alerts before expiration.",score:0},
+    {text:"We know when our instructors' certs expire and manage renewals manually.",score:1},
+    {text:"We know our primary instructors are certified but don't proactively track expiration dates.",score:2},
+    {text:"Honestly, I'm not 100% sure whether all our firearms instructors have current POST certifications.",score:3}
+  ]},
+  { id:'expiration_alerts', title:"How do you catch qualifications before they expire?", subtitle:"The mechanism that prevents officers from carrying on duty with expired qualifications.", category:"Expiration Management", answers:[
+    {text:"Our system sends automatic alerts 60 and 30 days before any qualification expires.",score:0},
+    {text:"We run a monthly report showing upcoming expirations and schedule accordingly.",score:1},
+    {text:"The training coordinator checks records periodically and flags upcoming expirations manually.",score:2},
+    {text:"We mostly catch expirations during the annual range day — sometimes we discover lapses after the fact.",score:3}
+  ]},
+  { id:'subpoena_time', title:"If an officer's training history got subpoenaed today, how long to produce a complete file?", subtitle:"The actual retrieval time from request to a clean, organized, complete three-year training history.", category:"Record Accessibility", answers:[
+    {text:"Under 5 minutes — I can generate a complete training history report from our system on demand.",score:0},
+    {text:"Within an hour — our system has the data but requires some manual compilation.",score:1},
+    {text:"A full day or two — we'd need to pull from multiple sources and verify completeness.",score:2},
+    {text:"Several days to a week — records are scattered across paper files, spreadsheets, and individual instructor notes.",score:3}
+  ]},
+  { id:'audit_program', title:"Does your agency run an annual self-audit of firearms training documentation?", subtitle:"A structured review of training records to find and close gaps before they're discovered under subpoena.", category:"Proactive Auditing", answers:[
+    {text:"Yes — we run a structured annual audit with corrective action tracking.",score:0},
+    {text:"We do periodic spot-checks but not a comprehensive annual audit.",score:1},
+    {text:"We review records when there's a specific reason to — incidents, complaints, POST reporting.",score:2},
+    {text:"No formal audit process. We discover issues reactively.",score:3}
+  ]}
+];
+
+const solutions = {
+  readiness: { feature:"Officer Readiness Dashboard", desc:"Real-time color-coded status for every officer — green, yellow, red — visible to range masters and command staff instantly. No reports to pull, no spreadsheets to check." },
+  weapons: { feature:"Weapon-Specific Performance Monitoring", desc:"Every qualification links to the specific weapon by serial number. Per-weapon accuracy trends, round counts, and reliability tracking across your entire fleet." },
+  remedial: { feature:"Auto Remedial Enrollment", desc:"The moment a score fails, a remedial case is created automatically with a structured workflow — coaching plan, milestones, escalation paths. Every step time-stamped." },
+  judgment: { feature:"Dry-Fire Training + AI Shot Analysis", desc:"Structured practice logging between range days plus AI-powered target diagnostics that go beyond marksmanship to evaluate patterns and recommend corrective drills." },
+  scoring: { feature:"Mobile Qualification Logging", desc:"Scores entered from your phone on the firing line, timestamped at the moment of the event. No paper transcription. No delayed data entry. Defensible from the second it's recorded." },
+  record_fields: { feature:"Qualification Tracking", desc:"Every session automatically captures officer ID, weapon serial, course of fire, score, threshold, instructor, and timestamp. All seven fields, every time, without extra effort." },
+  instructor_certs: { feature:"Automated Alerts", desc:"Instructor certifications tracked in the same system with automatic expiration alerts. No lapsed certs means no invalid qualifications — protecting every record your instructors touch." },
+  expiration_alerts: { feature:"Automated Alerts", desc:"Configurable warnings at 90, 60, and 30 days before any qualification expires. The system watches continuously so qualifications can never silently lapse." },
+  subpoena_time: { feature:"Audit-Ready Records", desc:"Complete training history for any officer generated in seconds — every qualification, every remedial case, every coaching note. Time-stamped, searchable, and defensible." },
+  audit_program: { feature:"Performance Analytics + Behavioral Scoring", desc:"Continuous monitoring surfaces gaps automatically. Behavioral scoring identifies patterns across officers without waiting for an annual review. Issues found in real time, not under subpoena." }
+};
+
+const findingsData = {
+  readiness: { title:"Real-Time Readiness Visibility", high:{risk:"High Risk",level:"high",msg:"Without real-time visibility into qualification status, lapsed qualifications can exist for weeks or months before anyone notices. An officer with an expired qualification involved in a use-of-force incident creates immediate Canton liability exposure."}, medium:{risk:"Moderate Risk",level:"medium",msg:"Your visibility is functional but not proactive. Lapsed qualifications can still slip through during busy periods."}, low:{risk:"Strong Position",level:"low",msg:"Real-time readiness visibility is your strongest defense against lapsed-qualification liability."} },
+  weapons: { title:"Per-Weapon Qualification Coverage", high:{risk:"High Risk",level:"high",msg:"If an officer is involved in an incident using a weapon you can't prove they were qualified with, the training file becomes the centerpiece of the lawsuit."}, medium:{risk:"Moderate Risk",level:"medium",msg:"Partial coverage is better than none, but the weapons you don't track are the ones plaintiff's attorneys will focus on."}, low:{risk:"Strong Position",level:"low",msg:"Per-weapon qualification tracking is a cornerstone of defensible documentation."} },
+  remedial: { title:"Remedial Training Documentation", high:{risk:"High Risk",level:"high",msg:"This is the single most dangerous gap. When an officer fails and the remedial chain isn't documented, plaintiff's attorneys frame it as deliberate indifference under Canton."}, medium:{risk:"Moderate Risk",level:"medium",msg:"Your remedial process is happening but documentation is inconsistent. The legal weight depends entirely on what's in the record."}, low:{risk:"Strong Position",level:"low",msg:"A documented remedial process is one of the strongest Canton defenses an agency can have."} },
+  judgment: { title:"Judgment Training Documentation", high:{risk:"High Risk",level:"high",msg:"This is the Zuchel v. Denver gap. Marksmanship qualification alone doesn't prepare officers for shoot/don't-shoot decisions. The $330K Zuchel verdict was built on this gap."}, medium:{risk:"Moderate Risk",level:"medium",msg:"You're doing judgment training but not documenting it separately. To a court, undocumented training is the same as no training."}, low:{risk:"Strong Position",level:"low",msg:"Dedicated judgment training documentation is rare and highly defensible."} },
+  scoring: { title:"Scoring Timeliness", high:{risk:"High Risk",level:"high",msg:"Records created days or weeks after the event invite questions about whether they were reconstructed from memory. The Voutour standard requires documentation at a defensible standard."}, medium:{risk:"Moderate Risk",level:"medium",msg:"Same-day entry is better than delayed transcription, but still introduces error risk."}, low:{risk:"Strong Position",level:"low",msg:"Mobile scoring at the point of activity creates the strongest possible timestamped record."} },
+  record_fields: { title:"Record Completeness", high:{risk:"High Risk",level:"high",msg:"Incomplete qualification records leave gaps that opposing counsel turns into questions. Every missing field is a question you can't answer in court."}, medium:{risk:"Moderate Risk",level:"medium",msg:"You're capturing most critical data but missing elements. Weapon serials and ammunition lots are most commonly missing — and most consequential."}, low:{risk:"Strong Position",level:"low",msg:"Complete, consistent record fields make a qualification record defensible."} },
+  instructor_certs: { title:"Instructor Certification Tracking", high:{risk:"High Risk",level:"high",msg:"A lapsed instructor certification can potentially invalidate every qualification that instructor administered during the lapse — a systemic risk with high blast radius."}, medium:{risk:"Moderate Risk",level:"medium",msg:"Manual tracking works until it doesn't. A missed renewal creates a systemic compliance gap affecting all records."}, low:{risk:"Strong Position",level:"low",msg:"Tracking instructor credentials with the same rigor as officer qualifications is essential."} },
+  expiration_alerts: { title:"Expiration Management", high:{risk:"High Risk",level:"high",msg:"Reactive discovery of expirations means officers have been on duty with expired qualifications. The window between expiration and discovery is a liability window."}, medium:{risk:"Moderate Risk",level:"medium",msg:"Monthly manual reporting catches most expirations but leaves room for error."}, low:{risk:"Strong Position",level:"low",msg:"Automated expiration alerts eliminate a major category of liability exposure."} },
+  subpoena_time: { title:"Record Retrieval Speed", high:{risk:"High Risk",level:"high",msg:"Slow record production suggests a system that isn't well-managed. Records assembled from multiple sources days after a subpoena raise questions about the entire program."}, medium:{risk:"Moderate Risk",level:"medium",msg:"A day or two is acceptable but not ideal. The fastest production demonstrates a well-managed system."}, low:{risk:"Strong Position",level:"low",msg:"Under-5-minute retrieval is a litigation asset that demonstrates program maturity."} },
+  audit_program: { title:"Annual Self-Audit Program", high:{risk:"High Risk",level:"high",msg:"Agencies that don't run self-audits find their gaps when those gaps become exhibits. Reactive discovery happens under pressure, at the worst possible time."}, medium:{risk:"Moderate Risk",level:"medium",msg:"Periodic spot-checks are better than nothing, but a structured annual audit covers the specific vulnerabilities that appear in training liability cases."}, low:{risk:"Strong Position",level:"low",msg:"Annual self-audits create a cycle of improvement that makes deliberate indifference nearly impossible to prove."} }
+};
+
+let currentQ = 0;
+let userAnswers = new Array(questions.length).fill(null);
+let capturedName = '';
+let capturedEmail = '';
+
+function startQuiz() {
+  document.getElementById('intro-screen').style.display = 'none';
+  document.getElementById('quiz-screen').classList.add('active');
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = questions[currentQ];
+  document.getElementById('q-counter').textContent = `Question ${currentQ+1} of ${questions.length} · ${q.category}`;
+  document.getElementById('q-title').textContent = q.title;
+  document.getElementById('q-subtitle').textContent = q.subtitle;
+  document.getElementById('progress-fill').style.width = `${((currentQ+1)/questions.length)*100}%`;
+  const ad = document.getElementById('answers');
+  ad.innerHTML = '';
+  const L = ['A','B','C','D'];
+  q.answers.forEach((a,i) => {
+    const b = document.createElement('button');
+    b.className = 'answer' + (userAnswers[currentQ]===i?' selected':'');
+    b.innerHTML = `<span class="label">${L[i]}</span>${a.text}`;
+    b.onclick = () => { userAnswers[currentQ]=i; renderQuestion(); };
+    ad.appendChild(b);
+  });
+  document.getElementById('back-btn').disabled = currentQ===0;
+  const nb = document.getElementById('next-btn');
+  nb.disabled = userAnswers[currentQ]===null;
+  nb.textContent = currentQ===questions.length-1 ? 'See Results' : 'Next';
+}
+
+function goBack() { if(currentQ>0){currentQ--;renderQuestion();} }
+
+function goNext() {
+  if(currentQ<questions.length-1){currentQ++;renderQuestion();}
+  else { document.getElementById('quiz-screen').classList.remove('active'); document.getElementById('gate-screen').classList.add('active'); window.scrollTo({top:0,behavior:'smooth'}); }
+}
+
+function submitGate(e) {
+  e.preventDefault();
+  capturedName = document.getElementById('gateName').value;
+  capturedEmail = document.getElementById('gateEmail').value;
+  document.getElementById('gate-screen').classList.remove('active');
+  showResults();
+}
+
+function showResults() {
+  let total = 0;
+  userAnswers.forEach((ai,qi) => { total += questions[qi].answers[ai].score; });
+  const max = questions.length * 3;
+  let tierName, tierDesc, tierClass;
+  if(total<=5){ tierName="Strong"; tierClass="tier-1"; tierDesc="Your agency has strong documentation practices. Plaintiff's attorneys would struggle to construct a Canton deliberate indifference argument against your current program."; }
+  else if(total<=12){ tierName="Moderate Risk"; tierClass="tier-2"; tierDesc="Your agency has foundational practices but identifiable gaps that plaintiff's attorneys target. Addressing the high-risk findings below would significantly strengthen your liability posture."; }
+  else if(total<=20){ tierName="Elevated Risk"; tierClass="tier-3"; tierDesc="Your agency has multiple documentation gaps commonly exploited in failure-to-train litigation. These need to be addressed systematically."; }
+  else { tierName="High Risk"; tierClass="tier-4"; tierDesc="Your agency has significant documentation gaps across multiple areas. These are the exact patterns that appear in adverse failure-to-train verdicts. Immediate action is warranted."; }
+
+  const fl = [];
+  userAnswers.forEach((ai,qi) => {
+    const q = questions[qi];
+    const sc = q.answers[ai].score;
+    const fd = findingsData[q.id];
+    let f;
+    if(sc===0) f = fd.low;
+    else if(sc===1) f = {...fd.low, risk:"Strong Position"};
+    else if(sc===2) f = fd.medium;
+    else f = fd.high;
+    fl.push({score:sc, title:fd.title, ...f, qid:q.id});
+  });
+  fl.sort((a,b) => b.score-a.score);
+
+  const rd = document.getElementById('results-screen');
+  rd.classList.add('active');
+
+  let fhtml = fl.map(f => {
+    const sol = solutions[f.qid];
+    const solBox = f.score >= 2 ? `<div class="solve-box"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><div class="solve-text"><strong>Brass<span style="color:#ef4444">Ops</span>: ${sol.feature}</strong> — ${sol.desc}</div></div>` : '';
+    return `<div class="finding ${f.level}"><div class="risk-level">${f.risk}</div><h3>${f.title}</h3><p>${f.msg}</p>${solBox}</div>`;
+  }).join('');
+
+  rd.innerHTML = `
+    <div class="score-header ${tierClass}">
+      <div class="score-label">Your Liability Risk Score</div>
+      <div class="score-number">${total}<span class="denom">/${max}</span></div>
+      <div class="score-tier">${tierName}</div>
+      <p class="score-desc">${tierDesc}</p>
+    </div>
+    <div class="results-body">
+      <h2>Your Findings</h2>
+      <p class="section-sub">Ten findings ordered by risk level. High-risk items show exactly how Brass<span style="color:#ef4444">Ops</span> solves them.</p>
+      ${fhtml}
+      <div class="action-block">
+        <h3>Brass<span style="color:#ef4444">Ops</span> Addresses Every One of These Gaps</h3>
+        <p>A 15-minute demo shows exactly how it applies to your agency. No slides — just the platform with your workflow.</p>
+        <a href="contact.html" class="action-btn">Schedule a Demo <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </div>
+      <button class="restart-link" onclick="restart()">Start Over</button>
+    </div>`;
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+function restart() {
+  currentQ=0; userAnswers=new Array(questions.length).fill(null);
+  document.getElementById('results-screen').classList.remove('active');
+  document.getElementById('results-screen').innerHTML='';
+  document.getElementById('intro-screen').style.display='block';
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// Hamburger
+document.addEventListener('DOMContentLoaded', () => {
+  const h=document.querySelector('.nav-hamburger'), n=document.querySelector('.nav-links');
+  if(h&&n) h.addEventListener('click',()=>{
+    const o=n.classList.toggle('open'); h.setAttribute('aria-expanded',o);
+    h.innerHTML=o?'<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>':'<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';
+  });
+});
+</script>
+
+</body>
+</html>
