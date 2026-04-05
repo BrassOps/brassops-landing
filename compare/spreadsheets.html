@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>BrassOps vs. Spreadsheets — Range Intelligence Platform Comparison</title>
+<meta name="description" content="See why law enforcement agencies are replacing spreadsheets with BrassOps for firearms qualification tracking, remedial training, and officer readiness.">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800;900&family=Rajdhani:wght@400;500;600;700&family=Barlow+Condensed:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+:root{--bg:#0a0a0a;--fg:#ededed;--fg2:#a1a1aa;--fg3:#71717a;--fg4:#52525b;--red:#ef4444;--rd:rgba(239,68,68,0.15);--rg:rgba(239,68,68,0.35);--grn:#22c55e;--gd:rgba(34,197,94,0.12);--gb:rgba(255,255,255,0.04);--gc:rgba(255,255,255,0.07);--gh:rgba(255,255,255,0.07);--fh:'Rajdhani','Barlow Condensed',sans-serif;--fb:'Barlow',sans-serif}
+body{background:var(--bg);color:var(--fg);font-family:var(--fb);min-height:100dvh;overflow-x:hidden;line-height:1.6}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.15);border-radius:3px}
+.hero-bg{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none}
+.hero-bg::before{content:'';position:absolute;top:50%;left:50%;width:200vmax;height:200vmax;transform:translate(-50%,-50%);background:radial-gradient(circle,transparent 18%,rgba(239,68,68,0.03) 18.5%,transparent 19%),radial-gradient(circle,transparent 30%,rgba(239,68,68,0.025) 30.5%,transparent 31%),radial-gradient(circle,transparent 42%,rgba(239,68,68,0.02) 42.5%,transparent 43%);animation:pr 8s ease-in-out infinite}
+.hero-bg::after{content:'';position:absolute;top:50%;left:50%;width:6px;height:6px;background:var(--red);border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 30px var(--rg);animation:pd 4s ease-in-out infinite}
+.crosshair-h,.crosshair-v{position:absolute;background:rgba(239,68,68,0.06)}.crosshair-h{top:50%;left:50%;transform:translate(-50%,-50%);width:100vw;height:1px}.crosshair-v{top:50%;left:50%;transform:translate(-50%,-50%);width:1px;height:100vh}
+@keyframes pr{0%,100%{opacity:1;transform:translate(-50%,-50%) scale(1)}50%{opacity:.6;transform:translate(-50%,-50%) scale(1.03)}}
+@keyframes pd{0%,100%{opacity:.8;transform:translate(-50%,-50%) scale(1)}50%{opacity:.4;transform:translate(-50%,-50%) scale(1.5)}}
+.noise{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:256px}
+.vignette{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at center,transparent 40%,rgba(0,0,0,0.5) 100%)}
+.content{position:relative;z-index:2}
+.top-nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1rem,4vw,3rem);height:56px;background:rgba(10,10,10,0.7);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.06)}
+.top-nav .nav-brand{font-family:var(--fh);font-weight:700;font-size:1.1rem;color:var(--fg);text-decoration:none;letter-spacing:.04em}
+.top-nav .nav-links{display:flex;gap:1.5rem;align-items:center}
+.top-nav .nav-links a,.top-nav .nav-links span{font-family:var(--fb);font-size:.85rem;font-weight:500;color:var(--fg3);text-decoration:none;transition:color .2s}
+.top-nav .nav-links a:hover{color:var(--fg)}
+.top-nav .nav-links .nav-launch{background:linear-gradient(135deg,var(--red),#dc2626);color:#fff!important;padding:.35rem 1rem;border-radius:8px;font-weight:600;font-size:.8rem;letter-spacing:.04em;transition:all .3s}
+.top-nav .nav-links .nav-launch:hover{transform:translateY(-1px);box-shadow:0 0 20px rgba(239,68,68,0.3)}
+.nav-hamburger{display:none;background:none;border:none;cursor:pointer;padding:.4rem;z-index:110}
+.nav-hamburger svg{width:22px;height:22px;stroke:var(--fg);stroke-width:2;fill:none}
+@media(max-width:768px){.nav-hamburger{display:block}.top-nav .nav-links{display:none;flex-direction:column;align-items:stretch;gap:0;position:fixed;top:56px;left:0;right:0;background:rgba(10,10,10,0.95);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.08);padding:.5rem 0;max-height:0;overflow:hidden;transition:max-height .35s,padding .35s}.top-nav .nav-links.open{display:flex;max-height:400px;padding:.75rem 0}.top-nav .nav-links a{padding:.75rem clamp(1rem,4vw,3rem);font-size:.95rem;border-bottom:1px solid rgba(255,255,255,0.04)}.top-nav .nav-links .nav-launch{margin:.5rem clamp(1rem,4vw,3rem) .25rem;text-align:center;padding:.65rem 1rem;border-radius:10px;font-size:.9rem}}
+.section{padding:5rem 1.5rem;max-width:1100px;margin:0 auto}
+.section-label{font-family:var(--fh);font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--red);text-align:center;margin-bottom:.75rem}
+.section-title{font-family:var(--fh);font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;text-align:center;color:var(--fg);margin-bottom:1rem;letter-spacing:.02em}
+.section-sub{font-size:.95rem;color:var(--fg2);text-align:center;max-width:600px;margin:0 auto 3rem;line-height:1.7}
+.divider{width:100%;max-width:1100px;margin:0 auto;height:1px;background:linear-gradient(90deg,transparent,var(--gc),transparent)}
+.page-hero{padding:8rem 1.5rem 3rem;text-align:center;max-width:800px;margin:0 auto}
+.page-hero h1{font-family:var(--fh);font-size:clamp(2rem,5vw,3rem);font-weight:700;letter-spacing:.02em;margin-bottom:1.25rem;opacity:0;transform:translateY(20px);animation:fiu .8s cubic-bezier(.16,1,.3,1) .2s forwards}
+.page-hero h1 span{color:var(--red)}
+.page-hero .hero-lead{font-size:clamp(1rem,2.5vw,1.15rem);color:var(--fg2);line-height:1.75;max-width:640px;margin:0 auto;opacity:0;transform:translateY(20px);animation:fiu .8s cubic-bezier(.16,1,.3,1) .5s forwards}
+.hero-ctas{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;margin-top:2rem;opacity:0;transform:translateY(20px);animation:fiu .8s cubic-bezier(.16,1,.3,1) .7s forwards}
+.btn-primary{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 2rem;background:linear-gradient(135deg,var(--red),#dc2626);color:#fff;font-family:var(--fh);font-size:.9rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-radius:12px;transition:all .3s cubic-bezier(.16,1,.3,1)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(239,68,68,0.3)}
+.btn-ghost{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 2rem;background:transparent;color:var(--fg);font-family:var(--fh);font-size:.9rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(255,255,255,0.15);border-radius:12px;transition:all .3s}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.04);transform:translateY(-2px)}
+.verdict-card{max-width:700px;margin:0 auto;background:var(--gb);border:1px solid var(--gc);border-radius:16px;padding:2rem;text-align:center;font-size:1.05rem;color:var(--fg2);line-height:1.75}
+.verdict-card strong{color:var(--fg)}
+.compare-table{width:100%;border-collapse:collapse;margin-top:1rem}
+.compare-table th,.compare-table td{padding:.85rem 1rem;text-align:left;font-size:.88rem;border-bottom:1px solid rgba(255,255,255,0.06)}
+.compare-table th{font-family:var(--fh);font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--fg3)}
+.compare-table th:first-child{color:var(--fg2)}
+.compare-table td:first-child{font-family:var(--fh);font-weight:600;color:var(--fg);font-size:.9rem}
+.compare-table .x{color:var(--red)}
+.compare-table .check{color:var(--grn)}
+.cost-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+@media(max-width:700px){.cost-grid{grid-template-columns:1fr}}
+.cost-card{background:var(--gb);border:1px solid var(--gc);border-radius:16px;padding:2rem 1.5rem;border-left:3px solid var(--red);opacity:0;transform:translateY(30px)}
+.cost-card.visible{opacity:1;transform:translateY(0);transition:all .5s cubic-bezier(.16,1,.3,1)}
+.cost-card h3{font-family:var(--fh);font-size:1.1rem;font-weight:700;color:var(--fg);margin-bottom:.5rem}
+.cost-card p{font-size:.875rem;color:var(--fg2);line-height:1.65;margin-bottom:.75rem}
+.cost-stat{display:inline-block;font-family:var(--fh);font-size:.65rem;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--red);background:var(--rd);padding:.3rem .7rem;border-radius:6px}
+.feat-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
+@media(max-width:700px){.feat-grid{grid-template-columns:1fr}}
+.feat-card{background:var(--gb);border:1px solid var(--gc);border-radius:16px;padding:1.75rem 1.5rem;opacity:0;transform:translateY(30px)}
+.feat-card.visible{opacity:1;transform:translateY(0);transition:all .5s cubic-bezier(.16,1,.3,1)}
+.feat-card h3{font-family:var(--fh);font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:1rem}
+.feat-label{font-family:var(--fh);font-size:.6rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;margin-bottom:.3rem}
+.feat-label.bad{color:var(--red)}.feat-label.good{color:var(--grn)}
+.feat-text{font-size:.85rem;color:var(--fg2);line-height:1.6;margin-bottom:1rem}
+.feat-text:last-child{margin-bottom:0}
+.court-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
+@media(max-width:700px){.court-grid{grid-template-columns:1fr}}
+.court-card{background:var(--gb);border:1px solid var(--gc);border-radius:14px;padding:1.5rem;opacity:0;transform:translateY(20px)}
+.court-card.visible{opacity:1;transform:translateY(0);transition:all .5s cubic-bezier(.16,1,.3,1)}
+.court-num{font-family:var(--fh);font-size:1.6rem;font-weight:800;color:var(--fg4);margin-bottom:.3rem}
+.court-test{font-family:var(--fh);font-size:.95rem;font-weight:700;color:var(--fg);margin-bottom:.75rem}
+.court-vs{font-size:.82rem;line-height:1.6;margin-bottom:.5rem}
+.court-vs .lbl{font-family:var(--fh);font-size:.55rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;display:block;margin-bottom:.15rem}
+.court-vs.bad .lbl{color:var(--red)}.court-vs.good .lbl{color:var(--grn)}
+.court-vs.bad{color:var(--fg2)}.court-vs.good{color:var(--fg2)}
+.quote-card{max-width:700px;margin:0 auto;background:var(--gb);border:1px solid var(--gc);border-radius:18px;padding:2.5rem 2rem;text-align:center;position:relative}
+.quote-mark{font-family:var(--fh);font-size:3rem;font-weight:800;color:rgba(239,68,68,0.12);line-height:1;margin-bottom:-.5rem}
+.quote-text{font-size:1rem;color:var(--fg2);line-height:1.8;font-style:italic;margin-bottom:1rem}
+.quote-author{font-family:var(--fh);font-size:.85rem;font-weight:700;color:var(--fg)}
+.quote-role{font-size:.72rem;color:var(--fg3)}
+.cta-block{text-align:center;padding:4rem 1.5rem;max-width:700px;margin:0 auto}
+.cta-block h2{font-family:var(--fh);font-size:clamp(1.4rem,3.5vw,2rem);font-weight:700;color:var(--fg);margin-bottom:1rem}
+.cta-block p{font-size:.95rem;color:var(--fg2);line-height:1.7;margin-bottom:2rem}
+.cta-block .cta-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+.footer{padding:3rem 1.5rem 2.5rem;text-align:center}
+.footer-brand{font-family:var(--fh);font-size:1.1rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fg3);margin-bottom:.5rem}
+.footer-tagline{font-size:.8rem;color:var(--fg4);margin-bottom:.75rem;font-style:italic}
+.footer-links{display:flex;justify-content:center;gap:1.5rem;margin-bottom:.75rem}
+.footer-links a{font-size:.75rem;color:var(--fg4);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--fg2)}
+.footer-copy{font-size:.7rem;color:var(--fg4);letter-spacing:.04em}
+::selection{background:rgba(239,68,68,0.3);color:#fff}
+.brand-ops{color:var(--red)}
+@keyframes fiu{to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.page-hero h1,.page-hero .hero-lead,.hero-ctas,.cost-card,.feat-card,.court-card{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<nav class="top-nav">
+<a href="../index.html" class="nav-brand">Brass<span class="brand-ops">Ops</span></a>
+<button class="nav-hamburger" aria-label="Toggle menu" aria-expanded="false"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+<div class="nav-links">
+<a href="../why-brassops.html">Why Brass<span class="brand-ops">Ops</span></a>
+<a href="../briefing.html">Briefing</a>
+<a href="../faq.html">FAQ</a>
+<a href="../contact.html">Contact</a>
+<a href="https://app.brassops.com" class="nav-launch" target="_blank" rel="noopener">Launch App</a>
+</div>
+</nav>
+<div class="hero-bg" aria-hidden="true"><div class="crosshair-h"></div><div class="crosshair-v"></div></div>
+<div class="noise" aria-hidden="true"></div>
+<div class="vignette" aria-hidden="true"></div>
+<div class="content">
+
+<section class="page-hero">
+<p class="section-label">Comparison</p>
+<h1>Brass<span class="brand-ops">Ops</span> vs. <span>Spreadsheets</span></h1>
+<p class="hero-lead">Spreadsheets feel free. They're not. Here's what they're actually costing your department — in time, liability, and risk.</p>
+<div class="hero-ctas">
+<a href="../contact.html" class="btn-primary">Schedule a Demo</a>
+<a href="../assessment.html" class="btn-ghost">Take the Risk Assessment</a>
+</div>
+</section>
+
+<div class="divider" aria-hidden="true"></div>
+
+<section class="section" style="padding-bottom:2rem">
+<div class="verdict-card">
+<strong>Spreadsheets track data. Brass<span class="brand-ops">Ops</span> protects departments.</strong><br><br>If your range program can survive a subpoena, a personnel change, and an audit — all on the same day — keep your spreadsheet. If it can't, keep reading.
+</div>
+</section>
+
+<div class="divider" aria-hidden="true"></div>
+
+<section class="section">
+<p class="section-label">Head to Head</p>
+<h2 class="section-title">Feature Comparison</h2>
+<div style="background:var(--gb);border:1px solid var(--gc);border-radius:16px;padding:1.5rem;overflow-x:auto">
+<table class="compare-table">
+<thead><tr><th>Capability</th><th>Spreadsheets</th><th>Brass<span class="brand-ops">Ops</span></th></tr></thead>
+<tbody>
+<tr><td>Real-time officer readiness</td><td class="x">&#10007; Manual lookup, never current</td><td class="check">&#10003; Live dashboard, always current</td></tr>
+<tr><td>Auto remedial enrollment</td><td class="x">&#10007; Doesn't exist</td><td class="check">&#10003; Instant on failure</td></tr>
+<tr><td>Expiration alerts</td><td class="x">&#10007; Manually check dates</td><td class="check">&#10003; 90/60/30-day auto alerts</td></tr>
+<tr><td>AI shot analysis</td><td class="x">&#10007; Not possible</td><td class="check">&#10003; Upload photo, instant diagnostic</td></tr>
+<tr><td>Weapon-specific tracking</td><td class="x">&#10007; Manual cross-referencing</td><td class="check">&#10003; Linked by serial automatically</td></tr>
+<tr><td>Officer/instructor pairing</td><td class="x">&#10007; Informal, undocumented</td><td class="check">&#10003; Structured with full history</td></tr>
+<tr><td>Audit-ready records</td><td class="x">&#10007; Hours to compile</td><td class="check">&#10003; Produced in seconds</td></tr>
+<tr><td>Subpoena response time</td><td class="x">&#10007; Days to weeks</td><td class="check">&#10003; Under 5 minutes</td></tr>
+<tr><td>Survives personnel change</td><td class="x">&#10007; Lives in one person's head</td><td class="check">&#10003; System holds everything</td></tr>
+<tr><td>Scales with growth</td><td class="x">&#10007; Breaks at scale</td><td class="check">&#10003; 10 to 100,000 officers</td></tr>
+</tbody>
+</table>
+</div>
+</section>
+
+<div class="divider" aria-hidden="true"></div>
+<section class="section">
+<p class="section-label">The Hidden Cost</p>
+<h2 class="section-title">What Spreadsheets Are Actually Costing You</h2>
+<p class="section-sub">They feel free. They're not.</p>
+<div class="cost-grid">
+<div class="cost-card"><h3>Time Cost</h3><p>Range masters spend 10-20+ hours per month on data entry, cross-referencing, and report compilation. That's an entire work week every month taken from actual training.</p><span class="cost-stat">10-20+ hrs/month wasted</span></div>
+<div class="cost-card"><h3>Liability Cost</h3><p>Spreadsheets can't auto-enroll officers in remedial, alert before quals expire, or create a defensible audit trail. One documentation gap is all it takes for a six-figure lawsuit.</p><span class="cost-stat">Avg. lawsuit: $500K-$2M+</span></div>
+<div class="cost-card"><h3>Continuity Cost</h3><p>When the person who built the spreadsheet leaves, retires, or is out for a month — the institutional knowledge walks out the door. The program collapses.</p><span class="cost-stat">Single point of failure</span></div>
+</div>
+</section>
+
+<div class="divider" aria-hidden="true"></div>
+
+<section class="section">
+<p class="section-label">Feature Comparison</p>
+<h2 class="section-title">What Changes When You Switch</h2>
+<p class="section-sub">Side by side — what your range master deals with today vs. what they'd experience with Brass<span class="brand-ops">Ops</span>.</p>
+<div class="feat-grid">
+<div class="feat-card"><h3>Qualification Tracking</h3><div class="feat-label bad">With Spreadsheets</div><p class="feat-text">Enter scores manually. Calculate pass/fail yourself. Track expirations by memory or calendar reminders.</p><div class="feat-label good">With Brass<span class="brand-ops">Ops</span></div><p class="feat-text">Log from your phone on the firing line. Pass/fail auto-calculated against your thresholds. Expirations tracked with automated alerts.</p></div>
+<div class="feat-card"><h3>Remedial Training</h3><div class="feat-label bad">With Spreadsheets</div><p class="feat-text">No automated process. You have to remember who failed, create a plan manually, and follow up yourself. If you forget, nobody catches it.</p><div class="feat-label good">With Brass<span class="brand-ops">Ops</span></div><p class="feat-text">Auto remedial enrollment the moment a score fails. Structured workflow with coaching plan, milestones, and escalation. Nothing missed.</p></div>
+<div class="feat-card"><h3>Officer Readiness</h3><div class="feat-label bad">With Spreadsheets</div><p class="feat-text">Open the spreadsheet. Find the right tab. Cross-reference dates. Do the math. Hope the data is current.</p><div class="feat-label good">With Brass<span class="brand-ops">Ops</span></div><p class="feat-text">Open the dashboard. Green, yellow, red for every officer. Filter by unit, shift, or rank. Always current.</p></div>
+<div class="feat-card"><h3>Weapon Tracking</h3><div class="feat-label bad">With Spreadsheets</div><p class="feat-text">Separate spreadsheet for weapons. Manually cross-reference which officer has which serial. No link between weapon and qualification data.</p><div class="feat-label good">With Brass<span class="brand-ops">Ops</span></div><p class="feat-text">Every weapon tracked by serial. Linked to officer assignments. Qualification data tied to specific weapons. Accuracy trends per firearm.</p></div>
+<div class="feat-card"><h3>Audit Response</h3><div class="feat-label bad">With Spreadsheets</div><p class="feat-text">Scramble to compile records from multiple tabs, files, and folders. Hope nothing is missing. Takes days.</p><div class="feat-label good">With Brass<span class="brand-ops">Ops</span></div><p class="feat-text">Generate a complete training history for any officer in seconds. Every record time-stamped and searchable.</p></div>
+<div class="feat-card"><h3>Command Staff Visibility</h3><div class="feat-label bad">With Spreadsheets</div><p class="feat-text">Command staff has zero visibility unless the range master manually compiles a report. They only see what you show them, when you show them.</p><div class="feat-label good">With Brass<span class="brand-ops">Ops</span></div><p class="feat-text">Real-time dashboards accessible to command staff at any time. No reports to request. No waiting.</p></div>
+</div>
+</section>
+
+<div class="divider" aria-hidden="true"></div>
+<section class="section">
+<p class="section-label">In the Courtroom</p>
+<h2 class="section-title">What a Judge Sees</h2>
+<p class="section-sub">Courts evaluate four things in negligent training cases. Here's how each method holds up.</p>
+<div class="court-grid">
+<div class="court-card"><div class="court-num">1</div><div class="court-test">Training Existed</div><div class="court-vs bad"><span class="lbl">Spreadsheet</span>You have dates and scores. But when were they entered? Can you prove they weren't backfilled?</div><div class="court-vs good"><span class="lbl">Brass<span class="brand-ops">Ops</span></span>Every entry timestamped at the moment of the event. Tamper-proof and defensible.</div></div>
+<div class="court-card"><div class="court-num">2</div><div class="court-test">Training Was Appropriate</div><div class="court-vs bad"><span class="lbl">Spreadsheet</span>A score in a cell. No link to curriculum, course of fire, or instructor notes.</div><div class="court-vs good"><span class="lbl">Brass<span class="brand-ops">Ops</span></span>Sessions tied to specific courses, with coaching notes and instructor records.</div></div>
+<div class="court-card"><div class="court-num">3</div><div class="court-test">Officer Received It</div><div class="court-vs bad"><span class="lbl">Spreadsheet</span>A name on a spreadsheet row. That's all you have.</div><div class="court-vs good"><span class="lbl">Brass<span class="brand-ops">Ops</span></span>Score-based verification proves the officer was there, fired, and was evaluated.</div></div>
+<div class="court-card"><div class="court-num">4</div><div class="court-test">Officer Showed Competency</div><div class="court-vs bad"><span class="lbl">Spreadsheet</span>A pass/fail column. No diagnostic data.</div><div class="court-vs good"><span class="lbl">Brass<span class="brand-ops">Ops</span></span>Granular scores, behavioral analytics, and AI shot analysis proving real evaluation.</div></div>
+</div>
+</section>
+
+<div class="divider" aria-hidden="true"></div>
+
+<section class="section" style="padding-bottom:2rem">
+<div class="quote-card">
+<div class="quote-mark">&ldquo;</div>
+<p class="quote-text">We went from three binders and a spreadsheet to having everything in one place. I can see who's qualified, who's lapsing, and who needs remedial — in seconds, not hours.</p>
+<div class="quote-author">Mike R.</div>
+<div class="quote-role">Range Master</div>
+</div>
+</section>
+
+<div class="divider" aria-hidden="true"></div>
+
+<section class="cta-block">
+<h2>Still Using Spreadsheets?</h2>
+<p>See what your range program looks like when every qualification, every remedial case, and every coaching note is tracked automatically — without a single spreadsheet.</p>
+<div class="cta-btns">
+<a href="../contact.html" class="btn-primary">Schedule a Demo</a>
+<a href="../assessment.html" class="btn-ghost">Take the Risk Assessment</a>
+</div>
+</section>
+
+<div class="divider" aria-hidden="true"></div>
+
+<footer class="footer">
+<p class="footer-brand">Brass<span class="brand-ops">Ops</span></p>
+<p class="footer-tagline">Built for those who train to protect.</p>
+<div class="footer-links"><a href="../privacy.html">Privacy Policy</a><a href="../terms.html">Terms of Service</a></div>
+<p class="footer-copy">&copy; 2026 Brass<span class="brand-ops">Ops</span>. All rights reserved.</p>
+</footer>
+
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+const h=document.querySelector('.nav-hamburger'),n=document.querySelector('.nav-links');
+if(h&&n)h.addEventListener('click',()=>{const o=n.classList.toggle('open');h.setAttribute('aria-expanded',o);h.innerHTML=o?'<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>':'<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';});
+const els=document.querySelectorAll('.cost-card,.feat-card,.court-card');
+if('IntersectionObserver' in window){const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.15,rootMargin:'0px 0px -40px 0px'});els.forEach(el=>obs.observe(el));}else{els.forEach(el=>el.classList.add('visible'));}
+});
+</script>
+</body>
+</html>
