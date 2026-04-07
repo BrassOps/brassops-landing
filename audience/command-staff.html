@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BrassOps for Command Staff</title>
+<meta name="description" content="BrassOps gives department leadership real-time visibility into officer readiness, automated compliance, and defensible training records.">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+:root{--bg:#0a0a0a;--fg:#ededed;--fg2:#a1a1aa;--fg3:#71717a;--fg4:#52525b;--red:#ef4444;--rdim:rgba(239,68,68,0.15);--green:#22c55e;--gdim:rgba(34,197,94,0.12);--gb:rgba(255,255,255,0.04);--gbd:rgba(255,255,255,0.07);--gbh:rgba(255,255,255,0.07);--fh:'Rajdhani',sans-serif;--fb:'Barlow',sans-serif}
+body{background:var(--bg);color:var(--fg);font-family:var(--fb);min-height:100dvh;overflow-x:hidden;line-height:1.6}
+::-webkit-scrollbar{width:6px}::-webkit-scrollbar-track{background:transparent}::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.15);border-radius:3px}
+.hero-bg{position:fixed;inset:0;z-index:0;pointer-events:none}
+.hero-bg::before{content:'';position:absolute;top:50%;left:50%;width:200vmax;height:200vmax;transform:translate(-50%,-50%);background:radial-gradient(circle,transparent 18%,rgba(239,68,68,0.03) 18.5%,transparent 19%),radial-gradient(circle,transparent 30%,rgba(239,68,68,0.025) 30.5%,transparent 31%);animation:pr 8s ease-in-out infinite}
+.hero-bg::after{content:'';position:absolute;top:50%;left:50%;width:6px;height:6px;background:var(--red);border-radius:50%;transform:translate(-50%,-50%);box-shadow:0 0 30px rgba(239,68,68,0.35);animation:pd 4s ease-in-out infinite}
+.ch,.cv{position:absolute;background:rgba(239,68,68,0.06)}.ch{top:50%;left:50%;transform:translate(-50%,-50%);width:100vw;height:1px}.cv{top:50%;left:50%;transform:translate(-50%,-50%);width:1px;height:100vh}
+@keyframes pr{0%,100%{opacity:1;transform:translate(-50%,-50%) scale(1)}50%{opacity:.6;transform:translate(-50%,-50%) scale(1.03)}}
+@keyframes pd{0%,100%{opacity:.8;transform:translate(-50%,-50%) scale(1)}50%{opacity:.4;transform:translate(-50%,-50%) scale(1.5)}}
+.noise{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.03;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");background-repeat:repeat;background-size:256px}
+.vig{position:fixed;inset:0;z-index:1;pointer-events:none;background:radial-gradient(ellipse at center,transparent 40%,rgba(0,0,0,0.5) 100%)}
+.ct{position:relative;z-index:2}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:0 clamp(1rem,4vw,3rem);height:56px;background:rgba(10,10,10,0.7);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,0.06)}
+nav .nb{font-family:var(--fh);font-weight:700;font-size:1.1rem;color:var(--fg);text-decoration:none;letter-spacing:.04em}
+nav .nl{display:flex;gap:1.5rem;align-items:center}
+nav .nl a{font-family:var(--fb);font-size:.85rem;font-weight:500;color:var(--fg3);text-decoration:none;transition:color .2s}
+nav .nl a:hover{color:var(--fg)}
+nav .nl .la{background:linear-gradient(135deg,var(--red),#dc2626);color:#fff!important;padding:.35rem 1rem;border-radius:8px;font-weight:600;font-size:.8rem}
+.hb{display:none;background:none;border:none;cursor:pointer;padding:.4rem;z-index:110}
+.hb svg{width:22px;height:22px;stroke:var(--fg);stroke-width:2;fill:none}
+@media(max-width:768px){.hb{display:block}nav .nl{display:none;flex-direction:column;align-items:stretch;gap:0;position:fixed;top:56px;left:0;right:0;background:rgba(10,10,10,0.95);backdrop-filter:blur(24px);border-bottom:1px solid rgba(255,255,255,0.08);padding:.5rem 0;max-height:0;overflow:hidden;transition:max-height .35s,padding .35s}nav .nl.open{display:flex;max-height:400px;padding:.75rem 0}nav .nl a{padding:.75rem clamp(1rem,4vw,3rem);font-size:.95rem;border-bottom:1px solid rgba(255,255,255,0.04)}nav .nl .la{margin:.5rem clamp(1rem,4vw,3rem) .25rem;text-align:center;padding:.65rem 1rem;border-radius:10px;font-size:.9rem}}
+.bo{color:var(--red)}
+.dv{width:100%;max-width:1100px;margin:0 auto;height:1px;background:linear-gradient(90deg,transparent,var(--gbd),transparent)}
+.hero{padding:7rem 1.5rem 3rem;text-align:center;max-width:750px;margin:0 auto}
+.hero .lab{font-family:var(--fh);font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--red);margin-bottom:.75rem}
+.hero h1{font-family:var(--fh);font-size:clamp(2rem,5vw,2.8rem);font-weight:700;margin-bottom:1rem;opacity:0;transform:translateY(20px);animation:fu .8s cubic-bezier(.16,1,.3,1) .2s forwards}
+.hero h1 span{color:var(--red)}
+.hero .lead{font-size:clamp(.95rem,2.5vw,1.1rem);color:var(--fg2);line-height:1.75;max-width:620px;margin:0 auto 2rem;opacity:0;transform:translateY(20px);animation:fu .8s cubic-bezier(.16,1,.3,1) .45s forwards}
+.btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap;opacity:0;transform:translateY(20px);animation:fu .8s cubic-bezier(.16,1,.3,1) .65s forwards}
+.bp{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2rem;background:linear-gradient(135deg,var(--red),#dc2626);color:#fff;font-family:var(--fh);font-size:.9rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border-radius:12px;transition:all .3s}
+.bp:hover{transform:translateY(-2px);box-shadow:0 0 30px rgba(239,68,68,0.3)}
+.bs{display:inline-flex;align-items:center;gap:.5rem;padding:.85rem 2rem;background:transparent;color:var(--fg);font-family:var(--fh);font-size:.9rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;text-decoration:none;border:1px solid rgba(255,255,255,0.15);border-radius:12px;transition:all .3s}
+.bs:hover{border-color:rgba(255,255,255,0.3);background:rgba(255,255,255,0.04);transform:translateY(-2px)}
+.sec{padding:4rem 1.5rem;max-width:1100px;margin:0 auto}
+.sec .lab{font-family:var(--fh);font-size:.65rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--red);text-align:center;margin-bottom:.75rem}
+.sec h2{font-family:var(--fh);font-size:clamp(1.5rem,4vw,2.2rem);font-weight:700;text-align:center;color:var(--fg);margin-bottom:1rem}
+.sec .sub{font-size:.95rem;color:var(--fg2);text-align:center;max-width:600px;margin:0 auto 3rem;line-height:1.7}
+.pg{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+@media(max-width:800px){.pg{grid-template-columns:1fr}}
+.pc{background:var(--gb);border:1px solid var(--gbd);border-radius:16px;padding:2rem 1.5rem;border-left:3px solid var(--red);opacity:0;transform:translateY(20px)}
+.pc.v{opacity:1;transform:translateY(0);transition:all .5s cubic-bezier(.16,1,.3,1)}
+.pc h3{font-family:var(--fh);font-size:1.1rem;font-weight:700;color:var(--fg);margin-bottom:.5rem}
+.pc p{font-size:.875rem;color:var(--fg2);line-height:1.7}
+.fg{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
+@media(max-width:700px){.fg{grid-template-columns:1fr}}
+.fc{background:var(--gb);border:1px solid var(--gbd);border-radius:16px;padding:2rem 1.75rem;opacity:0;transform:translateY(20px);transition:all .4s cubic-bezier(.16,1,.3,1)}
+.fc.v{opacity:1;transform:translateY(0)}
+.fc:hover{background:var(--gbh);border-color:rgba(255,255,255,0.12);transform:translateY(-2px)}
+.fc h3{font-family:var(--fh);font-size:1.1rem;font-weight:700;color:var(--fg);margin-bottom:.5rem}
+.fc p{font-size:.875rem;color:var(--fg2);line-height:1.7}
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+@media(max-width:700px){.cg{grid-template-columns:1fr}}
+.cc{background:var(--gb);border:1px solid var(--gbd);border-radius:16px;padding:2rem 1.5rem;opacity:0;transform:translateY(20px)}
+.cc.v{opacity:1;transform:translateY(0);transition:all .6s cubic-bezier(.16,1,.3,1)}
+.cc.bf{border-top:3px solid var(--red)}
+.cc.af{border-top:3px solid var(--green)}
+.cb{display:inline-block;font-family:var(--fh);font-size:.6rem;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:.2rem .6rem;border-radius:6px;margin-bottom:1rem}
+.cc.bf .cb{background:rgba(239,68,68,0.12);color:var(--red)}
+.cc.af .cb{background:var(--gdim);color:var(--green)}
+.cl{list-style:none;display:flex;flex-direction:column;gap:.6rem}
+.cl li{display:flex;align-items:flex-start;gap:.5rem;font-size:.875rem;color:var(--fg2);line-height:1.5}
+.cl li svg{flex-shrink:0;width:16px;height:16px;stroke-width:2.5;margin-top:2px;fill:none}
+.cc.bf .cl li svg{stroke:var(--red)}
+.cc.af .cl li svg{stroke:var(--green)}
+.tb{max-width:700px;margin:0 auto;padding:2.5rem 2rem;background:var(--gb);border:1px solid var(--gbd);border-radius:18px;text-align:center}
+.tb .q{font-family:var(--fh);font-size:3rem;font-weight:800;color:rgba(239,68,68,0.15);line-height:1;margin-bottom:-.5rem}
+.tb .tx{font-size:1rem;color:var(--fg2);line-height:1.8;font-style:italic;margin-bottom:1.25rem}
+.tb .au{font-family:var(--fh);font-size:.85rem;font-weight:700;color:var(--fg)}
+.tb .ro{font-size:.72rem;color:var(--fg3)}
+.cta{text-align:center;padding:4rem 1.5rem;max-width:700px;margin:0 auto}
+.cta h2{font-family:var(--fh);font-size:clamp(1.4rem,3.5vw,2rem);font-weight:700;color:var(--fg);margin-bottom:1rem}
+.cta p{font-size:.95rem;color:var(--fg2);line-height:1.7;margin-bottom:2rem}
+.ft{padding:3rem 1.5rem 2.5rem;text-align:center}
+.ft .fb{font-family:var(--fh);font-size:1.1rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--fg3);margin-bottom:.5rem}
+.ft .tl{font-size:.8rem;color:var(--fg4);margin-bottom:.75rem;font-style:italic}
+.ft .fl{display:flex;justify-content:center;gap:1.5rem;margin-bottom:.75rem}
+.ft .fl a{font-size:.75rem;color:var(--fg4);text-decoration:none;transition:color .2s}
+.ft .fl a:hover{color:var(--fg2)}
+.ft .cp{font-size:.7rem;color:var(--fg4);letter-spacing:.04em}
+::selection{background:rgba(239,68,68,0.3);color:#fff}
+@keyframes fu{to{opacity:1;transform:translateY(0)}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.hero h1,.hero .lead,.btns,.pc,.fc,.cc{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="../index.html" class="nb">Brass<span class="bo">Ops</span></a>
+  <button class="hb" aria-label="Toggle menu" aria-expanded="false"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <div class="nl">
+    <a href="../why-brassops.html">Why Brass<span class="bo">Ops</span></a>
+    <a href="../briefing.html">Briefing</a>
+    <a href="../faq.html">FAQ</a>
+    <a href="../contact.html">Contact</a>
+    <a href="https://app.brassops.com" class="la" target="_blank" rel="noopener">Launch App</a>
+  </div>
+</nav>
+<div class="hero-bg" aria-hidden="true"><div class="ch"></div><div class="cv"></div></div>
+<div class="noise" aria-hidden="true"></div>
+<div class="vig" aria-hidden="true"></div>
+<div class="ct">
+
+<section class="hero">
+  <p class="lab">For Command Staff</p>
+  <h1>Visibility. Compliance. <span>Protection.</span></h1>
+  <p class="lead">Brass<span class="bo">Ops</span> gives department leadership real-time visibility into officer readiness, automated compliance tracking, and a defensible training record that protects your agency — before you ever need it.</p>
+  <div class="btns"><a href="../contact.html" class="bp">Schedule a Demo</a><a href="../assessment.html" class="bs">Assess Your Risk</a></div>
+</section>
+
+<div class="dv" aria-hidden="true"></div>
+
+<section class="sec">
+  <p class="lab">The Reality</p>
+  <h2>What Keeps Command Staff Up at Night</h2>
+  <div class="pg">
+    <div class="pc"><h3>You Can't See What You Can't Measure</h3><p>The only way to know if your officers are qualified is to ask the range master and wait for a report. You have zero real-time visibility into the readiness of the officers on your streets.</p></div>
+    <div class="pc"><h3>One Lawsuit Costs More Than Your Training Budget</h3><p>The average negligent training settlement is $500K to $2M+. The agencies that lose have one thing in common: they couldn't prove their training program was adequate. Not that it wasn't — that they couldn't prove it.</p></div>
+    <div class="pc"><h3>Your Documentation Won't Survive Scrutiny</h3><p>When opposing counsel requests training records, they're looking for what you can't prove. A missing qual date. A failed score with no remedial follow-up. An officer who was "scheduled" but nobody can prove attended.</p></div>
+  </div>
+</section>
+
+<div class="dv" aria-hidden="true"></div>
+
+<section class="sec">
+  <p class="lab">What You Get</p>
+  <h2>What Brass<span class="bo">Ops</span> Gives Command Staff</h2>
+  <p class="sub">Visibility, protection, and proof — without adding work to your team.</p>
+  <div class="fg">
+    <div class="fc"><h3>Real-Time Readiness Dashboard</h3><p>Open the app on your phone. See every officer's qualification status — green, yellow, red. Filter by unit, shift, or rank. No reports to request. No waiting. The truth is always one click away.</p></div>
+    <div class="fc"><h3>Liability Protection Through Documentation</h3><p>Every qualification, every remedial case, every coaching note — time-stamped and audit-ready. The defensible record that proves your agency trained, followed up, and maintained standards.</p></div>
+    <div class="fc"><h3>Automated Compliance Tracking</h3><p>Qualifications can't silently lapse. Officers who fail are auto-enrolled in remedial. Alerts fire before anything expires. The system watches 24/7 — nobody falls through the cracks.</p></div>
+    <div class="fc"><h3>Budget Justification With Data</h3><p>Performance analytics, department-wide statistics, and trend data give you concrete numbers to justify training budgets to city councils and budget committees. Not anecdotes — data.</p></div>
+    <div class="fc"><h3>Subpoena-Ready in Seconds</h3><p>If an attorney requests Officer Smith's complete training history tomorrow morning, your department produces it in minutes — not weeks. Every record organized, time-stamped, and defensible.</p></div>
+    <div class="fc"><h3>Knowledge That Doesn't Walk Out the Door</h3><p>When your range master retires, the training program doesn't collapse. Every record, every workflow, every officer's history lives in the system — not in someone's memory.</p></div>
+  </div>
+</section>
+
+<div class="dv" aria-hidden="true"></div>
+
+<section class="sec">
+  <p class="lab">The Difference</p>
+  <h2>Your Department: Before vs. After</h2>
+  <div class="cg">
+    <div class="cc bf"><span class="cb">Without BrassOps</span>
+      <ul class="cl">
+        <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Zero visibility into officer readiness</span></li>
+        <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Training records scattered across systems</span></li>
+        <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Subpoena response takes days or weeks</span></li>
+        <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Qualifications lapse without anyone knowing</span></li>
+        <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>No data to justify training budgets</span></li>
+        <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg><span>Program collapses if key personnel leave</span></li>
+      </ul>
+    </div>
+    <div class="cc af"><span class="cb">With BrassOps</span>
+      <ul class="cl">
+        <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Real-time readiness dashboard on any device</span></li>
+        <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Complete audit trail, always current</span></li>
+        <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Subpoena response in under 5 minutes</span></li>
+        <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Automated alerts prevent every lapse</span></li>
+        <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>Analytics and data for budget justification</span></li>
+        <li><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><span>System preserves all institutional knowledge</span></li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<div class="dv" aria-hidden="true"></div>
+
+<section class="sec" style="padding-bottom:2rem">
+  <div class="tb">
+    <div class="q">&ldquo;</div>
+    <p class="tx">Command staff finally has visibility into our training program without me pulling reports for a week. The dashboards sell themselves. When the chief can see readiness in real-time, everyone takes training more seriously.</p>
+    <div class="au">James T.</div>
+    <div class="ro">Training Coordinator, State Agency</div>
+  </div>
+</section>
+
+<div class="dv" aria-hidden="true"></div>
+
+<section class="cta">
+  <h2>Protect Your Department Before You Need To</h2>
+  <p>The agencies that modernize now are the ones that avoid the lawsuits, the audit failures, and the preventable crises.</p>
+  <div class="btns"><a href="../contact.html" class="bp">Schedule a Demo</a><a href="../assessment.html" class="bs">Take the Risk Assessment</a></div>
+</section>
+
+<div class="dv" aria-hidden="true"></div>
+
+<footer class="ft">
+  <p class="fb">Brass<span class="bo">Ops</span></p>
+  <p class="tl">Built for those who train to protect.</p>
+  <div class="fl"><a href="../privacy.html">Privacy Policy</a><a href="../terms.html">Terms of Service</a></div>
+  <p class="cp">&copy; 2026 Brass<span class="bo">Ops</span>. All rights reserved.</p>
+</footer>
+
+</div>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const h=document.querySelector('.hb'),n=document.querySelector('.nl');
+  if(h&&n)h.addEventListener('click',()=>{const o=n.classList.toggle('open');h.setAttribute('aria-expanded',o);h.innerHTML=o?'<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>':'<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';});
+  const els=document.querySelectorAll('.pc,.fc,.cc');
+  if('IntersectionObserver' in window){const ob=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('v');ob.unobserve(en.target);}});},{threshold:.15,rootMargin:'0px 0px -40px 0px'});els.forEach(el=>ob.observe(el));}else{els.forEach(el=>el.classList.add('v'));}
+});
+</script>
+</body>
+</html>
