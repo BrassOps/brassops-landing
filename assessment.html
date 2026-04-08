@@ -223,6 +223,11 @@
         <h2>See Your <span>Results</span></h2>
         <p>Enter your details below to view your personalized risk assessment findings and recommendations.</p>
         <form class="gate-form" onsubmit="submitGate(event)">
+          <!-- Honeypot — hidden from users, bots fill it -->
+          <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none;" aria-hidden="true">
+            <label for="gateWebsite">Website (leave empty)</label>
+            <input type="text" id="gateWebsite" name="website" tabindex="-1" autocomplete="off">
+          </div>
           <div class="gate-field">
             <label class="gate-label" for="gateName">First Name</label>
             <input class="gate-input" type="text" id="gateName" placeholder="John" required>
@@ -384,6 +389,7 @@ function submitGate(e) {
   e.preventDefault();
   capturedName = document.getElementById('gateName').value;
   capturedEmail = document.getElementById('gateEmail').value;
+  const honeypot = document.getElementById('gateWebsite') ? document.getElementById('gateWebsite').value : '';
   document.getElementById('gate-screen').classList.remove('active');
 
   // Calculate score and weak areas for the email
@@ -416,7 +422,8 @@ function submitGate(e) {
       score: total,
       maxScore: max,
       tier: tierName,
-      weakAreas: weakAreas
+      weakAreas: weakAreas,
+      website: honeypot
     })
   }).catch(() => {});
 

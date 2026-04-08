@@ -1,12 +1,74 @@
+// Allowed origins for cross-site submission protection
+const ALLOWED_ORIGINS = [
+  'https://brassops.com',
+  'https://www.brassops.com',
+];
+
+// Input length limits
+const LIMITS = {
+  firstName: 100,
+  lastName: 100,
+  email: 255,
+  department: 200,
+  role: 100,
+  interest: 100,
+  message: 5000,
+};
+
+const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { firstName, lastName, email, department, role, interest, message } = req.body;
+  // Origin check — prevent cross-site submissions
+  const origin = req.headers.origin || req.headers.referer || '';
+  const isAllowedOrigin =
+    ALLOWED_ORIGINS.some(a => origin.startsWith(a)) ||
+    origin.startsWith('http://localhost');
+  if (origin && !isAllowedOrigin) {
+    return res.status(403).json({ error: 'Forbidden' });
+  }
 
+  // Body validation
+  if (!req.body || typeof req.body !== 'object') {
+    return res.status(400).json({ error: 'Invalid request body' });
+  }
+
+  const { firstName, lastName, email, department, role, interest, message, website } = req.body;
+
+  // Honeypot — if the hidden "website" field is filled, silently pretend success
+  if (website) {
+    return res.status(200).json({ success: true });
+  }
+
+  // Required field validation
   if (!firstName || !lastName || !email) {
     return res.status(400).json({ error: 'Missing required fields' });
+  }
+
+  // Type validation
+  if (typeof firstName !== 'string' || typeof lastName !== 'string' || typeof email !== 'string') {
+    return res.status(400).json({ error: 'Invalid field types' });
+  }
+
+  // Length validation
+  if (
+    firstName.length > LIMITS.firstName ||
+    lastName.length > LIMITS.lastName ||
+    email.length > LIMITS.email ||
+    (department && String(department).length > LIMITS.department) ||
+    (role && String(role).length > LIMITS.role) ||
+    (interest && String(interest).length > LIMITS.interest) ||
+    (message && String(message).length > LIMITS.message)
+  ) {
+    return res.status(400).json({ error: 'Input exceeds maximum length' });
+  }
+
+  // Email format validation
+  if (!EMAIL_REGEX.test(email)) {
+    return res.status(400).json({ error: 'Invalid email format' });
   }
 
   const apiKey = process.env.SMTP2GO_API_KEY;
@@ -15,7 +77,7 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Server configuration error' });
   }
 
-  const recipient = 'brassops01@gmail.com';
+  const recipient = process.env.CONTACT_RECIPIENT || 'brassops01@gmail.com';
 
   const htmlBody = `
     <h2>New Contact Form Submission</h2>
@@ -38,6 +100,11 @@ export default async function handler(req, res) {
     `Message: ${message || 'No message provided'}`,
   ].join('\n');
 
+  // Sanitize subject line — strip newlines to prevent header injection
+  const safeFirst = String(firstName).replace(/[\r\n]/g, '').slice(0, 50);
+  const safeLast = String(lastName).replace(/[\r\n]/g, '').slice(0, 50);
+  const safeInterest = String(interest || 'General').replace(/[\r\n]/g, '').slice(0, 50);
+
   try {
     const response = await fetch('https://api.smtp2go.com/v3/email/send', {
       method: 'POST',
@@ -45,8 +112,8 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         api_key: apiKey,
         to: [recipient],
-        sender: `BrassOps Contact Form <noreply@brassops.com>`,
-        subject: `New Contact: ${firstName} ${lastName} — ${interest || 'General'}`,
+        sender: 'BrassOps Contact Form <noreply@brassops.com>',
+        subject: `New Contact: ${safeFirst} ${safeLast} — ${safeInterest}`,
         html_body: htmlBody,
         text_body: textBody,
       }),
@@ -57,11 +124,11 @@ export default async function handler(req, res) {
     if (data.data?.succeeded > 0) {
       return res.status(200).json({ success: true });
     } else {
-      console.error('SMTP2GO error:', JSON.stringify(data));
+      console.error('SMTP2GO error');
       return res.status(502).json({ error: 'Failed to send email' });
     }
   } catch (err) {
-    console.error('SMTP2GO request failed:', err);
+    console.error('SMTP2GO request failed');
     return res.status(502).json({ error: 'Failed to send email' });
   }
 }
@@ -71,5 +138,6 @@ function escapeHtml(str) {
     .replace(/&/g, '&amp;')
     .replace(/</g, '&lt;')
     .replace(/>/g, '&gt;')
-    .replace(/"/g, '&quot;');
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
 }

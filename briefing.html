@@ -515,9 +515,38 @@
         return d.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
       }
 
+      function esc(str) {
+        return String(str == null ? '' : str)
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#39;');
+      }
+
+      function safeSlug(slug) {
+        // Only allow safe slug chars: letters, numbers, hyphens, underscores
+        return String(slug == null ? '' : slug).replace(/[^a-zA-Z0-9_-]/g, '');
+      }
+
+      function safeImageUrl(url) {
+        // Reject javascript:, data:, etc. Only allow http(s) and relative paths
+        const s = String(url == null ? '' : url).trim();
+        if (/^(https?:)?\/\//i.test(s)) return s;
+        if (/^\//.test(s) || /^[a-zA-Z0-9_\-./]+$/.test(s)) return s;
+        return '';
+      }
+
       function cardHTML(post) {
-        const thumbContent = post.featuredImage
-          ? `<img src="${post.featuredImage}" alt="${post.title}" loading="lazy">`
+        const slug = safeSlug(post.slug);
+        const imgUrl = safeImageUrl(post.featuredImage);
+        const title = esc(post.title);
+        const synopsis = esc(post.synopsis);
+        const category = esc(post.category);
+        const readTime = esc(post.readTime);
+
+        const thumbContent = imgUrl
+          ? `<img src="${esc(imgUrl)}" alt="${title}" loading="lazy">`
           : `<svg class="blog-card-thumb-icon" viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
                 <polyline points="14 2 14 8 20 8"/>
@@ -525,18 +554,18 @@
                 <line x1="16" y1="17" x2="8" y2="17"/>
               </svg>`;
         return `
-          <a href="briefing/${post.slug}.html" class="blog-card">
+          <a href="briefing/${slug}.html" class="blog-card">
             <div class="blog-card-thumb">
               ${thumbContent}
             </div>
             <div class="blog-card-body">
-              <span class="blog-card-category">${post.category}</span>
-              <h3 class="blog-card-title">${post.title}</h3>
-              <p class="blog-card-synopsis">${post.synopsis}</p>
+              <span class="blog-card-category">${category}</span>
+              <h3 class="blog-card-title">${title}</h3>
+              <p class="blog-card-synopsis">${synopsis}</p>
               <div class="blog-card-meta">
-                <span>${formatDate(post.publishDate)}</span>
+                <span>${esc(formatDate(post.publishDate))}</span>
                 <span class="blog-card-dot"></span>
-                <span>${post.readTime}</span>
+                <span>${readTime}</span>
               </div>
             </div>
           </a>

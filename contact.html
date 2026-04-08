@@ -588,6 +588,12 @@
 
             <form id="contactForm">
 
+              <!-- Honeypot — hidden from users, bots fill it -->
+              <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none;" aria-hidden="true">
+                <label for="website">Website (leave empty)</label>
+                <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+              </div>
+
               <div class="form-row">
                 <div class="form-group">
                   <label for="firstName">First Name</label>
@@ -750,6 +756,7 @@
           department: form.department.value,
           role: form.role.value,
           interest: form.interest.value,
+          website: form.website ? form.website.value : '',
           message: form.message.value,
         };
 
