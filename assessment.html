@@ -400,6 +400,7 @@ function submitGate(e) {
     total += sc;
     if (sc >= 2) {
       weakAreas.push({
+        id: questions[qi].id,
         level: sc === 3 ? 'High Risk' : 'Moderate Risk',
         title: findingsData[questions[qi].id].title
       });
