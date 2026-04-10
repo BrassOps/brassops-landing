@@ -461,7 +461,7 @@
       // Fetch posts
       let posts = [];
       try {
-        const res = await fetch('/briefing/posts.json');
+        const res = await fetch('/blog/posts.json');
         posts = await res.json();
       } catch (e) {
         document.getElementById('blogEmpty').style.display = 'block';
@@ -554,7 +554,7 @@
                 <line x1="16" y1="17" x2="8" y2="17"/>
               </svg>`;
         return `
-          <a href="briefing/${slug}.html" class="blog-card">
+          <a href="blog/${slug}.html" class="blog-card">
             <div class="blog-card-thumb">
               ${thumbContent}
             </div>
