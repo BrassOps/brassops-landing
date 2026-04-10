@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Range Day Management: How to Run Efficient Qualification Days | BrassOps</title>
+<meta name="description" content="Practical guide for range masters: scheduling, ammunition allocation, the three-zone rotation, scoring workflows, and documentation for high-volume qualification days.">
+<link rel="canonical" href="https://brassops.com/blog/range-day-management/">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BlogPosting","headline":"Range Day Management: How to Run Efficient Qualification Days Without the Chaos","author":{"@type":"Person","name":"[Author Name]"},"publisher":{"@type":"Organization","name":"BrassOps","url":"https://brassops.com"},"datePublished":"2026-07-17","mainEntityOfPage":"https://brassops.com/blog/range-day-management/"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --navy: #0B2545; --steel: #13315C; --blue: #1B4F72; --accent: #1A6FAC; --brass: #B8860B; --brass-light: #F5E6C8; --text: #1A1A1A; --text-light: #444444; --white: #FFFFFF; --border: #D5DBDB; --red: #B03020; --green: #1D8348; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Source Serif 4', Georgia, serif; color: var(--text); background: var(--white); line-height: 1.8; font-size: 18px; }
+  .breadcrumb { font-family: 'DM Sans', sans-serif; font-size: 13px; color: #444; max-width: 780px; margin: 0 auto; padding: 20px 24px 0; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; } .breadcrumb span { margin: 0 6px; }
+  .hero { max-width: 780px; margin: 0 auto; padding: 32px 24px 40px; border-bottom: 3px solid var(--navy); }
+  .hero-badge { display: inline-block; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; background: var(--accent); color: var(--white); padding: 5px 14px; border-radius: 2px; margin-bottom: 20px; }
+  .hero h1 { font-size: clamp(28px, 4.5vw, 40px); font-weight: 700; line-height: 1.18; color: var(--navy); margin-bottom: 16px; }
+  .hero-subtitle { font-size: 19px; color: #333; line-height: 1.6; }
+  .hero-meta { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 20px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: #444; align-items: center; }
+  .hero-meta strong { color: var(--text); } .hero-meta .divider { width: 1px; height: 16px; background: var(--border); }
+  article { max-width: 780px; margin: 0 auto; padding: 48px 24px 32px; }
+  article h2 { font-size: 26px; font-weight: 700; color: var(--navy); margin: 48px 0 16px; padding-top: 8px; border-top: 1px solid var(--border); }
+  article h2:first-of-type { border-top: none; margin-top: 0; }
+  article h3 { font-family: 'DM Sans', sans-serif; font-size: 19px; font-weight: 700; color: var(--blue); margin: 32px 0 10px; }
+  article p { margin-bottom: 20px; }
+  article a { color: var(--accent); text-decoration: underline; text-decoration-color: rgba(26,111,172,0.3); text-underline-offset: 3px; }
+  article a:hover { text-decoration-color: var(--accent); }
+  .takeaway { background: var(--navy); color: var(--white); padding: 24px 28px; border-radius: 4px; margin: 28px 0; }
+  .takeaway::before { content: 'KEY TAKEAWAY'; font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; color: var(--brass); display: block; margin-bottom: 8px; }
+  .takeaway p { color: rgba(255,255,255,0.92); margin-bottom: 0; font-size: 17px; line-height: 1.7; } .takeaway strong { color: var(--brass-light); }
+  .callout { border-left: 4px solid var(--brass); background: #FFF; padding: 18px 22px; margin: 24px 0; border: 1px solid #E8E8E8; border-left: 4px solid var(--brass); border-radius: 0 4px 4px 0; }
+  .callout p { margin-bottom: 0; font-size: 16px; } .callout strong { color: var(--navy); }
+  .warning { border-left: 4px solid var(--red); background: #FFF5F5; padding: 18px 22px; margin: 24px 0; border: 1px solid #F0D0D0; border-left: 4px solid var(--red); border-radius: 0 4px 4px 0; }
+  .warning::before { content: '\26A0 LIABILITY NOTE'; font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1px; color: var(--red); display: block; margin-bottom: 8px; }
+  .warning p { margin-bottom: 0; font-size: 16px; }
+  .scenario-box { background: #F9FAFB; border: 1px solid #E0E4E8; border-radius: 6px; padding: 20px 24px; margin: 24px 0; }
+  .scenario-box .label { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--red); margin-bottom: 6px; }
+  .scenario-box .label.good { color: var(--green); }
+  .scenario-box h3 { font-family: 'DM Sans', sans-serif; font-size: 17px; font-weight: 700; color: var(--navy); margin: 0 0 8px; }
+  .scenario-box p { margin-bottom: 8px; font-size: 16px; } .scenario-box p:last-child { margin-bottom: 0; }
+  .cta-block { background: linear-gradient(135deg, var(--navy) 0%, var(--steel) 100%); padding: 36px 32px; border-radius: 6px; margin: 44px 0; text-align: center; }
+  .cta-block h3 { font-family: 'Source Serif 4', Georgia, serif; font-size: 22px; color: var(--white); margin: 0 0 10px; }
+  .cta-block p { color: rgba(255,255,255,0.8); font-size: 15px; margin-bottom: 22px; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .cta-btn { display: inline-block; font-family: 'DM Sans', sans-serif; font-size: 15px; font-weight: 700; color: var(--navy); background: var(--brass); padding: 13px 34px; border-radius: 3px; text-decoration: none; }
+  .author-box { display: flex; gap: 18px; padding: 24px; background: #FFF; border: 1px solid var(--border); border-radius: 4px; margin: 44px 0 28px; }
+  .author-photo { width: 64px; height: 64px; border-radius: 50%; background: var(--navy); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--brass); font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 22px; }
+  .author-info h4 { font-family: 'DM Sans', sans-serif; font-size: 15px; color: var(--navy); margin-bottom: 3px; }
+  .author-info .author-title { font-family: 'DM Sans', sans-serif; font-size: 12.5px; color: #444; margin-bottom: 7px; }
+  .author-info p { font-size: 14px; line-height: 1.6; margin-bottom: 0; }
+  .related-section { max-width: 780px; margin: 0 auto; padding: 40px 24px 56px; border-top: 2px solid var(--navy); }
+  .related-label { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--brass); margin-bottom: 18px; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+  .related-card { border: 1px solid var(--border); border-radius: 4px; padding: 18px; }
+  .related-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+  .related-card .card-type { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+  .related-card h4 { font-family: 'Source Serif 4', Georgia, serif; font-size: 16px; font-weight: 600; line-height: 1.35; margin-bottom: 6px; }
+  .related-card h4 a { color: var(--navy); text-decoration: none; } .related-card h4 a:hover { color: var(--accent); }
+  .related-card p { font-size: 13px; color: #444; line-height: 1.5; margin-bottom: 0; }
+
+  .sign-box { background: #F9FAFB; border: 1px solid #E0E4E8; border-radius: 6px; padding: 20px 24px; margin: 20px 0; }
+  .sign-box .num { font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: var(--red); margin-bottom: 6px; }
+  .sign-box h3 { font-family: 'DM Sans', sans-serif; font-size: 17px; font-weight: 700; color: var(--navy); margin: 0 0 8px; }
+  .sign-box p { margin-bottom: 8px; font-size: 16.5px; } .sign-box p:last-child { margin-bottom: 0; }
+</style>
+</head>
+<body>
+<nav class="breadcrumb"><a href="/">Home</a> <span>&rsaquo;</span> <a href="/blog/">Blog</a> <span>&rsaquo;</span> <strong>Range Day Management</strong></nav>
+<header class="hero">
+  <div class="hero-badge">Operational Guide</div>
+  <h1>Range Day Management: How to Run Efficient Qualification Days Without the Chaos</h1>
+  <p class="hero-subtitle">You&rsquo;ve got 60 officers to qualify, one range, limited ammo, and the chief wants everyone back on shift by 1400. Here&rsquo;s how range masters who&rsquo;ve figured this out actually do it.</p>
+  <div class="hero-meta"><span>By <strong>[Author Name]</strong>, [Title]</span><div class="divider"></div><span>Published <strong>July 17, 2026</strong></span><div class="divider"></div><span><strong>12 min</strong> read</span></div>
+</header>
+<article>
+  <h2>The Range Day Problem Nobody Talks About</h2>
+  <p>Here&rsquo;s what a typical agency range day actually looks like. Officers arrive at staggered times because shift schedules don&rsquo;t align with range availability. Half the day is spent waiting &mdash; waiting for a lane, waiting for the previous relay to finish, waiting for the range master to score targets, waiting for the safety brief that could have been done before everyone drove to the range. By the time an officer actually fires the qualification course, they&rsquo;ve been standing around for two hours in body armor.</p>
+  <p>The ratio of actual trigger time to total time on range day is embarrassing at most agencies. Training coordinators I&rsquo;ve talked to estimate their officers spend 60% of range day on logistics and waiting, and 40% on actual shooting. For a department that allocates two range days per year, that means officers get roughly four hours of firearms training time annually. Everything else is overhead.</p>
+  <p>This guide is about shrinking the overhead and expanding the training. Every minute an officer spends waiting is a minute they could be shooting, running dry fire drills, or working through judgment scenarios. Range day efficiency is a direct multiplier on the quality and quantity of training your officers receive.</p>
+
+  <div class="takeaway">
+    <p><strong>The best-run range days share three traits:</strong> everything that can be done before officers arrive gets done before they arrive. Officers are always doing something training-related, never standing idle. And documentation happens in real time at the firing line, not after the fact back at the office.</p>
+  </div>
+
+  <h2>Before Range Day: The 72-Hour Prep Window</h2>
+  <p>The single biggest determinant of how smoothly a range day runs is how much preparation happens in the days before it. Range masters who run efficient qualifications do most of the administrative work before anyone loads a magazine.</p>
+
+  <h3>72 hours out: Confirm the roster and schedule relays</h3>
+  <p>Know exactly who is shooting and when. Build a relay schedule that accounts for your range capacity (number of lanes), the courses of fire you&rsquo;re running, and the time each relay takes including scoring and target changes. If you have 60 officers and 10 lanes, that&rsquo;s six relays minimum for a single course of fire.</p>
+  <p>Publish the relay schedule to all officers 72 hours in advance. Assign each officer to a specific relay and time window. Officers who can&rsquo;t make their assigned relay coordinate a swap in advance &mdash; not show up unannounced hoping for a slot. This eliminates the biggest source of range day chaos: unscheduled arrivals and officers milling around. Check your <a href="/blog/officer-readiness-firearms-qualification/">readiness dashboard</a> to identify overdue officers who should be prioritized for the first relays.</p>
+
+  <h3>48 hours out: Ammunition and equipment prep</h3>
+  <p>Pre-stage ammunition by relay. Each relay&rsquo;s allocation should be counted, boxed, and labeled the day before &mdash; not pulled from the ammo locker on range day while everyone waits. For a 50-round handgun course with 10 officers per relay, that&rsquo;s 500 rounds per relay, pre-counted and ready. Record the lot numbers allocated to each range day before the event for <a href="/blog/ammunition-tracking-law-enforcement/">ammunition tracking</a> purposes.</p>
+  <p>Verify all range equipment: target systems operational, timing equipment charged, scoring materials available, medical kit stocked, communication equipment functional. Nothing kills range day momentum like a target carrier that won&rsquo;t retract.</p>
+
+  <h3>24 hours out: Pre-brief materials distributed</h3>
+  <p>Send the safety briefing to all officers the day before &mdash; in writing. Cover the four universal safety rules, range-specific rules, courses of fire, and policy updates. Make the written brief a pre-condition for showing up: officers who arrive without having reviewed it get a 5-minute verbal refresher, not a 20-minute lecture that holds up the entire relay.</p>
+  <p>This single change &mdash; moving the safety brief from a range-day lecture to a pre-day read &mdash; can save 15&ndash;20 minutes per range day. Over six range days per year, that&rsquo;s nearly two hours of recovered training time for every officer.</p>
+
+  <h2>On Range Day: The Three-Zone System</h2>
+  <p>The most efficient range days use a three-zone rotation that keeps every officer engaged in something training-related at all times. Nobody stands around. Nobody scrolls their phone in a staging area. Every minute on the range is a training minute.</p>
+
+  <h3>Zone 1: The firing line (qualification)</h3>
+  <p>This is where the actual qualification course of fire happens. One relay at a time, strictly controlled by the range master. Officers in this zone are shooting, scoring, or conducting immediate administrative actions. This zone runs on a clock &mdash; every relay starts and ends at a published time, and the clock doesn&rsquo;t slip.</p>
+
+  <h3>Zone 2: Dry fire and skills station</h3>
+  <p>Officers waiting for their relay rotation are not waiting. They&rsquo;re in a designated dry fire area working through structured <a href="/blog/dry-fire-training-law-enforcement/">dry fire drills</a> under instructor supervision: draw-to-first-shot, reload mechanics, malfunction clearance, weapon transitions. This zone requires a space cleared of all live ammunition, a supervising instructor, and a drill card.</p>
+  <p>The dry fire station does two things simultaneously: it warms officers up before the qualification line (improving first-attempt pass rates), and it creates a documented supplemental training event. Thirty minutes of structured dry fire, documented with date, drills, and instructor, adds depth to the officer&rsquo;s file for zero ammunition cost.</p>
+
+  <h3>Zone 3: Judgment and classroom station</h3>
+  <p>The third zone handles training that doesn&rsquo;t require the firing line: shoot/don&rsquo;t-shoot tabletop exercises, use-of-force legal updates, scenario discussion, or simulator time. This is where the <a href="/case-law/zuchel-v-denver/">Zuchel</a> requirement gets addressed &mdash; the judgment-based training that courts expect documented separately from marksmanship scores.</p>
+  <p>Running all three zones simultaneously means that when 10 officers are on the firing line, 10 more are doing dry fire, and 10 more are in the classroom. Every relay rotation moves a group through all three zones. By day&rsquo;s end, each officer has qualified, completed supplemental dry fire training, and participated in a documented judgment exercise &mdash; all in one visit.</p>
+
+  <div class="callout">
+    <p><strong>The math works:</strong> If each zone rotation takes 45 minutes, three rotations cover 30 officers in about 2.5 hours. A second round covers 60 officers in under 5 hours. Compare that to the traditional single-line model where 60 officers cycle through six relays on one firing line &mdash; easily an 8-hour day with far less actual training accomplished.</p>
+  </div>
+
+  <h2>Documentation at the Range: Real Time, Not After the Fact</h2>
+  <p>The biggest documentation mistake on range day is treating it as something that happens afterward. Scores on paper, carried back to the office, entered days later. Every step in that chain introduces delay, transcription errors, and the timeliness gap courts care about.</p>
+  <p>Record qualification data at the firing line as it happens. If you have a <a href="/blog/firearms-qualification-tracking/">digital tracking system</a>, the instructor enters the score on a mobile device before the officer leaves the line. Timestamped at the moment of creation. No paper to transcribe. No delay.</p>
+  <p>If you&rsquo;re still on paper, establish a same-day data entry requirement: all scores entered before the range day ends. Not tomorrow. Not next week. Today. Retain original paper scoresheets as backup. For each event, capture the seven required data points: officer ID, weapon serial, course of fire, score and threshold, ammunition lot, instructor credential, and conditions/timestamp.</p>
+
+  <h2>After Range Day: Close the Loop</h2>
+  <p>Within 24 hours of range day, three things should happen.</p>
+  <p><strong>Verify all data was entered.</strong> Compare the scheduled roster against recorded qualifications. Identify anyone who was scheduled but didn&rsquo;t shoot, and anyone who shot but whose score wasn&rsquo;t recorded. Close every gap before the end of the next business day.</p>
+  <p><strong>Initiate remedial processes for failures.</strong> Any officer who failed should have the <a href="/blog/remedial-firearms-training-program/">remedial process</a> initiated within 48 hours &mdash; failure documented, deficiency diagnosed, plan created. The time between the failure and the start of remedial training is a data point courts evaluate.</p>
+  <p><strong>Schedule makeup qualifications.</strong> Officers who missed range day need a makeup date within 30 days. If your <a href="/blog/officer-readiness-firearms-qualification/">readiness dashboard</a> shows them approaching expiration, the makeup becomes urgent. Publish the date within a week of the primary range day.</p>
+
+  <h2>The Overtime Question</h2>
+  <p>For many agencies, range day means overtime &mdash; officers on days off, training staff working extended hours. The three-zone system and relay scheduling directly reduce overtime because they move more officers through the range in less time. Additional strategies for <a href="/blog/reduce-overtime-range-day/">reducing overtime on range days</a> include staggering qualification windows across multiple smaller events rather than one massive day, qualifying officers during their regular shift where scheduling allows, and using the pre-brief system to eliminate on-range classroom time.</p>
+  <p>For the complete framework, see our <a href="/firearms-qualification-standards/">law enforcement firearms qualification standards guide</a>.</p>
+
+  <div class="cta-block">
+    <h3>Run range day like it&rsquo;s 2026, not 1996.</h3>
+    <p>BrassOps handles real-time scoring at the range, automatic roster reconciliation, instant remedial workflow triggers, and POST-ready reporting &mdash; all from a phone on the firing line.</p>
+    <a href="/demo/" class="cta-btn">Request a Demo</a>
+  </div>
+  
+  <div class="author-box">
+    <div class="author-photo">AB</div>
+    <div class="author-info">
+      <h4>[Author Name]</h4>
+      <div class="author-title">[Title] at BrassOps &nbsp;|&nbsp; Former [Rank/Agency/Branch]</div>
+      <p>[Author Name] is a [credential description]. At BrassOps, [he/she/they] leads [relevant function]. Connect on <a href="#">LinkedIn</a>.</p>
+    </div>
+  </div>
+
+</article>
+<section class="related-section">
+  <div class="related-label">Continue Reading</div>
+  <div class="related-grid">
+    <div class="related-card"><div class="card-type">Blog Post</div><h4><a href="/blog/dry-fire-training-law-enforcement/">Dry Fire Training for Law Enforcement</a></h4><p>Build the dry fire station (Zone 2) with these drills and documentation standards.</p></div>
+    <div class="related-card"><div class="card-type">Blog Post</div><h4><a href="/blog/remedial-firearms-training-program/">How to Build a Remedial Training Program</a></h4><p>What to do within 48 hours when an officer fails on range day.</p></div>
+    <div class="related-card"><div class="card-type">Blog Post</div><h4><a href="/blog/reduce-overtime-range-day/">How to Reduce Overtime on Range Days</a></h4><p>Budget-conscious scheduling strategies for qualification events.</p></div>
+  </div>
+</section>
+</body></html>

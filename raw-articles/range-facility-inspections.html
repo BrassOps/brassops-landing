@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Range Facility Inspections: What to Document, When, and Why | BrassOps</title>
+<meta name="description" content="Range facility inspections are the infrastructure audit that backs every qualification event. Here's the inspection schedule courts and regulators expect, what to document, and where agencies fall short.">
+<link rel="canonical" href="https://brassops.com/blog/range-facility-inspections/">
+<meta property="og:title" content="Range Facility Inspections: What to Document, When, and Why | BrassOps">
+<meta property="og:description" content="The inspection schedule courts and regulators expect, including backstops, berms, baffles, ventilation, and environmental compliance.">
+<meta property="og:url" content="https://brassops.com/blog/range-facility-inspections/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org", "@type": "Article",
+  "headline": "Range Facility Inspections: What to Document, When, and Why",
+  "author": { "@type": "Person", "name": "[Author Name]" },
+  "publisher": { "@type": "Organization", "name": "BrassOps", "url": "https://brassops.com" },
+  "datePublished": "2027-05-21", "dateModified": "2027-05-21",
+  "mainEntityOfPage": "https://brassops.com/blog/range-facility-inspections/"
+}
+</script>
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+  { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://brassops.com/" },
+  { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://brassops.com/blog/" },
+  { "@type": "ListItem", "position": 3, "name": "Range Facility Inspections" }
+] }
+</script>
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+  { "@type": "Question", "name": "What is a range facility inspection?", "acceptedAnswer": { "@type": "Answer", "text": "A range facility inspection is a scheduled review of the physical range environment to verify safe operating condition. Inspections cover backstops, berms, baffles, target systems, ventilation, lighting, fire suppression, first aid equipment, communication systems, and environmental compliance. A formal inspection generates a written record with findings, corrective actions, and sign-off by the inspecting authority." } },
+  { "@type": "Question", "name": "How often should range facilities be inspected?", "acceptedAnswer": { "@type": "Answer", "text": "Range inspections happen on multiple cadences simultaneously: pre-event walk-throughs before each training day, weekly or monthly operational inspections, quarterly comprehensive inspections, and annual or bi-annual structural and environmental inspections. Each cadence serves a different purpose, and all four should be documented separately." } }, 
+  { "@type": "Question", "name": "Who should conduct range facility inspections?", "acceptedAnswer": { "@type": "Answer", "text": "Routine pre-event and operational inspections can be conducted by the range master or a designated Range Safety Officer. Comprehensive and structural inspections often require a qualified range construction professional, a ballistic engineer, or a specialty inspector depending on the scope. Environmental inspections typically require certified industrial hygienists or environmental compliance professionals." } },
+  { "@type": "Question", "name": "What happens if a range inspection identifies a deficiency?", "acceptedAnswer": { "@type": "Answer", "text": "Any deficiency identified during inspection should be documented with its severity, the corrective action required, the responsible party, and a target completion date. Critical safety deficiencies require immediate correction or temporary range closure until resolved. Non-critical deficiencies should be tracked to closure through a written corrective action log that remains with the facility record." } }
+] }
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --navy: #0B2545; --steel: #13315C; --blue: #1B4F72; --accent: #1A6FAC; --brass: #B8860B; --brass-light: #F5E6C8; --text: #1A1A1A; --text-light: #444444; --white: #FFFFFF; --border: #D5DBDB; --red: #B03020; --green: #1D8348; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Source Serif 4', Georgia, serif; color: var(--text); background: var(--white); line-height: 1.8; font-size: 18px; }
+  .breadcrumb { font-family: 'DM Sans', sans-serif; font-size: 13px; color: #444; max-width: 820px; margin: 0 auto; padding: 20px 24px 0; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; } .breadcrumb span { margin: 0 6px; }
+  .hero { max-width: 820px; margin: 0 auto; padding: 32px 24px 40px; border-bottom: 3px solid var(--navy); }
+  .hero-badge { display: inline-block; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; background: var(--navy); color: var(--brass); padding: 5px 14px; border-radius: 2px; margin-bottom: 20px; }
+  .hero h1 { font-size: clamp(30px, 5vw, 44px); font-weight: 700; line-height: 1.15; color: var(--navy); margin-bottom: 16px; }
+  .hero-subtitle { font-size: 19px; color: #333; line-height: 1.6; max-width: 680px; }
+  .hero-meta { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 20px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: #444; align-items: center; }
+  .hero-meta strong { color: var(--text); } .hero-meta .divider { width: 1px; height: 16px; background: var(--border); }
+  .content-wrap { display: flex; max-width: 1100px; margin: 0 auto; padding: 40px 24px 60px; gap: 40px; }
+  .toc { flex: 0 0 240px; position: sticky; top: 24px; align-self: flex-start; font-family: 'DM Sans', sans-serif; font-size: 14px; padding: 20px; background: #F8F9FA; border-left: 3px solid var(--brass); border-radius: 2px; }
+  .toc-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--navy); margin-bottom: 12px; }
+  .toc a { display: block; padding: 6px 0; color: #444; text-decoration: none; border-bottom: 1px solid #EEE; }
+  .toc a:last-child { border-bottom: none; }
+  .toc a:hover { color: var(--accent); }
+  article { flex: 1; min-width: 0; max-width: 720px; }
+  article h2 { font-family: 'DM Sans', sans-serif; font-size: 28px; font-weight: 700; color: var(--navy); margin: 48px 0 18px; line-height: 1.3; }
+  article h2:first-child { margin-top: 0; }
+  article h3 { font-family: 'DM Sans', sans-serif; font-size: 21px; font-weight: 600; color: var(--steel); margin: 32px 0 14px; }
+  article p { margin-bottom: 18px; }
+  article strong { color: var(--navy); }
+  article ul, article ol { margin: 0 0 20px 22px; }
+  article li { margin-bottom: 10px; }
+  article a { color: var(--accent); text-decoration: underline; text-decoration-color: #B8D4E8; text-underline-offset: 3px; }
+  article a:hover { text-decoration-color: var(--accent); }
+  .takeaway { background: var(--brass-light); border-left: 5px solid var(--brass); padding: 22px 26px; margin: 28px 0; border-radius: 2px; }
+  .takeaway p { margin: 0; font-size: 17px; color: #3C2E12; }
+  .warning { background: #FDEDEC; border-left: 5px solid var(--red); padding: 22px 26px; margin: 28px 0; border-radius: 2px; }
+  .warning p { margin: 0; font-size: 17px; color: #641E16; }
+  .cta-block { background: var(--navy); color: var(--white); padding: 36px 32px; margin: 40px 0; border-radius: 3px; text-align: center; }
+  .cta-block h3 { font-family: 'DM Sans', sans-serif; color: var(--brass); font-size: 22px; margin-bottom: 12px; }
+  .cta-block p { color: #D5DBDB; font-size: 16px; margin-bottom: 22px; }
+  .cta-btn { display: inline-block; background: var(--brass); color: var(--navy); font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 1px; text-transform: uppercase; padding: 14px 32px; border-radius: 2px; text-decoration: none; }
+  .author-box { display: flex; gap: 20px; padding: 28px; background: #F8F9FA; border-radius: 3px; margin-top: 48px; align-items: flex-start; }
+  .author-avatar { width: 64px; height: 64px; border-radius: 50%; background: var(--navy); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--brass); font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 20px; }
+  .author-info h4 { font-family: 'DM Sans', sans-serif; font-size: 16px; color: var(--navy); margin-bottom: 6px; }
+  .author-info p { font-size: 14px; color: #555; line-height: 1.5; margin: 0; }
+  .author-info a { color: var(--accent); }
+  .related-section { max-width: 1100px; margin: 0 auto 60px; padding: 0 24px; }
+  .related-label { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--navy); margin-bottom: 20px; padding-top: 40px; border-top: 2px solid var(--navy); }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+  .related-card { padding: 20px; background: #F8F9FA; border-radius: 3px; border-top: 3px solid var(--brass); }
+  .card-type { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--brass); margin-bottom: 8px; }
+  .related-card h4 { font-family: 'DM Sans', sans-serif; font-size: 16px; color: var(--navy); margin-bottom: 8px; line-height: 1.35; }
+  .related-card h4 a { color: var(--navy); text-decoration: none; }
+  .related-card h4 a:hover { color: var(--accent); }
+  .related-card p { font-size: 13px; color: #555; line-height: 1.5; margin: 0; }
+  @media (max-width: 860px) {
+    .content-wrap { flex-direction: column; padding: 30px 20px; }
+    .toc { position: static; flex: none; width: 100%; }
+    article h2 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="breadcrumb">
+  <a href="/">Home</a><span>&rsaquo;</span><a href="/blog/">Blog</a><span>&rsaquo;</span>Range Facility Inspections
+</nav>
+
+<header class="hero">
+  <div class="hero-badge">Range Operations</div>
+  <h1>Range Facility Inspections: What to Document, When, and Why</h1>
+  <p class="hero-subtitle">A range facility is a complex piece of infrastructure. Its safe operation depends on inspections running on multiple cadences &mdash; and on documentation that proves those inspections happened, captured what they found, and closed the deficiencies they identified.</p>
+  <div class="hero-meta">
+    <span>By <strong>[Author Name]</strong>, [Title]</span> <div class="divider"></div>
+    <span>Published <strong>May 21, 2027</strong></span> <div class="divider"></div>
+    <span><strong>15 min</strong> read</span>
+  </div>
+</header>
+
+<div class="content-wrap">
+
+  <aside class="toc">
+    <div class="toc-label">In This Article</div>
+    <a href="#why-inspections">Why Inspections Matter</a>
+    <a href="#four-cadences">The Four Inspection Cadences</a>
+    <a href="#pre-event">Pre-Event Walk-Through</a>
+    <a href="#operational">Weekly/Monthly Operational Inspection</a>
+    <a href="#comprehensive">Quarterly Comprehensive Inspection</a>
+    <a href="#structural">Annual Structural Inspection</a>
+    <a href="#what-to-inspect">What Every Inspection Should Cover</a>
+    <a href="#deficiency-response">Deficiency Response Workflow</a>
+    <a href="#documentation-standard">The Documentation Standard</a>
+    <a href="#faq">Frequently Asked Questions</a>
+  </aside>
+
+  <article>
+
+<h2 id="why-inspections">Why Range Inspections Matter</h2>
+
+<p>A range is not a fixed piece of infrastructure. It degrades. Backstops erode under sustained fire. Baffles crack and loosen. Target systems fail in ways that create unexpected deflection angles. Ventilation systems clog, filters saturate, and indoor air quality drops below safe thresholds. Lighting fails. Fire suppression systems fall out of certification. Environmental compliance obligations shift as regulations evolve.</p>
+
+<p>Every one of these degradations happens gradually, invisibly, and in ways that are easy to miss until the day an incident forces a review. Inspections are the structured opposition to that drift. They are the discipline that catches the problem while it is still a maintenance item &mdash; before it becomes an incident, a finding, or a litigation exhibit.</p>
+
+<p>Inspections also serve a second purpose that is less discussed but equally important: they create the evidentiary record that the agency was actively managing its facility. When something does go wrong, the first question asked is whether the agency knew, or should have known, about the condition that caused the incident. A current inspection record showing the facility was being monitored is the difference between a defensible incident and a negligent one.</p>
+
+<div class="takeaway">
+  <p>Inspections are how the agency demonstrates it was paying attention. <strong>When an inspection record exists, the agency can show it was managing the facility responsibly. When the record is missing, the absence is the finding.</strong></p>
+</div>
+
+<h2 id="four-cadences">The Four Inspection Cadences</h2>
+
+<p>Range inspections run on four distinct cadences, each with its own purpose, scope, and documentation requirements. All four should be in place simultaneously; none substitutes for the others.</p>
+
+<ul>
+  <li><strong>Pre-event walk-through</strong> &mdash; conducted before every training day by the range master or RSO, lasting 15 to 30 minutes, covering the specific conditions for that day&rsquo;s event.</li>
+  <li><strong>Weekly or monthly operational inspection</strong> &mdash; conducted by range staff, lasting an hour or more, covering consumables, wear, housekeeping, and equipment function.</li>
+  <li><strong>Quarterly comprehensive inspection</strong> &mdash; conducted by the range master or a designated official, lasting several hours, covering backstops, baffles, structural elements, environmental conditions, and compliance documentation.</li>
+  <li><strong>Annual or bi-annual structural inspection</strong> &mdash; conducted by qualified external professionals (range engineer, environmental specialist, ballistic consultant), covering structural integrity, ventilation certification, environmental compliance, and capital planning.</li>
+</ul>
+
+<p>Each cadence catches different things. The pre-event walk-through catches today&rsquo;s problems. The operational inspection catches week-to-week drift. The comprehensive inspection catches accumulating issues that don&rsquo;t surface in shorter reviews. The structural inspection catches engineering-level concerns that only a qualified specialist can evaluate. Running only one or two of the four leaves gaps the remaining cadences cannot cover.</p>
+
+<h2 id="pre-event">Pre-Event Walk-Through</h2>
+
+<p>The pre-event walk-through happens before every range event. It is short, focused, and scoped to the specific conditions under which the day&rsquo;s training will be conducted.</p>
+
+<h3>What the walk-through covers</h3>
+<p>The pre-event walk-through checks: backstop condition relative to the planned course of fire, target system function, lighting (for low-light events), ventilation status, communication system function, emergency equipment accessibility, first aid supplies, ammunition storage on site, and any hazards specific to the planned drills. The walk-through is not a deep inspection; it is a go/no-go check tied to the day&rsquo;s activities.</p>
+
+<h3>Who conducts it</h3>
+<p>The pre-event walk-through is conducted by the RSO or range master for the day, typically in the hour before officers arrive. The person conducting the walk-through is the person who will be responsible for the event itself, creating continuity between the check and the accountability for running the event.</p>
+
+<h3>The documentation</h3>
+<p>The walk-through should generate a brief signed record: date, time, person conducting, items checked, deficiencies noted, and go/no-go determination. The record is short by design &mdash; a checklist with signature is adequate. What matters is that it exists and can be produced on demand, not that it reads like a full report.</p>
+
+<h3>No-go conditions</h3>
+<p>If the walk-through identifies a condition that makes the event unsafe, the event should be postponed or relocated. The decision and its rationale should be captured in the record. A walk-through that finds an unsafe condition and proceeds anyway is a documentation liability, not a compliance artifact.</p>
+
+<h2 id="operational">Weekly or Monthly Operational Inspection</h2>
+
+<p>The operational inspection is deeper than the pre-event walk-through and happens on a defined weekly or monthly cadence regardless of whether training is scheduled. Its purpose is to catch drift that a pre-event walk-through would miss because the drift accumulates across multiple events rather than appearing suddenly.</p>
+
+<h3>What it covers</h3>
+<p>Operational inspections cover: backstop wear patterns, berm erosion, baffle attachment and condition, target system mechanical function, ventilation filter status (for indoor ranges), range floor condition, spent casing accumulation, shell collection system status, lighting function across all fixtures, fire extinguisher charge and accessibility, first aid kit inventory, AED function check (if present), signage condition, and housekeeping standards throughout the facility.</p>
+
+<h3>The cadence decision</h3>
+<p>Weekly inspections are appropriate for high-volume ranges with daily training activity. Monthly inspections may be sufficient for ranges with lower utilization. The cadence should be defined in written policy and should be documented as having been performed on schedule. An inspection program that happens sometimes is worse than one that happens less frequently but consistently, because the inconsistency becomes its own finding.</p>
+
+<h3>Checklist structure</h3>
+<p>Operational inspections work best with structured checklists that define the items to be checked and the acceptable condition for each. The checklist converts the inspection from a subjective impression into a documented series of verifications, each of which can be reviewed later.</p>
+
+<h2 id="comprehensive">Quarterly Comprehensive Inspection</h2>
+
+<p>The quarterly comprehensive inspection is the deepest inspection the agency conducts with internal personnel. It covers items that don&rsquo;t require external specialist expertise but benefit from extended time and dedicated attention.</p>
+
+<h3>Scope expansion over operational inspection</h3>
+<p>The comprehensive inspection covers everything the operational inspection does, plus additional elements: detailed backstop and berm assessment with measurements, target system mechanical service, ventilation system performance testing, lead dust levels at key locations (if equipment is available), noise level measurements, environmental compliance documentation review, security system function testing, inventory reconciliation, and comprehensive photographic documentation of conditions.</p>
+
+<h3>Who conducts it</h3>
+<p>The quarterly comprehensive inspection is typically conducted by the range master, often with assistance from maintenance staff or support personnel. It is not a one-person job on any range of meaningful size, and it benefits from an extra set of eyes looking at elements the range master may have become blind to through daily exposure.</p>
+
+<h3>The report format</h3>
+<p>The quarterly inspection should generate a written report that captures: the inspection date, the personnel conducting it, the scope covered, the findings (with photographs where relevant), the severity of each finding, the corrective actions required, and the responsible parties for closure. This report becomes part of the facility&rsquo;s permanent record and should be retained for the full retention window applicable to range operations.</p>
+
+<h3>Trend analysis across quarters</h3>
+<p>Multiple quarterly reports read together reveal trends that individual inspections cannot. Backstop wear accelerating. Ventilation performance degrading. Finding counts rising in specific areas. The agencies that review quarterly reports as a trend line catch infrastructure issues before they become critical. The agencies that file the reports without review miss the compounding problem until it surfaces as a failure.</p>
+
+<h2 id="structural">Annual Structural Inspection</h2>
+
+<p>The structural inspection is the deepest inspection the agency conducts, and it typically requires external expertise. It happens annually for high-volume ranges and bi-annually or tri-annually for lower-volume facilities. The structural inspection is the one that catches engineering-level problems internal staff are not qualified to assess.</p>
+
+<h3>What requires external expertise</h3>
+<p>Several elements of range infrastructure require specialist evaluation:</p>
+
+<ul>
+  <li><strong>Ballistic integrity of backstops and baffles.</strong> A qualified range engineer or ballistic consultant evaluates whether the backstop is still capable of stopping rounds safely given accumulated wear, and whether baffles retain their designed deflection properties.</li>
+  <li><strong>Structural integrity.</strong> A structural engineer evaluates the building, support framing, and any load-bearing elements for wear, damage, or degradation.</li>
+  <li><strong>Ventilation system certification.</strong> A certified HVAC specialist evaluates airflow, filtration, and air quality against the standards applicable to indoor range operations.</li>
+  <li><strong>Environmental compliance.</strong> A certified industrial hygienist or environmental specialist evaluates lead exposure, noise exposure, and regulatory compliance (covered in more depth in <a href="/blog/range-environmental-compliance/">Week 57</a>).</li>
+  <li><strong>Fire suppression and life safety.</strong> A licensed fire protection specialist certifies suppression systems, emergency lighting, and egress compliance.</li>
+</ul>
+
+<h3>The cost calculation</h3>
+<p>External inspections cost money &mdash; typically several thousand dollars per discipline per inspection cycle. The cost is unavoidable. Ranges that skip structural inspections to save money carry engineering risks that the internal staff cannot detect, and those risks compound over multiple years of deferred inspection. The cost of a structural inspection is small compared to the cost of operating a facility with an undetected failure waiting to happen.</p>
+
+<h3>Retention of external reports</h3>
+<p>Reports from external structural inspections should be retained indefinitely. These reports document the condition of the facility at specific points in time, and they become critical evidence in any litigation involving facility-related incidents. An agency that discards old inspection reports loses the ability to show the progression of the facility&rsquo;s condition over time.</p>
+
+<div class="cta-block">
+  <h3>Inspection records should live with the facility, not in a binder.</h3>
+  <p>BrassOps captures facility inspection records alongside training event records, making both inspection compliance and event defensibility visible in one place.</p>
+  <a href="/demo/" class="cta-btn">Request a Demo</a>
+</div>
+
+<h2 id="what-to-inspect">What Every Inspection Should Cover</h2>
+
+<p>Across all four cadences, certain elements should be checked at the appropriate depth. The depth varies by cadence; the elements are consistent.</p>
+
+<h3>Backstops and berms</h3>
+<p>Bullet traps, steel backstops, earth berms, and rubber berms all require condition monitoring. Steel shows wear patterns, dents, and eventual fatigue that affects deflection. Earth berms erode and can develop holes that create flight-path hazards. Rubber berms accumulate fragments and can degrade under sustained use.</p>
+
+<h3>Baffles and overhead protection</h3>
+<p>Baffle systems are often the weakest point in range safety because they sit overhead where they are rarely looked at closely. Loose baffles, cracked baffles, and baffles with damage from accidental strikes should be identified and addressed before they fail.</p>
+
+<h3>Target systems</h3>
+<p>Turning targets, moving targets, pop-up targets, and steel targets all have mechanical and electrical components that degrade. Target system failures during live fire can create unpredictable conditions &mdash; exposed backstop elements, malfunctioning automation, or safety issues that didn&rsquo;t exist when the system was installed.</p>
+
+<h3>Ventilation (indoor ranges)</h3>
+<p>Indoor range ventilation is the single most critical system for officer health. Air flow volumes, filter condition, lead dust capture, and fresh air introduction all must be maintained at the levels required by occupational health standards. Ventilation failures may not produce immediate visible problems, but they produce long-term health consequences that become evident in blood lead monitoring results.</p>
+
+<h3>Lighting</h3>
+<p>Range lighting affects both training quality and safety. Fixtures should be checked for function, glare control, and uniformity of illumination. Low-light training relies on controlled lighting conditions that only work if the lighting system is operating as designed.</p>
+
+<h3>Fire suppression and emergency equipment</h3>
+<p>Fire extinguishers, sprinkler systems, emergency lighting, AEDs, first aid kits, and emergency communication equipment all require regular verification. The fact that they have never been needed does not reduce the need to verify they would work if they were.</p>
+
+<h3>Environmental compliance</h3>
+<p>Lead management, noise management, and stormwater management are all regulated aspects of range operations that require documentation and periodic compliance verification. The environmental compliance article (Week 57) covers this in depth.</p>
+
+<h2 id="deficiency-response">Deficiency Response Workflow</h2>
+
+<p>Inspections generate findings. Findings require a response. The deficiency response workflow is what turns an inspection from a paper exercise into an operational control.</p>
+
+<h3>Severity classification</h3>
+<p>Every finding should be classified by severity. A reasonable three-tier structure:</p>
+
+<ul>
+  <li><strong>Critical.</strong> The condition makes the range unsafe for operation. The range must be closed until the deficiency is corrected. Training events scheduled during the closure must be postponed, relocated, or cancelled.</li>
+  <li><strong>Significant.</strong> The condition affects safety or operations but does not require immediate closure. Correction is required within a defined timeframe (typically 30 days or less), and operations during the correction period may require specific precautions.</li>
+  <li><strong>Minor.</strong> The condition is a maintenance or improvement item that does not affect current safety or operations. Correction is scheduled but not time-critical.</li>
+</ul>
+
+<h3>The corrective action record</h3>
+<p>Every finding should generate a corrective action record: the finding itself, the severity classification, the corrective action required, the responsible party, the target completion date, and the closure verification. The record stays open until the corrective action is verified complete, and it is retained as part of the facility&rsquo;s permanent documentation.</p>
+
+<h3>Closure verification</h3>
+<p>Closure is not marking the item complete on a spreadsheet. Closure is verification that the corrective action was performed, that it addressed the underlying condition, and that the finding is no longer present. Closure should be verified by a person other than the one who performed the corrective action when practical, to introduce an independent check.</p>
+
+<h3>The open-finding accumulation problem</h3>
+<p>Agencies that don&rsquo;t enforce closure accumulate open findings over time. A quarterly inspection generates eight findings. Six are closed. Two are deferred. Next quarter&rsquo;s inspection generates ten findings. Seven are closed. Three are deferred. After a year, the agency has twelve open findings that have been deferred long enough that no one remembers why they were deferred. This pattern is devastating in litigation, because it shows the agency was identifying problems and not fixing them &mdash; which is a worse position than not having identified them at all.</p>
+
+<div class="warning">
+  <p>An open finding log that extends back more than one inspection cycle is a documentation liability. It is evidence that the agency knew about a problem and did not act on it, which courts and regulators treat as more blameworthy than not having known about the problem at all.</p>
+</div>
+
+<h2 id="documentation-standard">The Documentation Standard</h2>
+
+<p>Every inspection should generate a record that includes the same core elements, adjusted for the scope of the inspection cadence.</p>
+
+<ol>
+  <li><strong>Inspection type and cadence</strong> (pre-event, operational, comprehensive, structural).</li>
+  <li><strong>Date and time</strong> of the inspection.</li>
+  <li><strong>Personnel</strong> conducting the inspection, with credentials where required (e.g., external specialists).</li>
+  <li><strong>Scope</strong> of the inspection (which elements were reviewed).</li>
+  <li><strong>Findings</strong>, each with a unique identifier for tracking.</li>
+  <li><strong>Severity classification</strong> for each finding.</li>
+  <li><strong>Corrective action</strong> required for each finding.</li>
+  <li><strong>Photographs</strong> where relevant, attached to specific findings.</li>
+  <li><strong>Signatures</strong> of the inspecting personnel.</li>
+  <li><strong>Closure status</strong> for prior-inspection findings that were still open at this inspection&rsquo;s start.</li>
+</ol>
+
+<p>These ten elements form a defensible inspection record for any cadence. The depth varies &mdash; a pre-event walk-through may have a one-page version, while a comprehensive inspection may run to many pages &mdash; but the structure is consistent.</p>
+
+<h2 id="faq">Frequently Asked Questions</h2>
+
+<h3>What is a range facility inspection?</h3>
+<p>A range facility inspection is a scheduled review of the physical range environment to verify safe operating condition. Inspections cover backstops, berms, baffles, target systems, ventilation, lighting, fire suppression, first aid equipment, communication systems, and environmental compliance.</p>
+
+<h3>How often should range facilities be inspected?</h3>
+<p>Range inspections happen on multiple cadences simultaneously: pre-event walk-throughs before each training day, weekly or monthly operational inspections, quarterly comprehensive inspections, and annual or bi-annual structural inspections. All four cadences should be in place.</p>
+
+<h3>Who should conduct range facility inspections?</h3>
+<p>Routine pre-event and operational inspections can be conducted by the range master or a designated RSO. Comprehensive and structural inspections often require a qualified range construction professional, a ballistic engineer, or an environmental compliance specialist.</p>
+
+<h3>What happens if a range inspection identifies a deficiency?</h3>
+<p>Any deficiency should be documented with severity, corrective action required, responsible party, and target completion date. Critical safety deficiencies require immediate correction or range closure. Non-critical deficiencies should be tracked to closure.</p>
+
+<div class="cta-block">
+  <h3>Facility inspection records should be part of the training record, not separate from it.</h3>
+  <p>BrassOps connects facility condition records to the training events that depend on them, so inspection compliance and event defensibility live in one place.</p>
+  <a href="/demo/" class="cta-btn">Request a Demo</a>
+</div>
+
+  <div class="author-box">
+    <div class="author-avatar">BO</div>
+    <div class="author-info">
+      <h4>[Author Name], [Title]</h4>
+      <p>At BrassOps, [he/she/they] leads [relevant function]. Connect on <a href="#">LinkedIn</a>.</p>
+    </div>
+  </div>
+
+  </article>
+</div>
+
+<section class="related-section">
+  <div class="related-label">Continue Reading</div>
+  <div class="related-grid">
+    <div class="related-card"><div class="card-type">Blog Post</div><h4><a href="/blog/range-environmental-compliance/">Range Environmental Compliance</a></h4><p>The environmental regulations and documentation that comprehensive inspections must cover.</p></div>
+    <div class="related-card"><div class="card-type">Blog Post</div><h4><a href="/blog/range-safety-officer-certification/">Range Safety Officer Certification</a></h4><p>The credential that backs the pre-event walk-through and the go/no-go decision.</p></div>
+    <div class="related-card"><div class="card-type">Blog Post</div><h4><a href="/blog/indoor-outdoor-range-documentation/">Indoor vs. Outdoor Range Documentation</a></h4><p>How inspection requirements diverge between facility types.</p></div>
+    <div class="related-card"><div class="card-type">Blog Post</div><h4><a href="/blog/range-incident-reporting/">Range Incident Reporting</a></h4><p>The reporting workflow that inspections prevent from being needed.</p></div>
+  </div>
+</section>
+</body></html>

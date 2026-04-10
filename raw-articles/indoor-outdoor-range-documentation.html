@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indoor vs. Outdoor Ranges: Documentation Differences That Matter | BrassOps</title>
+<meta name="description" content="Indoor and outdoor ranges generate different documentation obligations. Here's where the requirements diverge, where they overlap, and why the distinction matters for compliance and defensibility.">
+<link rel="canonical" href="https://brassops.com/blog/indoor-outdoor-range-documentation/">
+<meta property="og:title" content="Indoor vs. Outdoor Ranges: Documentation Differences That Matter | BrassOps">
+<meta property="og:description" content="How documentation requirements diverge between indoor and outdoor facility types, including ventilation, weather protocols, and scenario limitations.">
+<meta property="og:url" content="https://brassops.com/blog/indoor-outdoor-range-documentation/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org", "@type": "Article",
+  "headline": "Indoor vs. Outdoor Ranges: Documentation Differences That Matter",
+  "author": { "@type": "Person", "name": "[Author Name]" },
+  "publisher": { "@type": "Organization", "name": "BrassOps", "url": "https://brassops.com" },
+  "datePublished": "2027-06-04", "dateModified": "2027-06-04",
+  "mainEntityOfPage": "https://brassops.com/blog/indoor-outdoor-range-documentation/"
+}
+</script>
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+  { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://brassops.com/" },
+  { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://brassops.com/blog/" },
+  { "@type": "ListItem", "position": 3, "name": "Indoor vs. Outdoor Range Documentation" }
+] }
+</script>
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+  { "@type": "Question", "name": "What are the main documentation differences between indoor and outdoor ranges?", "acceptedAnswer": { "@type": "Answer", "text": "Indoor ranges require extensive ventilation documentation, air quality monitoring, and OSHA lead exposure records. Outdoor ranges require weather condition documentation, stormwater permitting, noise monitoring, and lead migration management. Both types require facility inspections and safety protocols, but the specific content of those records differs substantially." } },
+  { "@type": "Question", "name": "Can the same qualification course be run at both indoor and outdoor ranges?", "acceptedAnswer": { "@type": "Answer", "text": "Many courses of fire can be run at either facility type, but some cannot. Indoor ranges typically have distance limitations, limited target angles, and restrictions on certain ammunition types. Outdoor ranges can accommodate longer distances, more scenario variety, and different environmental conditions. When the same qualification is run at both facility types, the training record should note where it was conducted and any facility-specific variations." } },
+  { "@type": "Question", "name": "Are low-light training requirements the same at indoor and outdoor ranges?", "acceptedAnswer": { "@type": "Answer", "text": "Low-light training can be conducted at both facility types, but the documentation differs. Indoor ranges can simulate low-light conditions on demand with controlled lighting. Outdoor ranges typically conduct low-light training during actual low-light hours (dusk, dawn, or night). The training record should specify which low-light conditions were replicated and how they were achieved, because the distinction matters when courts evaluate whether training matched operational environments." } },
+  { "@type": "Question", "name": "What weather documentation is required at outdoor ranges?", "acceptedAnswer": { "@type": "Answer", "text": "Outdoor range training records should note weather conditions at the time of training: temperature, precipitation, wind speed and direction, and visibility. Weather conditions affect training quality and can be relevant in litigation where the environmental conditions of training are compared against the conditions of a later incident. Severe weather may require training cancellation, and cancellation decisions should also be documented." } }
+] }
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --navy: #0B2545; --steel: #13315C; --blue: #1B4F72; --accent: #1A6FAC; --brass: #B8860B; --brass-light: #F5E6C8; --text: #1A1A1A; --text-light: #444444; --white: #FFFFFF; --border: #D5DBDB; --red: #B03020; --green: #1D8348; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Source Serif 4', Georgia, serif; color: var(--text); background: var(--white); line-height: 1.8; font-size: 18px; }
+  .breadcrumb { font-family: 'DM Sans', sans-serif; font-size: 13px; color: #444; max-width: 820px; margin: 0 auto; padding: 20px 24px 0; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; } .breadcrumb span { margin: 0 6px; }
+  .hero { max-width: 820px; margin: 0 auto; padding: 32px 24px 40px; border-bottom: 3px solid var(--navy); }
+  .hero-badge { display: inline-block; font-family: 'DM Sans', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; background: var(--navy); color: var(--brass); padding: 5px 14px; border-radius: 2px; margin-bottom: 20px; }
+  .hero h1 { font-size: clamp(30px, 5vw, 44px); font-weight: 700; line-height: 1.15; color: var(--navy); margin-bottom: 16px; }
+  .hero-subtitle { font-size: 19px; color: #333; line-height: 1.6; max-width: 680px; }
+  .hero-meta { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 20px; font-family: 'DM Sans', sans-serif; font-size: 14px; color: #444; align-items: center; }
+  .hero-meta strong { color: var(--text); } .hero-meta .divider { width: 1px; height: 16px; background: var(--border); }
+  .content-wrap { display: flex; max-width: 1100px; margin: 0 auto; padding: 40px 24px 60px; gap: 40px; }
+  .toc { flex: 0 0 240px; position: sticky; top: 24px; align-self: flex-start; font-family: 'DM Sans', sans-serif; font-size: 14px; padding: 20px; background: #F8F9FA; border-left: 3px solid var(--brass); border-radius: 2px; }
+  .toc-label { font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--navy); margin-bottom: 12px; }
+  .toc a { display: block; padding: 6px 0; color: #444; text-decoration: none; border-bottom: 1px solid #EEE; }
+  .toc a:last-child { border-bottom: none; }
+  .toc a:hover { color: var(--accent); }
+  article { flex: 1; min-width: 0; max-width: 720px; }
+  article h2 { font-family: 'DM Sans', sans-serif; font-size: 28px; font-weight: 700; color: var(--navy); margin: 48px 0 18px; line-height: 1.3; }
+  article h2:first-child { margin-top: 0; }
+  article h3 { font-family: 'DM Sans', sans-serif; font-size: 21px; font-weight: 600; color: var(--steel); margin: 32px 0 14px; }
+  article p { margin-bottom: 18px; }
+  article strong { color: var(--navy); }
+  article ul, article ol { margin: 0 0 20px 22px; }
+  article li { margin-bottom: 10px; }
+  article a { color: var(--accent); text-decoration: underline; text-decoration-color: #B8D4E8; text-underline-offset: 3px; }
+  article a:hover { text-decoration-color: var(--accent); }
+  .takeaway { background: var(--brass-light); border-left: 5px solid var(--brass); padding: 22px 26px; margin: 28px 0; border-radius: 2px; }
+  .takeaway p { margin: 0; font-size: 17px; color: #3C2E12; }
+  .warning { background: #FDEDEC; border-left: 5px solid var(--red); padding: 22px 26px; margin: 28px 0; border-radius: 2px; }
+  .warning p { margin: 0; font-size: 17px; color: #641E16; }
+  .cta-block { background: var(--navy); color: var(--white); padding: 36px 32px; margin: 40px 0; border-radius: 3px; text-align: center; }
+  .cta-block h3 { font-family: 'DM Sans', sans-serif; color: var(--brass); font-size: 22px; margin-bottom: 12px; }
+  .cta-block p { color: #D5DBDB; font-size: 16px; margin-bottom: 22px; }
+  .cta-btn { display: inline-block; background: var(--brass); color: var(--navy); font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 15px; letter-spacing: 1px; text-transform: uppercase; padding: 14px 32px; border-radius: 2px; text-decoration: none; }
+  .author-box { display: flex; gap: 20px; padding: 28px; background: #F8F9FA; border-radius: 3px; margin-top: 48px; align-items: flex-start; }
+  .author-avatar { width: 64px; height: 64px; border-radius: 50%; background: var(--navy); flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--brass); font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 20px; }
+  .author-info h4 { font-family: 'DM Sans', sans-serif; font-size: 16px; color: var(--navy); margin-bottom: 6px; }
+  .author-info p { font-size: 14px; color: #555; line-height: 1.5; margin: 0; }
+  .author-info a { color: var(--accent); }
+  .related-section { max-width: 1100px; margin: 0 auto 60px; padding: 0 24px; }
+  .related-label { font-family: 'DM Sans', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--navy); margin-bottom: 20px; padding-top: 40px; border-top: 2px solid var(--navy); }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 20px; }
+  .related-card { padding: 20px; background: #F8F9FA; border-radius: 3px; border-top: 3px solid var(--brass); }
+  .card-type { font-family: 'DM Sans', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--brass); margin-bottom: 8px; }
+  .related-card h4 { font-family: 'DM Sans', sans-serif; font-size: 16px; color: var(--navy); margin-bottom: 8px; line-height: 1.35; }
+  .related-card h4 a { color: var(--navy); text-decoration: none; }
+  .related-card h4 a:hover { color: var(--accent); }
+  .related-card p { font-size: 13px; color: #555; line-height: 1.5; margin: 0; }
+  @media (max-width: 860px) {
+    .content-wrap { flex-direction: column; padding: 30px 20px; }
+    .toc { position: static; flex: none; width: 100%; }
+    article h2 { font-size: 24px; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="breadcrumb">
+  <a href="/">Home</a><span>&rsaquo;</span><a href="/blog/">Blog</a><span>&rsaquo;</span>Indoor vs. Outdoor Range Documentation
+</nav>
+
+<header class="hero">
+  <div class="hero-badge">Range Operations</div>
+  <h1>Indoor vs. Outdoor Ranges: Documentation Differences That Matter</h1>
+  <p class="hero-subtitle">Indoor and outdoor ranges are two different compliance environments held together by the same training goals. The documentation that works at one doesn&rsquo;t always work at the other &mdash; and the agencies that run both need to keep the distinctions clear.</p>
+  <div class="hero-meta">
+    <span>By <strong>[Author Name]</strong>, [Title]</span> <div class="divider"></div>
+    <span>Published <strong>June 4, 2027</strong></span> <div class="divider"></div>
+    <span><strong>14 min</strong> read</span>
+  </div>
+</header>
+
+<div class="content-wrap">
+
+  <aside class="toc">
+    <div class="toc-label">In This Article</div>
+    <a href="#two-environments">Two Environments, One Training Goal</a>
+    <a href="#indoor-documentation">Indoor Range Documentation</a>
+    <a href="#outdoor-documentation">Outdoor Range Documentation</a>
+    <a href="#overlapping-requirements">Where Requirements Overlap</a>
+    <a href="#training-implications">Training Implications of Facility Choice</a>
+    <a href="#mixed-facility">Mixed-Facility Programs</a>
+    <a href="#facility-noted">Why the Facility Should Be in the Record</a>
+    <a href="#faq">Frequently Asked Questions</a>
+  </aside>
+
+  <article>
+
+<h2 id="two-environments">Two Environments, One Training Goal</h2>
+
+<p>Indoor and outdoor ranges both exist to train officers in firearms skills, but they do it in environments that differ in almost every operational dimension. The physical environment, the regulatory obligations, the available training scenarios, the seasonal considerations, the cost structures, and the documentation requirements all diverge between the two facility types.</p>
+
+<p>Most agencies use both. A typical program might run quarterly qualification at an outdoor range, interim practice at an indoor range, specialty team training at an outdoor facility, and new-officer instruction at an indoor bay. Each facility gets selected for different reasons, and each generates a different documentation stream.</p>
+
+<p>The danger is treating documentation as if it were facility-neutral. A training record that doesn&rsquo;t note where the training happened loses the context that determines whether the training matched the environment it was preparing officers for. A facility inspection record that uses the same checklist for indoor and outdoor environments misses the elements specific to each. A compliance program that assumes federal and state rules apply the same way at both types of range will miss obligations that only attach to one type.</p>
+
+<div class="takeaway">
+  <p>Indoor and outdoor ranges are not interchangeable from a documentation standpoint. <strong>The facility type should be an explicit field in every training and compliance record, and the documentation standards should reflect what each facility actually requires &mdash; not a common-denominator version that ignores the differences.</strong></p>
+</div>
+
+<h2 id="indoor-documentation">Indoor Range Documentation</h2>
+
+<p>Indoor ranges generate a documentation footprint dominated by air quality, ventilation, worker exposure, and facility condition. The enclosed environment concentrates contaminants that outdoor ranges disperse, and the regulatory framework reflects that concentration.</p>
+
+<h3>Ventilation system records</h3>
+<p>Indoor range ventilation is the single most documented element of the facility. The records should include:</p>
+
+<ul>
+  <li><strong>Design specifications.</strong> The original ventilation design, airflow volumes, and filtration specifications from facility construction or most recent major upgrade.</li>
+  <li><strong>Commissioning records.</strong> Documentation that the system was tested and verified against design at installation.</li>
+  <li><strong>Operational monitoring.</strong> Periodic measurements of airflow, direction, and volume to confirm the system is performing as designed.</li>
+  <li><strong>Filter replacement logs.</strong> Dates of filter changes, the condition of replaced filters, and any anomalies observed during replacement.</li>
+  <li><strong>Annual certification.</strong> Certified inspection by a qualified HVAC specialist confirming the system meets applicable standards.</li>
+  <li><strong>Corrective actions.</strong> Any deficiencies identified and the actions taken to resolve them.</li>
+</ul>
+
+<h3>Air quality monitoring</h3>
+<p>Air quality at an indoor range is not assumed to be compliant &mdash; it must be measured. Monitoring records should include ambient lead levels at the firing line and shooter breathing zone, combustion byproduct measurements where applicable, monitoring frequency, the qualifications of the person conducting monitoring, and comparison against applicable exposure limits.</p>
+
+<h3>OSHA lead exposure records</h3>
+<p>Employees and officers regularly using an indoor range are subject to OSHA lead exposure monitoring. The records include blood lead level monitoring results, audiometric testing records, training on lead hazards, personal protective equipment provided and used, and any exposure incidents that triggered additional assessment. These records belong to both the environmental compliance file and the individual officer&rsquo;s medical surveillance record.</p>
+
+<h3>Lighting and fire suppression</h3>
+<p>Indoor ranges have specific lighting and fire suppression requirements. Lighting adequacy, fire suppression system certification, emergency egress documentation, and building code compliance all generate records that don&rsquo;t exist in the same form at outdoor facilities.</p>
+
+<h3>Building code and zoning</h3>
+<p>Indoor ranges are subject to building code inspections, zoning compliance requirements, and occupancy permits that outdoor ranges often are not. Certificate of occupancy, fire marshal inspections, and building system certifications should all be tracked as part of the facility compliance file.</p>
+
+<h2 id="outdoor-documentation">Outdoor Range Documentation</h2>
+
+<p>Outdoor ranges generate a different documentation footprint, dominated by environmental factors, weather, and the specific regulatory obligations that attach to outdoor operations.</p>
+
+<h3>Weather condition records</h3>
+<p>Every outdoor training event should record weather conditions at the time of training. The fields include temperature, precipitation, wind speed and direction, visibility, and any notable weather features (fog, smoke from wildfires, lightning in the area). Weather conditions affect training quality and become relevant when training is later compared against incident conditions in litigation.</p>
+
+<h3>The weather cancellation record</h3>
+<p>When weather forces training cancellation or modification, the decision should be documented: what conditions prompted the decision, who made it, what was cancelled or modified, and when the training was rescheduled. Undocumented weather cancellations look like missed training in retrospect. Documented cancellations show an agency managing training responsibly around conditions outside its control.</p>
+
+<h3>Stormwater and NPDES records</h3>
+<p>Outdoor ranges subject to stormwater permitting generate a parallel documentation stream covering SWPPP implementation, sampling results, BMP maintenance, and regulatory reporting. These records are covered in depth in <a href="/blog/range-environmental-compliance/">the environmental compliance article</a>, but they belong to the outdoor range file specifically.</p>
+
+<h3>Noise monitoring and complaint response</h3>
+<p>Outdoor ranges often maintain noise monitoring records tied to local ordinance compliance. Complaint logs &mdash; noise complaints from neighbors, responses given, and any operational adjustments made &mdash; are part of the facility record and become important evidence if a noise-related enforcement action occurs.</p>
+
+<h3>Lead migration and soil records</h3>
+<p>Outdoor ranges accumulate lead in soil over time. Periodic soil testing, lead reclamation records, and evidence of BMP implementation (vegetation, erosion control, pH management) together document the agency&rsquo;s lead management program. This record is typically absent at indoor facilities, where the lead management question takes a different form.</p>
+
+<h3>Backstop and berm condition history</h3>
+<p>Outdoor backstops and berms are managed infrastructure that change over time. The record should include construction or last-major-modification records, erosion history, reclamation events, and any structural repairs. This history informs decisions about continued operation and guides the schedule for future maintenance.</p>
+
+<h2 id="overlapping-requirements">Where Requirements Overlap</h2>
+
+<p>Indoor and outdoor ranges share several documentation categories, even when the specific content differs.</p>
+
+<h3>Facility inspections</h3>
+<p>Both facility types require the <a href="/blog/range-facility-inspections/">four-cadence inspection framework</a> discussed earlier: pre-event walk-throughs, operational inspections, comprehensive inspections, and structural inspections. The checklists differ, but the cadence and the documentation structure are consistent.</p>
+
+<h3>RSO presence and credentials</h3>
+<p>Both facility types require <a href="/blog/range-safety-officer-certification/">RSO coverage</a> with current credentials. The RSO&rsquo;s role is the same at either facility, though the specific safety concerns differ.</p>
+
+<h3>Training records</h3>
+<p>The core training record &mdash; officer attribution, qualification score, instructor identity, lot number of ammunition used &mdash; is the same regardless of facility. What differs is the environmental context that should be captured alongside the training record.</p>
+
+<h3>Incident reporting</h3>
+<p>Both facility types need an incident reporting workflow for accidents, near-misses, equipment failures, and safety concerns. The specific incident types differ &mdash; indoor ranges face more ventilation and lead exposure incidents, outdoor ranges face more weather and backstop-related incidents &mdash; but the reporting structure should be consistent.</p>
+
+<h3>Instructor qualification</h3>
+<p>The credentialing requirements for firearms instructors apply at both facility types, though specific facilities may require additional endorsements (indoor range operations, night fire, specific scenario work).</p>
+
+<h2 id="training-implications">Training Implications of Facility Choice</h2>
+
+<p>The facility type also affects what training can be conducted and how. These implications should be reflected in training documentation so the record shows not just that training happened but what the facility allowed it to cover.</p>
+
+<h3>Distance and scenario limitations</h3>
+<p>Indoor ranges have fixed distance limits &mdash; typically 25 yards for handgun, sometimes less for certain facilities. They have limited target angles, fixed firing positions, and constraints on scenario-based training. Outdoor ranges typically offer longer distances, more varied target configurations, and the ability to run scenario training with movement, cover, and multi-position engagement.</p>
+
+<p>A qualification conducted entirely at 25 yards is not the same as a qualification conducted at distances ranging from 3 to 50 yards. The training record should note the facility type and any distance-related limitations so the training&rsquo;s scope is clear.</p>
+
+<h3>Ammunition restrictions</h3>
+<p>Some indoor ranges restrict certain ammunition types due to backstop concerns, ventilation capacity, or facility policy. Frangible ammunition may be required. Steel-core rounds may be prohibited. Certain duty rounds may be excluded. These restrictions affect what training can be conducted at the facility and should be documented so future training planning reflects the facility&rsquo;s actual capacity.</p>
+
+<h3>Low-light training</h3>
+<p>Both facility types can support low-light training, but in different ways. Indoor ranges can simulate low-light on demand by controlling facility lighting. Outdoor ranges typically conduct low-light training during actual low-light hours. The training record should specify which method was used, because the authenticity of the low-light experience differs between simulated and actual darkness.</p>
+
+<h3>Weather-dependent training</h3>
+<p>Outdoor ranges allow officers to train in the weather conditions they will actually face on duty. Rain, snow, wind, cold, and heat all affect shooting performance, and officers who have never trained in adverse weather have not experienced how conditions affect their handling. Indoor ranges cannot replicate these conditions meaningfully. The training program should include intentional outdoor training in adverse weather, documented as such, to close the gap.</p>
+
+<div class="cta-block">
+  <h3>Facility type should be a field in every training record.</h3>
+  <p>BrassOps captures facility type, weather conditions (for outdoor events), ventilation status (for indoor events), and environmental context alongside every qualification record.</p>
+  <a href="/demo/" class="cta-btn">Request a Demo</a>
+</div>
+
+<h2 id="mixed-facility">Mixed-Facility Programs</h2>
+
+<p>Most agencies operate mixed programs: some training at indoor ranges, some at outdoor ranges, often rotating based on season, availability, and training objectives. Mixed-facility programs introduce their own documentation considerations.</p>
+
+<h3>Consistency across facilities</h3>
+<p>When the same qualification standard is applied at both facility types, the documentation should show the qualification was equivalent regardless of where it was conducted. This means the course of fire, the scoring criteria, and the evaluation method were the same even though the facility differed. When they weren&rsquo;t the same &mdash; because facility limitations required modifications &mdash; the modifications should be documented explicitly.</p>
+
+<h3>Tracking facility rotation</h3>
+<p>An agency running regular training at multiple facilities should track which facility each officer used for which event. This tracking lets the agency show each officer had exposure to the range types the agency operates, and it prevents the scenario where an officer&rsquo;s entire training history is at one facility type while the agency claims equivalent exposure to both.</p>
+
+<h3>Facility-specific currency</h3>
+<p>Some qualifications may be facility-specific &mdash; an officer qualified on a specific indoor facility may need an orientation before using a different indoor facility, or may need familiarization before transitioning to an outdoor environment. These facility-specific currencies should be tracked as part of the training record.</p>
+
+<h3>Cost allocation</h3>
+<p>Mixed facility programs involve cost allocation considerations that single-facility programs don&rsquo;t. Indoor range use may be charged per-hour or per-lane, while outdoor range use may be owned by the agency or rented under different terms. Budget documentation should reflect the mixed cost structure.</p>
+
+<h2 id="facility-noted">Why the Facility Should Be in the Record</h2>
+
+<p>Beyond compliance and operations, the facility type should be a documented field in every training record for one additional reason: it becomes evidence in litigation.</p>
+
+<p>When an officer&rsquo;s training record is examined in a failure-to-train case, the question of where the training occurred becomes relevant to whether the training matched the operational environment. An officer who trained exclusively at a 25-yard indoor range cannot be assumed to have been prepared for engagements at longer distances. An officer who trained only in benign weather conditions cannot be assumed to have been prepared for adverse conditions. An officer whose training records don&rsquo;t note the facility at all leaves the plaintiff&rsquo;s attorney free to assume the worst.</p>
+
+<p>The simple act of noting facility type in each training record closes that gap. It turns an assumption into a documented fact, and it lets the agency demonstrate the range of environments its officers have trained in rather than having to reconstruct it later from incomplete sources.</p>
+
+<div class="warning">
+  <p>A training record that doesn&rsquo;t identify the facility where the training occurred is a record with a gap the plaintiff gets to fill. Fill it yourself, in writing, at the time of training &mdash; not under deposition pressure years later.</p>
+</div>
+
+<h2 id="faq">Frequently Asked Questions</h2>
+
+<h3>What are the main documentation differences between indoor and outdoor ranges?</h3>
+<p>Indoor ranges require extensive ventilation documentation, air quality monitoring, and OSHA lead exposure records. Outdoor ranges require weather condition documentation, stormwater permitting, noise monitoring, and lead migration management. Both types require facility inspections and safety protocols, but the specific content differs substantially.</p>
+
+<h3>Can the same qualification course be run at both indoor and outdoor ranges?</h3>
+<p>Many courses can be run at either facility type, but some cannot. Indoor ranges have distance limitations, limited target angles, and restrictions on certain ammunition. Outdoor ranges can accommodate longer distances and more scenario variety. The training record should note where it was conducted and any facility-specific variations.</p>
+
+<h3>Are low-light training requirements the same at indoor and outdoor ranges?</h3>
+<p>Low-light training can be conducted at both facility types, but the documentation differs. Indoor ranges simulate low-light on demand with controlled lighting. Outdoor ranges conduct low-light training during actual low-light hours. The training record should specify which method was used.</p>
+
+<h3>What weather documentation is required at outdoor ranges?</h3>
+<p>Outdoor range training records should note temperature, precipitation, wind speed and direction, and visibility. Severe weather may require training cancellation, and cancellation decisions should also be documented with the conditions that prompted them.</p>
+
+<div class="cta-block">
+  <h3>Different facilities, consistent records.</h3>
+  <p>BrassOps captures facility-specific context for every training event &mdash; so indoor and outdoor training both generate records that reflect what the facility actually allowed.</p>
+  <a href="/demo/" class="cta-btn">Request a Demo</a>
+</div>
+
+  <div class="author-box">
+    <div class="author-avatar">BO</div>
+    <div class="author-info">
+      <h4>[Author Name], [Title]</h4>
+      <p>At BrassOps, [he/she/they] leads [relevant function]. Connect on <a href="#">LinkedIn</a>.</p>
+    </div>
+  </div>
+
+  </article>
+</div>
+
+<section class="related-section">
+  <div class="related-label">Continue Reading</div>
+  <div class="related-grid">
+    <div class="related-card"><div class="card-type">Blog Post</div><h4><a href="/blog/range-facility-inspections/">Range Facility Inspections</a></h4><p>The inspection framework that applies differently across facility types.</p></div>
+    <div class="related-card"><div class="card-type">Blog Post</div><h4><a href="/blog/range-environmental-compliance/">Range Environmental Compliance</a></h4><p>The environmental obligations that diverge sharply between indoor and outdoor operations.</p></div>
+    <div class="related-card"><div class="card-type">Blog Post</div><h4><a href="/blog/low-light-qualification-training/">Low-Light Qualification Training</a></h4><p>The training category where indoor and outdoor approaches produce different experiences.</p></div>
+    <div class="related-card"><div class="card-type">Blog Post</div><h4><a href="/blog/mobile-rental-range-documentation/">Mobile and Rental Ranges</a></h4><p>The third facility category with its own documentation considerations.</p></div>
+  </div>
+</section>
+</body></html>
