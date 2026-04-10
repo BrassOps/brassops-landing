@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KJM9SJ714M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KJM9SJ714M');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ammunition Lot Tracking: Why Every Round Has a Paper Trail | BrassOps</title>
+<meta name="description" content="Lot-level ammunition tracking is the evidence chain that connects procurement to officers to qualifications to duty use. Here's what defensible tracking looks like and where most agencies fall short.">
+<link rel="canonical" href="https://brassops.com/blog/002-ammunition-lot-tracking-the-foundation-of-range-accountability.html">
+<meta property="og:title" content="Ammunition Lot Tracking: Why Every Round Has a Paper Trail | BrassOps">
+<meta property="og:description" content="The documentation chain that ties ammunition lots to officers to qualifications to duty use &mdash; and where most agencies have gaps.">
+<meta property="og:url" content="https://brassops.com/blog/002-ammunition-lot-tracking-the-foundation-of-range-accountability.html">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org", "@type": "Article",
+  "headline": "Ammunition Lot Tracking: Why Every Round Has a Paper Trail",
+  "author": { "@type": "Person", "name": "Rich O'Brien" },
+  "publisher": { "@type": "Organization", "name": "BrassOps", "url": "https://brassops.com" },
+  "datePublished":"2026-05-07",
+  "mainEntityOfPage": "https://brassops.com/blog/ammunition-lot-tracking/"
+}
+</script>
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+  { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://brassops.com/" },
+  { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://brassops.com/blog/" },
+  { "@type": "ListItem", "position": 3, "name": "Ammunition Lot Tracking" }
+] }
+</script>
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [
+  { "@type": "Question", "name": "What is ammunition lot tracking?", "acceptedAnswer": { "@type": "Answer", "text": "Ammunition lot tracking is the practice of recording the manufacturer's lot number for every round of ammunition an agency procures, issues, and uses, and tying those lot numbers to specific officers, qualification events, and duty assignments. A defensible lot tracking system creates an unbroken documentation chain from procurement through disposal or duty use." } },
+  { "@type": "Question", "name": "Why do courts care about ammunition lot tracking?", "acceptedAnswer": { "@type": "Answer", "text": "Courts and plaintiffs' attorneys examine ammunition lot tracking in use-of-force litigation, catastrophic failure cases, and product liability claims. Lot tracking determines whether the officer trained on the same ammunition they carried on duty, whether a recalled or defective lot was in use at the time of an incident, and whether the agency can produce a complete chain of custody. Gaps in lot tracking undermine the agency's ability to reconstruct what ammunition was involved in any given event." } },
+  { "@type": "Question", "name": "What fields should a lot tracking record include?", "acceptedAnswer": { "@type": "Answer", "text": "A defensible lot tracking record should include: manufacturer, lot number, caliber, quantity received, date received, purchase order reference, storage location, quantity issued, date issued, receiving officer, course of fire or duty assignment, instructor or supervisor who issued it, and disposition of remaining inventory. Every transaction involving the lot should be timestamped and attributed." } },
+  { "@type": "Question", "name": "How does lot tracking connect to duty ammunition rotation?", "acceptedAnswer": { "@type": "Answer", "text": "Most agencies rotate duty ammunition on a defined schedule &mdash; often annually &mdash; and use the removed duty rounds for training or disposal. A lot tracking system records which lot was issued as duty ammunition, when it was removed, where it went next (training or disposal), and what lot replaced it. Without this tracking, an agency cannot reconstruct which specific ammunition an officer was carrying at any given point in time." } }
+] }
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --red: #ef4444; --red-dim: rgba(239,68,68,0.08); --navy: #111111; --text: #1a1a1a; --text-light: #444444; --accent: #ef4444; --border: #e4e4e7; --bg: #ffffff; --green: #16a34a; --brass: #ef4444; --brass-light: #fecaca; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Barlow', sans-serif; color: var(--text); background: var(--bg); line-height: 1.8; font-size: 17px; }
+  .breadcrumb { font-family: 'Rajdhani', sans-serif; font-size: 13px; color: #666; max-width: 780px; margin: 0 auto; padding: 76px 24px 0; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; } .breadcrumb span { margin: 0 6px; }
+  .hero { max-width: 780px; margin: 0 auto; padding: 24px 24px 40px; border-bottom: 3px solid var(--accent); }
+  .hero-badge { display: inline-block; font-family: 'Rajdhani', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; background: var(--accent); color: #fff; padding: 5px 14px; border-radius: 4px; margin-bottom: 20px; }
+  .hero h1 { font-family: 'Rajdhani', sans-serif; font-size: clamp(28px, 4.5vw, 40px); font-weight: 700; line-height: 1.18; color: var(--navy); margin-bottom: 16px; }
+  .hero-subtitle { font-size: 18px; color: #333; line-height: 1.6; }
+  .hero-meta { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 20px; font-family: 'Rajdhani', sans-serif; font-size: 14px; color: #666; align-items: center; }
+  .hero-meta strong { color: var(--text); } .hero-meta .divider { width: 1px; height: 16px; background: var(--border); }
+  article { max-width: 780px; margin: 0 auto; padding: 48px 24px 32px; }
+  article h2 { font-family: 'Rajdhani', sans-serif; font-size: 26px; font-weight: 700; color: var(--navy); margin: 48px 0 16px; padding-top: 8px; border-top: 1px solid var(--border); }
+  article h2:first-of-type { border-top: none; margin-top: 0; }
+  article h3 { font-family: 'Rajdhani', sans-serif; font-size: 19px; font-weight: 700; color: #333; margin: 32px 0 10px; }
+  article p { margin-bottom: 20px; }
+  article a { color: var(--accent); text-decoration: underline; text-decoration-color: rgba(239,68,68,0.3); text-underline-offset: 3px; }
+  article a:hover { text-decoration-color: var(--accent); }
+  article ul, article ol { margin: 0 0 20px 24px; } article li { margin-bottom: 8px; }
+  .takeaway { background: var(--navy); color: #fff; padding: 24px 28px; border-radius: 8px; margin: 28px 0; }
+  .takeaway::before { content: 'KEY TAKEAWAY'; font-family: 'Rajdhani', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; color: var(--accent); display: block; margin-bottom: 8px; }
+  .takeaway p { color: rgba(255,255,255,0.92); margin-bottom: 0; font-size: 17px; line-height: 1.7; } .takeaway strong { color: var(--brass-light); }
+  .callout { border-left: 4px solid var(--accent); background: var(--red-dim); padding: 18px 22px; margin: 24px 0; border-radius: 0 8px 8px 0; }
+  .callout p { margin-bottom: 0; font-size: 16px; } .callout strong { color: var(--navy); }
+  .warning { border-left: 4px solid #dc2626; background: #fef2f2; padding: 18px 22px; margin: 24px 0; border-radius: 0 8px 8px 0; }
+  .warning::before { content: '\26A0 LIABILITY NOTE'; font-family: 'Rajdhani', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1px; color: #dc2626; display: block; margin-bottom: 8px; }
+  .warning p { margin-bottom: 0; font-size: 16px; }
+  .scenario-box { background: #f9fafb; border: 1px solid var(--border); border-radius: 8px; padding: 20px 24px; margin: 24px 0; }
+  .scenario-box .label { font-family: 'Rajdhani', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #dc2626; margin-bottom: 6px; }
+  .scenario-box .label.good { color: var(--green); }
+  .scenario-box h3 { font-family: 'Rajdhani', sans-serif; font-size: 17px; font-weight: 700; color: var(--navy); margin: 0 0 8px; }
+  .scenario-box p { margin-bottom: 8px; font-size: 16px; } .scenario-box p:last-child { margin-bottom: 0; }
+  .sign-box { background: #f9fafb; border: 1px solid var(--border); border-radius: 8px; padding: 20px 24px; margin: 20px 0; }
+  .sign-box .num { font-family: 'Rajdhani', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #dc2626; margin-bottom: 6px; }
+  .sign-box h3 { font-family: 'Rajdhani', sans-serif; font-size: 17px; font-weight: 700; color: var(--navy); margin: 0 0 8px; }
+  .sign-box p { margin-bottom: 8px; font-size: 16.5px; } .sign-box p:last-child { margin-bottom: 0; }
+  .cta-block { background: linear-gradient(135deg, #dc2626, #ef4444); padding: 36px 32px; border-radius: 12px; margin: 44px 0; text-align: center; }
+  .cta-block h3 { font-family: 'Rajdhani', sans-serif; font-size: 22px; color: #fff; margin: 0 0 10px; }
+  .cta-block p { color: rgba(255,255,255,0.85); font-size: 15px; margin-bottom: 22px; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .cta-btn { display: inline-block; font-family: 'Rajdhani', sans-serif; font-size: 15px; font-weight: 700; color: #dc2626; background: #fff; padding: 13px 34px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; text-transform: uppercase; }
+  .cta-btn:hover { background: #f5f5f5; }
+  .brevo-section { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+  .author-box { display: flex; gap: 18px; padding: 24px; background: #f9fafb; border: 1px solid var(--border); border-radius: 12px; margin: 44px 0 28px; max-width: 780px; margin-left: auto; margin-right: auto; }
+  .author-photo { width: 64px; height: 64px; border-radius: 50%; background: #111; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--accent); font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 22px; }
+  .author-info h4 { font-family: 'Rajdhani', sans-serif; font-size: 15px; color: var(--navy); margin-bottom: 3px; }
+  .author-info .author-title { font-family: 'Rajdhani', sans-serif; font-size: 12.5px; color: #666; margin-bottom: 7px; }
+  .author-info p { font-size: 14px; line-height: 1.6; margin-bottom: 0; }
+  .author-info a { color: var(--accent); }
+  .related-section { max-width: 780px; margin: 0 auto; padding: 40px 24px 20px; border-top: 2px solid var(--accent); }
+  .related-label { font-family: 'Rajdhani', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+  .related-card { border: 1px solid var(--border); border-radius: 8px; padding: 18px; }
+  .related-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+  .related-card .card-type { font-family: 'Rajdhani', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+  .related-card h4 { font-family: 'Rajdhani', sans-serif; font-size: 16px; font-weight: 600; line-height: 1.35; margin-bottom: 6px; }
+  .related-card h4 a { color: var(--navy); text-decoration: none; } .related-card h4 a:hover { color: var(--accent); }
+  .related-card p { font-size: 13px; color: #666; line-height: 1.5; margin-bottom: 0; }
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 15px; }
+  th { background: #f3f4f6; font-family: 'Rajdhani', sans-serif; font-weight: 700; text-align: left; padding: 10px 14px; border-bottom: 2px solid var(--border); }
+  td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+  /* Nav */
+  .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(1rem,4vw,3rem); height: 56px; background: rgba(10,10,10,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .site-nav .nb { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 1.1rem; color: #ededed; text-decoration: none; letter-spacing: 0.04em; }
+  .site-nav .nb .bo { color: #ef4444; }
+  .site-nav .nl { display: flex; gap: 1.5rem; align-items: center; }
+  .site-nav .nl a { font-family: 'Barlow', sans-serif; font-size: 0.85rem; font-weight: 500; color: #71717a; text-decoration: none; }
+  .site-nav .nl a:hover { color: #ededed; }
+  .site-nav .nl .la { background: linear-gradient(135deg,#ef4444,#dc2626); color: #fff !important; padding: 0.35rem 1rem; border-radius: 8px; font-weight: 600; font-size: 0.8rem; }
+  .hb { display: none; background: none; border: none; cursor: pointer; padding: 0.4rem; z-index: 110; }
+  .hb svg { width: 22px; height: 22px; stroke: #ededed; stroke-width: 2; fill: none; }
+  @media(max-width:768px) { .hb { display: block; } .site-nav .nl { display: none; flex-direction: column; align-items: stretch; gap: 0; position: fixed; top: 56px; left: 0; right: 0; background: rgba(10,10,10,0.95); backdrop-filter: blur(24px); border-bottom: 1px solid rgba(255,255,255,0.08); padding: 0.5rem 0; max-height: 0; overflow: hidden; transition: max-height 0.35s; } .site-nav .nl.open { display: flex; max-height: 400px; padding: 0.75rem 0; } .site-nav .nl a { padding: 0.75rem clamp(1rem,4vw,3rem); font-size: 0.95rem; border-bottom: 1px solid rgba(255,255,255,0.04); } .site-nav .nl .la { margin: 0.5rem clamp(1rem,4vw,3rem) 0.25rem; text-align: center; padding: 0.65rem 1rem; border-radius: 10px; } }
+  /* Footer */
+  .site-footer { background: #0a0a0a; color: #71717a; padding: 3rem 1.5rem 2.5rem; text-align: center; }
+  .site-footer .fb { font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #71717a; margin-bottom: 0.5rem; }
+  .site-footer .fb .bo { color: #ef4444; }
+  .site-footer .tl { font-size: 0.8rem; color: #52525b; margin-bottom: 0.75rem; font-style: italic; }
+  .site-footer .fl { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 0.75rem; }
+  .site-footer .fl a { font-size: 0.75rem; color: #52525b; text-decoration: none; }
+  .site-footer .fl a:hover { color: #a1a1aa; }
+  .site-footer .cp { font-size: 0.7rem; color: #52525b; }
+  /* TOC sidebar layout */
+  .content-wrap { display: flex; max-width: 1100px; margin: 0 auto; padding: 48px 24px; gap: 48px; }
+  .toc { width: 240px; flex-shrink: 0; position: sticky; top: 72px; align-self: flex-start; max-height: calc(100vh - 88px); overflow-y: auto; }
+  .toc-label { font-family: 'Rajdhani', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 14px; }
+  .toc a { display: block; font-family: 'Barlow', sans-serif; font-size: 13px; color: #666; text-decoration: none; padding: 5px 0 5px 12px; border-left: 2px solid transparent; line-height: 1.45; transition: all 0.2s; }
+  .toc a:hover { color: var(--navy); border-left-color: var(--accent); font-weight: 600; }
+  .content-wrap article { flex: 1; min-width: 0; max-width: 700px; padding: 0; }
+  @media (max-width: 900px) { .content-wrap { flex-direction: column; padding: 32px 16px; } .toc { width: 100%; position: static; border-bottom: 1px solid var(--border); padding-bottom: 16px; margin-bottom: 16px; max-height: none; } }
+  @media (max-width: 600px) { .hero h1 { font-size: 26px; } .hero { padding: 20px 16px 32px; } article { padding: 32px 16px 24px; } .author-box { flex-direction: column; align-items: center; text-align: center; } }
+</style>
+<meta property="og:image" content="https://app.brassops.com/opengraph-image">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="BrassOps">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Ammunition Lot Tracking: Why Every Round Has a Paper Trail">
+<meta name="twitter:description" content="Lot-level ammunition tracking is the evidence chain that connects procurement to officers to qualifications to duty use. Here's what defensible tracking looks like and where most agencies fall short.">
+<meta name="twitter:image" content="https://app.brassops.com/opengraph-image">
+<meta property="article:published_time" content="2026-05-07T08:00:00-05:00">
+<meta property="article:author" content="Rich O'Brien">
+<meta property="article:section" content="Range Operations">
+</head>
+<body>
+<nav class="site-nav">
+  <a href="https://brassops.com" class="nb">Brass<span class="bo">Ops</span></a>
+  <button class="hb" aria-label="Toggle menu" aria-expanded="false"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <div class="nl">
+    <a href="https://brassops.com/why-brassops">Why Brass<span style="color:#ef4444">Ops</span></a>
+    <a href="https://brassops.com/briefing">Briefing</a>
+    <a href="https://brassops.com/faq">FAQ</a>
+    <a href="https://brassops.com/contact">Contact</a>
+    <a href="https://app.brassops.com" class="la" target="_blank" rel="noopener">Launch App</a>
+  </div>
+</nav>
+<nav class="breadcrumb">
+  <a href="https://brassops.com/">Home</a><span>&rsaquo;</span><a href="https://brassops.com/blog/">Blog</a><span>&rsaquo;</span>Ammunition Lot Tracking
+</nav>
+
+<header class="hero">
+  <div class="hero-badge">Range Operations</div>
+  <h1>Ammunition Lot Tracking: Why Every Round Has a Paper Trail</h1>
+  <p class="hero-subtitle">Lot-level tracking is the unglamorous foundation that connects procurement to officers to qualifications to duty use &mdash; and it&rsquo;s the first thing examined when ammunition becomes an evidentiary question.</p>
+  <div class="hero-meta">
+    <span>By <strong>Rich O'Brien</strong>, Founder</span> <div class="divider"></div>
+    <span>Published <strong>May 7, 2026</strong></span> <div class="divider"></div>
+    <span><strong>14 min</strong> read</span>
+  </div>
+</header>
+
+<div class="content-wrap">
+
+  <aside class="toc">
+    <div class="toc-label">In This Article</div>
+    <a href="#why-lot-tracking-matters">Why Lot Tracking Matters</a>
+    <a href="#where-it-shows-up">Where It Shows Up in Litigation</a>
+    <a href="#the-record">What Belongs in the Record</a>
+    <a href="#the-chain">The Chain of Custody Model</a>
+    <a href="#training-vs-duty">Training vs. Duty Lot Separation</a>
+    <a href="#common-gaps">The Common Gaps</a>
+    <a href="#operationalizing">Operationalizing Lot Tracking</a>
+    <a href="#faq">Frequently Asked Questions</a>
+  </aside>
+
+  <article>
+
+<h2 id="why-lot-tracking-matters">Why Lot Tracking Matters to Every Agency</h2>
+
+<p>Ammunition is the only piece of equipment an officer carries that is, by design, consumed during its intended use. It cannot be recovered, inspected, or re-examined after the fact. The only thing that survives is the record of what the ammunition was, where it came from, and who had it.</p>
+
+<p>For most agencies, ammunition records are the weakest link in the entire training and equipment documentation chain. Quantities are tracked. Calibers are tracked. But the one field that actually matters in a litigation or safety investigation &mdash; the manufacturer&rsquo;s lot number &mdash; is often absent entirely.</p>
+
+<p>This is not a bureaucratic oversight. It is an evidentiary gap. When ammunition becomes part of a case &mdash; through a use-of-force incident, a catastrophic weapon failure, a manufacturer recall, or a products liability claim &mdash; the first question asked is which lot was involved. An agency that cannot answer has lost the ability to reconstruct what happened.</p>
+
+<div class="takeaway">
+  <p>Ammunition lot tracking is the evidence chain that survives after the rounds are gone. <strong>If your records can tell you how many rounds an officer fired but cannot tell you which lot they came from, you have a documentation gap you haven&rsquo;t quantified.</strong></p>
+</div>
+
+<h2 id="where-it-shows-up">Where Lot Tracking Shows Up in Litigation</h2>
+
+<p>The scenarios where ammunition records become evidence are more common than most command staff expect. They cluster into five patterns.</p>
+
+<h3>Use-of-force litigation</h3>
+<p>When an officer-involved shooting is litigated, the plaintiff&rsquo;s expert may examine the ammunition used against the ammunition the officer trained with. If the duty round differs from the training round in performance characteristics &mdash; velocity, recoil, penetration, expansion &mdash; and if training records don&rsquo;t show the officer trained on the actual duty round, the gap becomes an argument about preparation. An agency that can produce lot-level training records showing the officer fired the same ammunition in training that they carried on duty has a defensible position. An agency that cannot has a hole in the record.</p>
+
+<h3>Catastrophic weapon failures</h3>
+<p>When a weapon malfunctions catastrophically &mdash; a squib round, a case rupture, an out-of-battery detonation &mdash; the investigation follows the ammunition first. Which lot was being fired? Which officers were issued that lot? How much of it was consumed before the failure? What remaining inventory exists for forensic examination? An agency without lot tracking cannot answer any of these questions, and the investigation stalls or reaches conclusions unfavorable to the agency.</p>
+
+<h3>Manufacturer recalls</h3>
+<p>Ammunition manufacturers issue recalls for lot-specific defects. When a recall is issued, the agency is expected to know exactly which lots it holds, where those lots are in the inventory chain, and which officers were issued ammunition from the affected lots. An agency that cannot respond to a recall with lot-specific information is exposed on two fronts: the immediate safety risk to officers who may be carrying or training with defective ammunition, and the liability exposure if a failure occurs after the recall notice but before the agency can identify affected inventory.</p>
+
+<h3>Products liability claims</h3>
+<p>If an agency is pursuing a claim against a manufacturer &mdash; for defective ammunition, premature deterioration, or failure to meet specifications &mdash; the agency must be able to prove the lot, the procurement chain, the storage conditions, and the use history. Lot tracking is the foundation of every products liability claim an agency might want to bring.</p>
+
+<h3>Audit and grant compliance</h3>
+<p>Grant-funded ammunition and consent-decree-governed agencies are often required to demonstrate that grant-purchased or decree-specified ammunition was used for the intended purpose. Lot tracking is how that proof is constructed. Without it, the agency cannot distinguish grant ammunition from general inventory, and the accountability becomes impossible to document.</p>
+
+<div class="warning">
+  <p>In each of these five scenarios, the agency is not asked whether it tracked ammunition &mdash; it is asked to produce the tracking record. The existence of the record is the question. Agencies that never built the record have no response when the question arrives.</p>
+</div>
+
+<h2 id="the-record">What Belongs in a Lot Tracking Record</h2>
+
+<p>A defensible ammunition lot tracking record is a simple table that captures twelve fields across the life of the lot. The fields are not complicated. The discipline is in capturing them consistently for every lot, every time.</p>
+
+<h3>Procurement fields</h3>
+<ul>
+  <li><strong>Manufacturer.</strong> The name of the ammunition manufacturer.</li>
+  <li><strong>Lot number.</strong> The manufacturer&rsquo;s lot identifier, transcribed exactly as printed.</li>
+  <li><strong>Caliber and load.</strong> The specific caliber, bullet weight, and load designation.</li>
+  <li><strong>Quantity received.</strong> The number of rounds received in the lot.</li>
+  <li><strong>Date received.</strong> The date the lot arrived at the agency.</li>
+  <li><strong>Purchase order reference.</strong> The PO or procurement record tying the lot to its funding source.</li>
+</ul>
+
+<h3>Storage fields</h3>
+<ul>
+  <li><strong>Storage location.</strong> Where the lot is stored &mdash; armory, range, patrol inventory.</li>
+  <li><strong>Storage conditions.</strong> Climate-controlled, ambient, or environmental exposure notes if applicable.</li>
+</ul>
+
+<h3>Issuance fields</h3>
+<ul>
+  <li><strong>Quantity issued.</strong> Each time rounds are drawn from the lot, the quantity is recorded.</li>
+  <li><strong>Date issued.</strong> The date of each issuance event.</li>
+  <li><strong>Receiving officer or event.</strong> The officer receiving the rounds, or the training event the rounds were issued for.</li>
+  <li><strong>Issuing supervisor or instructor.</strong> The person who authorized and released the rounds from inventory.</li>
+</ul>
+
+<p>Every issuance event creates a new row. Every row ties the lot to a specific person, event, and date. At the end of the lot&rsquo;s life &mdash; when the last round has been fired, disposed of, or returned &mdash; the record shows a complete accounting from arrival to disposition.</p>
+
+<h2 id="the-chain">The Chain of Custody Model</h2>
+
+<p>Ammunition lot tracking is best understood as a chain of custody problem. The lot exists as a single inventory item on arrival, then fragments into smaller issuances that track to specific officers and events, then disappears entirely as rounds are consumed. At every point in that chain, the record must show who had custody, what they did with it, and what happened next.</p>
+
+<p>The chain has five typical phases.</p>
+
+<h3>Phase 1: Receipt</h3>
+<p>The lot arrives at the agency. It is logged into inventory with manufacturer, lot number, quantity, and date. A single record is created for the entire lot.</p>
+
+<h3>Phase 2: Storage</h3>
+<p>The lot sits in inventory. The record captures where it is stored, under what conditions, and any transfers between storage locations. If the lot is split across multiple storage locations, each sub-location is tracked.</p>
+
+<h3>Phase 3: Issuance</h3>
+<p>Rounds from the lot are drawn for a purpose &mdash; a range day, a duty rotation, a specialty team training event. Each issuance creates a child record against the parent lot, capturing quantity, date, recipient, and purpose.</p>
+
+<h3>Phase 4: Use</h3>
+<p>The issued rounds are fired, carried, or otherwise consumed. The training record for that event should reference back to the lot number, closing the loop between the ammunition record and the training record.</p>
+
+<h3>Phase 5: Disposition</h3>
+<p>Remaining rounds are returned to inventory, rotated out, or disposed of. The disposition event is recorded, and the lot&rsquo;s accounting is closed when the quantity remaining reaches zero.</p>
+
+<p>At any point in this chain, the agency should be able to answer: what does our inventory of this lot look like right now? Who has received rounds from it? What training events referenced it? When the chain is complete, the answers are immediate. When it is broken at any phase, the entire lot becomes unaccounted-for evidence.</p>
+
+<div class="cta-block">
+    <h3>How exposed is your department?</h3>
+    <p>Take our free 4-minute Training Liability Risk Assessment to find out where your documentation creates exposure — and how to fix it.</p>
+    <a href="https://www.brassops.com/assessment" class="cta-btn">Take the Assessment</a>
+</div>
+
+<h2 id="training-vs-duty">Training vs. Duty Lot Separation</h2>
+
+<p>One of the most important distinctions in lot tracking is the separation between training ammunition and duty ammunition. These two categories serve different purposes, are often sourced from different lots, and carry different documentation requirements.</p>
+
+<h3>Training ammunition</h3>
+<p>Training ammunition is typically purchased in larger quantities, at lower cost, and is consumed predictably across range days and qualifications. The documentation priority is volume &mdash; tracking which lots were used in which training events, and which officers fired which lots. Because training ammunition is consumed in a controlled environment, the traceability priority is event-level: which lot was the qualification shot with?</p>
+
+<h3>Duty ammunition</h3>
+<p>Duty ammunition is typically a higher-performance round, more expensive, and rotated through officer inventory on a defined schedule. The documentation priority is individual attribution &mdash; which officer is carrying which lot, when they received it, and when it is scheduled for rotation. Because duty ammunition may be carried for months or years before being fired (if ever), the traceability priority is officer-level: which lot is in this specific officer&rsquo;s duty magazines right now?</p>
+
+<h3>Why the separation matters</h3>
+<p>The Week 50 article in this series examines the liability risk when officers train on one ammunition and carry another. The short version: a defensible training program rotates duty ammunition into training use periodically, so that officers have documented experience with the exact rounds they carry. That rotation creates its own lot tracking requirement &mdash; the agency must be able to show which lot was issued as duty ammunition, when it was removed from duty inventory, which officers fired it in training, and what replaced it.</p>
+
+<p>Lot tracking is the infrastructure that makes duty-to-training rotation defensible. Without it, the rotation becomes an untraceable swap and loses its evidentiary value.</p>
+
+<h2 id="common-gaps">The Common Gaps</h2>
+
+<p>Most agencies have some form of ammunition tracking. Very few have lot-level tracking that would survive scrutiny in litigation or audit. The gaps follow predictable patterns.</p>
+
+<h3>Quantity-only tracking</h3>
+<p>The most common pattern: the agency tracks how many rounds were purchased and how many were consumed, but not which lots. The record shows "10,000 rounds of 9mm training ammunition consumed in Q2" without any lot-level specificity. This record is useful for budgeting and inventory management. It is not useful for evidence.</p>
+
+<h3>Lot numbers captured at procurement but not at issuance</h3>
+<p>The agency records lot numbers when ammunition arrives but stops tracking them at the point of issuance. The lot is known to have been received, but once it leaves the armory, the lot identity is lost. This is slightly better than quantity-only tracking but still fails at the evidentiary question: which officer fired which lot?</p>
+
+<h3>Paper-based tracking that doesn&rsquo;t survive audit</h3>
+<p>The agency maintains lot tracking on paper forms that are stored in binders at the range or armory. The forms exist, but they are not searchable, not indexed, and often incomplete. When a subpoena arrives asking for all records involving a specific lot, the agency must manually search the binders &mdash; and frequently cannot reconstruct the full chain because some forms are missing.</p>
+
+<h3>Mixed-lot issuance without re-tracking</h3>
+<p>A range day consumes rounds from multiple lots drawn from inventory. The issuance record shows "500 rounds of 9mm," but does not break down how many rounds came from each lot. When one of those lots becomes subject to a recall or investigation, the agency cannot determine whether ammunition from the affected lot was used on that range day, by which officers, or in what quantities.</p>
+
+<h3>Duty rotation without lot handoff</h3>
+<p>The agency rotates duty ammunition on a defined schedule but does not record which lots were rotated in, which lots were rotated out, or what happened to the rotated-out lots. When an officer&rsquo;s duty ammunition becomes relevant in litigation, the agency cannot say with certainty which lot the officer was carrying at the time of the incident &mdash; only which lot was authorized for duty use in that time window.</p>
+
+<div class="warning">
+  <p>Each of these gaps is common, survivable in ordinary operations, and devastating when tested by subpoena or audit. The agencies that close them do so by adopting discipline before the gap becomes evidence &mdash; not after.</p>
+</div>
+
+<h2 id="operationalizing">Operationalizing Lot Tracking</h2>
+
+<p>The operational question is how to build lot tracking into existing workflows without creating friction that undermines compliance. Four principles make lot tracking sustainable.</p>
+
+<h3>Capture at the point of event</h3>
+<p>Lot tracking that requires data entry after the fact &mdash; hours or days later, from memory or from scribbled notes &mdash; fails. Lot tracking that captures the lot number at the moment of issuance, at the moment of a range day, and at the moment of duty assignment is sustainable. This is why digital systems outperform paper systems for lot tracking: the data capture can happen on a tablet at the armory or on the range, in the same workflow that issues the ammunition.</p>
+
+<h3>Tie lots to existing records</h3>
+<p>A lot tracking record in isolation is administrative overhead. A lot tracking record tied to a qualification record, a duty assignment record, or an inventory drawdown is operational intelligence. The lot number should appear on the same screen as the training record, not as a separate file the coordinator has to reconcile later.</p>
+
+<h3>Build disposition into the workflow</h3>
+<p>The end of a lot&rsquo;s life &mdash; when the last rounds are consumed, returned, or disposed of &mdash; is where most tracking systems break down. Close-out is treated as an afterthought and often doesn&rsquo;t happen at all. A sustainable system prompts for disposition once a lot&rsquo;s remaining quantity reaches a defined threshold, forcing the accountability to close before the lot becomes a phantom record.</p>
+
+<h3>Audit quarterly, not annually</h3>
+<p>Quarterly audits catch gaps while they&rsquo;re still small. Annual audits catch gaps after they&rsquo;ve compounded for twelve months. The cost of a quarterly ammunition inventory audit is minor compared to the cost of reconstructing a lot history after a litigation demand. Agencies that audit quarterly find and close gaps routinely. Agencies that audit annually often discover that they cannot close them at all.</p>
+
+<h2 id="faq">Frequently Asked Questions</h2>
+
+<h3>What is ammunition lot tracking?</h3>
+<p>Ammunition lot tracking is the practice of recording the manufacturer&rsquo;s lot number for every round of ammunition an agency procures, issues, and uses, and tying those lot numbers to specific officers, qualification events, and duty assignments. A defensible lot tracking system creates an unbroken documentation chain from procurement through disposal or duty use.</p>
+
+<h3>Why do courts care about ammunition lot tracking?</h3>
+<p>Courts and plaintiffs&rsquo; attorneys examine ammunition lot tracking in use-of-force litigation, catastrophic failure cases, and product liability claims. Lot tracking determines whether the officer trained on the same ammunition they carried on duty, whether a recalled or defective lot was in use at the time of an incident, and whether the agency can produce a complete chain of custody.</p>
+
+<h3>What fields should a lot tracking record include?</h3>
+<p>A defensible lot tracking record should include: manufacturer, lot number, caliber, quantity received, date received, purchase order reference, storage location, quantity issued, date issued, receiving officer, course of fire or duty assignment, and instructor or supervisor who issued it. Every transaction involving the lot should be timestamped and attributed.</p>
+
+<h3>How does lot tracking connect to duty ammunition rotation?</h3>
+<p>Most agencies rotate duty ammunition on a defined schedule. A lot tracking system records which lot was issued as duty ammunition, when it was removed, where it went next, and what lot replaced it. Without this tracking, an agency cannot reconstruct which specific ammunition an officer was carrying at any given point in time.</p>
+
+<div class="cta-block">
+  <h3>Your records should answer the lot question before it&rsquo;s asked.</h3>
+  <p>BrassOps tracks ammunition lots through procurement, issuance, training, and duty rotation &mdash; tied to the officer and event records you already maintain.</p>
+  <a href="https://brassops.com/contact/" class="cta-btn">Request a Demo</a>
+</div>
+
+  <div class="brevo-section"><div style="max-width:540px;margin:40px auto;"><iframe width="540" height="305" src="https://95e271d5.sibforms.com/serve/MUIFAP6ZnwlLAjy5iaThuqpbE3FXO9Cx5wiid5j27YIrtViQBrgZmNyThiaROf5LiHuOAMnP0hYF4klLfpbshO30CKIqpcYlOpslMBppnltmsxEy1xFeb85Td9-5-tJTfQmb9kzlVa-pzA41ln2_qphx55Uq69IwWeKm2KDI3G6-ghI09VQfMFjVW_YJ8C7nhU1HefEJ66hmkX3iww==" frameborder="0" scrolling="auto" allowfullscreen style="display:block;margin-left:auto;margin-right:auto;max-width:100%;"></iframe></div></div>
+  <div class="author-box" style="max-width:780px;margin:28px auto;">
+    <div class="author-photo">RO</div>
+    <div class="author-info">
+      <h4>Rich O'Brien</h4>
+      <div class="author-title">Founder at BrassOps</div>
+      <p>Rich O'Brien is the founder of BrassOps, the range intelligence platform built for law enforcement firearms programs. Connect on <a href="https://www.linkedin.com/in/richard-o-brien-7493a0402/?isSelfProfile=true" target="_blank" rel="noopener">LinkedIn</a>.</p>
+    </div>
+  </div>
+
+  </article>
+</div>
+
+<section class="related-section">
+  <div class="related-label">Continue Reading</div>
+  <div class="related-grid">
+    <div class="related-card"><div class="card-type">Blog Post</div><h4><a href="https://brassops.com/blog/ammunition-tracking-law-enforcement/">Ammunition Tracking Fundamentals</a></h4><p>The foundational article on why ammunition records matter in training documentation.</p></div>
+    <div class="related-card"><div class="card-type">Blog Post</div><h4><a href="https://brassops.com/blog/duty-training-ammunition-substitution/">Duty vs. Training Ammunition</a></h4><p>The liability risk when officers train on one round and carry another.</p></div>
+    <div class="related-card"><div class="card-type">Blog Post</div><h4><a href="https://brassops.com/blog/range-ammunition-accountability/">Range Ammunition Accountability</a></h4><p>The chain-of-custody workflow from pallet to pistol.</p></div>
+    <div class="related-card"><div class="card-type">Pillar Guide</div><h4><a href="https://brassops.com/blog/001-firearms-training-documentation-the-complete-agency-guide.html">Firearms Training Documentation</a></h4><p>The five documentation standards every training record must meet.</p></div>
+  </div>
+</section>
+<footer class="site-footer">
+  <p class="fb">Brass<span class="bo">Ops</span></p>
+  <p class="tl">Built for those who train to protect.</p>
+  <div class="fl"><a href="https://brassops.com/privacy">Privacy Policy</a><a href="https://brassops.com/terms">Terms of Service</a></div>
+  <p class="cp">&copy; 2026 BrassOps. All rights reserved.</p>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const h=document.querySelector('.hb'),n=document.querySelector('.nl');
+  if(h&&n)h.addEventListener('click',()=>{const o=n.classList.toggle('open');h.setAttribute('aria-expanded',o);h.innerHTML=o?'<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>':'<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';});
+});
+</script>
+</body></html>
