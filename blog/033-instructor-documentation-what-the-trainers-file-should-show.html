@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Use of Force Lawsuits and the Training Documentation Gap | BrassOps</title>
+<meta name="description" content="How training documentation becomes a central exhibit in use-of-force litigation. Why the gap between what officers were trained on and what records show costs agencies.">
+<link rel="canonical" href="https://brassops.com/blog/033-instructor-documentation-what-the-trainers-file-should-show.html">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Article","headline":"Use of Force Lawsuits and the Training Documentation Gap","author":{"@type":"Person","name":"Rich O'Brien"},"publisher":{"@type":"Organization","name":"BrassOps","url":"https://brassops.com"},"datePublished":"2026-08-25","mainEntityOfPage":"https://brassops.com/insights/use-of-force-training-documentation/"}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --red: #ef4444; --red-dim: rgba(239,68,68,0.08); --navy: #111111; --text: #1a1a1a; --text-light: #444444; --accent: #ef4444; --border: #e4e4e7; --bg: #ffffff; --green: #16a34a; --brass: #ef4444; --brass-light: #fecaca; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Barlow', sans-serif; color: var(--text); background: var(--bg); line-height: 1.8; font-size: 17px; }
+  .breadcrumb { font-family: 'Rajdhani', sans-serif; font-size: 13px; color: #666; max-width: 780px; margin: 0 auto; padding: 76px 24px 0; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; } .breadcrumb span { margin: 0 6px; }
+  .hero { max-width: 780px; margin: 0 auto; padding: 24px 24px 40px; border-bottom: 3px solid var(--accent); }
+  .hero-badge { display: inline-block; font-family: 'Rajdhani', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; background: var(--accent); color: #fff; padding: 5px 14px; border-radius: 4px; margin-bottom: 20px; }
+  .hero h1 { font-family: 'Rajdhani', sans-serif; font-size: clamp(28px, 4.5vw, 40px); font-weight: 700; line-height: 1.18; color: var(--navy); margin-bottom: 16px; }
+  .hero-subtitle { font-size: 18px; color: #333; line-height: 1.6; }
+  .hero-meta { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 20px; font-family: 'Rajdhani', sans-serif; font-size: 14px; color: #666; align-items: center; }
+  .hero-meta strong { color: var(--text); } .hero-meta .divider { width: 1px; height: 16px; background: var(--border); }
+  article { max-width: 780px; margin: 0 auto; padding: 48px 24px 32px; }
+  article h2 { font-family: 'Rajdhani', sans-serif; font-size: 26px; font-weight: 700; color: var(--navy); margin: 48px 0 16px; padding-top: 8px; border-top: 1px solid var(--border); }
+  article h2:first-of-type { border-top: none; margin-top: 0; }
+  article h3 { font-family: 'Rajdhani', sans-serif; font-size: 19px; font-weight: 700; color: #333; margin: 32px 0 10px; }
+  article p { margin-bottom: 20px; }
+  article a { color: var(--accent); text-decoration: underline; text-decoration-color: rgba(239,68,68,0.3); text-underline-offset: 3px; }
+  article a:hover { text-decoration-color: var(--accent); }
+  article ul, article ol { margin: 0 0 20px 24px; } article li { margin-bottom: 8px; }
+  .takeaway { background: var(--navy); color: #fff; padding: 24px 28px; border-radius: 8px; margin: 28px 0; }
+  .takeaway::before { content: 'KEY TAKEAWAY'; font-family: 'Rajdhani', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; color: var(--accent); display: block; margin-bottom: 8px; }
+  .takeaway p { color: rgba(255,255,255,0.92); margin-bottom: 0; font-size: 17px; line-height: 1.7; } .takeaway strong { color: var(--brass-light); }
+  .callout { border-left: 4px solid var(--accent); background: var(--red-dim); padding: 18px 22px; margin: 24px 0; border-radius: 0 8px 8px 0; }
+  .callout p { margin-bottom: 0; font-size: 16px; } .callout strong { color: var(--navy); }
+  .warning { border-left: 4px solid #dc2626; background: #fef2f2; padding: 18px 22px; margin: 24px 0; border-radius: 0 8px 8px 0; }
+  .warning::before { content: '\26A0 LIABILITY NOTE'; font-family: 'Rajdhani', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1px; color: #dc2626; display: block; margin-bottom: 8px; }
+  .warning p { margin-bottom: 0; font-size: 16px; }
+  .scenario-box { background: #f9fafb; border: 1px solid var(--border); border-radius: 8px; padding: 20px 24px; margin: 24px 0; }
+  .scenario-box .label { font-family: 'Rajdhani', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #dc2626; margin-bottom: 6px; }
+  .scenario-box .label.good { color: var(--green); }
+  .scenario-box h3 { font-family: 'Rajdhani', sans-serif; font-size: 17px; font-weight: 700; color: var(--navy); margin: 0 0 8px; }
+  .scenario-box p { margin-bottom: 8px; font-size: 16px; } .scenario-box p:last-child { margin-bottom: 0; }
+  .sign-box { background: #f9fafb; border: 1px solid var(--border); border-radius: 8px; padding: 20px 24px; margin: 20px 0; }
+  .sign-box .num { font-family: 'Rajdhani', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #dc2626; margin-bottom: 6px; }
+  .sign-box h3 { font-family: 'Rajdhani', sans-serif; font-size: 17px; font-weight: 700; color: var(--navy); margin: 0 0 8px; }
+  .sign-box p { margin-bottom: 8px; font-size: 16.5px; } .sign-box p:last-child { margin-bottom: 0; }
+  .cta-block { background: linear-gradient(135deg, #dc2626, #ef4444); padding: 36px 32px; border-radius: 12px; margin: 44px 0; text-align: center; }
+  .cta-block h3 { font-family: 'Rajdhani', sans-serif; font-size: 22px; color: #fff; margin: 0 0 10px; }
+  .cta-block p { color: rgba(255,255,255,0.85); font-size: 15px; margin-bottom: 22px; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .cta-btn { display: inline-block; font-family: 'Rajdhani', sans-serif; font-size: 15px; font-weight: 700; color: #dc2626; background: #fff; padding: 13px 34px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; text-transform: uppercase; }
+  .cta-btn:hover { background: #f5f5f5; }
+  .brevo-section { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+  .author-box { display: flex; gap: 18px; padding: 24px; background: #f9fafb; border: 1px solid var(--border); border-radius: 12px; margin: 44px 0 28px; max-width: 780px; margin-left: auto; margin-right: auto; }
+  .author-photo { width: 64px; height: 64px; border-radius: 50%; background: #111; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--accent); font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 22px; }
+  .author-info h4 { font-family: 'Rajdhani', sans-serif; font-size: 15px; color: var(--navy); margin-bottom: 3px; }
+  .author-info .author-title { font-family: 'Rajdhani', sans-serif; font-size: 12.5px; color: #666; margin-bottom: 7px; }
+  .author-info p { font-size: 14px; line-height: 1.6; margin-bottom: 0; }
+  .author-info a { color: var(--accent); }
+  .related-section { max-width: 780px; margin: 0 auto; padding: 40px 24px 20px; border-top: 2px solid var(--accent); }
+  .related-label { font-family: 'Rajdhani', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+  .related-card { border: 1px solid var(--border); border-radius: 8px; padding: 18px; }
+  .related-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+  .related-card .card-type { font-family: 'Rajdhani', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+  .related-card h4 { font-family: 'Rajdhani', sans-serif; font-size: 16px; font-weight: 600; line-height: 1.35; margin-bottom: 6px; }
+  .related-card h4 a { color: var(--navy); text-decoration: none; } .related-card h4 a:hover { color: var(--accent); }
+  .related-card p { font-size: 13px; color: #666; line-height: 1.5; margin-bottom: 0; }
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 15px; }
+  th { background: #f3f4f6; font-family: 'Rajdhani', sans-serif; font-weight: 700; text-align: left; padding: 10px 14px; border-bottom: 2px solid var(--border); }
+  td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+  /* Nav */
+  .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(1rem,4vw,3rem); height: 56px; background: rgba(10,10,10,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .site-nav .nb { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 1.1rem; color: #ededed; text-decoration: none; letter-spacing: 0.04em; }
+  .site-nav .nb .bo { color: #ef4444; }
+  .site-nav .nl { display: flex; gap: 1.5rem; align-items: center; }
+  .site-nav .nl a { font-family: 'Barlow', sans-serif; font-size: 0.85rem; font-weight: 500; color: #71717a; text-decoration: none; }
+  .site-nav .nl a:hover { color: #ededed; }
+  .site-nav .nl .la { background: linear-gradient(135deg,#ef4444,#dc2626); color: #fff !important; padding: 0.35rem 1rem; border-radius: 8px; font-weight: 600; font-size: 0.8rem; }
+  .hb { display: none; background: none; border: none; cursor: pointer; padding: 0.4rem; z-index: 110; }
+  .hb svg { width: 22px; height: 22px; stroke: #ededed; stroke-width: 2; fill: none; }
+  @media(max-width:768px) { .hb { display: block; } .site-nav .nl { display: none; flex-direction: column; align-items: stretch; gap: 0; position: fixed; top: 56px; left: 0; right: 0; background: rgba(10,10,10,0.95); backdrop-filter: blur(24px); border-bottom: 1px solid rgba(255,255,255,0.08); padding: 0.5rem 0; max-height: 0; overflow: hidden; transition: max-height 0.35s; } .site-nav .nl.open { display: flex; max-height: 400px; padding: 0.75rem 0; } .site-nav .nl a { padding: 0.75rem clamp(1rem,4vw,3rem); font-size: 0.95rem; border-bottom: 1px solid rgba(255,255,255,0.04); } .site-nav .nl .la { margin: 0.5rem clamp(1rem,4vw,3rem) 0.25rem; text-align: center; padding: 0.65rem 1rem; border-radius: 10px; } }
+  /* Footer */
+  .site-footer { background: #0a0a0a; color: #71717a; padding: 3rem 1.5rem 2.5rem; text-align: center; }
+  .site-footer .fb { font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #71717a; margin-bottom: 0.5rem; }
+  .site-footer .fb .bo { color: #ef4444; }
+  .site-footer .tl { font-size: 0.8rem; color: #52525b; margin-bottom: 0.75rem; font-style: italic; }
+  .site-footer .fl { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 0.75rem; }
+  .site-footer .fl a { font-size: 0.75rem; color: #52525b; text-decoration: none; }
+  .site-footer .fl a:hover { color: #a1a1aa; }
+  .site-footer .cp { font-size: 0.7rem; color: #52525b; }
+  @media (max-width: 600px) { .hero h1 { font-size: 26px; } .hero { padding: 20px 16px 32px; } article { padding: 32px 16px 24px; } .author-box { flex-direction: column; align-items: center; text-align: center; } }
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="https://brassops.com" class="nb">Brass<span class="bo">Ops</span></a>
+  <button class="hb" aria-label="Toggle menu" aria-expanded="false"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <div class="nl">
+    <a href="https://brassops.com/why-brassops">Why Brass<span style="color:#ef4444">Ops</span></a>
+    <a href="https://brassops.com/briefing">Briefing</a>
+    <a href="https://brassops.com/faq">FAQ</a>
+    <a href="https://brassops.com/contact">Contact</a>
+    <a href="https://app.brassops.com" class="la" target="_blank" rel="noopener">Launch App</a>
+  </div>
+</nav>
+<nav class="breadcrumb"><a href="https://brassops.com/">Home</a> <span>&rsaquo;</span> <a href="https://brassops.com/insights/">Insights</a> <span>&rsaquo;</span> <strong>Use of Force Training Documentation</strong></nav>
+<header class="hero">
+  <div class="hero-badge">Industry Analysis</div>
+  <h1>Use of Force Lawsuits and the Training Documentation Gap</h1>
+  <p class="hero-subtitle">When a use-of-force case goes to litigation, the fight isn&rsquo;t primarily about what happened in the incident. It&rsquo;s about what the agency can prove about the officer&rsquo;s training beforehand. That&rsquo;s where most agencies lose the case before it starts.</p>
+  <div class="hero-meta"><span>By <strong>Rich O'Brien</strong>, Founder</span><div class="divider"></div><span>Published <strong>August 25, 2026</strong></span><div class="divider"></div><span><strong>12 min</strong> read</span></div>
+</header>
+<article>
+  <h2>The Case Gets Decided Before the Incident</h2>
+  <p>Here&rsquo;s an uncomfortable truth about use-of-force litigation: the agency&rsquo;s strongest defense isn&rsquo;t built in the aftermath of the incident. It&rsquo;s built in the years before it, in the documentation of every training event, every qualification, every remedial session, every judgment exercise the officer participated in.</p>
+  <p>When a use-of-force lawsuit is filed, the plaintiff&rsquo;s first discovery request typically targets training records &mdash; not incident reports, not body camera footage, not witness statements. Training records. Because the question the plaintiff has to answer is not just &ldquo;did the officer do something wrong?&rdquo; but &ldquo;was the officer trained to know better?&rdquo; And the answer to that question lives in the training file.</p>
+  <p>Agencies that win use-of-force cases typically share a common characteristic: their training documentation shows a comprehensive, well-managed program that prepared officers for exactly the kind of situation they encountered. Agencies that lose typically have documentation with visible gaps &mdash; missing remedial records, absent judgment training documentation, qualifications that don&rsquo;t match the weapons used, or records that can&rsquo;t be produced cleanly when subpoenaed.</p>
+
+  <div class="takeaway">
+    <p>The gap between what officers were actually trained on and what your records can prove is the gap plaintiff&rsquo;s attorneys exploit. <strong>Most agencies train better than their documentation reflects.</strong> Closing the gap between actual training and documented training is often the single highest-impact improvement an agency can make to its use-of-force litigation posture.</p>
+  </div>
+
+  <h2>Why Training Documentation Becomes Central Evidence</h2>
+  <p>The legal framework for use-of-force lawsuits runs through 42 U.S.C. &sect; 1983 and the case law that interprets it. Under <a href="https://brassops.com/case-law/city-of-canton-v-harris/">City of Canton v. Harris</a>, an agency is liable for failure to train when the failure amounts to deliberate indifference to constitutional rights. For firearms training specifically, Canton&rsquo;s footnote 10 establishes that the need is &ldquo;so obvious&rdquo; that no pattern of prior incidents is required to prove it.</p>
+  <p>This means every use-of-force case involving a weapon becomes, by default, a potential failure-to-train case. The plaintiff doesn&rsquo;t have to show the agency had prior notice of training problems. They only have to show that the training the officer received was inadequate for the situation they encountered. And the evidence for that argument comes from the training record.</p>
+  <p>In practice, the plaintiff&rsquo;s attorney follows a predictable discovery pattern: request the officer&rsquo;s complete training history, identify the specific skill or decision at issue in the incident, and look for documentation that the officer was trained on exactly that skill or decision. Where the documentation is absent or thin, they build the causation argument: training gap + officer&rsquo;s error = agency liability.</p>
+
+  <h2>The Four Documentation Gaps That Appear in Use-of-Force Cases</h2>
+
+  <h3>Gap 1: The weapon used wasn&rsquo;t the weapon qualified</h3>
+  <p>In cases where officers deploy patrol rifles, shotguns, or specialty weapons, a frequent finding is that the officer&rsquo;s training file shows current qualification on their duty handgun but nothing current on the long gun they actually used. The plaintiff establishes that the officer deployed a weapon the agency cannot prove they were trained to proficiency with.</p>
+  <p>This gap has become more acute as agencies expand the range of weapons officers carry. Pennsylvania&rsquo;s MPOETC mandate for separate patrol rifle and shotgun qualification courses (effective January 2026) addresses this at the state regulatory level. But agencies in every state need to verify: does every officer have a current qualification on every weapon they&rsquo;re authorized to carry? A gap on this single question is devastating in litigation.</p>
+
+  <h3>Gap 2: The incident required judgment, the training covered only marksmanship</h3>
+  <p>When a shooting involves ambiguity &mdash; was the person armed, did they comply, was the threat imminent? &mdash; the case often turns on whether the officer was trained to make decisions under that kind of uncertainty. If the training record shows only marksmanship qualification scores and no documented <a href="https://brassops.com/case-law/zuchel-v-denver/">judgment-based training</a>, the plaintiff argues that the agency prepared the officer for a shooting problem but not for a deciding problem.</p>
+  <p>The $330,000 verdict in <a href="https://brassops.com/case-law/zuchel-v-denver/">Zuchel v. Denver</a> was built entirely on this gap: Denver&rsquo;s only shoot/don&rsquo;t-shoot training was a lecture and a movie. No practical decision-making component. No documented scenario work. The officer made a lethal decision under ambiguity and the agency had no evidence the officer had been trained to navigate that ambiguity.</p>
+
+  <h3>Gap 3: The officer had a known deficiency that wasn&rsquo;t addressed</h3>
+  <p>Prior qualification failures are the most dangerous item in a training file &mdash; if they&rsquo;re not paired with <a href="https://brassops.com/blog/remedial-firearms-training-program/">remedial training documentation</a>. When the file shows that the officer failed a qualification, and then shows them passing a later qualification, with nothing documented in between, the plaintiff frames this as willful ignorance: the agency was informed the officer had a deficiency, the agency did nothing or failed to record doing anything, and the officer&rsquo;s subsequent performance reflected the unaddressed deficiency.</p>
+  <p>This gap is particularly damaging because it transforms a past failure into direct evidence in a current case. A single unaddressed failure from years ago can become the centerpiece of a use-of-force lawsuit today.</p>
+
+  <h3>Gap 4: The training happened but wasn&rsquo;t documented</h3>
+  <p>This is the Voutour gap &mdash; real training occurred, real proficiency developed, but the records don&rsquo;t capture it at a defensible standard. Informal range time that wasn&rsquo;t logged. Roll-call training that wasn&rsquo;t recorded. Field training that happened without structured documentation. Prior military service or lateral law enforcement experience that was assumed to transfer without verification.</p>
+  <p>Under <a href="https://brassops.com/case-law/voutour-v-vitale/">Voutour v. Vitale</a>, training that isn&rsquo;t documented to a defensible standard carries no legal weight &mdash; regardless of whether it actually occurred. An agency in this position has effectively trained its officers but can&rsquo;t prove it, and in litigation, that&rsquo;s the same as not having trained them at all.</p>
+
+  <h2>Why This Gap Persists</h2>
+  <p>Why do these documentation gaps keep appearing? Not because training coordinators are lazy. Because the operational pressures of running a training program push documentation to the margins.</p>
+  <p>On range day, the priority is getting officers through the course of fire safely and efficiently. Documentation happens after, if there&rsquo;s time. When officers need remedial work, the instructor&rsquo;s attention goes to fixing the problem, not logging it. When judgment training happens informally during roll call or shift briefings, nobody pauses the briefing to document participation.</p>
+  <p>The result is an accumulation of undocumented or partially documented training &mdash; training that creates real capability but doesn&rsquo;t create a defensible record. The agency knows its officers are trained. The plaintiff&rsquo;s attorney asks the agency to prove it, and the proof isn&rsquo;t there.</p>
+
+  <h2>What Closing the Gap Looks Like</h2>
+  <p>Closing the documentation gap doesn&rsquo;t require more training. It requires capturing the training that&rsquo;s already happening in a form that holds up in court.</p>
+  <p><strong>Document at the point of activity, not afterward.</strong> Score qualifications at the range, on a mobile device, as they happen. Log remedial sessions while they&rsquo;re occurring. Capture judgment training in the moment, not retrospectively. Mobile-first documentation eliminates the timing gap courts scrutinize.</p>
+  <p><strong>Capture every dimension.</strong> Every officer&rsquo;s training record should include qualification for every weapon, documented judgment training, remedial training records where applicable, and supplemental training events. The <a href="https://brassops.com/blog/firearms-qualification-tracking/">seven required data points</a> need to be complete on every record.</p>
+  <p><strong>Verify prior training on intake.</strong> Lateral officers and military veterans bring prior training with them. Verify it, document the verification, and fill any gaps with agency-specific training before the officer carries on duty. Prior service documentation is a critical link in the training chain.</p>
+  <p><strong>Make documentation part of the training workflow, not an add-on.</strong> Use a <a href="https://brassops.com/blog/firearms-qualification-tracking/">tracking system</a> that captures data automatically at the point of activity. When documentation is an operational by-product rather than an administrative task, the gap closes by design.</p>
+
+  <p>For the complete framework that closes these gaps systematically, see our <a href="https://brassops.com/training-documentation-law-enforcement/">training documentation pillar</a>. For the pattern-level view of how these gaps get exploited in litigation, see <a href="https://brassops.com/insights/failure-to-train-lawsuit-patterns/">how failure-to-train lawsuits are won</a>.</p>
+
+  <div class="cta-block">
+    <h3>Close the documentation gap before it becomes an exhibit.</h3>
+    <p>BrassOps captures every dimension of training &mdash; qualifications, judgment exercises, remedial work, supplemental training &mdash; in a unified record that holds up in use-of-force litigation.</p>
+    <a href="https://brassops.com/contact/" class="cta-btn">Request a Demo</a>
+  </div>
+  
+  <div class="brevo-section"><div style="max-width:540px;margin:40px auto;"><iframe width="540" height="305" src="https://95e271d5.sibforms.com/serve/MUIFAP6ZnwlLAjy5iaThuqpbE3FXO9Cx5wiid5j27YIrtViQBrgZmNyThiaROf5LiHuOAMnP0hYF4klLfpbshO30CKIqpcYlOpslMBppnltmsxEy1xFeb85Td9-5-tJTfQmb9kzlVa-pzA41ln2_qphx55Uq69IwWeKm2KDI3G6-ghI09VQfMFjVW_YJ8C7nhU1HefEJ66hmkX3iww==" frameborder="0" scrolling="auto" allowfullscreen style="display:block;margin-left:auto;margin-right:auto;max-width:100%;"></iframe></div></div>
+  <div class="author-box" style="max-width:780px;margin:28px auto;">
+    <div class="author-photo">RO</div>
+    <div class="author-info">
+      <h4>Rich O'Brien</h4>
+      <div class="author-title">Founder at BrassOps</div>
+      <p>Rich O'Brien is the founder of BrassOps, the range intelligence platform built for law enforcement firearms programs. Connect on <a href="https://www.linkedin.com/in/richard-o-brien-7493a0402/?isSelfProfile=true" target="_blank" rel="noopener">LinkedIn</a>.</p>
+    </div>
+  </div>
+
+</article>
+<section class="related-section">
+  <div class="related-label">Continue Reading</div>
+  <div class="related-grid">
+    <div class="related-card"><div class="card-type">Insights</div><h4><a href="https://brassops.com/insights/failure-to-train-lawsuit-patterns/">How Failure-to-Train Lawsuits Are Won</a></h4><p>The four recurring patterns in failure-to-train litigation.</p></div>
+    <div class="related-card"><div class="card-type">Pillar Guide</div><h4><a href="https://brassops.com/training-documentation-law-enforcement/">Training Documentation: What Courts Look For</a></h4><p>The standards and gaps framework that defines defensible records.</p></div>
+    <div class="related-card"><div class="card-type">Blog Post</div><h4><a href="https://brassops.com/blog/remedial-firearms-training-program/">How to Build a Remedial Training Program</a></h4><p>The documentation chain that closes the most dangerous training gap.</p></div>
+  </div>
+</section>
+<footer class="site-footer">
+  <p class="fb">Brass<span class="bo">Ops</span></p>
+  <p class="tl">Built for those who train to protect.</p>
+  <div class="fl"><a href="https://brassops.com/privacy">Privacy Policy</a><a href="https://brassops.com/terms">Terms of Service</a></div>
+  <p class="cp">&copy; 2026 BrassOps. All rights reserved.</p>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const h=document.querySelector('.hb'),n=document.querySelector('.nl');
+  if(h&&n)h.addEventListener('click',()=>{const o=n.classList.toggle('open');h.setAttribute('aria-expanded',o);h.innerHTML=o?'<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>':'<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';});
+});
+</script>
+</body></html>

@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Officer Readiness Reporting: How to Know If Your Officers Are Qualified to Carry | BrassOps</title>
+<meta name="description" content="Can you answer in 30 seconds: how many officers are currently qualified to carry? Build a real-time readiness dashboard that eliminates qualification blind spots.">
+<link rel="canonical" href="https://brassops.com/blog/007-officer-readiness-beyond-qualification.html">
+<meta property="og:title" content="Officer Readiness: How to Know If Your Officers Are Qualified to Carry Right Now | BrassOps">
+<meta property="og:description" content="If you can't answer 'how many officers are currently qualified?' in 30 seconds, you have a readiness gap. Here's how to close it.">
+<meta property="og:url" content="https://brassops.com/blog/officer-readiness-firearms-qualification/">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org", "@type": "BlogPosting",
+  "headline": "Officer Readiness Reporting: How to Know If Your Officers Are Qualified to Carry",
+  "author": { "@type": "Person", "name": "Rich O'Brien" },
+  "publisher": { "@type": "Organization", "name": "BrassOps", "url": "https://brassops.com" },
+  "datePublished":"2026-05-26", "dateModified": "2026-05-29",
+  "mainEntityOfPage": "https://brassops.com/blog/officer-readiness-firearms-qualification/"
+}
+</script>
+<script type="application/ld+json">
+{ "@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [
+  { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://brassops.com/" },
+  { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://brassops.com/blog/" },
+  { "@type": "ListItem", "position": 3, "name": "Officer Readiness Firearms Qualification" }
+] }
+</script>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root { --red: #ef4444; --red-dim: rgba(239,68,68,0.08); --navy: #111111; --text: #1a1a1a; --text-light: #444444; --accent: #ef4444; --border: #e4e4e7; --bg: #ffffff; --green: #16a34a; --brass: #ef4444; --brass-light: #fecaca; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Barlow', sans-serif; color: var(--text); background: var(--bg); line-height: 1.8; font-size: 17px; }
+  .breadcrumb { font-family: 'Rajdhani', sans-serif; font-size: 13px; color: #666; max-width: 780px; margin: 0 auto; padding: 76px 24px 0; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; } .breadcrumb span { margin: 0 6px; }
+  .hero { max-width: 780px; margin: 0 auto; padding: 24px 24px 40px; border-bottom: 3px solid var(--accent); }
+  .hero-badge { display: inline-block; font-family: 'Rajdhani', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; background: var(--accent); color: #fff; padding: 5px 14px; border-radius: 4px; margin-bottom: 20px; }
+  .hero h1 { font-family: 'Rajdhani', sans-serif; font-size: clamp(28px, 4.5vw, 40px); font-weight: 700; line-height: 1.18; color: var(--navy); margin-bottom: 16px; }
+  .hero-subtitle { font-size: 18px; color: #333; line-height: 1.6; }
+  .hero-meta { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 20px; font-family: 'Rajdhani', sans-serif; font-size: 14px; color: #666; align-items: center; }
+  .hero-meta strong { color: var(--text); } .hero-meta .divider { width: 1px; height: 16px; background: var(--border); }
+  article { max-width: 780px; margin: 0 auto; padding: 48px 24px 32px; }
+  article h2 { font-family: 'Rajdhani', sans-serif; font-size: 26px; font-weight: 700; color: var(--navy); margin: 48px 0 16px; padding-top: 8px; border-top: 1px solid var(--border); }
+  article h2:first-of-type { border-top: none; margin-top: 0; }
+  article h3 { font-family: 'Rajdhani', sans-serif; font-size: 19px; font-weight: 700; color: #333; margin: 32px 0 10px; }
+  article p { margin-bottom: 20px; }
+  article a { color: var(--accent); text-decoration: underline; text-decoration-color: rgba(239,68,68,0.3); text-underline-offset: 3px; }
+  article a:hover { text-decoration-color: var(--accent); }
+  article ul, article ol { margin: 0 0 20px 24px; } article li { margin-bottom: 8px; }
+  .takeaway { background: var(--navy); color: #fff; padding: 24px 28px; border-radius: 8px; margin: 28px 0; }
+  .takeaway::before { content: 'KEY TAKEAWAY'; font-family: 'Rajdhani', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; color: var(--accent); display: block; margin-bottom: 8px; }
+  .takeaway p { color: rgba(255,255,255,0.92); margin-bottom: 0; font-size: 17px; line-height: 1.7; } .takeaway strong { color: var(--brass-light); }
+  .callout { border-left: 4px solid var(--accent); background: var(--red-dim); padding: 18px 22px; margin: 24px 0; border-radius: 0 8px 8px 0; }
+  .callout p { margin-bottom: 0; font-size: 16px; } .callout strong { color: var(--navy); }
+  .warning { border-left: 4px solid #dc2626; background: #fef2f2; padding: 18px 22px; margin: 24px 0; border-radius: 0 8px 8px 0; }
+  .warning::before { content: '\26A0 LIABILITY NOTE'; font-family: 'Rajdhani', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1px; color: #dc2626; display: block; margin-bottom: 8px; }
+  .warning p { margin-bottom: 0; font-size: 16px; }
+  .scenario-box { background: #f9fafb; border: 1px solid var(--border); border-radius: 8px; padding: 20px 24px; margin: 24px 0; }
+  .scenario-box .label { font-family: 'Rajdhani', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #dc2626; margin-bottom: 6px; }
+  .scenario-box .label.good { color: var(--green); }
+  .scenario-box h3 { font-family: 'Rajdhani', sans-serif; font-size: 17px; font-weight: 700; color: var(--navy); margin: 0 0 8px; }
+  .scenario-box p { margin-bottom: 8px; font-size: 16px; } .scenario-box p:last-child { margin-bottom: 0; }
+  .sign-box { background: #f9fafb; border: 1px solid var(--border); border-radius: 8px; padding: 20px 24px; margin: 20px 0; }
+  .sign-box .num { font-family: 'Rajdhani', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #dc2626; margin-bottom: 6px; }
+  .sign-box h3 { font-family: 'Rajdhani', sans-serif; font-size: 17px; font-weight: 700; color: var(--navy); margin: 0 0 8px; }
+  .sign-box p { margin-bottom: 8px; font-size: 16.5px; } .sign-box p:last-child { margin-bottom: 0; }
+  .cta-block { background: linear-gradient(135deg, #dc2626, #ef4444); padding: 36px 32px; border-radius: 12px; margin: 44px 0; text-align: center; }
+  .cta-block h3 { font-family: 'Rajdhani', sans-serif; font-size: 22px; color: #fff; margin: 0 0 10px; }
+  .cta-block p { color: rgba(255,255,255,0.85); font-size: 15px; margin-bottom: 22px; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .cta-btn { display: inline-block; font-family: 'Rajdhani', sans-serif; font-size: 15px; font-weight: 700; color: #dc2626; background: #fff; padding: 13px 34px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; text-transform: uppercase; }
+  .cta-btn:hover { background: #f5f5f5; }
+  .brevo-section { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+  .author-box { display: flex; gap: 18px; padding: 24px; background: #f9fafb; border: 1px solid var(--border); border-radius: 12px; margin: 44px 0 28px; max-width: 780px; margin-left: auto; margin-right: auto; }
+  .author-photo { width: 64px; height: 64px; border-radius: 50%; background: #111; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--accent); font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 22px; }
+  .author-info h4 { font-family: 'Rajdhani', sans-serif; font-size: 15px; color: var(--navy); margin-bottom: 3px; }
+  .author-info .author-title { font-family: 'Rajdhani', sans-serif; font-size: 12.5px; color: #666; margin-bottom: 7px; }
+  .author-info p { font-size: 14px; line-height: 1.6; margin-bottom: 0; }
+  .author-info a { color: var(--accent); }
+  .related-section { max-width: 780px; margin: 0 auto; padding: 40px 24px 20px; border-top: 2px solid var(--accent); }
+  .related-label { font-family: 'Rajdhani', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+  .related-card { border: 1px solid var(--border); border-radius: 8px; padding: 18px; }
+  .related-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+  .related-card .card-type { font-family: 'Rajdhani', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+  .related-card h4 { font-family: 'Rajdhani', sans-serif; font-size: 16px; font-weight: 600; line-height: 1.35; margin-bottom: 6px; }
+  .related-card h4 a { color: var(--navy); text-decoration: none; } .related-card h4 a:hover { color: var(--accent); }
+  .related-card p { font-size: 13px; color: #666; line-height: 1.5; margin-bottom: 0; }
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 15px; }
+  th { background: #f3f4f6; font-family: 'Rajdhani', sans-serif; font-weight: 700; text-align: left; padding: 10px 14px; border-bottom: 2px solid var(--border); }
+  td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+  /* Nav */
+  .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(1rem,4vw,3rem); height: 56px; background: rgba(10,10,10,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .site-nav .nb { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 1.1rem; color: #ededed; text-decoration: none; letter-spacing: 0.04em; }
+  .site-nav .nb .bo { color: #ef4444; }
+  .site-nav .nl { display: flex; gap: 1.5rem; align-items: center; }
+  .site-nav .nl a { font-family: 'Barlow', sans-serif; font-size: 0.85rem; font-weight: 500; color: #71717a; text-decoration: none; }
+  .site-nav .nl a:hover { color: #ededed; }
+  .site-nav .nl .la { background: linear-gradient(135deg,#ef4444,#dc2626); color: #fff !important; padding: 0.35rem 1rem; border-radius: 8px; font-weight: 600; font-size: 0.8rem; }
+  .hb { display: none; background: none; border: none; cursor: pointer; padding: 0.4rem; z-index: 110; }
+  .hb svg { width: 22px; height: 22px; stroke: #ededed; stroke-width: 2; fill: none; }
+  @media(max-width:768px) { .hb { display: block; } .site-nav .nl { display: none; flex-direction: column; align-items: stretch; gap: 0; position: fixed; top: 56px; left: 0; right: 0; background: rgba(10,10,10,0.95); backdrop-filter: blur(24px); border-bottom: 1px solid rgba(255,255,255,0.08); padding: 0.5rem 0; max-height: 0; overflow: hidden; transition: max-height 0.35s; } .site-nav .nl.open { display: flex; max-height: 400px; padding: 0.75rem 0; } .site-nav .nl a { padding: 0.75rem clamp(1rem,4vw,3rem); font-size: 0.95rem; border-bottom: 1px solid rgba(255,255,255,0.04); } .site-nav .nl .la { margin: 0.5rem clamp(1rem,4vw,3rem) 0.25rem; text-align: center; padding: 0.65rem 1rem; border-radius: 10px; } }
+  /* Footer */
+  .site-footer { background: #0a0a0a; color: #71717a; padding: 3rem 1.5rem 2.5rem; text-align: center; }
+  .site-footer .fb { font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #71717a; margin-bottom: 0.5rem; }
+  .site-footer .fb .bo { color: #ef4444; }
+  .site-footer .tl { font-size: 0.8rem; color: #52525b; margin-bottom: 0.75rem; font-style: italic; }
+  .site-footer .fl { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 0.75rem; }
+  .site-footer .fl a { font-size: 0.75rem; color: #52525b; text-decoration: none; }
+  .site-footer .fl a:hover { color: #a1a1aa; }
+  .site-footer .cp { font-size: 0.7rem; color: #52525b; }
+  @media (max-width: 600px) { .hero h1 { font-size: 26px; } .hero { padding: 20px 16px 32px; } article { padding: 32px 16px 24px; } .author-box { flex-direction: column; align-items: center; text-align: center; } }
+</style>
+
+</head>
+<body>
+<nav class="site-nav">
+  <a href="https://brassops.com" class="nb">Brass<span class="bo">Ops</span></a>
+  <button class="hb" aria-label="Toggle menu" aria-expanded="false"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <div class="nl">
+    <a href="https://brassops.com/why-brassops">Why Brass<span style="color:#ef4444">Ops</span></a>
+    <a href="https://brassops.com/briefing">Briefing</a>
+    <a href="https://brassops.com/faq">FAQ</a>
+    <a href="https://brassops.com/contact">Contact</a>
+    <a href="https://app.brassops.com" class="la" target="_blank" rel="noopener">Launch App</a>
+  </div>
+</nav>
+<nav class="breadcrumb"><a href="https://brassops.com/">Home</a> <span>&rsaquo;</span> <a href="https://brassops.com/blog/">Blog</a> <span>&rsaquo;</span> <strong>Officer Readiness Reporting</strong></nav>
+
+<header class="hero">
+  <div class="hero-badge">Operational Guide</div>
+  <h1>Officer Readiness Reporting: How to Know If Your Officers Are Qualified to Carry</h1>
+  <p class="hero-subtitle">Not &ldquo;probably qualified.&rdquo; Not &ldquo;qualified last time we checked.&rdquo; Actually, verifiably qualified today. If you can&rsquo;t answer that question in 30 seconds, this article is for you.</p>
+  <div class="hero-meta">
+    <span>By <strong>Rich O'Brien</strong>, Founder</span> <div class="divider"></div>
+    <span>Published <strong>May 26, 2026</strong></span> <div class="divider"></div>
+    <span><strong>11 min</strong> read</span>
+  </div>
+</header>
+
+<article>
+
+  <h2>The 30-Second Question That Reveals Everything</h2>
+
+  <p>Here is the question every chief, sheriff, and training commander should be able to answer instantly: how many of your officers are currently qualified to carry their duty weapon?</p>
+
+  <p>Not approximately. Not based on when the last range day was. The actual number, right now, verified against every weapon each officer is authorized to carry.</p>
+
+  <p>If answering that question requires you to call the training coordinator, pull up a spreadsheet, cross-reference a calendar, and then make some educated guesses &mdash; you have a readiness gap. And that gap is more than an administrative inconvenience. It is an active liability exposure that sits in your agency every single day.</p>
+
+  <p>An officer on patrol right now with an expired qualification is carrying a weapon your agency cannot prove they are proficient with. If that officer uses force tonight, the expired qualification becomes the first exhibit in the plaintiff&rsquo;s case. Not the officer&rsquo;s training history. Not their years of experience. The expired record. Because under <a href="https://brassops.com/case-law/city-of-canton-v-harris/">City of Canton v. Harris</a>, the question is not whether the officer was actually competent &mdash; it&rsquo;s whether the agency can prove it through documentation.</p>
+
+  <div class="takeaway">
+    <p><strong>A readiness dashboard is not a reporting luxury. It is a risk management tool.</strong> The agencies that never get surprised by a lapsed qualification are the agencies that can see their training posture in real time &mdash; not the ones that find out during a post-incident review that someone&rsquo;s certification expired three months ago.</p>
+  </div>
+
+  <h2>What &ldquo;Readiness&rdquo; Actually Means</h2>
+
+  <p>Officer readiness, in the context of firearms qualification, means an officer has a current, documented qualification for every weapon they are authorized to carry on duty. The word &ldquo;every&rdquo; is doing the heavy lifting in that sentence.</p>
+
+  <p>Most agencies can tell you whether an officer qualified with their primary duty handgun. Fewer can tell you whether that same officer is current on their backup weapon. Fewer still can confirm their patrol rifle status. And almost no agency using spreadsheets or paper can answer all three questions simultaneously for every officer on the roster.</p>
+
+  <p>That&rsquo;s the readiness gap. It&rsquo;s not that the training isn&rsquo;t happening. It&rsquo;s that the visibility into which officers are current, which are due, and which are overdue doesn&rsquo;t exist in a format that command staff can access at a glance.</p>
+
+  <h3>The three readiness states</h3>
+
+  <p>Every officer, for every authorized weapon, is in one of three states at any given moment:</p>
+
+  <p><strong>Current:</strong> The officer has a documented, passing qualification that has not expired. They are authorized to carry this weapon on duty. No action needed until the expiration window approaches.</p>
+
+  <p><strong>Due (approaching expiration):</strong> The officer&rsquo;s qualification will expire within a defined window &mdash; typically 30 to 60 days. They need to be scheduled for requalification before the expiration date. This is the alert state. If your system doesn&rsquo;t have an alert mechanism, you won&rsquo;t catch this until it&rsquo;s too late.</p>
+
+  <p><strong>Overdue (expired):</strong> The officer&rsquo;s qualification has lapsed. Depending on your state and agency policy, the officer may be restricted from carrying the weapon, may lose arrest powers (as in <a href="https://brassops.com/blog/firearms-qualification-pass-fail-standards/">Georgia under O.C.G.A. 35-8-21</a>), or may show an &ldquo;expired&rdquo; certification in the state&rsquo;s database (as in Pennsylvania&rsquo;s TACS system). This is the emergency state. It should never be a surprise.</p>
+
+  <h2>Two Scenarios: Same Agency, Two Outcomes</h2>
+
+  <div class="scenario-box">
+    <div class="label">Scenario A &mdash; No Readiness Visibility</div>
+    <h3>The call comes at 2 AM.</h3>
+    <p>An officer-involved shooting. The officer is placed on administrative leave. The investigation begins. The training coordinator is contacted the next morning and asked to produce the officer&rsquo;s complete firearms training history.</p>
+    <p>She opens the spreadsheet. The officer&rsquo;s last recorded handgun qualification was 14 months ago. His patrol rifle qualification? There&rsquo;s no entry for the current year. She checks the paper files. Nothing. She calls the range master, who thinks the officer qualified at the last range day but can&rsquo;t remember for certain. The scoresheet might be in the range bag. Or it might be on the desk. Or it might have been filed already.</p>
+    <p>The agency cannot produce evidence that the officer was currently qualified with the weapons he used. The plaintiff&rsquo;s attorney has been doing this for 20 years. She knows exactly what this gap means.</p>
+  </div>
+
+  <div class="scenario-box">
+    <div class="label good">Scenario B &mdash; Real-Time Readiness Dashboard</div>
+    <h3>The same call comes at 2 AM.</h3>
+    <p>The same investigation begins. The training coordinator logs into the agency&rsquo;s qualification tracking system from her phone. Within two minutes, she pulls the officer&rsquo;s complete firearms training history: every qualification, every weapon (serial numbers included), every score, every instructor, every remedial event, going back three years. Every record is timestamped at the time it was created, at the range, by the certifying instructor.</p>
+    <p>The officer&rsquo;s duty handgun qualification is current &mdash; last qualified 4 months ago with a score of 88%. Patrol rifle: current, qualified 5 months ago, score of 92%. Judgment training: documented, last simulator session 3 months ago. The agency produces the complete record to its legal counsel before breakfast.</p>
+    <p>The plaintiff&rsquo;s attorney still files the lawsuit. But the training documentation is airtight. There is no gap to exploit.</p>
+  </div>
+
+  <p>Same agency. Same officers. Same incident. The only difference is whether the training coordinator could answer the 30-second question before it became a courtroom question.</p>
+
+  <h2>What a Readiness Dashboard Should Show</h2>
+
+  <p>A readiness dashboard is not a complicated concept. It is a single view that tells command staff the current training posture of the agency. At minimum, it should display:</p>
+
+  <p><strong>Agency-wide compliance summary.</strong> What percentage of officers are currently qualified across all authorized weapon types? If you have 80 officers and 6 are overdue on their handgun qualification, you need to know that number is 6 &mdash; not a rough estimate. Color-coding works: green for current, yellow for due within 30 days, red for expired.</p>
+
+  <p><strong>Individual officer status by weapon type.</strong> For any individual officer, the dashboard should show their qualification status for every weapon they carry: handgun, backup, rifle, shotgun, and any specialized weapons. Each weapon shows the last qualification date, the score, the expiration date, and the current status (current / due / overdue).</p>
+
+  <p><strong>Upcoming expirations.</strong> A list of officers whose qualifications will expire in the next 30, 60, and 90 days. This is the early warning system. If you can see that 12 officers are due within the next 30 days, you can schedule a range day before any of them lapse. If you can&rsquo;t see it, you find out after the fact &mdash; when the qualification has already expired and the officer has been carrying on duty without a current certification.</p>
+
+  <p><strong>Officers in remedial status.</strong> Any officer currently in a <a href="https://brassops.com/blog/remedial-firearms-training-program/">remedial training process</a> &mdash; meaning they failed a qualification and are working through the remedial framework &mdash; should be visible on the dashboard. Command staff should know which officers are restricted from carrying and where they are in the remedial timeline.</p>
+
+  <p><strong>Instructor certification status.</strong> If the instructor who ran your last range day had a lapsed certification, every qualification they administered may be invalid. Your readiness dashboard should track instructor credential expiration dates with the same urgency as officer qualification dates. A lapsed instructor is a systemic failure that can invalidate dozens of records at once.</p>
+
+  <h2>Why Spreadsheets Can&rsquo;t Do This</h2>
+
+  <p>Spreadsheets are static documents. They show you what someone typed into a cell at some point in the past. They do not update themselves. They do not calculate expiration dates dynamically. They do not send alerts when a qualification is about to lapse. They do not differentiate between weapon types for the same officer. And they do not provide a single-view dashboard that a chief can check in 30 seconds.</p>
+
+  <p>The training coordinator who maintains the spreadsheet is the readiness dashboard. When she&rsquo;s on vacation, the visibility disappears. When the file gets corrupted, the data is at risk. When two people edit the file simultaneously, the data conflicts. The spreadsheet is a liability disguised as a system.</p>
+
+  <p>A purpose-built <a href="https://brassops.com/blog/firearms-qualification-tracking/">qualification tracking system</a> calculates expiration dates automatically, sends alerts before qualifications lapse, shows per-weapon status for every officer, provides the agency-wide dashboard command staff needs, and does all of it without depending on a single person remembering to update a cell.</p>
+
+  <h2>The Chief&rsquo;s Question and the Personal Liability Angle</h2>
+
+  <p>In <a href="https://brassops.com/case-law/mcclelland-v-facteau/">McClelland v. Facteau</a>, the court held that police chiefs may be personally liable when they fail to train subordinates and establish procedures that protect constitutional rights. Not the city. Not the agency. The chief personally.</p>
+
+  <p>A chief who cannot verify, at any given moment, that the officers under their command are qualified to carry lethal weapons is carrying personal risk they cannot quantify. The readiness dashboard isn&rsquo;t just a training management tool &mdash; it&rsquo;s a personal liability shield for command staff. It provides the real-time verification that the chief fulfilled their duty to ensure officers were trained and qualified.</p>
+
+  <p>This is not theoretical. When a use-of-force incident goes to litigation, the plaintiff&rsquo;s attorney will ask the chief, under oath: &ldquo;At the time of this incident, did you know whether this officer was currently qualified with the weapon used?&rdquo; The correct answer is &ldquo;Yes, and here is the system that verified it.&rdquo; The incorrect answer is &ldquo;I relied on my training coordinator to manage that.&rdquo;</p>
+
+  <div class="warning">
+    <p>The agencies that never get surprised by lapsed qualifications are the agencies with systems that make readiness visible in real time. The agencies that get surprised &mdash; the ones that discover expired certifications during post-incident reviews &mdash; are the ones paying six-figure settlements. The difference between the two is not the quality of the training. It&rsquo;s the quality of the visibility.</p>
+  </div>
+
+  <h2>How to Get Started</h2>
+
+  <p>If you don&rsquo;t currently have readiness visibility, here is the minimum viable starting point:</p>
+
+  <p><strong>Step 1: Build a master roster.</strong> List every officer and every weapon they are authorized to carry. If that list doesn&rsquo;t exist in a single document, it needs to. This is the foundation everything else sits on.</p>
+
+  <p><strong>Step 2: Record last qualification date and score for every weapon on the roster.</strong> Go through your existing records &mdash; paper, spreadsheets, whatever you have &mdash; and capture the most recent qualification for each officer-weapon pair. Flag any officer for whom you cannot find a current qualification record.</p>
+
+  <p><strong>Step 3: Calculate expiration dates.</strong> Based on your state&rsquo;s requalification frequency (typically 12 months from the qualification date), mark when each qualification expires. Identify any that are already expired.</p>
+
+  <p><strong>Step 4: Set up alerts.</strong> Even if it&rsquo;s calendar reminders in Outlook, establish a mechanism that warns you 30 and 60 days before any qualification expires. Manual alerts are better than no alerts.</p>
+
+  <p><strong>Step 5: Plan the transition to a real system.</strong> The manual process above will work for one cycle. It will not scale, it will not maintain itself, and it will depend on someone remembering to update it. A purpose-built tracking system automates every step and provides the command-staff dashboard that makes readiness visible to the people who are accountable for it.</p>
+
+  <p>For the full qualification tracking framework, see: <a href="https://brassops.com/blog/firearms-qualification-tracking/">How to Build a Qualification Tracking System That Survives a Lawsuit</a>. For the complete picture of what readiness looks like within a defensible training program, see our <a href="https://brassops.com/firearms-qualification-standards/">law enforcement firearms qualification standards guide</a>.</p>
+
+  <div class="cta-block">
+    <h3>Answer the 30-second question. Every time.</h3>
+    <p>BrassOps shows you exactly who is current, who is due, and who is overdue &mdash; across every weapon type, for every officer, updated in real time.</p>
+    <a href="https://brassops.com/contact/" class="cta-btn">Request a Demo</a>
+  </div>
+
+  
+  <div class="brevo-section"><div style="max-width:540px;margin:40px auto;"><iframe width="540" height="305" src="https://95e271d5.sibforms.com/serve/MUIFAP6ZnwlLAjy5iaThuqpbE3FXO9Cx5wiid5j27YIrtViQBrgZmNyThiaROf5LiHuOAMnP0hYF4klLfpbshO30CKIqpcYlOpslMBppnltmsxEy1xFeb85Td9-5-tJTfQmb9kzlVa-pzA41ln2_qphx55Uq69IwWeKm2KDI3G6-ghI09VQfMFjVW_YJ8C7nhU1HefEJ66hmkX3iww==" frameborder="0" scrolling="auto" allowfullscreen style="display:block;margin-left:auto;margin-right:auto;max-width:100%;"></iframe></div></div>
+  <div class="author-box" style="max-width:780px;margin:28px auto;">
+    <div class="author-photo">RO</div>
+    <div class="author-info">
+      <h4>Rich O'Brien</h4>
+      <div class="author-title">Founder at BrassOps</div>
+      <p>Rich O'Brien is the founder of BrassOps, the range intelligence platform built for law enforcement firearms programs. Connect on <a href="https://www.linkedin.com/in/richard-o-brien-7493a0402/?isSelfProfile=true" target="_blank" rel="noopener">LinkedIn</a>.</p>
+    </div>
+  </div>
+
+
+</article>
+
+<section class="related-section">
+  <div class="related-label">Continue Reading</div>
+  <div class="related-grid">
+    <div class="related-card"><div class="card-type">Blog Post</div><h4><a href="https://brassops.com/blog/firearms-qualification-tracking/">How to Build a Qualification Tracking System That Survives a Lawsuit</a></h4><p>The tracking system that feeds your readiness dashboard with defensible data.</p></div>
+    <div class="related-card"><div class="card-type">Blog Post</div><h4><a href="https://brassops.com/blog/remedial-firearms-training-program/">How to Build a Remedial Training Program</a></h4><p>What happens when the dashboard shows an officer has failed &mdash; the five-step remedial framework.</p></div>
+    <div class="related-card"><div class="card-type">Pillar Guide</div><h4><a href="https://brassops.com/firearms-qualification-standards/">Law Enforcement Firearms Qualification Standards by State</a></h4><p>The requalification timelines and expiration rules your readiness system must enforce.</p></div>
+  </div>
+</section>
+<footer class="site-footer">
+  <p class="fb">Brass<span class="bo">Ops</span></p>
+  <p class="tl">Built for those who train to protect.</p>
+  <div class="fl"><a href="https://brassops.com/privacy">Privacy Policy</a><a href="https://brassops.com/terms">Terms of Service</a></div>
+  <p class="cp">&copy; 2026 BrassOps. All rights reserved.</p>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const h=document.querySelector('.hb'),n=document.querySelector('.nl');
+  if(h&&n)h.addEventListener('click',()=>{const o=n.classList.toggle('open');h.setAttribute('aria-expanded',o);h.innerHTML=o?'<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>':'<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';});
+});
+</script>
+</body></html>

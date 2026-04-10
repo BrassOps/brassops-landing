@@ -1,0 +1,675 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Training Liability Risk Assessment | BrassOps</title>
+<meta name="description" content="A 10-question self-assessment that reveals where your firearms training documentation is creating liability exposure.">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+  :root { --red: #ef4444; --red-dim: rgba(239,68,68,0.08); --navy: #111111; --text: #1a1a1a; --text-light: #444444; --accent: #ef4444; --border: #e4e4e7; --bg: #ffffff; --green: #16a34a; --brass: #ef4444; --brass-light: #fecaca; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Barlow', sans-serif; color: var(--text); background: var(--bg); line-height: 1.8; font-size: 17px; }
+  .breadcrumb { font-family: 'Rajdhani', sans-serif; font-size: 13px; color: #666; max-width: 780px; margin: 0 auto; padding: 76px 24px 0; }
+  .breadcrumb a { color: var(--accent); text-decoration: none; } .breadcrumb span { margin: 0 6px; }
+  .hero { max-width: 780px; margin: 0 auto; padding: 24px 24px 40px; border-bottom: 3px solid var(--accent); }
+  .hero-badge { display: inline-block; font-family: 'Rajdhani', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; background: var(--accent); color: #fff; padding: 5px 14px; border-radius: 4px; margin-bottom: 20px; }
+  .hero h1 { font-family: 'Rajdhani', sans-serif; font-size: clamp(28px, 4.5vw, 40px); font-weight: 700; line-height: 1.18; color: var(--navy); margin-bottom: 16px; }
+  .hero-subtitle { font-size: 18px; color: #333; line-height: 1.6; }
+  .hero-meta { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 20px; font-family: 'Rajdhani', sans-serif; font-size: 14px; color: #666; align-items: center; }
+  .hero-meta strong { color: var(--text); } .hero-meta .divider { width: 1px; height: 16px; background: var(--border); }
+  article { max-width: 780px; margin: 0 auto; padding: 48px 24px 32px; }
+  article h2 { font-family: 'Rajdhani', sans-serif; font-size: 26px; font-weight: 700; color: var(--navy); margin: 48px 0 16px; padding-top: 8px; border-top: 1px solid var(--border); }
+  article h2:first-of-type { border-top: none; margin-top: 0; }
+  article h3 { font-family: 'Rajdhani', sans-serif; font-size: 19px; font-weight: 700; color: #333; margin: 32px 0 10px; }
+  article p { margin-bottom: 20px; }
+  article a { color: var(--accent); text-decoration: underline; text-decoration-color: rgba(239,68,68,0.3); text-underline-offset: 3px; }
+  article a:hover { text-decoration-color: var(--accent); }
+  article ul, article ol { margin: 0 0 20px 24px; } article li { margin-bottom: 8px; }
+  .takeaway { background: var(--navy); color: #fff; padding: 24px 28px; border-radius: 8px; margin: 28px 0; }
+  .takeaway::before { content: 'KEY TAKEAWAY'; font-family: 'Rajdhani', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1.5px; color: var(--accent); display: block; margin-bottom: 8px; }
+  .takeaway p { color: rgba(255,255,255,0.92); margin-bottom: 0; font-size: 17px; line-height: 1.7; } .takeaway strong { color: var(--brass-light); }
+  .callout { border-left: 4px solid var(--accent); background: var(--red-dim); padding: 18px 22px; margin: 24px 0; border-radius: 0 8px 8px 0; }
+  .callout p { margin-bottom: 0; font-size: 16px; } .callout strong { color: var(--navy); }
+  .warning { border-left: 4px solid #dc2626; background: #fef2f2; padding: 18px 22px; margin: 24px 0; border-radius: 0 8px 8px 0; }
+  .warning::before { content: '\26A0 LIABILITY NOTE'; font-family: 'Rajdhani', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1px; color: #dc2626; display: block; margin-bottom: 8px; }
+  .warning p { margin-bottom: 0; font-size: 16px; }
+  .scenario-box { background: #f9fafb; border: 1px solid var(--border); border-radius: 8px; padding: 20px 24px; margin: 24px 0; }
+  .scenario-box .label { font-family: 'Rajdhani', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: #dc2626; margin-bottom: 6px; }
+  .scenario-box .label.good { color: var(--green); }
+  .scenario-box h3 { font-family: 'Rajdhani', sans-serif; font-size: 17px; font-weight: 700; color: var(--navy); margin: 0 0 8px; }
+  .scenario-box p { margin-bottom: 8px; font-size: 16px; } .scenario-box p:last-child { margin-bottom: 0; }
+  .sign-box { background: #f9fafb; border: 1px solid var(--border); border-radius: 8px; padding: 20px 24px; margin: 20px 0; }
+  .sign-box .num { font-family: 'Rajdhani', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.2px; text-transform: uppercase; color: #dc2626; margin-bottom: 6px; }
+  .sign-box h3 { font-family: 'Rajdhani', sans-serif; font-size: 17px; font-weight: 700; color: var(--navy); margin: 0 0 8px; }
+  .sign-box p { margin-bottom: 8px; font-size: 16.5px; } .sign-box p:last-child { margin-bottom: 0; }
+  .cta-block { background: linear-gradient(135deg, #dc2626, #ef4444); padding: 36px 32px; border-radius: 12px; margin: 44px 0; text-align: center; }
+  .cta-block h3 { font-family: 'Rajdhani', sans-serif; font-size: 22px; color: #fff; margin: 0 0 10px; }
+  .cta-block p { color: rgba(255,255,255,0.85); font-size: 15px; margin-bottom: 22px; max-width: 500px; margin-left: auto; margin-right: auto; }
+  .cta-btn { display: inline-block; font-family: 'Rajdhani', sans-serif; font-size: 15px; font-weight: 700; color: #dc2626; background: #fff; padding: 13px 34px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; text-transform: uppercase; }
+  .cta-btn:hover { background: #f5f5f5; }
+  .brevo-section { max-width: 780px; margin: 0 auto; padding: 0 24px; }
+  .author-box { display: flex; gap: 18px; padding: 24px; background: #f9fafb; border: 1px solid var(--border); border-radius: 12px; margin: 44px 0 28px; max-width: 780px; margin-left: auto; margin-right: auto; }
+  .author-photo { width: 64px; height: 64px; border-radius: 50%; background: #111; flex-shrink: 0; display: flex; align-items: center; justify-content: center; color: var(--accent); font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 22px; }
+  .author-info h4 { font-family: 'Rajdhani', sans-serif; font-size: 15px; color: var(--navy); margin-bottom: 3px; }
+  .author-info .author-title { font-family: 'Rajdhani', sans-serif; font-size: 12.5px; color: #666; margin-bottom: 7px; }
+  .author-info p { font-size: 14px; line-height: 1.6; margin-bottom: 0; }
+  .author-info a { color: var(--accent); }
+  .related-section { max-width: 780px; margin: 0 auto; padding: 40px 24px 20px; border-top: 2px solid var(--accent); }
+  .related-label { font-family: 'Rajdhani', sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent); margin-bottom: 18px; }
+  .related-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 18px; }
+  .related-card { border: 1px solid var(--border); border-radius: 8px; padding: 18px; }
+  .related-card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.06); }
+  .related-card .card-type { font-family: 'Rajdhani', sans-serif; font-size: 10px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--accent); margin-bottom: 6px; }
+  .related-card h4 { font-family: 'Rajdhani', sans-serif; font-size: 16px; font-weight: 600; line-height: 1.35; margin-bottom: 6px; }
+  .related-card h4 a { color: var(--navy); text-decoration: none; } .related-card h4 a:hover { color: var(--accent); }
+  .related-card p { font-size: 13px; color: #666; line-height: 1.5; margin-bottom: 0; }
+  table { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 15px; }
+  th { background: #f3f4f6; font-family: 'Rajdhani', sans-serif; font-weight: 700; text-align: left; padding: 10px 14px; border-bottom: 2px solid var(--border); }
+  td { padding: 10px 14px; border-bottom: 1px solid var(--border); }
+  /* Nav */
+  .site-nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 0 clamp(1rem,4vw,3rem); height: 56px; background: rgba(10,10,10,0.95); backdrop-filter: blur(20px); border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .site-nav .nb { font-family: 'Rajdhani', sans-serif; font-weight: 700; font-size: 1.1rem; color: #ededed; text-decoration: none; letter-spacing: 0.04em; }
+  .site-nav .nb .bo { color: #ef4444; }
+  .site-nav .nl { display: flex; gap: 1.5rem; align-items: center; }
+  .site-nav .nl a { font-family: 'Barlow', sans-serif; font-size: 0.85rem; font-weight: 500; color: #71717a; text-decoration: none; }
+  .site-nav .nl a:hover { color: #ededed; }
+  .site-nav .nl .la { background: linear-gradient(135deg,#ef4444,#dc2626); color: #fff !important; padding: 0.35rem 1rem; border-radius: 8px; font-weight: 600; font-size: 0.8rem; }
+  .hb { display: none; background: none; border: none; cursor: pointer; padding: 0.4rem; z-index: 110; }
+  .hb svg { width: 22px; height: 22px; stroke: #ededed; stroke-width: 2; fill: none; }
+  @media(max-width:768px) { .hb { display: block; } .site-nav .nl { display: none; flex-direction: column; align-items: stretch; gap: 0; position: fixed; top: 56px; left: 0; right: 0; background: rgba(10,10,10,0.95); backdrop-filter: blur(24px); border-bottom: 1px solid rgba(255,255,255,0.08); padding: 0.5rem 0; max-height: 0; overflow: hidden; transition: max-height 0.35s; } .site-nav .nl.open { display: flex; max-height: 400px; padding: 0.75rem 0; } .site-nav .nl a { padding: 0.75rem clamp(1rem,4vw,3rem); font-size: 0.95rem; border-bottom: 1px solid rgba(255,255,255,0.04); } .site-nav .nl .la { margin: 0.5rem clamp(1rem,4vw,3rem) 0.25rem; text-align: center; padding: 0.65rem 1rem; border-radius: 10px; } }
+  /* Footer */
+  .site-footer { background: #0a0a0a; color: #71717a; padding: 3rem 1.5rem 2.5rem; text-align: center; }
+  .site-footer .fb { font-family: 'Rajdhani', sans-serif; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #71717a; margin-bottom: 0.5rem; }
+  .site-footer .fb .bo { color: #ef4444; }
+  .site-footer .tl { font-size: 0.8rem; color: #52525b; margin-bottom: 0.75rem; font-style: italic; }
+  .site-footer .fl { display: flex; justify-content: center; gap: 1.5rem; margin-bottom: 0.75rem; }
+  .site-footer .fl a { font-size: 0.75rem; color: #52525b; text-decoration: none; }
+  .site-footer .fl a:hover { color: #a1a1aa; }
+  .site-footer .cp { font-size: 0.7rem; color: #52525b; }
+  @media (max-width: 600px) { .hero h1 { font-size: 26px; } .hero { padding: 20px 16px 32px; } article { padding: 32px 16px 24px; } .author-box { flex-direction: column; align-items: center; text-align: center; } }
+</style>
+</head>
+<body>
+<nav class="site-nav">
+  <a href="https://brassops.com" class="nb">Brass<span class="bo">Ops</span></a>
+  <button class="hb" aria-label="Toggle menu" aria-expanded="false"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <div class="nl">
+    <a href="https://brassops.com/why-brassops">Why Brass<span style="color:#ef4444">Ops</span></a>
+    <a href="https://brassops.com/briefing">Briefing</a>
+    <a href="https://brassops.com/faq">FAQ</a>
+    <a href="https://brassops.com/contact">Contact</a>
+    <a href="https://app.brassops.com" class="la" target="_blank" rel="noopener">Launch App</a>
+  </div>
+</nav>
+<div class="container">
+
+  <!-- ===== INTRO SCREEN ===== -->
+  <div id="intro-screen" class="intro">
+    <div class="intro-badge">Self-Assessment</div>
+    <h1>Training Liability Risk Assessment</h1>
+    <p class="sub">Ten questions that reveal where your firearms training documentation is creating liability exposure — and what to do about it. Based on the gaps plaintiff's attorneys routinely exploit in failure-to-train litigation.</p>
+
+    <div class="meta-row">
+      <div class="meta-item"><strong>10</strong><span>Questions</span></div>
+      <div class="meta-item"><strong>~4 min</strong><span>To Complete</span></div>
+      <div class="meta-item"><strong>Instant</strong><span>Results &amp; Recommendations</span></div>
+    </div>
+
+    <p class="disclaimer"><strong>How this works:</strong> You'll answer questions about your agency's current firearms training documentation and processes. You'll receive a risk tier score, specific findings for each area, and prioritized recommendations. Built on case law from Canton, Popow, Zuchel, and Voutour. This is a self-assessment tool, not legal advice.</p>
+
+    <button class="start-btn" onclick="startQuiz()">Start Assessment →</button>
+  </div>
+
+  <!-- ===== QUIZ SCREEN ===== -->
+  <div id="quiz-screen" class="quiz">
+    <div class="progress-bar"><div id="progress-fill" class="progress-fill"></div></div>
+    <div id="q-counter" class="q-counter">Question 1 of 10</div>
+    <h2 id="q-title" class="q-title"></h2>
+    <p id="q-subtitle" class="q-subtitle"></p>
+    <div id="answers" class="answers"></div>
+    <div class="nav-row">
+      <button id="back-btn" class="back-btn" onclick="goBack()">← Back</button>
+      <button id="next-btn" class="next-btn" onclick="goNext()" disabled>Next →</button>
+    </div>
+  </div>
+
+  <!-- ===== RESULTS SCREEN ===== -->
+  <div id="results-screen" class="results"></div>
+
+</div>
+
+<script>
+// ═══════════════════════════════════════
+// QUIZ QUESTIONS
+// Each answer has a risk score (0-3) where 0 = strong, 3 = high risk
+// ═══════════════════════════════════════
+const questions = [
+  {
+    id: 'readiness',
+    title: "Can you answer 'who is currently qualified?' in under 30 seconds?",
+    subtitle: "Across every officer and every authorized weapon — without pulling files, opening spreadsheets, or calling the range master.",
+    category: "Readiness Visibility",
+    answers: [
+      { text: "Yes — I can see real-time qualification status on a dashboard across all officers and weapons.", score: 0 },
+      { text: "I can answer for most officers within a few minutes by checking our tracking system.", score: 1 },
+      { text: "It takes 15-30 minutes of cross-referencing spreadsheets or files to produce a complete answer.", score: 2 },
+      { text: "Honestly, it would take hours or require calling the training coordinator directly.", score: 3 }
+    ]
+  },
+  {
+    id: 'weapons',
+    title: "Do you track qualification for every weapon each officer is authorized to carry?",
+    subtitle: "Primary duty handgun, backup weapon, patrol rifle, shotgun, and any specialty weapons — each with a current qualification record.",
+    category: "Weapon Coverage",
+    answers: [
+      { text: "Yes — every officer-weapon pair has a current, documented qualification.", score: 0 },
+      { text: "We track primary handgun qualifications well but backup and long gun tracking has gaps.", score: 2 },
+      { text: "We track handgun qualifications. Long gun qualifications happen but aren't always documented separately.", score: 3 },
+      { text: "We only formally track the primary duty handgun qualification.", score: 3 }
+    ]
+  },
+  {
+    id: 'remedial',
+    title: "When an officer fails a qualification, what happens next?",
+    subtitle: "The documentation chain from failure through remedial training to reattempt.",
+    category: "Remedial Documentation",
+    answers: [
+      { text: "We follow a documented 5-step remedial process: failure logged, deficiency diagnosed, plan created, training delivered, reattempt recorded.", score: 0 },
+      { text: "The instructor works with the officer and they try again. We record the final passing score but the remedial work in between isn't always documented.", score: 2 },
+      { text: "Informal — the instructor handles it on the same day, the officer passes on a second attempt, and we don't document the failure if they pass.", score: 3 },
+      { text: "We don't have a formal remedial process. Each failure is handled case-by-case.", score: 3 }
+    ]
+  },
+  {
+    id: 'judgment',
+    title: "Does your agency document judgment-based training separately from qualification scores?",
+    subtitle: "Shoot/don't-shoot training, simulator sessions, force-on-force scenarios, or scenario-based decision-making exercises.",
+    category: "Judgment Training",
+    answers: [
+      { text: "Yes — judgment training is a recurring documented event, separate from qualification, with its own records.", score: 0 },
+      { text: "We do some judgment training during qualification days but don't document it as a separate training record.", score: 2 },
+      { text: "We cover judgment in classroom training and legal updates but have no practical scenario-based component.", score: 3 },
+      { text: "Our firearms training program is primarily marksmanship qualification. We don't have dedicated judgment training.", score: 3 }
+    ]
+  },
+  {
+    id: 'scoring',
+    title: "How does qualification data get entered into your records?",
+    subtitle: "The workflow from the firing line to the permanent training record.",
+    category: "Documentation Timeliness",
+    answers: [
+      { text: "Scores are entered at the firing line on a mobile device, timestamped at the moment of the event.", score: 0 },
+      { text: "Scores are recorded on paper at the range, then entered into our digital system by end-of-day.", score: 1 },
+      { text: "Paper scoresheets come back from the range and get transcribed to a spreadsheet days or weeks later.", score: 2 },
+      { text: "Paper scoresheets get filed in folders. Data entry into any digital system is inconsistent or nonexistent.", score: 3 }
+    ]
+  },
+  {
+    id: 'record_fields',
+    title: "What's captured in a typical qualification record at your agency?",
+    subtitle: "The data points present on a single qualification event in your records.",
+    category: "Record Completeness",
+    answers: [
+      { text: "All seven: officer ID, weapon serial, course of fire, score and threshold, ammunition lot, instructor credential, timestamp.", score: 0 },
+      { text: "Most of the above — we consistently capture officer, score, weapon, and instructor name but sometimes miss ammunition lot or serial numbers.", score: 1 },
+      { text: "The basics — officer name, date, score, and whether they passed. We don't track weapon serials or ammunition lots.", score: 2 },
+      { text: "Just name, date, and score. The scoresheet exists but specifics aren't captured in a searchable system.", score: 3 }
+    ]
+  },
+  {
+    id: 'instructor_certs',
+    title: "How do you track firearms instructor certifications at your agency?",
+    subtitle: "Instructor credentials need to be current on the date they administer a qualification, or the qualification may be invalid.",
+    category: "Instructor Credentials",
+    answers: [
+      { text: "Instructor certs are tracked in the same system as officer qualifications, with automatic alerts before expiration.", score: 0 },
+      { text: "We know when our instructors' certs expire and manage renewals manually.", score: 1 },
+      { text: "We know our primary instructors are certified but don't proactively track expiration dates.", score: 2 },
+      { text: "Honestly, I'm not 100% sure whether all our firearms instructors have current POST certifications.", score: 3 }
+    ]
+  },
+  {
+    id: 'expiration_alerts',
+    title: "How do you catch qualifications before they expire?",
+    subtitle: "The mechanism that prevents officers from carrying on duty with expired qualifications.",
+    category: "Expiration Management",
+    answers: [
+      { text: "Our system sends automatic alerts 60 and 30 days before any qualification expires.", score: 0 },
+      { text: "We run a monthly report showing upcoming expirations and schedule accordingly.", score: 1 },
+      { text: "The training coordinator checks records periodically and flags upcoming expirations manually.", score: 2 },
+      { text: "We mostly catch expirations during the annual range day — sometimes we discover lapses after the fact.", score: 3 }
+    ]
+  },
+  {
+    id: 'subpoena_time',
+    title: "If an officer's training history got subpoenaed today, how long to produce a complete file?",
+    subtitle: "The actual retrieval time from request to a clean, organized, complete three-year training history.",
+    category: "Record Accessibility",
+    answers: [
+      { text: "Under 5 minutes — I can generate a complete training history report from our system on demand.", score: 0 },
+      { text: "Within an hour — our system has the data but requires some manual compilation.", score: 1 },
+      { text: "A full day or two — we'd need to pull from multiple sources, cross-reference spreadsheets, and verify completeness.", score: 2 },
+      { text: "Several days to a week — records are scattered across paper files, spreadsheets, and individual instructor notes.", score: 3 }
+    ]
+  },
+  {
+    id: 'audit_program',
+    title: "Does your agency run an annual self-audit of firearms training documentation?",
+    subtitle: "A structured review of training records to find and close gaps before they're discovered under subpoena.",
+    category: "Proactive Auditing",
+    answers: [
+      { text: "Yes — we run a structured annual audit with corrective action tracking.", score: 0 },
+      { text: "We do periodic spot-checks but not a comprehensive annual audit.", score: 1 },
+      { text: "We review records when there's a specific reason to — incidents, complaints, POST reporting.", score: 2 },
+      { text: "No formal audit process. We discover issues reactively.", score: 3 }
+    ]
+  }
+];
+
+// ═══════════════════════════════════════
+// RESULT FINDINGS (mapped to questions)
+// ═══════════════════════════════════════
+const findings = {
+  readiness: {
+    title: "Real-Time Readiness Visibility",
+    high: {
+      risk: "High Risk",
+      level: "high",
+      message: "Without real-time visibility into qualification status, lapsed qualifications can exist for weeks or months before anyone notices. An officer with an expired qualification who is involved in a use-of-force incident creates immediate Canton liability exposure.",
+      link: "/blog/officer-readiness-firearms-qualification/",
+      linkText: "Read: Officer Readiness Reporting →"
+    },
+    medium: {
+      risk: "Moderate Risk",
+      level: "medium",
+      message: "Your visibility is functional but not proactive. Lapsed qualifications can still slip through during busy periods. A real-time dashboard that alerts before expirations eliminates the gap entirely.",
+      link: "/blog/officer-readiness-firearms-qualification/",
+      linkText: "Read: Officer Readiness Reporting →"
+    },
+    low: {
+      risk: "Strong Position",
+      level: "low",
+      message: "Real-time readiness visibility is your strongest defense against lapsed-qualification liability. Maintain the system and verify that command staff regularly review the dashboard.",
+      link: "/firearms-qualification-standards/",
+      linkText: "Read: Complete Qualification Standards Guide →"
+    }
+  },
+  weapons: {
+    title: "Per-Weapon Qualification Coverage",
+    high: {
+      risk: "High Risk",
+      level: "high",
+      message: "If an officer is involved in an incident using a weapon you can't prove they were qualified with, the training file becomes the centerpiece of the lawsuit. Every weapon an officer carries needs a current, documented qualification.",
+      link: "/blog/backup-weapon-qualification/",
+      linkText: "Read: The Backup Weapon Qualification Gap →"
+    },
+    medium: {
+      risk: "Moderate Risk",
+      level: "medium",
+      message: "Partial coverage is better than none, but the weapons you don't track are the weapons plaintiff's attorneys will focus on. Long gun and backup weapon gaps are particularly common and particularly damaging.",
+      link: "/blog/backup-weapon-qualification/",
+      linkText: "Read: The Backup Weapon Qualification Gap →"
+    },
+    low: {
+      risk: "Strong Position",
+      level: "low",
+      message: "Per-weapon qualification tracking is a cornerstone of defensible documentation. Verify your system flags any officer-weapon pair without a current record.",
+      link: "/blog/firearms-qualification-pass-fail-standards/",
+      linkText: "Read: Pass/Fail Standards by State →"
+    }
+  },
+  remedial: {
+    title: "Remedial Training Documentation",
+    high: {
+      risk: "High Risk",
+      level: "high",
+      message: "This is the single most dangerous gap in training liability. When an officer fails a qualification and the remedial chain isn't documented, plaintiff's attorneys frame it as deliberate indifference under the Canton standard. A documented 5-step remedial process closes this gap entirely.",
+      link: "/blog/remedial-firearms-training-program/",
+      linkText: "Read: How to Build a Remedial Training Program →"
+    },
+    medium: {
+      risk: "Moderate Risk",
+      level: "medium",
+      message: "Your remedial process is happening but the documentation is inconsistent. The legal weight of your remedial work depends entirely on what's in the record. A standardized workflow ensures every failure triggers a complete documentation chain.",
+      link: "/blog/remedial-firearms-training-program/",
+      linkText: "Read: How to Build a Remedial Training Program →"
+    },
+    low: {
+      risk: "Strong Position",
+      level: "low",
+      message: "A documented 5-step remedial process is one of the strongest Canton defenses an agency can have. Ensure every firearms instructor follows the process consistently.",
+      link: "/case-law/city-of-canton-v-harris/",
+      linkText: "Read: City of Canton v. Harris →"
+    }
+  },
+  judgment: {
+    title: "Judgment Training Documentation",
+    high: {
+      risk: "High Risk",
+      level: "high",
+      message: "This is the Zuchel v. Denver gap. Marksmanship qualification alone doesn't prepare officers for shoot/don't-shoot decisions under ambiguity. Courts evaluate judgment and proficiency as separate competencies. The $330K Zuchel verdict was built entirely on this gap.",
+      link: "/case-law/zuchel-v-denver/",
+      linkText: "Read: Zuchel v. Denver →"
+    },
+    medium: {
+      risk: "Moderate Risk",
+      level: "medium",
+      message: "You're doing judgment training but not documenting it separately. In litigation, a court looking at your records sees only qualification scores — which is legally the same as having no judgment training at all.",
+      link: "/case-law/zuchel-v-denver/",
+      linkText: "Read: Zuchel v. Denver →"
+    },
+    low: {
+      risk: "Strong Position",
+      level: "low",
+      message: "Dedicated judgment training documentation is rare and defensible. Continue treating it as a distinct documented category.",
+      link: "/blog/dry-fire-training-law-enforcement/",
+      linkText: "Read: Dry Fire Training for LE →"
+    }
+  },
+  scoring: {
+    title: "Scoring Timeliness",
+    high: {
+      risk: "High Risk",
+      level: "high",
+      message: "Records created days or weeks after the event invite the question of whether they were reconstructed from memory. The Voutour standard requires documentation at a defensible standard — which means timestamped at the point of activity.",
+      link: "/case-law/voutour-v-vitale/",
+      linkText: "Read: Voutour v. Vitale →"
+    },
+    medium: {
+      risk: "Moderate Risk",
+      level: "medium",
+      message: "Same-day entry is better than delayed transcription, but still introduces error risk. Mobile scoring at the firing line eliminates both the transcription step and the timeliness gap.",
+      link: "/blog/firearms-qualification-tracking/",
+      linkText: "Read: Qualification Tracking System Guide →"
+    },
+    low: {
+      risk: "Strong Position",
+      level: "low",
+      message: "Mobile scoring at the point of activity creates the strongest possible timestamped record. This is exactly what courts look for.",
+      link: "/training-documentation-law-enforcement/",
+      linkText: "Read: Training Documentation Pillar →"
+    }
+  },
+  record_fields: {
+    title: "Record Completeness",
+    high: {
+      risk: "High Risk",
+      level: "high",
+      message: "Incomplete qualification records leave gaps that opposing counsel turns into questions. Every field matters — the weapon serial connects the qualification to the weapon carried, the ammo lot creates audit trails, and the instructor credential proves authority.",
+      link: "/blog/firearms-qualification-tracking/",
+      linkText: "Read: 7 Required Data Points →"
+    },
+    medium: {
+      risk: "Moderate Risk",
+      level: "medium",
+      message: "You're capturing most critical data but missing some elements. Weapon serial numbers and ammunition lot numbers are the most commonly missing fields, and the most consequential in litigation.",
+      link: "/blog/firearms-qualification-tracking/",
+      linkText: "Read: 7 Required Data Points →"
+    },
+    low: {
+      risk: "Strong Position",
+      level: "low",
+      message: "Complete, consistent record fields are what makes a qualification record defensible. Maintain this standard on every record.",
+      link: "/training-documentation-law-enforcement/",
+      linkText: "Read: Training Documentation Pillar →"
+    }
+  },
+  instructor_certs: {
+    title: "Instructor Certification Tracking",
+    high: {
+      risk: "High Risk",
+      level: "high",
+      message: "A lapsed instructor certification can potentially invalidate every qualification that instructor administered during the lapse. This is a systemic risk with a high blast radius — one uncertified instructor can affect dozens of officer records at once.",
+      link: "/blog/law-enforcement-training-audit/",
+      linkText: "Read: The Agency Training Audit →"
+    },
+    medium: {
+      risk: "Moderate Risk",
+      level: "medium",
+      message: "Manual tracking of instructor certs works until it doesn't. A missed renewal creates a systemic compliance gap. Automated alerts eliminate the risk.",
+      link: "/blog/law-enforcement-training-audit/",
+      linkText: "Read: The Agency Training Audit →"
+    },
+    low: {
+      risk: "Strong Position",
+      level: "low",
+      message: "Tracking instructor credentials with the same rigor as officer qualifications is essential. Continue this practice.",
+      link: "/firearms-qualification-standards/",
+      linkText: "Read: Firearms Qualification Standards →"
+    }
+  },
+  expiration_alerts: {
+    title: "Expiration Management",
+    high: {
+      risk: "High Risk",
+      level: "high",
+      message: "Reactive discovery of expirations means some officers have been on duty with expired qualifications. The window between expiration and discovery is a liability window. Proactive alerting closes it.",
+      link: "/blog/officer-readiness-firearms-qualification/",
+      linkText: "Read: Officer Readiness Reporting →"
+    },
+    medium: {
+      risk: "Moderate Risk",
+      level: "medium",
+      message: "Monthly manual reporting catches most expirations but leaves room for error. Automated alerting at the 60 and 30 day marks ensures nothing slips through.",
+      link: "/blog/officer-readiness-firearms-qualification/",
+      linkText: "Read: Officer Readiness Reporting →"
+    },
+    low: {
+      risk: "Strong Position",
+      level: "low",
+      message: "Automated expiration alerts eliminate a major category of liability exposure. Continue monitoring and acting on alerts promptly.",
+      link: "/firearms-qualification-standards/",
+      linkText: "Read: Firearms Qualification Standards →"
+    }
+  },
+  subpoena_time: {
+    title: "Record Retrieval Speed",
+    high: {
+      risk: "High Risk",
+      level: "high",
+      message: "Slow record production suggests a system that isn't well-managed. When records arrive days or weeks after a subpoena, obviously assembled from multiple sources, it raises questions about the agency's approach to training management overall.",
+      link: "/blog/paper-records-liability/",
+      linkText: "Read: Hidden Cost of Paper Records →"
+    },
+    medium: {
+      risk: "Moderate Risk",
+      level: "medium",
+      message: "A day or two is acceptable but not ideal. The fastest production comes from a system that houses all records in one searchable platform with on-demand report generation.",
+      link: "/blog/firearms-qualification-tracking/",
+      linkText: "Read: Qualification Tracking System Guide →"
+    },
+    low: {
+      risk: "Strong Position",
+      level: "low",
+      message: "Under-5-minute retrieval is a litigation asset. This speed demonstrates a well-managed system and a program that takes training seriously.",
+      link: "/training-documentation-law-enforcement/",
+      linkText: "Read: Training Documentation Pillar →"
+    }
+  },
+  audit_program: {
+    title: "Annual Self-Audit Program",
+    high: {
+      risk: "High Risk",
+      level: "high",
+      message: "Reactive discovery of gaps is discovery that happens under pressure. Agencies that run annual self-audits find and fix gaps on their own timeline. Agencies that don't find their gaps when the gaps are exhibits.",
+      link: "/blog/law-enforcement-training-audit/",
+      linkText: "Read: The Agency Training Audit →"
+    },
+    medium: {
+      risk: "Moderate Risk",
+      level: "medium",
+      message: "Periodic spot-checks are better than nothing, but a structured annual audit covers the 8 specific vulnerabilities that appear in training liability cases. Worth formalizing.",
+      link: "/blog/law-enforcement-training-audit/",
+      linkText: "Read: The Agency Training Audit →"
+    },
+    low: {
+      risk: "Strong Position",
+      level: "low",
+      message: "Annual self-audits create a cycle of identification and improvement that makes deliberate indifference nearly impossible to prove. This is a hallmark of agencies that rarely appear as defendants.",
+      link: "/insights/failure-to-train-lawsuit-patterns/",
+      linkText: "Read: How Failure-to-Train Lawsuits Are Won →"
+    }
+  }
+};
+
+// ═══════════════════════════════════════
+// QUIZ STATE
+// ═══════════════════════════════════════
+let currentQ = 0;
+let answers = new Array(questions.length).fill(null);
+
+function startQuiz() {
+  document.getElementById('intro-screen').style.display = 'none';
+  document.getElementById('quiz-screen').classList.add('active');
+  renderQuestion();
+}
+
+function renderQuestion() {
+  const q = questions[currentQ];
+  document.getElementById('q-counter').textContent = `Question ${currentQ + 1} of ${questions.length} · ${q.category}`;
+  document.getElementById('q-title').textContent = q.title;
+  document.getElementById('q-subtitle').textContent = q.subtitle;
+  document.getElementById('progress-fill').style.width = `${((currentQ + 1) / questions.length) * 100}%`;
+
+  const answersDiv = document.getElementById('answers');
+  answersDiv.innerHTML = '';
+  const letters = ['A', 'B', 'C', 'D'];
+  q.answers.forEach((a, idx) => {
+    const btn = document.createElement('button');
+    btn.className = 'answer' + (answers[currentQ] === idx ? ' selected' : '');
+    btn.innerHTML = `<span class="label">${letters[idx]}</span>${a.text}`;
+    btn.onclick = () => selectAnswer(idx);
+    answersDiv.appendChild(btn);
+  });
+
+  document.getElementById('back-btn').disabled = currentQ === 0;
+  document.getElementById('next-btn').disabled = answers[currentQ] === null;
+  document.getElementById('next-btn').textContent = currentQ === questions.length - 1 ? 'See Results →' : 'Next →';
+}
+
+function selectAnswer(idx) {
+  answers[currentQ] = idx;
+  renderQuestion();
+}
+
+function goBack() {
+  if (currentQ > 0) {
+    currentQ--;
+    renderQuestion();
+  }
+}
+
+function goNext() {
+  if (currentQ < questions.length - 1) {
+    currentQ++;
+    renderQuestion();
+  } else {
+    showResults();
+  }
+}
+
+function showResults() {
+  // Calculate total score
+  let totalScore = 0;
+  answers.forEach((answerIdx, qIdx) => {
+    totalScore += questions[qIdx].answers[answerIdx].score;
+  });
+  const maxScore = questions.length * 3; // 30
+  const percentage = (totalScore / maxScore) * 100;
+
+  // Determine tier (inverted: low score = good)
+  let tier, tierName, tierDesc, tierClass;
+  if (totalScore <= 5) {
+    tier = 1; tierName = "Strong"; tierClass = "tier-1";
+    tierDesc = "Your agency has strong documentation practices in place. Plaintiff's attorneys would struggle to construct a Canton deliberate indifference argument against your current program.";
+  } else if (totalScore <= 12) {
+    tier = 2; tierName = "Moderate"; tierClass = "tier-2";
+    tierDesc = "Your agency has foundational practices in place but has identifiable gaps that plaintiff's attorneys target. Addressing the high-risk findings below would significantly strengthen your liability posture.";
+  } else if (totalScore <= 20) {
+    tier = 3; tierName = "Elevated"; tierClass = "tier-3";
+    tierDesc = "Your agency has multiple documentation gaps that are commonly exploited in failure-to-train litigation. These gaps need to be addressed systematically — starting with the highest-risk findings.";
+  } else {
+    tier = 4; tierName = "High"; tierClass = "tier-4";
+    tierDesc = "Your agency has significant documentation gaps across multiple areas. These are the exact patterns that appear in adverse failure-to-train verdicts. Immediate action is warranted on high-risk findings.";
+  }
+
+  // Build findings sorted by risk (high first)
+  const findingsList = [];
+  answers.forEach((answerIdx, qIdx) => {
+    const q = questions[qIdx];
+    const score = q.answers[answerIdx].score;
+    const finding = findings[q.id];
+    let f;
+    if (score === 0) f = finding.low;
+    else if (score === 1) f = { ...finding.low, risk: "Strong Position" };
+    else if (score === 2) f = finding.medium;
+    else f = finding.high;
+    findingsList.push({ score, title: finding.title, ...f });
+  });
+  findingsList.sort((a, b) => b.score - a.score);
+
+  // Render results
+  const resultsDiv = document.getElementById('results-screen');
+  document.getElementById('quiz-screen').classList.remove('active');
+  resultsDiv.classList.add('active');
+
+  let findingsHTML = findingsList.map(f => `
+    <div class="finding ${f.level}">
+      <div class="risk-level">${f.risk}</div>
+      <h3>${f.title}</h3>
+      <p>${f.message}</p>
+      <a href="${f.link}" class="finding-link">${f.linkText}</a>
+    </div>
+  `).join('');
+
+  resultsDiv.innerHTML = `
+    <div class="score-header ${tierClass}">
+      <div class="score-label">Your Liability Risk Score</div>
+      <div class="score-number">${totalScore}<span class="denom">/${maxScore}</span></div>
+      <div class="score-tier">${tierName} Risk Tier</div>
+      <p class="score-description">${tierDesc}</p>
+    </div>
+    <div class="results-body">
+      <h2>Your Findings</h2>
+      <p class="section-sub">Ten findings ordered by risk level. Address high-risk items first.</p>
+      ${findingsHTML}
+
+      <div class="action-block">
+        <h3>See how your agency compares.</h3>
+        <p>BrassOps addresses every one of these 10 documentation dimensions in a single platform. A 20-minute demo shows exactly how it would apply to your agency.</p>
+        <a href="https://brassops.com/contact/" class="action-btn">Request a Demo</a>
+      </div>
+
+      <a href="#" class="restart-link" onclick="restart(); return false;">← Start over</a>
+    </div>
+  `;
+
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function restart() {
+  currentQ = 0;
+  answers = new Array(questions.length).fill(null);
+  document.getElementById('results-screen').classList.remove('active');
+  document.getElementById('intro-screen').style.display = 'block';
+}
+</script>
+
+<footer class="site-footer">
+  <p class="fb">Brass<span class="bo">Ops</span></p>
+  <p class="tl">Built for those who train to protect.</p>
+  <div class="fl"><a href="https://brassops.com/privacy">Privacy Policy</a><a href="https://brassops.com/terms">Terms of Service</a></div>
+  <p class="cp">&copy; 2026 BrassOps. All rights reserved.</p>
+</footer>
+<script>
+document.addEventListener('DOMContentLoaded',()=>{
+  const h=document.querySelector('.hb'),n=document.querySelector('.nl');
+  if(h&&n)h.addEventListener('click',()=>{const o=n.classList.toggle('open');h.setAttribute('aria-expanded',o);h.innerHTML=o?'<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>':'<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';});
+});
+</script>
+</body>
+</html>
