@@ -1,5 +1,15 @@
 [
   {
+    "slug": "000-welcome-to-brassops",
+    "title": "Welcome to BrassOps: The Range Intelligence Platform Built for Law Enforcement Firearms Programs",
+    "synopsis": "Discover how BrassOps protects your agency from liability, saves training time, delivers actionable analytics, and builds better shooters with purpose built tools for law enforcement.",
+    "author": "Rich O'Brien",
+    "category": "Welcome",
+    "publishDate": "2026-04-11T08:00:00-05:00",
+    "readTime": "10 min",
+    "featured": true
+  },
+  {
     "slug": "001-firearms-training-documentation-the-complete-agency-guide",
     "title": "Firearms Training Documentation: The Complete Agency Guide",
     "synopsis": "What courts evaluate when firearms training records get subpoenaed. Five documentation standards, real case examples, and a framework for building defensible records.",
