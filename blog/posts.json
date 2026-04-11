@@ -1,6 +1,7 @@
 [
   {
     "slug": "000-welcome-to-brassops",
+    "featuredImage": "/blog/images/000-welcome-to-brassops.svg",
     "title": "Welcome to BrassOps: The Range Intelligence Platform Built for Law Enforcement Firearms Programs",
     "synopsis": "Discover how BrassOps protects your agency from liability, saves training time, delivers actionable analytics, and builds better shooters with purpose built tools for law enforcement.",
     "author": "Rich O'Brien",
@@ -11,6 +12,7 @@
   },
   {
     "slug": "001-firearms-training-documentation-the-complete-agency-guide",
+    "featuredImage": "/blog/images/001-firearms-training-documentation-the-complete-agency-guide.svg",
     "title": "Firearms Training Documentation: The Complete Agency Guide",
     "synopsis": "What courts evaluate when firearms training records get subpoenaed. Five documentation standards, real case examples, and a framework for building defensible records.",
     "author": "Rich O'Brien",
@@ -21,6 +23,7 @@
   },
   {
     "slug": "002-ammunition-lot-tracking-the-foundation-of-range-accountability",
+    "featuredImage": "/blog/images/002-ammunition-lot-tracking-the-foundation-of-range-accountability.svg",
     "title": "Ammunition Lot Tracking: The Foundation of Range Accountability",
     "synopsis": "Lot-level ammunition tracking is the evidence chain that connects procurement to officers to qualifications to duty use. Here's what defensible tracking looks like and where most agencies fall short.",
     "author": "Rich O'Brien",
@@ -31,6 +34,7 @@
   },
   {
     "slug": "003-firearms-qualification-recordkeeping-what-every-file-needs",
+    "featuredImage": "/blog/images/003-firearms-qualification-recordkeeping-what-every-file-needs.svg",
     "title": "Firearms Qualification Recordkeeping: What Every File Needs",
     "synopsis": "What a defensible firearms qualification tracking system looks like. What data to capture, what format courts expect, and why paper scoresheets put your agency at risk.",
     "author": "Rich O'Brien",
@@ -41,6 +45,7 @@
   },
   {
     "slug": "004-duty-vs-training-ammunition-the-substitution-problem",
+    "featuredImage": "/blog/images/004-duty-vs-training-ammunition-the-substitution-problem.svg",
     "title": "Duty vs. Training Ammunition: The Substitution Problem",
     "synopsis": "When officers train with one round and carry another, the gap becomes a liability argument. Here's what courts have said, what the performance differences actually mean, and how to close the gap.",
     "author": "Rich O'Brien",
@@ -51,6 +56,7 @@
   },
   {
     "slug": "005-pass-fail-standards-why-70-isnt-enough",
+    "featuredImage": "/blog/images/005-pass-fail-standards-why-70-isnt-enough.svg",
     "title": "Pass/Fail Standards: Why 70% Isn't Enough",
     "synopsis": "State-by-state guide to police firearms qualification pass/fail standards. Minimum scores, courses of fire, requalification frequency, and what happens when officers fail.",
     "author": "Rich O'Brien",
@@ -61,6 +67,7 @@
   },
   {
     "slug": "006-ammunition-budget-forecasting-three-year-planning",
+    "featuredImage": "/blog/images/006-ammunition-budget-forecasting-three-year-planning.svg",
     "title": "Ammunition Budget Forecasting: Three-Year Planning",
     "synopsis": "Single-year ammunition budgets assume price stability that no longer exists. Here's how to forecast ammunition needs through supply shortages and price volatility, tied to qualification schedules.",
     "author": "Rich O'Brien",
@@ -71,6 +78,7 @@
   },
   {
     "slug": "007-officer-readiness-beyond-qualification",
+    "featuredImage": "/blog/images/007-officer-readiness-beyond-qualification.svg",
     "title": "Officer Readiness Beyond Qualification",
     "synopsis": "Can you answer in 30 seconds: how many officers are currently qualified to carry? Build a real-time readiness dashboard that eliminates qualification blind spots.",
     "author": "Rich O'Brien",
@@ -81,6 +89,7 @@
   },
   {
     "slug": "008-ammunition-recalls-and-lot-failures-response-protocols",
+    "featuredImage": "/blog/images/008-ammunition-recalls-and-lot-failures-response-protocols.svg",
     "title": "Ammunition Recalls and Lot Failures: Response Protocols",
     "synopsis": "When a manufacturer issues a recall or an agency changes duty ammunition mid-cycle, it becomes a documentation event. Here's the workflow that closes it cleanly and the gaps that leave exposure behind.",
     "author": "Rich O'Brien",
@@ -91,6 +100,7 @@
   },
   {
     "slug": "009-range-day-management-running-operations-that-hold-up-in-court",
+    "featuredImage": "/blog/images/009-range-day-management-running-operations-that-hold-up-in-court.svg",
     "title": "Range Day Management: Running Operations That Hold Up in Court",
     "synopsis": "Practical guide for range masters: scheduling, ammunition allocation, the three-zone rotation, scoring workflows, and documentation for high-volume qualification days.",
     "author": "Rich O'Brien",
@@ -101,6 +111,7 @@
   },
   {
     "slug": "010-ammunition-storage-and-rotation-best-practices",
+    "featuredImage": "/blog/images/010-ammunition-storage-and-rotation-best-practices.svg",
     "title": "Ammunition Storage and Rotation: Best Practices",
     "synopsis": "The chain-of-custody workflow for ammunition from delivery through disposal. Where accountability typically breaks down, and the documentation gaps that create audit findings.",
     "author": "Rich O'Brien",
@@ -111,6 +122,7 @@
   },
   {
     "slug": "011-ammunition-tracking-the-audit-trail-most-agencies-dont-have",
+    "featuredImage": "/blog/images/011-ammunition-tracking-the-audit-trail-most-agencies-dont-have.svg",
     "title": "Ammunition Tracking: The Audit Trail Most Agencies Don't Have",
     "synopsis": "How agencies track training and duty ammunition to control costs, meet audit requirements, and protect the chain of custody. A practical guide.",
     "author": "Rich O'Brien",
@@ -121,6 +133,7 @@
   },
   {
     "slug": "012-ammunition-documentation-for-consent-decree-compliance",
+    "featuredImage": "/blog/images/012-ammunition-documentation-for-consent-decree-compliance.svg",
     "title": "Ammunition Documentation for Consent Decree Compliance",
     "synopsis": "Specialty training ammunition carries elevated documentation requirements most agencies underestimate. Here's what courts, auditors, and safety investigators expect when specialty rounds are involved.",
     "author": "Rich O'Brien",
@@ -131,6 +144,7 @@
   },
   {
     "slug": "013-remedial-firearms-training-closing-the-loop-on-failed-qualifications",
+    "featuredImage": "/blog/images/013-remedial-firearms-training-closing-the-loop-on-failed-qualifications.svg",
     "title": "Remedial Firearms Training: Closing the Loop on Failed Qualifications",
     "synopsis": "Step-by-step guide to building a documented remedial firearms training program. Identify deficiencies, create improvement plans, track progress, and protect your agency.",
     "author": "Rich O'Brien",
@@ -141,6 +155,7 @@
   },
   {
     "slug": "014-range-scheduling-and-capacity-planning",
+    "featuredImage": "/blog/images/014-range-scheduling-and-capacity-planning.svg",
     "title": "Range Scheduling and Capacity Planning",
     "synopsis": "Range days eat overtime budgets. Six proven strategies for reducing overtime costs on qualification days without compromising training quality or compliance.",
     "author": "Rich O'Brien",
@@ -151,6 +166,7 @@
   },
   {
     "slug": "015-dry-fire-training-documentation-the-most-underutilized-compliance-tool",
+    "featuredImage": "/blog/images/015-dry-fire-training-documentation-the-most-underutilized-compliance-tool.svg",
     "title": "Dry Fire Training Documentation: The Most Underutilized Compliance Tool",
     "synopsis": "How agencies use dry fire and simulator training to maintain firearms proficiency between range days. Best practices, documentation standards, and compliance considerations.",
     "author": "Rich O'Brien",
@@ -161,6 +177,7 @@
   },
   {
     "slug": "016-range-safety-officer-documentation-requirements",
+    "featuredImage": "/blog/images/016-range-safety-officer-documentation-requirements.svg",
     "title": "Range Safety Officer Documentation Requirements",
     "synopsis": "The Range Safety Officer role is part of every qualification record. Here's what certification requires, how courts evaluate it, and why RSO documentation belongs in the training file.",
     "author": "Rich O'Brien",
@@ -171,6 +188,7 @@
   },
   {
     "slug": "017-city-of-canton-v-harris-the-case-that-defines-failure-to-train",
+    "featuredImage": "/blog/images/017-city-of-canton-v-harris-the-case-that-defines-failure-to-train.svg",
     "title": "City of Canton v. Harris: The Case That Defines Failure to Train",
     "synopsis": "City of Canton v. Harris established the deliberate indifference standard for training liability. What it means for your firearms qualification program.",
     "author": "Rich O'Brien",
@@ -181,6 +199,7 @@
   },
   {
     "slug": "018-range-facility-maintenance-and-inspection-records",
+    "featuredImage": "/blog/images/018-range-facility-maintenance-and-inspection-records.svg",
     "title": "Range Facility Maintenance and Inspection Records",
     "synopsis": "Range facility inspections are the infrastructure audit that backs every qualification event. Here's the inspection schedule courts and regulators expect, what to document, and where agencies fall short.",
     "author": "Rich O'Brien",
@@ -191,6 +210,7 @@
   },
   {
     "slug": "019-voutour-v-vitale-prior-training-doesnt-protect-you",
+    "featuredImage": "/blog/images/019-voutour-v-vitale-prior-training-doesnt-protect-you.svg",
     "title": "Voutour v. Vitale: Prior Training Doesn't Protect You",
     "synopsis": "Voutour v. Vitale established that undocumented training and prior military service don't satisfy police training requirements. If it isn't documented, it didn't happen.",
     "author": "Rich O'Brien",
@@ -201,6 +221,7 @@
   },
   {
     "slug": "020-environmental-compliance-for-law-enforcement-ranges",
+    "featuredImage": "/blog/images/020-environmental-compliance-for-law-enforcement-ranges.svg",
     "title": "Environmental Compliance for Law Enforcement Ranges",
     "synopsis": "Range operations carry environmental obligations most agencies underestimate. Here's what regulators expect, what documentation is required, and where the compliance gaps typically appear.",
     "author": "Rich O'Brien",
@@ -211,6 +232,7 @@
   },
   {
     "slug": "021-popow-v-city-of-margate-training-must-match-the-operational-environment",
+    "featuredImage": "/blog/images/021-popow-v-city-of-margate-training-must-match-the-operational-environment.svg",
     "title": "Popow v. City of Margate: Training Must Match the Operational Environment",
     "synopsis": "Popow v. City of Margate established that static range-only firearms training is inadequate. Courts require low-light, moving target, and scenario training.",
     "author": "Rich O'Brien",
@@ -221,6 +243,7 @@
   },
   {
     "slug": "022-mobile-and-temporary-range-operations",
+    "featuredImage": "/blog/images/022-mobile-and-temporary-range-operations.svg",
     "title": "Mobile and Temporary Range Operations",
     "synopsis": "When training happens at a facility the agency doesn't own, the documentation gets more complicated. Here's the workflow and the agreements that protect the record.",
     "author": "Rich O'Brien",
@@ -231,6 +254,7 @@
   },
   {
     "slug": "023-zuchel-v-denver-when-classroom-training-isnt-enough",
+    "featuredImage": "/blog/images/023-zuchel-v-denver-when-classroom-training-isnt-enough.svg",
     "title": "Zuchel v. Denver: When Classroom Training Isn't Enough",
     "synopsis": "A $330,000 verdict because Denver's shoot/don't shoot training was a lecture and a movie. What Zuchel v. Denver means for your judgment training program.",
     "author": "Rich O'Brien",
@@ -241,6 +265,7 @@
   },
   {
     "slug": "024-range-technology-integration-electronic-targets-and-scoring",
+    "featuredImage": "/blog/images/024-range-technology-integration-electronic-targets-and-scoring.svg",
     "title": "Range Technology Integration: Electronic Targets and Scoring",
     "synopsis": "Indoor and outdoor ranges generate different documentation obligations. Here's where the requirements diverge, where they overlap, and why the distinction matters for compliance and defensibility.",
     "author": "Rich O'Brien",
@@ -251,6 +276,7 @@
   },
   {
     "slug": "025-pattern-recognition-when-one-officers-file-becomes-an-agency-problem",
+    "featuredImage": "/blog/images/025-pattern-recognition-when-one-officers-file-becomes-an-agency-problem.svg",
     "title": "Pattern Recognition: When One Officer's File Becomes an Agency Problem",
     "synopsis": "Analysis of recurring patterns in failure-to-train litigation against law enforcement agencies. The four patterns that appear again and again in adverse verdicts.",
     "author": "Rich O'Brien",
@@ -261,6 +287,7 @@
   },
   {
     "slug": "026-firearms-training-and-officer-wellness-the-documentation-connection",
+    "featuredImage": "/blog/images/026-firearms-training-and-officer-wellness-the-documentation-connection.svg",
     "title": "Firearms Training and Officer Wellness: The Documentation Connection",
     "synopsis": "Stress and fatigue degrade firearms performance in measurable ways. Here's what the research shows, how training programs can document awareness and intervention, and why the documentation matters.",
     "author": "Rich O'Brien",
@@ -271,8 +298,9 @@
   },
   {
     "slug": "027-the-agency-training-audit-an-annual-review-framework",
+    "featuredImage": "/blog/images/027-the-agency-training-audit-an-annual-review-framework.svg",
     "title": "The Agency Training Audit: An Annual Review Framework",
-    "synopsis": "8 audit questions that find your firearms training documentation gaps before a plaintiff's attorney does. Run this audit annually \u2014 or run it under subpoena.",
+    "synopsis": "8 audit questions that find your firearms training documentation gaps before a plaintiff's attorney does. Run this audit annually — or run it under subpoena.",
     "author": "Rich O'Brien",
     "category": "Article",
     "publishDate": "2026-08-04T08:00:00-05:00",
@@ -281,6 +309,7 @@
   },
   {
     "slug": "028-stress-inoculation-training-documentation-standards",
+    "featuredImage": "/blog/images/028-stress-inoculation-training-documentation-standards.svg",
     "title": "Stress Inoculation Training: Documentation Standards",
     "synopsis": "The policy and documentation framework for officers in mental health crises, voluntary weapon surrender, fit-for-duty determinations, and reinstatement. A thoughtful framework supports both officer wellness and agency compliance.",
     "author": "Rich O'Brien",
@@ -291,6 +320,7 @@
   },
   {
     "slug": "029-from-paper-to-digital-transitioning-training-records",
+    "featuredImage": "/blog/images/029-from-paper-to-digital-transitioning-training-records.svg",
     "title": "From Paper to Digital: Transitioning Training Records",
     "synopsis": "Paper training records cost more than storage space. The real costs: liability exposure, administrative time, missed expirations, and incomplete records when subpoenaed.",
     "author": "Rich O'Brien",
@@ -301,6 +331,7 @@
   },
   {
     "slug": "030-return-to-duty-firearms-qualification-after-critical-incidents",
+    "featuredImage": "/blog/images/030-return-to-duty-firearms-qualification-after-critical-incidents.svg",
     "title": "Return-to-Duty Firearms Qualification After Critical Incidents",
     "synopsis": "Officers returning from extended leave, injury, or light duty need structured requalification before returning to full duty. Here's the workflow and why this transition is a high-risk documentation window.",
     "author": "Rich O'Brien",
@@ -311,6 +342,7 @@
   },
   {
     "slug": "031-state-post-requirements-a-compliance-reference",
+    "featuredImage": "/blog/images/031-state-post-requirements-a-compliance-reference.svg",
     "title": "State POST Requirements: A Compliance Reference",
     "synopsis": "Every state's POST commission, firearms training requirements, reporting deadlines, and compliance standards in one guide. Updated for 2026.",
     "author": "Rich O'Brien",
@@ -321,6 +353,7 @@
   },
   {
     "slug": "032-fitness-for-duty-and-firearms-training-integration",
+    "featuredImage": "/blog/images/032-fitness-for-duty-and-firearms-training-integration.svg",
     "title": "Fitness-for-Duty and Firearms Training Integration",
     "synopsis": "Vision is the medical prerequisite for firearms qualification. Here's how vision status connects to training records, where the documentation gaps appear, and why this dimension deserves its own tracking.",
     "author": "Rich O'Brien",
@@ -331,6 +364,7 @@
   },
   {
     "slug": "033-instructor-documentation-what-the-trainers-file-should-show",
+    "featuredImage": "/blog/images/033-instructor-documentation-what-the-trainers-file-should-show.svg",
     "title": "Instructor Documentation: What the Trainer's File Should Show",
     "synopsis": "How training documentation becomes a central exhibit in use-of-force litigation. Why the gap between what officers were trained on and what records show costs agencies.",
     "author": "Rich O'Brien",
@@ -341,6 +375,7 @@
   },
   {
     "slug": "034-mental-health-considerations-in-remedial-firearms-training",
+    "featuredImage": "/blog/images/034-mental-health-considerations-in-remedial-firearms-training.svg",
     "title": "Mental Health Considerations in Remedial Firearms Training",
     "synopsis": "Noise-induced hearing loss is one of the most common occupational injuries in law enforcement. Here's the documentation that prevents workers' comp exposure and the monitoring program that catches losses early.",
     "author": "Rich O'Brien",
@@ -351,6 +386,7 @@
   },
   {
     "slug": "035-training-record-retention-how-long-is-long-enough",
+    "featuredImage": "/blog/images/035-training-record-retention-how-long-is-long-enough.svg",
     "title": "Training Record Retention: How Long Is Long Enough?",
     "synopsis": "What to look for in a firearms training management system. Core features, evaluation criteria, implementation questions, and how to compare platforms.",
     "author": "Rich O'Brien",
@@ -361,6 +397,7 @@
   },
   {
     "slug": "036-peer-support-and-firearms-training-building-resilience",
+    "featuredImage": "/blog/images/036-peer-support-and-firearms-training-building-resilience.svg",
     "title": "Peer Support and Firearms Training: Building Resilience",
     "synopsis": "Lead exposure on the range is a documented occupational health hazard with specific OSHA requirements. Here's what monitoring is required, how it connects to range operations, and where agencies typically fall short.",
     "author": "Rich O'Brien",
@@ -371,6 +408,7 @@
   },
   {
     "slug": "037-accreditation-and-training-documentation",
+    "featuredImage": "/blog/images/037-accreditation-and-training-documentation.svg",
     "title": "Accreditation and Training Documentation",
     "synopsis": "The accreditation file room is where compliance either holds up or falls apart. Here's the exhibit-building discipline, the directive-to-standard mapping, and the organizational principles that make assessor review efficient.",
     "author": "Rich O'Brien",
@@ -381,6 +419,7 @@
   },
   {
     "slug": "038-calea-standards-and-firearms-training-documentation",
+    "featuredImage": "/blog/images/038-calea-standards-and-firearms-training-documentation.svg",
     "title": "CALEA Standards and Firearms Training Documentation",
     "synopsis": "CALEA accreditation is a documentation-intensive process with specific firearms training standards. Here's what the assessors examine, the exhibits they expect, and how to prepare.",
     "author": "Rich O'Brien",
@@ -391,6 +430,7 @@
   },
   {
     "slug": "039-the-supervisors-role-in-training-compliance",
+    "featuredImage": "/blog/images/039-the-supervisors-role-in-training-compliance.svg",
     "title": "The Supervisor's Role in Training Compliance",
     "synopsis": "Paper scoresheets, manual data entry, expired certifications going unnoticed. Five signs your firearms qualification process needs to be modernized.",
     "author": "Rich O'Brien",
@@ -401,6 +441,7 @@
   },
   {
     "slug": "040-state-accreditation-requirements-a-comparative-guide",
+    "featuredImage": "/blog/images/040-state-accreditation-requirements-a-comparative-guide.svg",
     "title": "State Accreditation Requirements: A Comparative Guide",
     "synopsis": "State-level accreditation programs are the alternative or complement to CALEA for many agencies. Here's how they work, what they require for firearms training, and how to choose between them.",
     "author": "Rich O'Brien",
@@ -411,6 +452,7 @@
   },
   {
     "slug": "041-fto-programs-and-firearms-training-handoffs",
+    "featuredImage": "/blog/images/041-fto-programs-and-firearms-training-handoffs.svg",
     "title": "FTO Programs and Firearms Training Handoffs",
     "synopsis": "McClelland v. Facteau established that police chiefs may be personally liable for inadequate training and supervision. What command staff need to know.",
     "author": "Rich O'Brien",
@@ -421,6 +463,7 @@
   },
   {
     "slug": "042-preparing-for-accreditation-site-visits-training-records",
+    "featuredImage": "/blog/images/042-preparing-for-accreditation-site-visits-training-records.svg",
     "title": "Preparing for Accreditation Site Visits: Training Records",
     "synopsis": "Internal audits and mock assessments surface accreditation gaps while they're still fixable. Here's the methodology, the cadence, and the discipline that prevents assessment-day surprises.",
     "author": "Rich O'Brien",
@@ -431,6 +474,7 @@
   },
   {
     "slug": "043-weapon-transitions-documenting-equipment-changes",
+    "featuredImage": "/blog/images/043-weapon-transitions-documenting-equipment-changes.svg",
     "title": "Weapon Transitions: Documenting Equipment Changes",
     "synopsis": "Military units have tracked weapons qualification for decades. What law enforcement can learn from how the armed forces document proficiency, rotate weapons, and audit training.",
     "author": "Rich O'Brien",
@@ -441,6 +485,7 @@
   },
   {
     "slug": "044-accreditation-remediation-fixing-documentation-gaps",
+    "featuredImage": "/blog/images/044-accreditation-remediation-fixing-documentation-gaps.svg",
     "title": "Accreditation Remediation: Fixing Documentation Gaps",
     "synopsis": "The workflow when audit findings are issued: severity classification, root cause analysis, corrective action, closure verification, and the open-findings problem that undoes many compliance programs.",
     "author": "Rich O'Brien",
@@ -451,6 +496,7 @@
   },
   {
     "slug": "045-performance-trends-reading-the-data-your-training-files-already-have",
+    "featuredImage": "/blog/images/045-performance-trends-reading-the-data-your-training-files-already-have.svg",
     "title": "Performance Trends: Reading the Data Your Training Files Already Have",
     "synopsis": "Complete guide to law enforcement firearms qualification standards by state. Pass/fail thresholds, POST requirements, requalification timelines, and documentation.",
     "author": "Rich O'Brien",
@@ -461,6 +507,7 @@
   },
   {
     "slug": "046-maintaining-accreditation-ongoing-compliance-systems",
+    "featuredImage": "/blog/images/046-maintaining-accreditation-ongoing-compliance-systems.svg",
     "title": "Maintaining Accreditation: Ongoing Compliance Systems",
     "synopsis": "Accreditation is not an event that happens every four years. It is a daily discipline that either holds or drifts &mdash; and the agencies that treat it as daily practice never face the pre-assessment scramble. The capstone on sustained compliance.",
     "author": "Rich O'Brien",
@@ -471,6 +518,7 @@
   },
   {
     "slug": "047-the-training-liability-risk-assessment-quiz",
+    "featuredImage": "/blog/images/047-the-training-liability-risk-assessment-quiz.svg",
     "title": "The Training Liability Risk Assessment Quiz",
     "synopsis": "A 10-question self-assessment that reveals where your firearms training documentation is creating liability exposure.",
     "author": "Rich O'Brien",
@@ -481,6 +529,7 @@
   },
   {
     "slug": "048-the-accreditation-ready-training-program-a-capstone-framework",
+    "featuredImage": "/blog/images/048-the-accreditation-ready-training-program-a-capstone-framework.svg",
     "title": "The Accreditation-Ready Training Program: A Capstone Framework",
     "synopsis": "The reporting workflow for range accidents and near-misses, and why the near-miss log is often the missing link in litigation defense.",
     "author": "Rich O'Brien",
@@ -491,6 +540,7 @@
   },
   {
     "slug": "049-graham-v-connor-the-objective-reasonableness-standard",
+    "featuredImage": "/blog/images/049-graham-v-connor-the-objective-reasonableness-standard.svg",
     "title": "Graham v. Connor: The Objective Reasonableness Standard",
     "synopsis": "The Supreme Court case that governs every use-of-force analysis. What Graham v. Connor established, how courts apply it, and what it means for training documentation.",
     "author": "Rich O'Brien",
@@ -501,6 +551,7 @@
   },
   {
     "slug": "050-tennessee-v-garner-the-fleeing-felon-rule-and-its-lessons",
+    "featuredImage": "/blog/images/050-tennessee-v-garner-the-fleeing-felon-rule-and-its-lessons.svg",
     "title": "Tennessee v. Garner: The Fleeing Felon Rule and Its Lessons",
     "synopsis": "The 1985 Supreme Court case that defined when deadly force is constitutionally permitted against a fleeing suspect. What Garner established, and what it demands of your training records.",
     "author": "Rich O'Brien",
@@ -511,6 +562,7 @@
   },
   {
     "slug": "051-de-escalation-training-documentation-what-records-agencies-need",
+    "featuredImage": "/blog/images/051-de-escalation-training-documentation-what-records-agencies-need.svg",
     "title": "De-Escalation Training Documentation: What Records Agencies Need",
     "synopsis": "De-escalation training is now legally required in most states. Here's what courts and regulators expect your documentation to show, and where agencies fall short.",
     "author": "Rich O'Brien",
@@ -521,6 +573,7 @@
   },
   {
     "slug": "052-backup-weapon-qualification-the-gap-most-agencies-dont-close",
+    "featuredImage": "/blog/images/052-backup-weapon-qualification-the-gap-most-agencies-dont-close.svg",
     "title": "Backup Weapon Qualification: The Gap Most Agencies Don't Close",
     "synopsis": "Secondary-weapon qualification is the most common documentation gap in law enforcement training files. Here's what it costs agencies in litigation, and how to close it.",
     "author": "Rich O'Brien",
@@ -531,6 +584,7 @@
   },
   {
     "slug": "053-how-to-brief-your-city-council-on-firearms-training-compliance",
+    "featuredImage": "/blog/images/053-how-to-brief-your-city-council-on-firearms-training-compliance.svg",
     "title": "How to Brief Your City Council on Firearms Training Compliance",
     "synopsis": "A practical framework for chiefs presenting firearms training budgets and compliance reports to elected officials. What to show, what to avoid, and how to translate liability into budget justification.",
     "author": "Rich O'Brien",
@@ -541,6 +595,7 @@
   },
   {
     "slug": "054-the-training-coordinators-annual-calendar",
+    "featuredImage": "/blog/images/054-the-training-coordinators-annual-calendar.svg",
     "title": "The Training Coordinator's Annual Calendar",
     "synopsis": "A complete year-in-the-life planning guide for law enforcement training coordinators. Month-by-month tasks, deadlines, and documentation checkpoints that keep the training program compliant and audit-ready.",
     "author": "Rich O'Brien",
@@ -551,6 +606,7 @@
   },
   {
     "slug": "055-body-worn-camera-video-and-training-records-the-litigation-connection",
+    "featuredImage": "/blog/images/055-body-worn-camera-video-and-training-records-the-litigation-connection.svg",
     "title": "Body-Worn Camera Video and Training Records: The Litigation Connection",
     "synopsis": "Prosecutors and plaintiffs increasingly cross-reference body-worn camera footage with training records. Here's how the two evidence streams interact and what agencies should understand.",
     "author": "Rich O'Brien",
@@ -561,6 +617,7 @@
   },
   {
     "slug": "056-lateral-officer-training-integration-verifying-prior-training",
+    "featuredImage": "/blog/images/056-lateral-officer-training-integration-verifying-prior-training.svg",
     "title": "Lateral Officer Training Integration: Verifying Prior Training",
     "synopsis": "Lateral hires bring training histories that are rarely complete and almost never defensible by default. Here's the workflow for verifying and documenting prior training before the officer goes on patrol.",
     "author": "Rich O'Brien",
@@ -571,6 +628,7 @@
   },
   {
     "slug": "057-swat-and-specialty-team-qualification-higher-standards",
+    "featuredImage": "/blog/images/057-swat-and-specialty-team-qualification-higher-standards.svg",
     "title": "SWAT and Specialty Team Qualification: Higher Standards",
     "synopsis": "SWAT, K-9, and specialty units operate under elevated training expectations. Here's what that means for qualification frequency, course complexity, and documentation rigor.",
     "author": "Rich O'Brien",
@@ -581,6 +639,7 @@
   },
   {
     "slug": "058-low-light-qualification-training-beyond-the-annual-minimum",
+    "featuredImage": "/blog/images/058-low-light-qualification-training-beyond-the-annual-minimum.svg",
     "title": "Low-Light Qualification Training: Beyond the Annual Minimum",
     "synopsis": "The Popow requirement operationalized. Why annual low-light qualification is the floor, not the ceiling, and how to build a low-light training program that reflects the conditions officers actually work in.",
     "author": "Rich O'Brien",
@@ -591,6 +650,7 @@
   },
   {
     "slug": "059-vehicle-based-firearms-deployment-training",
+    "featuredImage": "/blog/images/059-vehicle-based-firearms-deployment-training.svg",
     "title": "Vehicle-Based Firearms Deployment Training",
     "synopsis": "Most officer time is spent in or around a vehicle, yet most firearms training ignores the vehicle entirely. Here's how to build vehicle-based firearms training that reflects operational reality.",
     "author": "Rich O'Brien",
@@ -601,6 +661,7 @@
   },
   {
     "slug": "060-active-threat-response-training-documentation-requirements",
+    "featuredImage": "/blog/images/060-active-threat-response-training-documentation-requirements.svg",
     "title": "Active Threat Response Training: Documentation Requirements",
     "synopsis": "Active threat response training is now scrutinized at the officer level after every major incident. Here's what documentation standards have emerged, what post-incident reviews look for, and how to build records that hold up.",
     "author": "Rich O'Brien",
@@ -611,6 +672,7 @@
   },
   {
     "slug": "061-connick-v-thompson-when-single-incident-failures-dont-create-liability",
+    "featuredImage": "/blog/images/061-connick-v-thompson-when-single-incident-failures-dont-create-liability.svg",
     "title": "Connick v. Thompson: When Single-Incident Failures Don't Create Liability",
     "synopsis": "The Supreme Court case that limits single-incident failure-to-train claims. What Connick established, how it narrows Canton, and what it still requires of agency training documentation.",
     "author": "Rich O'Brien",
@@ -621,6 +683,7 @@
   },
   {
     "slug": "062-bryan-county-v-brown-hiring-liability-and-training-documentation",
+    "featuredImage": "/blog/images/062-bryan-county-v-brown-hiring-liability-and-training-documentation.svg",
     "title": "Bryan County v. Brown: Hiring Liability and Training Documentation",
     "synopsis": "The Supreme Court case that connects hiring decisions to municipal liability. What Bryan County established, how it relates to lateral hires, and what it requires of background-to-training documentation.",
     "author": "Rich O'Brien",
@@ -631,6 +694,7 @@
   },
   {
     "slug": "063-the-consent-decree-era-how-doj-investigations-reshaped-standards",
+    "featuredImage": "/blog/images/063-the-consent-decree-era-how-doj-investigations-reshaped-standards.svg",
     "title": "The Consent Decree Era: How DOJ Investigations Reshaped Standards",
     "synopsis": "Federal consent decrees have become the most influential force reshaping law enforcement training documentation nationwide. Here's how they work, what they require, and why they affect every agency.",
     "author": "Rich O'Brien",
@@ -641,6 +705,7 @@
   },
   {
     "slug": "064-third-party-training-providers-vetting-documentation-and-liability",
+    "featuredImage": "/blog/images/064-third-party-training-providers-vetting-documentation-and-liability.svg",
     "title": "Third-Party Training Providers: Vetting, Documentation, and Liability",
     "synopsis": "External training from NRA, FBI, private vendors, and specialty schools is common and often essential. Here's how to vet those providers and document their instruction in a way that holds up in litigation.",
     "author": "Rich O'Brien",
@@ -651,6 +716,7 @@
   },
   {
     "slug": "065-building-a-3-year-firearms-training-budget",
+    "featuredImage": "/blog/images/065-building-a-3-year-firearms-training-budget.svg",
     "title": "Building a 3-Year Firearms Training Budget",
     "synopsis": "Single-year training budgets create recurring crises. A 3-year horizon turns training from a line-item fight into a defensible program. Here's how to build the plan that holds up.",
     "author": "Rich O'Brien",
@@ -661,6 +727,7 @@
   },
   {
     "slug": "066-grant-funding-for-law-enforcement-training-programs",
+    "featuredImage": "/blog/images/066-grant-funding-for-law-enforcement-training-programs.svg",
     "title": "Grant Funding for Law Enforcement Training Programs",
     "synopsis": "Federal and state grant opportunities can close the gap between needed training and available budget. Here's how to identify, win, and administer training grants without creating compliance exposure.",
     "author": "Rich O'Brien",
@@ -671,6 +738,7 @@
   },
   {
     "slug": "067-small-agency-playbook-compliance-on-a-limited-budget",
+    "featuredImage": "/blog/images/067-small-agency-playbook-compliance-on-a-limited-budget.svg",
     "title": "Small Agency Playbook: Compliance on a Limited Budget",
     "synopsis": "Small agencies face the same legal standards as large ones, with a fraction of the resources. Here's how to build firearms training compliance that holds up in court without enterprise budgets.",
     "author": "Rich O'Brien",
@@ -681,6 +749,7 @@
   },
   {
     "slug": "068-multi-agency-range-days-coordination-and-documentation",
+    "featuredImage": "/blog/images/068-multi-agency-range-days-coordination-and-documentation.svg",
     "title": "Multi-Agency Range Days: Coordination and Documentation",
     "synopsis": "How neighboring agencies share range days, split costs, and pool instructor capacity &mdash; without creating documentation gaps that undermine everyone involved.",
     "author": "Rich O'Brien",
@@ -691,6 +760,7 @@
   },
   {
     "slug": "069-2026-year-in-review-changes-in-training-standards",
+    "featuredImage": "/blog/images/069-2026-year-in-review-changes-in-training-standards.svg",
     "title": "2026 Year in Review: Changes in Training Standards",
     "synopsis": "A year-end retrospective on the state-level changes, notable case law, and emerging trends that reshaped law enforcement firearms training standards in 2026.",
     "author": "Rich O'Brien",
@@ -701,6 +771,7 @@
   },
   {
     "slug": "070-ai-tools-and-firearms-training-documentation",
+    "featuredImage": "/blog/images/070-ai-tools-and-firearms-training-documentation.svg",
     "title": "AI Tools and Firearms Training Documentation",
     "synopsis": "AI and predictive tools are beginning to reshape how agencies analyze training data, identify officers at risk, and document performance. Here's what's promising, what's risky, and what agencies should know.",
     "author": "Rich O'Brien",
@@ -711,6 +782,7 @@
   },
   {
     "slug": "071-pennsylvania-mpoetc-standards-one-year-in",
+    "featuredImage": "/blog/images/071-pennsylvania-mpoetc-standards-one-year-in.svg",
     "title": "Pennsylvania MPOETC Standards: One Year In",
     "synopsis": "A one-year retrospective on the January 2026 Pennsylvania MPOETC rifle and shotgun qualification changes &mdash; what agencies learned, what held up, and what's still being worked out.",
     "author": "Rich O'Brien",
@@ -721,6 +793,7 @@
   },
   {
     "slug": "072-your-2027-training-compliance-roadmap",
+    "featuredImage": "/blog/images/072-your-2027-training-compliance-roadmap.svg",
     "title": "Your 2027 Training Compliance Roadmap",
     "synopsis": "The trends visible in 2026 point clearly to 2027. Here's a forward-looking roadmap covering state mandates, case law direction, documentation standards, and operational priorities for the year ahead.",
     "author": "Rich O'Brien",
