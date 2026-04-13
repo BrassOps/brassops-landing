@@ -355,15 +355,199 @@
     nav .actions .ghost { display: none; }
   }
 
-  /* Print friendly */
+  /* Print friendly — designed to produce a clean, professional PDF */
   @media print {
-    body { background: #fff; color: #000; }
-    nav, .cta, footer { display: none; }
-    section.role, .hero, .what-is { color: #000; }
-    section.role h2, section.role h3, .hero h1, .what-is .label { color: #000; }
-    .what-is .box, section.role .who, section.role .closer, .cost-card {
-      background: #f5f5f5;
-      border-color: #ccc;
+    @page {
+      margin: 0.6in 0.7in;
+    }
+
+    /* Force browsers to honor background colors and red/green accents */
+    *, *::before, *::after {
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      color-adjust: exact !important;
+    }
+
+    html, body {
+      background: #ffffff !important;
+      color: #1a1a1a !important;
+      font-size: 11pt;
+      line-height: 1.55;
+    }
+
+    /* Hide on-screen-only chrome */
+    nav,
+    .cta,
+    .print-hide {
+      display: none !important;
+    }
+
+    /* Hero */
+    .hero {
+      max-width: 100%;
+      padding: 0 0 0.75rem;
+      text-align: left;
+      page-break-after: avoid;
+    }
+    .hero .eyebrow {
+      background: #ffffff !important;
+      color: #c41e1e !important;
+      border: 1px solid #c41e1e;
+      padding: 3pt 9pt;
+      font-size: 8pt;
+      margin-bottom: 0.75rem;
+    }
+    .hero h1 {
+      color: #1a1a1a !important;
+      font-size: 24pt;
+      line-height: 1.15;
+      margin-bottom: 0.5rem;
+    }
+    .hero h1 em {
+      color: #c41e1e !important;
+    }
+    .hero .lead {
+      color: #4a4a4a !important;
+      font-size: 11pt;
+      max-width: 100%;
+    }
+
+    /* What it is box */
+    .what-is {
+      max-width: 100%;
+      padding: 0;
+      margin: 0 0 1rem;
+      page-break-inside: avoid;
+    }
+    .what-is .box {
+      background: #f7f7f7 !important;
+      border: 1px solid #dddddd !important;
+      border-left: 4px solid #c41e1e !important;
+      padding: 14pt 16pt;
+    }
+    .what-is .label {
+      color: #c41e1e !important;
+    }
+    .what-is p {
+      color: #1a1a1a !important;
+      font-size: 11pt;
+    }
+
+    /* Sections — start each major role on a new page */
+    section.role {
+      max-width: 100%;
+      padding: 0.5rem 0 0.75rem;
+      border-top: 2px solid #c41e1e !important;
+      page-break-before: always;
+      break-before: page;
+    }
+    section.role:first-of-type {
+      page-break-before: avoid;
+      break-before: auto;
+      border-top: 1px solid #dddddd !important;
+      padding-top: 1rem;
+    }
+    section.role .section-num {
+      color: #c41e1e !important;
+      font-size: 8pt;
+    }
+    section.role h2 {
+      color: #1a1a1a !important;
+      font-size: 20pt;
+      margin-bottom: 0.75rem;
+      page-break-after: avoid;
+    }
+    section.role .who {
+      background: #f7f7f7 !important;
+      border-left: 3px solid #999999 !important;
+      color: #4a4a4a !important;
+      padding: 12pt 14pt;
+      page-break-inside: avoid;
+    }
+    section.role h3 {
+      color: #c41e1e !important;
+      font-size: 13pt;
+      margin: 14pt 0 4pt;
+      page-break-after: avoid;
+    }
+    section.role p {
+      color: #1a1a1a !important;
+      font-size: 11pt;
+      margin-bottom: 9pt;
+      orphans: 3;
+      widows: 3;
+    }
+    section.role .closer {
+      background: #fef2f2 !important;
+      border: 1px solid #c41e1e !important;
+      color: #1a1a1a !important;
+      padding: 12pt 14pt;
+      margin-top: 14pt;
+      font-size: 11pt;
+      page-break-inside: avoid;
+    }
+
+    /* Town section: green accents print as green */
+    section.role.town h3 {
+      color: #15803d !important;
+    }
+    section.role.town .closer {
+      background: #f0fdf4 !important;
+      border-color: #15803d !important;
+    }
+
+    /* Cost comparison cards */
+    .cost-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10pt;
+      margin: 12pt 0;
+      page-break-inside: avoid;
+    }
+    .cost-card {
+      background: #ffffff !important;
+      border: 1px solid #dddddd !important;
+      padding: 11pt 13pt;
+    }
+    .cost-card.bad {
+      border-left: 4px solid #c41e1e !important;
+    }
+    .cost-card.good {
+      border-left: 4px solid #15803d !important;
+    }
+    .cost-card.bad .label {
+      color: #c41e1e !important;
+    }
+    .cost-card.good .label {
+      color: #15803d !important;
+    }
+    .cost-card .figure,
+    .cost-card .desc {
+      color: #1a1a1a !important;
+    }
+
+    /* Footer */
+    footer {
+      background: none !important;
+      color: #4a4a4a !important;
+      border-top: 1px solid #dddddd !important;
+      padding: 1rem 0 0;
+      margin-top: 1rem;
+      page-break-inside: avoid;
+    }
+    footer .fb {
+      color: #1a1a1a !important;
+    }
+
+    /* BrassOps wordmark always red */
+    .bo {
+      color: #c41e1e !important;
+    }
+
+    /* Avoid breaking inside key blocks */
+    h1, h2, h3 {
+      page-break-after: avoid;
+      break-after: avoid;
     }
   }
 </style>
@@ -373,7 +557,7 @@
 <nav>
   <a href="/" class="nb">Brass<span class="bo">Ops</span></a>
   <div class="actions">
-    <a href="/assessment" class="ghost">Risk Assessment</a>
+    <a href="#" onclick="window.print(); return false;" class="ghost" aria-label="Print or save this page as PDF">Print / Save as PDF</a>
     <a href="/contact" class="primary">Schedule a Demo</a>
   </div>
 </nav>
