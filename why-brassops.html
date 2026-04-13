@@ -339,6 +339,96 @@
       font-size: 0.85rem; color: var(--fg-secondary); line-height: 1.7;
     }
 
+    /* ── Practical / Day-to-Day Cards (Instructors & Range Masters) ── */
+    .practical-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.25rem;
+      margin-bottom: 2rem;
+    }
+    @media (max-width: 700px) { .practical-grid { grid-template-columns: 1fr; } }
+
+    .practical-card {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 1.75rem 1.5rem;
+      position: relative; overflow: hidden;
+      opacity: 0; transform: translateY(30px);
+      transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .practical-card.visible { opacity: 1; transform: translateY(0); }
+    .practical-card:hover {
+      background: var(--glass-bg-hover);
+      border-color: rgba(255,255,255,0.12);
+    }
+    .practical-card:nth-child(1) { transition-delay: 0s; }
+    .practical-card:nth-child(2) { transition-delay: 0.06s; }
+    .practical-card:nth-child(3) { transition-delay: 0.12s; }
+    .practical-card:nth-child(4) { transition-delay: 0.18s; }
+    .practical-card:nth-child(5) { transition-delay: 0.24s; }
+    .practical-card:nth-child(6) { transition-delay: 0.3s; }
+
+    .practical-tag {
+      display: inline-block;
+      font-family: var(--font-heading);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      padding: 4px 10px;
+      border-radius: 999px;
+      margin-bottom: 0.85rem;
+    }
+    .practical-tag.instructor {
+      background: rgba(239, 68, 68, 0.12);
+      color: #ef4444;
+      border: 1px solid rgba(239, 68, 68, 0.25);
+    }
+    .practical-tag.rangemaster {
+      background: rgba(34, 197, 94, 0.1);
+      color: #22c55e;
+      border: 1px solid rgba(34, 197, 94, 0.22);
+    }
+
+    .practical-title {
+      font-family: var(--font-heading);
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--fg);
+      line-height: 1.3;
+      margin-bottom: 0.6rem;
+    }
+    .practical-desc {
+      font-size: 0.88rem;
+      color: var(--fg-secondary);
+      line-height: 1.65;
+    }
+
+    .practical-quote {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-left: 3px solid var(--red);
+      border-radius: 12px;
+      padding: 1.5rem 1.75rem;
+      margin: 0.5rem 0 0;
+    }
+    .practical-quote p {
+      font-size: 1rem;
+      color: var(--fg);
+      line-height: 1.7;
+      font-style: italic;
+      margin-bottom: 0.75rem;
+    }
+    .practical-attr {
+      font-family: var(--font-heading);
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--fg-secondary);
+      text-transform: uppercase;
+    }
+
     /* ── Risk Timeline ── */
 
     /* ── Documentation Failures Grid ── */
@@ -566,7 +656,7 @@
       }
       .page-hero h1, .page-hero .hero-lead,
       .compare-card, .roi-card, .timeline-item, .failure-card,
-      .court-card, .court-summary { opacity: 1; transform: none; }
+      .court-card, .court-summary, .practical-card { opacity: 1; transform: none; }
     }
   </style>
 </head>
@@ -600,8 +690,8 @@
 
     <!-- PAGE HERO -->
     <section class="page-hero">
-      <h1>Stop Managing Your Range <span>in the Dark.</span></h1>
-      <p class="hero-lead">Every day without a modern system is another day of liability, lost time, and gaps in officer readiness. Here's what's really at stake — and how Brass<span class="brand-ops">Ops</span> fixes it.</p>
+      <h1>Run a Better Range. <span>In a Lot Less Time.</span></h1>
+      <p class="hero-lead">Brass<span class="brand-ops">Ops</span> gives instructors and range masters back the hours they're losing to spreadsheets, paper scoresheets, and binder digs — and gives command staff the defensible records that protect the agency. It's the same system. Everyone wins.</p>
     </section>
 
     <div class="divider" aria-hidden="true"></div>
@@ -674,6 +764,60 @@
             </li>
           </ul>
         </div>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <!-- ═══════════ BUILT FOR THE PEOPLE WHO RUN THE RANGE ═══════════ -->
+    <section class="section">
+      <p class="section-label">Day-to-Day</p>
+      <h2 class="section-title">Built for the People Who Actually Run the Range</h2>
+      <p class="section-subtitle">If you're an instructor or a range master, Brass<span class="brand-ops">Ops</span> was designed for the work you do every week. The liability protection is real — but the reason you'll actually love it is the time you'll get back.</p>
+
+      <div class="practical-grid">
+
+        <div class="practical-card">
+          <span class="practical-tag instructor">For Instructors</span>
+          <h3 class="practical-title">Stop transcribing scoresheets after every range day.</h3>
+          <p class="practical-desc">Score officers on a tablet as they shoot. Tap, enter, done. No clipboard. No Sunday night data entry. No "wait, was that a 47 or a 41?" The data is in the system before the next officer steps up.</p>
+        </div>
+
+        <div class="practical-card">
+          <span class="practical-tag instructor">For Instructors</span>
+          <h3 class="practical-title">See every officer's history before they step on the line.</h3>
+          <p class="practical-desc">Pull up any officer. See their last three qualifications. See where they struggled. See the dry fire drills they've been working on. Walk into every coaching moment knowing exactly what to focus on.</p>
+        </div>
+
+        <div class="practical-card">
+          <span class="practical-tag instructor">For Instructors</span>
+          <h3 class="practical-title">Assign dry fire training between range days.</h3>
+          <p class="practical-desc">Send specific drills to specific officers. They log their reps. You see the progress. Range day stops being the only day they train — and your job stops being limited to four hours every quarter.</p>
+        </div>
+
+        <div class="practical-card">
+          <span class="practical-tag rangemaster">For Range Masters</span>
+          <h3 class="practical-title">One screen shows the entire program.</h3>
+          <p class="practical-desc">Who's qualified. Who's lapsing. Who failed last time. Who's overdue. Who carries which weapon. No more digging through binders or scrolling sideways through spreadsheets. The information is one click away — every time.</p>
+        </div>
+
+        <div class="practical-card">
+          <span class="practical-tag rangemaster">For Range Masters</span>
+          <h3 class="practical-title">Reports take seconds, not weekends.</h3>
+          <p class="practical-desc">The chief asks for a compliance report — click. Council wants numbers — click. CALEA assessor wants five years of records — already organized. The reports that used to eat your Saturday now run themselves.</p>
+        </div>
+
+        <div class="practical-card">
+          <span class="practical-tag rangemaster">For Range Masters</span>
+          <h3 class="practical-title">Behavioral scoring shows you what to fix.</h3>
+          <p class="practical-desc">Not just pass or fail. Brass<span class="brand-ops">Ops</span> tracks how officers perform across every drill — trigger control, low-light, reload speed, manipulation. You see exactly where the program is weak, target your training there, and watch the numbers improve over time.</p>
+        </div>
+
+      </div>
+
+      <div class="practical-quote">
+        <p>"We went from three binders and a spreadsheet to having everything in one place. I can see who's qualified, who's lapsing, and who needs remedial — in seconds, not hours. Brass<span class="brand-ops">Ops</span> changed how we run our range."</p>
+        <span class="practical-attr">— Range Master, partner agency</span>
       </div>
     </section>
 
@@ -894,8 +1038,8 @@
 
     <!-- ═══════════ CTA ═══════════ -->
     <section class="cta-banner">
-      <h2>Don't Wait for the Wake-Up Call</h2>
-      <p>The agencies that modernize now are the ones that avoid the lawsuits, the audit failures, and the preventable crises. Let us show you how Brass<span class="brand-ops">Ops</span> protects your department.</p>
+      <h2>See What a Demo Looks Like</h2>
+      <p>Bring your range master, your lead instructor, or your whole team. We'll show you exactly how Brass<span class="brand-ops">Ops</span> fits the way you already run things — and how much time you'll get back the first month.</p>
       <a href="contact.html" class="cta-btn">
         Schedule a Demo
         <svg class="cta-arrow" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
@@ -940,7 +1084,7 @@
       }
 
       const animElements = document.querySelectorAll(
-        '.compare-card, .roi-card, .timeline-item, .failure-card, .court-card, .court-summary'
+        '.compare-card, .roi-card, .timeline-item, .failure-card, .court-card, .court-summary, .practical-card'
       );
 
       if ('IntersectionObserver' in window) {
