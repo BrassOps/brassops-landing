@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KJM9SJ714M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-KJM9SJ714M');
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BrassOps in Plain English | What It Does and Why It Matters</title>
+<meta name="description" content="A plain English walkthrough of BrassOps. How it makes life easier for range instructors, range masters, and the towns that fund firearms training programs.">
+<link rel="canonical" href="https://brassops.com/demo">
+<meta property="og:title" content="BrassOps in Plain English">
+<meta property="og:description" content="How BrassOps makes life easier for range instructors, range masters, and the towns that fund them.">
+<meta property="og:url" content="https://brassops.com/demo">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="BrassOps">
+<meta property="og:image" content="https://app.brassops.com/opengraph-image">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="BrassOps in Plain English">
+<meta name="twitter:description" content="How BrassOps makes life easier for range instructors, range masters, and the towns that fund them.">
+<meta name="twitter:image" content="https://app.brassops.com/opengraph-image">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *,*::before,*::after { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; -webkit-font-smoothing: antialiased; }
+  :root {
+    --bg: #0a0a0a;
+    --bg2: #141414;
+    --fg: #ededed;
+    --fg2: #a1a1aa;
+    --fg3: #71717a;
+    --red: #ef4444;
+    --red-dim: rgba(239, 68, 68, 0.12);
+    --green: #22c55e;
+    --green-dim: rgba(34, 197, 94, 0.12);
+    --border: rgba(255, 255, 255, 0.08);
+    --fh: 'Rajdhani', sans-serif;
+    --fb: 'Barlow', sans-serif;
+  }
+  body {
+    background: var(--bg);
+    color: var(--fg);
+    font-family: var(--fb);
+    line-height: 1.75;
+    font-size: 17px;
+    min-height: 100dvh;
+  }
+
+  /* Top nav */
+  nav {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem clamp(1rem, 4vw, 2.5rem);
+    background: rgba(10, 10, 10, 0.92);
+    backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--border);
+  }
+  .nb {
+    font-family: var(--fh);
+    font-weight: 700;
+    font-size: 1.2rem;
+    color: var(--fg);
+    text-decoration: none;
+    letter-spacing: 0.04em;
+  }
+  .bo { color: var(--red); }
+  nav .actions {
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+  }
+  nav .actions a {
+    font-family: var(--fb);
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    transition: all 0.2s;
+  }
+  nav .actions .ghost {
+    color: var(--fg2);
+    border: 1px solid var(--border);
+  }
+  nav .actions .ghost:hover {
+    color: var(--fg);
+    border-color: var(--fg3);
+  }
+  nav .actions .primary {
+    background: var(--red);
+    color: #fff;
+  }
+  nav .actions .primary:hover {
+    background: #dc2626;
+  }
+
+  /* Hero */
+  .hero {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 5rem clamp(1.25rem, 4vw, 2rem) 3rem;
+    text-align: center;
+  }
+  .hero .eyebrow {
+    display: inline-block;
+    font-family: var(--fh);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    background: var(--red-dim);
+    padding: 0.4rem 1rem;
+    border-radius: 999px;
+    margin-bottom: 1.5rem;
+  }
+  .hero h1 {
+    font-family: var(--fh);
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 1rem;
+    letter-spacing: -0.01em;
+  }
+  .hero h1 em {
+    color: var(--red);
+    font-style: normal;
+  }
+  .hero .lead {
+    font-size: 1.15rem;
+    color: var(--fg2);
+    line-height: 1.7;
+    max-width: 620px;
+    margin: 0 auto;
+  }
+
+  /* What it is box */
+  .what-is {
+    max-width: 760px;
+    margin: 1rem auto 4rem;
+    padding: 0 clamp(1.25rem, 4vw, 2rem);
+  }
+  .what-is .box {
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--red);
+    border-radius: 12px;
+    padding: 1.75rem 2rem;
+  }
+  .what-is .label {
+    font-family: var(--fh);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.75rem;
+  }
+  .what-is p {
+    color: var(--fg);
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+
+  /* Sections */
+  section.role {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 4rem clamp(1.25rem, 4vw, 2rem);
+    border-top: 1px solid var(--border);
+  }
+  section.role .section-num {
+    font-family: var(--fh);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--red);
+    margin-bottom: 0.5rem;
+  }
+  section.role h2 {
+    font-family: var(--fh);
+    font-size: clamp(1.75rem, 4vw, 2.4rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.01em;
+  }
+  section.role .who {
+    font-size: 1.05rem;
+    color: var(--fg2);
+    margin-bottom: 2rem;
+    padding: 1.25rem 1.5rem;
+    background: var(--bg2);
+    border-left: 3px solid var(--fg3);
+    border-radius: 0 8px 8px 0;
+    font-style: italic;
+  }
+  section.role h3 {
+    font-family: var(--fh);
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--red);
+    margin: 2rem 0 0.5rem;
+  }
+  section.role p {
+    color: var(--fg);
+    font-size: 1.02rem;
+    line-height: 1.75;
+    margin-bottom: 1.25rem;
+  }
+  section.role .closer {
+    margin-top: 2rem;
+    padding: 1.5rem 1.75rem;
+    background: var(--red-dim);
+    border-radius: 10px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: var(--fg);
+  }
+
+  /* Town section gets green accent for "money saved" feel */
+  section.role.town h3 { color: var(--green); }
+  section.role.town .closer {
+    background: var(--green-dim);
+  }
+
+  /* Cost comparison block in town section */
+  .cost-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+    margin: 1.5rem 0;
+  }
+  .cost-card {
+    padding: 1.25rem 1.5rem;
+    background: var(--bg2);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+  }
+  .cost-card .label {
+    font-family: var(--fh);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .cost-card.bad .label { color: var(--red); }
+  .cost-card.good .label { color: var(--green); }
+  .cost-card .figure {
+    font-family: var(--fh);
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--fg);
+    margin-bottom: 0.25rem;
+  }
+  .cost-card .desc {
+    font-size: 0.85rem;
+    color: var(--fg2);
+    line-height: 1.5;
+  }
+
+  /* CTA section */
+  .cta {
+    max-width: 760px;
+    margin: 2rem auto 0;
+    padding: 4rem clamp(1.25rem, 4vw, 2rem) 5rem;
+    text-align: center;
+    border-top: 1px solid var(--border);
+  }
+  .cta h2 {
+    font-family: var(--fh);
+    font-size: clamp(1.75rem, 4vw, 2.4rem);
+    font-weight: 700;
+    margin-bottom: 1rem;
+  }
+  .cta p {
+    color: var(--fg2);
+    font-size: 1.1rem;
+    margin-bottom: 2rem;
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .cta .btns {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  .cta .btns a {
+    font-family: var(--fb);
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    padding: 0.9rem 1.75rem;
+    border-radius: 10px;
+    transition: all 0.2s;
+  }
+  .cta .btns .primary {
+    background: var(--red);
+    color: #fff;
+  }
+  .cta .btns .primary:hover {
+    background: #dc2626;
+    transform: translateY(-1px);
+  }
+  .cta .btns .secondary {
+    color: var(--fg);
+    border: 1px solid var(--border);
+  }
+  .cta .btns .secondary:hover {
+    border-color: var(--fg3);
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 3rem 1.5rem 2.5rem;
+    border-top: 1px solid var(--border);
+    color: var(--fg3);
+    font-size: 0.85rem;
+  }
+  footer .fb {
+    font-family: var(--fh);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  footer .tl {
+    font-style: italic;
+    margin-bottom: 0.75rem;
+  }
+
+  @media (max-width: 600px) {
+    .cost-grid { grid-template-columns: 1fr; }
+    nav .actions .ghost { display: none; }
+  }
+
+  /* Print friendly */
+  @media print {
+    body { background: #fff; color: #000; }
+    nav, .cta, footer { display: none; }
+    section.role, .hero, .what-is { color: #000; }
+    section.role h2, section.role h3, .hero h1, .what-is .label { color: #000; }
+    .what-is .box, section.role .who, section.role .closer, .cost-card {
+      background: #f5f5f5;
+      border-color: #ccc;
+    }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nb">Brass<span class="bo">Ops</span></a>
+  <div class="actions">
+    <a href="/assessment" class="ghost">Risk Assessment</a>
+    <a href="/contact" class="primary">Schedule a Demo</a>
+  </div>
+</nav>
+
+<section class="hero">
+  <div class="eyebrow">In Plain English</div>
+  <h1>Here's What Brass<em>Ops</em> Actually Does.</h1>
+  <p class="lead">No jargon. No buzzwords. Just a straight walkthrough of how this software makes life easier for the people who train your officers, the people who run the program, and the town that pays the bill.</p>
+</section>
+
+<div class="what-is">
+  <div class="box">
+    <div class="label">What It Is</div>
+    <p>BrassOps is software built specifically for police firearms training programs. It replaces spreadsheets, paper scoresheets, and three-ring binders with one easy-to-use system. It runs on tablets, phones, and computers. Officers, instructors, and command staff each see what they need and nothing they don't.</p>
+  </div>
+</div>
+
+<!-- Section 1: Range Instructor -->
+<section class="role">
+  <div class="section-num">Section 1 of 3</div>
+  <h2>For the Range Instructor</h2>
+  <p class="who">You're the one on the line. You teach officers to shoot. You run drills. You correct grips and trigger pulls. The last thing you want is to spend Sunday night hunched over a kitchen table copying scoresheets into a spreadsheet.</p>
+
+  <h3>You score on a tablet, not paper.</h3>
+  <p>Tap a name. Enter the score as the officer shoots. Done. No clipboard. No re-typing later. No coffee-stained scoresheets. The data is in the system the moment the round leaves the barrel.</p>
+
+  <h3>You see every officer's history instantly.</h3>
+  <p>Pull up any officer. See every qualification they've ever taken. See where they struggled last time. Know exactly what to work on today. No more flipping through binders. No more guessing.</p>
+
+  <h3>Failures handle themselves.</h3>
+  <p>When an officer doesn't pass, the system automatically opens a remedial training plan. You don't have to write a memo. You don't have to remember who's behind. The system tracks it, schedules it, and follows up. Your job is to get them better. The paperwork takes care of itself.</p>
+
+  <h3>You spend more time coaching.</h3>
+  <p>The whole point of all of this: you spend more time on the line and less time on documentation. More reps, more feedback, better officers. That's it.</p>
+
+  <div class="closer">If you're an instructor, BrassOps gives you back the hours you've been losing to paperwork — and puts them back into actual training.</div>
+</section>
+
+<!-- Section 2: Range Master -->
+<section class="role">
+  <div class="section-num">Section 2 of 3</div>
+  <h2>For the Range Master</h2>
+  <p class="who">You run the firearms program. You schedule range days. You track who's qualified and who isn't. You answer to the chief when something goes wrong. You're the one whose phone rings when there's a lawsuit or an accreditation visit. You don't just need data — you need it organized, defensible, and ready to hand to anyone who asks for it.</p>
+
+  <h3>One screen shows everything.</h3>
+  <p>Who's qualified. Who's lapsing. Who failed last time. Who's overdue. Who carries which weapon. No more digging through binders. No more scrolling sideways through spreadsheets. The information you need is one click away, every time.</p>
+
+  <h3>Ammunition is tracked from delivery to officer.</h3>
+  <p>Every lot. Every round. From the day it arrives at your facility to the moment it leaves with an officer. If a manufacturer recalls a lot, you know within minutes exactly which officers are carrying it and which weapons it's been fired through. That's not just convenience — that's how you avoid an emergency.</p>
+
+  <h3>Alerts come to you.</h3>
+  <p>Thirty days before an officer's qualification expires, you get an alert. So does the officer. So does their supervisor. No more discovering an expired qualification the morning of a court appearance. No more surprises.</p>
+
+  <h3>Reports take seconds, not weeks.</h3>
+  <p>The chief asks for a compliance report. You click a button. Done. The mayor wants numbers for the council meeting. Click. Done. The CALEA assessor wants to see five years of training records. They're already organized, audit-trailed, and ready to print. The work that used to take weeks now takes minutes.</p>
+
+  <h3>Your job becomes manageable.</h3>
+  <p>You go from drowning in documentation to actually running a program. You sleep better. Your weekends are yours again. And when the question comes — "are we compliant?" — you don't have to guess. You know.</p>
+
+  <div class="closer">If you're a range master, BrassOps turns the worst part of your job into something you barely think about — so you can focus on the part you actually got into this for.</div>
+</section>
+
+<!-- Section 3: Town -->
+<section class="role town">
+  <div class="section-num">Section 3 of 3</div>
+  <h2>For the Town That Pays the Bill</h2>
+  <p class="who">You're the city manager, the mayor, the council member, the finance director. You're not a cop. You're not a firearms instructor. But you're the one signing the check. You need to know two things: does this protect us, and is it worth the money?</p>
+
+  <h3>Here's the simple math.</h3>
+  <p>One failure-to-train lawsuit settles for hundreds of thousands of dollars. Often millions. The Supreme Court case <em>City of Canton v. Harris</em> established that municipalities are liable when officer training is inadequate. When that case goes to court, the judge looks at one thing first: the records. If the records are weak, you settle. If they're strong, the case gets dismissed.</p>
+
+  <div class="cost-grid">
+    <div class="cost-card bad">
+      <div class="label">One Lawsuit</div>
+      <div class="figure">$500K – $2M+</div>
+      <div class="desc">Typical settlement for a single failure-to-train claim under federal civil rights law.</div>
+    </div>
+    <div class="cost-card good">
+      <div class="label">BrassOps Per Year</div>
+      <div class="figure">A Fraction</div>
+      <div class="desc">Less than the legal fees on day one of a lawsuit. Far less than one settlement.</div>
+    </div>
+  </div>
+
+  <h3>BrassOps is your records.</h3>
+  <p>Every qualification. Every range day. Every officer. Every weapon. Every round of ammunition. Every instructor credential. Every remedial training session. Documented automatically. With audit trails. With timestamps. With everything courts look for when deciding whether to dismiss a case or send it to a jury.</p>
+
+  <h3>Your insurance carrier will care.</h3>
+  <p>Most public entity insurers offer premium reductions for departments with documented training programs. BrassOps gives you the documentation to qualify for those discounts. The savings can be real money every year — sometimes more than the cost of the platform itself.</p>
+
+  <h3>Your officers spend more time training and less time on paperwork.</h3>
+  <p>Better-trained officers are safer officers. They make fewer mistakes. They de-escalate better. They're less likely to be the subject of a use-of-force complaint. Less likely to make the news. Less likely to cost the town a settlement. That's a real, measurable risk reduction — and it shows up in your insurance numbers, your community trust, and your retention rates.</p>
+
+  <h3>Accreditation gets easier.</h3>
+  <p>If your department is CALEA accredited or pursuing state accreditation, firearms training documentation is one of the largest categories you have to prove. BrassOps handles it. The records are already organized the way assessors want to see them.</p>
+
+  <div class="closer">The cost of BrassOps is a rounding error compared to the cost of one preventable lawsuit. It's an insurance policy, an efficiency tool, and a risk reduction system rolled into one. For most departments, it pays for itself in saved staff time alone — and that's before you count the legal protection.</div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>Ready to See It in Action?</h2>
+  <p>Pick whichever fits where you are. A short demo if you want to see how it works. A four-minute risk assessment if you want to know how exposed your agency is right now.</p>
+  <div class="btns">
+    <a href="/contact" class="primary">Schedule a Demo</a>
+    <a href="/assessment" class="secondary">Take the Risk Assessment</a>
+  </div>
+</section>
+
+<footer>
+  <p class="fb">Brass<span class="bo">Ops</span></p>
+  <p class="tl">Built for those who train to protect.</p>
+  <p>&copy; 2026 BrassOps. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
