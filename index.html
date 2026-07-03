@@ -784,6 +784,20 @@
       transform: translateY(-2px);
     }
 
+    .page-hero .hero-scroll {
+      display: inline-flex; align-items: center; gap: 0.35rem;
+      margin-top: 1.5rem;
+      font-family: var(--font-body); font-size: 0.85rem; font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--fg-tertiary); text-decoration: none;
+      transition: color 0.2s;
+      opacity: 0;
+      animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.75s forwards;
+    }
+    .page-hero .hero-scroll:hover { color: var(--fg); }
+    .page-hero .hero-scroll svg { transition: transform 0.2s; }
+    .page-hero .hero-scroll:hover svg { transform: translateY(2px); }
+
     /* ── CTA Banner ── */
     .cta-banner {
       text-align: center;
@@ -897,11 +911,15 @@
           Request a Demo
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
         </a>
-        <a href="#see-it-in-action" class="hero-btn-secondary">
-          See How It Works
+        <a href="assessment.html" class="hero-btn-secondary">
+          Grade Your Program
           <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg>
         </a>
       </div>
+      <a href="#see-it-in-action" class="hero-scroll">
+        See how it works
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+      </a>
       <p class="hero-trust">Anonymous national benchmarking, mandatory two-factor security, and full agency data isolation.</p>
     </section>
 
