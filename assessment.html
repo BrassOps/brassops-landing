@@ -11,12 +11,12 @@
 </script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BrassOps — Training Liability Risk Assessment</title>
+  <title>BrassOps: Training Liability Risk Assessment</title>
   <meta name="description" content="A 10-question self-assessment that reveals where your firearms training documentation is creating liability exposure.">
   <meta name="theme-color" content="#0a0a0a">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="BrassOps — Training Liability Risk Assessment">
+  <meta property="og:title" content="BrassOps: Training Liability Risk Assessment">
   <meta property="og:description" content="Ten questions that reveal where your firearms training documentation is creating liability exposure.">
   <meta property="og:url" content="https://brassops.com/assessment">
   <meta property="og:site_name" content="BrassOps">
@@ -203,7 +203,7 @@
       <div id="intro-screen" class="intro">
         <div class="intro-badge">Self-Assessment</div>
         <h1>Training Liability <span>Risk Assessment</span></h1>
-        <p class="sub">Ten questions that reveal where your firearms training documentation is creating liability exposure — and what to do about it. Based on the gaps plaintiff's attorneys routinely exploit in failure-to-train litigation.</p>
+        <p class="sub">Ten questions that reveal where your firearms training documentation is creating liability exposure, and what to do about it. Based on the gaps plaintiff's attorneys routinely exploit in failure-to-train litigation.</p>
         <div class="meta-row">
           <div class="meta-item"><strong>10</strong><span>Questions</span></div>
           <div class="meta-item"><strong>~4 min</strong><span>To Complete</span></div>
@@ -231,7 +231,7 @@
         <h2>See Your <span>Results</span></h2>
         <p>Enter your details below to view your personalized risk assessment findings and recommendations.</p>
         <form class="gate-form" onsubmit="submitGate(event)">
-          <!-- Honeypot — hidden from users, bots fill it -->
+          <!-- Honeypot, hidden from users, bots fill it -->
           <div style="position:absolute;left:-9999px;top:-9999px;opacity:0;pointer-events:none;" aria-hidden="true">
             <label for="gateWebsite">Website (leave empty)</label>
             <input type="text" id="gateWebsite" name="website" tabindex="-1" autocomplete="off">
@@ -265,14 +265,14 @@
 
 <script>
 const questions = [
-  { id:'readiness', title:"Can you answer 'who is currently qualified?' in under 30 seconds?", subtitle:"Across every officer and every authorized weapon — without pulling files, opening spreadsheets, or calling the range master.", category:"Readiness Visibility", answers:[
-    {text:"Yes — I can see real-time qualification status on a dashboard across all officers and weapons.",score:0},
+  { id:'readiness', title:"Can you answer 'who is currently qualified?' in under 30 seconds?", subtitle:"Across every officer and every authorized weapon, without pulling files, opening spreadsheets, or calling the range master.", category:"Readiness Visibility", answers:[
+    {text:"Yes, I can see real-time qualification status on a dashboard across all officers and weapons.",score:0},
     {text:"I can answer for most officers within a few minutes by checking our tracking system.",score:1},
     {text:"It takes 15-30 minutes of cross-referencing spreadsheets or files to produce a complete answer.",score:2},
     {text:"Honestly, it would take hours or require calling the training coordinator directly.",score:3}
   ]},
   { id:'weapons', title:"Do you track qualification for every weapon each officer is authorized to carry?", subtitle:"Primary duty handgun, backup weapon, patrol rifle, shotgun, and any specialty weapons.", category:"Weapon Coverage", answers:[
-    {text:"Yes — every officer-weapon pair has a current, documented qualification.",score:0},
+    {text:"Yes, every officer-weapon pair has a current, documented qualification.",score:0},
     {text:"We track primary handgun qualifications well but backup and long gun tracking has gaps.",score:2},
     {text:"We track handgun qualifications. Long gun qualifications happen but aren't always documented separately.",score:3},
     {text:"We only formally track the primary duty handgun qualification.",score:3}
@@ -280,11 +280,11 @@ const questions = [
   { id:'remedial', title:"When an officer fails a qualification, what happens next?", subtitle:"The documentation chain from failure through remedial training to reattempt.", category:"Remedial Documentation", answers:[
     {text:"We follow a documented 5-step remedial process: failure logged, deficiency diagnosed, plan created, training delivered, reattempt recorded.",score:0},
     {text:"The instructor works with the officer and they try again. We record the final passing score but the remedial work isn't always documented.",score:2},
-    {text:"Informal — the instructor handles it same day, the officer passes on a second attempt, and we don't document the failure if they pass.",score:3},
+    {text:"Informal, the instructor handles it same day, the officer passes on a second attempt, and we don't document the failure if they pass.",score:3},
     {text:"We don't have a formal remedial process. Each failure is handled case-by-case.",score:3}
   ]},
   { id:'judgment', title:"Does your agency document judgment-based training separately from qualification scores?", subtitle:"Shoot/don't-shoot training, simulator sessions, force-on-force scenarios, or scenario-based decision-making exercises.", category:"Judgment Training", answers:[
-    {text:"Yes — judgment training is a recurring documented event, separate from qualification, with its own records.",score:0},
+    {text:"Yes, judgment training is a recurring documented event, separate from qualification, with its own records.",score:0},
     {text:"We do some judgment training during qualification days but don't document it as a separate training record.",score:2},
     {text:"We cover judgment in classroom training and legal updates but have no practical scenario-based component.",score:3},
     {text:"Our firearms training program is primarily marksmanship qualification. We don't have dedicated judgment training.",score:3}
@@ -297,8 +297,8 @@ const questions = [
   ]},
   { id:'record_fields', title:"What's captured in a typical qualification record at your agency?", subtitle:"The data points present on a single qualification event in your records.", category:"Record Completeness", answers:[
     {text:"All seven: officer ID, weapon serial, course of fire, score and threshold, ammunition lot, instructor credential, timestamp.",score:0},
-    {text:"Most of the above — we consistently capture officer, score, weapon, and instructor name but sometimes miss ammunition lot or serial numbers.",score:1},
-    {text:"The basics — officer name, date, score, and whether they passed. We don't track weapon serials or ammunition lots.",score:2},
+    {text:"Most of the above, we consistently capture officer, score, weapon, and instructor name but sometimes miss ammunition lot or serial numbers.",score:1},
+    {text:"The basics, officer name, date, score, and whether they passed. We don't track weapon serials or ammunition lots.",score:2},
     {text:"Just name, date, and score. The scoresheet exists but specifics aren't captured in a searchable system.",score:3}
   ]},
   { id:'instructor_certs', title:"How do you track firearms instructor certifications at your agency?", subtitle:"Instructor credentials need to be current on the date they administer a qualification, or the qualification may be invalid.", category:"Instructor Credentials", answers:[
@@ -311,32 +311,32 @@ const questions = [
     {text:"Our system sends automatic alerts 60 and 30 days before any qualification expires.",score:0},
     {text:"We run a monthly report showing upcoming expirations and schedule accordingly.",score:1},
     {text:"The training coordinator checks records periodically and flags upcoming expirations manually.",score:2},
-    {text:"We mostly catch expirations during the annual range day — sometimes we discover lapses after the fact.",score:3}
+    {text:"We mostly catch expirations during the annual range day, sometimes we discover lapses after the fact.",score:3}
   ]},
   { id:'subpoena_time', title:"If an officer's training history got subpoenaed today, how long to produce a complete file?", subtitle:"The actual retrieval time from request to a clean, organized, complete three-year training history.", category:"Record Accessibility", answers:[
-    {text:"Under 5 minutes — I can generate a complete training history report from our system on demand.",score:0},
-    {text:"Within an hour — our system has the data but requires some manual compilation.",score:1},
-    {text:"A full day or two — we'd need to pull from multiple sources and verify completeness.",score:2},
-    {text:"Several days to a week — records are scattered across paper files, spreadsheets, and individual instructor notes.",score:3}
+    {text:"Under 5 minutes, I can generate a complete training history report from our system on demand.",score:0},
+    {text:"Within an hour, our system has the data but requires some manual compilation.",score:1},
+    {text:"A full day or two, we'd need to pull from multiple sources and verify completeness.",score:2},
+    {text:"Several days to a week, records are scattered across paper files, spreadsheets, and individual instructor notes.",score:3}
   ]},
   { id:'audit_program', title:"Does your agency run an annual self-audit of firearms training documentation?", subtitle:"A structured review of training records to find and close gaps before they're discovered under subpoena.", category:"Proactive Auditing", answers:[
-    {text:"Yes — we run a structured annual audit with corrective action tracking.",score:0},
+    {text:"Yes, we run a structured annual audit with corrective action tracking.",score:0},
     {text:"We do periodic spot-checks but not a comprehensive annual audit.",score:1},
-    {text:"We review records when there's a specific reason to — incidents, complaints, POST reporting.",score:2},
+    {text:"We review records when there's a specific reason to, incidents, complaints, POST reporting.",score:2},
     {text:"No formal audit process. We discover issues reactively.",score:3}
   ]}
 ];
 
 const solutions = {
-  readiness: { feature:"Officer Readiness Dashboard", desc:"Real-time color-coded status for every officer — green, yellow, red — visible to range masters and command staff instantly. No reports to pull, no spreadsheets to check." },
+  readiness: { feature:"Officer Readiness Dashboard", desc:"Real-time color-coded status for every officer, green, yellow, red, visible to range masters and command staff instantly. No reports to pull, no spreadsheets to check." },
   weapons: { feature:"Weapon-Specific Performance Monitoring", desc:"Every qualification links to the specific weapon by serial number. Per-weapon accuracy trends, round counts, and reliability tracking across your entire fleet." },
-  remedial: { feature:"Auto Remedial Enrollment", desc:"The moment a score fails, a remedial case is created automatically with a structured workflow — coaching plan, milestones, escalation paths. Every step time-stamped." },
-  judgment: { feature:"Dry-Fire Training + AI Shot Analysis", desc:"Structured practice logging between range days plus AI-powered target diagnostics that go beyond marksmanship to evaluate patterns and recommend corrective drills." },
+  remedial: { feature:"Auto Remedial Enrollment", desc:"The moment a score fails, a remedial case is created automatically with a structured workflow, coaching plan, milestones, escalation paths. Every step time-stamped." },
+  judgment: { feature:"Dry-Fire Training + Target Analysis", desc:"Structured practice logging between range days plus AI-assisted target analysis that finds every shot, diagnoses the group pattern, and recommends corrective drills." },
   scoring: { feature:"Mobile Qualification Logging", desc:"Scores entered from your phone on the firing line, timestamped at the moment of the event. No paper transcription. No delayed data entry. Defensible from the second it's recorded." },
   record_fields: { feature:"Qualification Tracking", desc:"Every session automatically captures officer ID, weapon serial, course of fire, score, threshold, instructor, and timestamp. All seven fields, every time, without extra effort." },
-  instructor_certs: { feature:"Automated Alerts", desc:"Instructor certifications tracked in the same system with automatic expiration alerts. No lapsed certs means no invalid qualifications — protecting every record your instructors touch." },
+  instructor_certs: { feature:"Automated Alerts", desc:"Instructor certifications tracked in the same system with automatic expiration alerts. No lapsed certs means no invalid qualifications, protecting every record your instructors touch." },
   expiration_alerts: { feature:"Automated Alerts", desc:"Configurable warnings at 90, 60, and 30 days before any qualification expires. The system watches continuously so qualifications can never silently lapse." },
-  subpoena_time: { feature:"Audit-Ready Records", desc:"Complete training history for any officer generated in seconds — every qualification, every remedial case, every coaching note. Time-stamped, searchable, and defensible." },
+  subpoena_time: { feature:"Audit-Ready Records", desc:"Complete training history for any officer generated in seconds, every qualification, every remedial case, every coaching note. Time-stamped, searchable, and defensible." },
   audit_program: { feature:"Performance Analytics + Behavioral Scoring", desc:"Continuous monitoring surfaces gaps automatically. Behavioral scoring identifies patterns across officers without waiting for an annual review. Issues found in real time, not under subpoena." }
 };
 
@@ -346,8 +346,8 @@ const findingsData = {
   remedial: { title:"Remedial Training Documentation", high:{risk:"High Risk",level:"high",msg:"This is the single most dangerous gap. When an officer fails and the remedial chain isn't documented, plaintiff's attorneys frame it as deliberate indifference under Canton."}, medium:{risk:"Moderate Risk",level:"medium",msg:"Your remedial process is happening but documentation is inconsistent. The legal weight depends entirely on what's in the record."}, low:{risk:"Strong Position",level:"low",msg:"A documented remedial process is one of the strongest Canton defenses an agency can have."} },
   judgment: { title:"Judgment Training Documentation", high:{risk:"High Risk",level:"high",msg:"This is the Zuchel v. Denver gap. Marksmanship qualification alone doesn't prepare officers for shoot/don't-shoot decisions. The $330K Zuchel verdict was built on this gap."}, medium:{risk:"Moderate Risk",level:"medium",msg:"You're doing judgment training but not documenting it separately. To a court, undocumented training is the same as no training."}, low:{risk:"Strong Position",level:"low",msg:"Dedicated judgment training documentation is rare and highly defensible."} },
   scoring: { title:"Scoring Timeliness", high:{risk:"High Risk",level:"high",msg:"Records created days or weeks after the event invite questions about whether they were reconstructed from memory. The Voutour standard requires documentation at a defensible standard."}, medium:{risk:"Moderate Risk",level:"medium",msg:"Same-day entry is better than delayed transcription, but still introduces error risk."}, low:{risk:"Strong Position",level:"low",msg:"Mobile scoring at the point of activity creates the strongest possible timestamped record."} },
-  record_fields: { title:"Record Completeness", high:{risk:"High Risk",level:"high",msg:"Incomplete qualification records leave gaps that opposing counsel turns into questions. Every missing field is a question you can't answer in court."}, medium:{risk:"Moderate Risk",level:"medium",msg:"You're capturing most critical data but missing elements. Weapon serials and ammunition lots are most commonly missing — and most consequential."}, low:{risk:"Strong Position",level:"low",msg:"Complete, consistent record fields make a qualification record defensible."} },
-  instructor_certs: { title:"Instructor Certification Tracking", high:{risk:"High Risk",level:"high",msg:"A lapsed instructor certification can potentially invalidate every qualification that instructor administered during the lapse — a systemic risk with high blast radius."}, medium:{risk:"Moderate Risk",level:"medium",msg:"Manual tracking works until it doesn't. A missed renewal creates a systemic compliance gap affecting all records."}, low:{risk:"Strong Position",level:"low",msg:"Tracking instructor credentials with the same rigor as officer qualifications is essential."} },
+  record_fields: { title:"Record Completeness", high:{risk:"High Risk",level:"high",msg:"Incomplete qualification records leave gaps that opposing counsel turns into questions. Every missing field is a question you can't answer in court."}, medium:{risk:"Moderate Risk",level:"medium",msg:"You're capturing most critical data but missing elements. Weapon serials and ammunition lots are most commonly missing, and most consequential."}, low:{risk:"Strong Position",level:"low",msg:"Complete, consistent record fields make a qualification record defensible."} },
+  instructor_certs: { title:"Instructor Certification Tracking", high:{risk:"High Risk",level:"high",msg:"A lapsed instructor certification can potentially invalidate every qualification that instructor administered during the lapse, a systemic risk with high blast radius."}, medium:{risk:"Moderate Risk",level:"medium",msg:"Manual tracking works until it doesn't. A missed renewal creates a systemic compliance gap affecting all records."}, low:{risk:"Strong Position",level:"low",msg:"Tracking instructor credentials with the same rigor as officer qualifications is essential."} },
   expiration_alerts: { title:"Expiration Management", high:{risk:"High Risk",level:"high",msg:"Reactive discovery of expirations means officers have been on duty with expired qualifications. The window between expiration and discovery is a liability window."}, medium:{risk:"Moderate Risk",level:"medium",msg:"Monthly manual reporting catches most expirations but leaves room for error."}, low:{risk:"Strong Position",level:"low",msg:"Automated expiration alerts eliminate a major category of liability exposure."} },
   subpoena_time: { title:"Record Retrieval Speed", high:{risk:"High Risk",level:"high",msg:"Slow record production suggests a system that isn't well-managed. Records assembled from multiple sources days after a subpoena raise questions about the entire program."}, medium:{risk:"Moderate Risk",level:"medium",msg:"A day or two is acceptable but not ideal. The fastest production demonstrates a well-managed system."}, low:{risk:"Strong Position",level:"low",msg:"Under-5-minute retrieval is a litigation asset that demonstrates program maturity."} },
   audit_program: { title:"Annual Self-Audit Program", high:{risk:"High Risk",level:"high",msg:"Agencies that don't run self-audits find their gaps when those gaps become exhibits. Reactive discovery happens under pressure, at the worst possible time."}, medium:{risk:"Moderate Risk",level:"medium",msg:"Periodic spot-checks are better than nothing, but a structured annual audit covers the specific vulnerabilities that appear in training liability cases."}, low:{risk:"Strong Position",level:"low",msg:"Annual self-audits create a cycle of improvement that makes deliberate indifference nearly impossible to prove."} }
@@ -421,7 +421,7 @@ function submitGate(e) {
   else if (total <= 20) tierName = 'Elevated Risk';
   else tierName = 'High Risk';
 
-  // Send lead to API (fire and forget — don't block results)
+  // Send lead to API (fire and forget, don't block results)
   fetch('/api/assessment', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
@@ -468,7 +468,7 @@ function showResults() {
 
   let fhtml = fl.map(f => {
     const sol = solutions[f.qid];
-    const solBox = f.score >= 2 ? `<div class="solve-box"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><div class="solve-text"><strong>Brass<span style="color:#ef4444">Ops</span>: ${sol.feature}</strong> — ${sol.desc}</div></div>` : '';
+    const solBox = f.score >= 2 ? `<div class="solve-box"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg><div class="solve-text"><strong>Brass<span style="color:#ef4444">Ops</span>: ${sol.feature}</strong>, ${sol.desc}</div></div>` : '';
     return `<div class="finding ${f.level}"><div class="risk-level">${f.risk}</div><h3>${f.title}</h3><p>${f.msg}</p>${solBox}</div>`;
   }).join('');
 
@@ -485,7 +485,7 @@ function showResults() {
       ${fhtml}
       <div class="action-block">
         <h3>Brass<span style="color:#ef4444">Ops</span> Addresses Every One of These Gaps</h3>
-        <p>A 15-minute demo shows exactly how it applies to your agency. No slides — just the platform with your workflow.</p>
+        <p>A 15-minute demo shows exactly how it applies to your agency. No slides, just the platform with your workflow.</p>
         <a href="contact.html" class="action-btn">Schedule a Demo <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
       </div>
       <button class="restart-link" onclick="restart()">Start Over</button>
