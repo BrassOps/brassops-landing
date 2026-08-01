@@ -127,13 +127,27 @@ export default async function handler(req, res) {
 
     // Log the provider's actual reason so failures are diagnosable in Vercel
     // logs. Only provider metadata is logged, never submitted user data.
+    const providerCode = data?.data?.error_code ?? data?.error_code ?? null;
+    const providerError = data?.data?.error ?? data?.error ?? null;
+    const providerFailures = data?.data?.failures ?? null;
+
     console.error('SMTP2GO send failed', {
       httpStatus: response.status,
-      errorCode: data?.data?.error_code ?? data?.error_code ?? null,
-      error: data?.data?.error ?? data?.error ?? null,
-      failures: data?.data?.failures ?? null,
+      errorCode: providerCode,
+      error: providerError,
+      failures: providerFailures,
     });
-    return res.status(502).json({ error: 'Email provider rejected the message' });
+
+    // Echo the provider's own code/message back to the caller. These are
+    // provider diagnostics only: no API key and no submitted user data.
+    // Temporary aid while the delivery issue is being traced.
+    return res.status(502).json({
+      error: 'Email provider rejected the message',
+      providerStatus: response.status,
+      providerCode,
+      providerError,
+      providerFailures,
+    });
   } catch (err) {
     console.error('SMTP2GO request failed:', err?.message);
     return res.status(502).json({ error: 'Could not reach email provider' });
