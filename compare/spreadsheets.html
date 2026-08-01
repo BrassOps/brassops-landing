@@ -112,14 +112,15 @@ body{background:var(--bg);color:var(--fg);font-family:var(--fb);min-height:100dv
 
 .nav-dd{position:relative;display:flex;align-items:center}
 .nav-dd-trigger{display:inline-flex;align-items:center;gap:.3rem;background:none;border:none;cursor:pointer;font-family:var(--fb);font-size:.85rem;font-weight:500;color:var(--fg3);padding:0;transition:color .2s}
-.nav-dd:hover .nav-dd-trigger,.nav-dd:focus-within .nav-dd-trigger{color:var(--fg)}
+.nav-dd-trigger:hover,.nav-dd.open .nav-dd-trigger{color:var(--fg)}
 .nav-dd-trigger svg{width:12px;height:12px;stroke:currentColor;stroke-width:2;fill:none;transition:transform .2s}
-.nav-dd:hover .nav-dd-trigger svg,.nav-dd:focus-within .nav-dd-trigger svg{transform:rotate(180deg)}
+.nav-dd.open .nav-dd-trigger svg{transform:rotate(180deg)}
 .nav-dd-menu{position:absolute;top:100%;left:50%;transform:translateX(-50%) translateY(6px);min-width:212px;background:rgba(16,16,16,0.98);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,0.09);border-radius:12px;padding:.4rem;display:flex;flex-direction:column;opacity:0;visibility:hidden;transition:opacity .18s,transform .18s;box-shadow:0 12px 32px rgba(0,0,0,0.45);z-index:120}
-.nav-dd:hover .nav-dd-menu,.nav-dd:focus-within .nav-dd-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(2px)}
+.nav-dd.open .nav-dd-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(2px)}
 .nav-dd-menu a{padding:.55rem .75rem;border-radius:8px;font-size:.82rem;color:var(--fg2);white-space:nowrap}
 .nav-dd-menu a:hover{background:rgba(239,68,68,0.1);color:var(--fg)}
-@media(max-width:768px){.nav-dd{flex-direction:column;align-items:stretch}.nav-dd-trigger{width:100%;justify-content:space-between;padding:.75rem clamp(1rem,4vw,3rem);font-size:.95rem;border-bottom:1px solid rgba(255,255,255,0.04)}.nav-dd-trigger svg{display:none}.nav-dd-menu{position:static;transform:none;opacity:1;visibility:visible;min-width:0;background:none;backdrop-filter:none;border:none;border-radius:0;box-shadow:none;padding:0}.nav-dd-menu a{padding:.6rem clamp(1rem,4vw,3rem) .6rem calc(clamp(1rem,4vw,3rem) + 1rem);font-size:.88rem;border-bottom:1px solid rgba(255,255,255,0.04);border-radius:0}}
+@media(min-width:769px){.nav-dd:hover .nav-dd-trigger{color:var(--fg)}.nav-dd:hover .nav-dd-trigger svg{transform:rotate(180deg)}.nav-dd:hover .nav-dd-menu,.nav-dd:focus-within .nav-dd-menu{opacity:1;visibility:visible;transform:translateX(-50%) translateY(2px)}}
+@media(max-width:768px){.nav-dd{flex-direction:column;align-items:stretch}.nav-dd-trigger{width:100%;justify-content:space-between;padding:.75rem clamp(1rem,4vw,3rem);font-size:.95rem;border-bottom:1px solid rgba(255,255,255,0.04)}.nav-dd-menu{position:static;transform:none;opacity:1;visibility:visible;min-width:0;background:rgba(255,255,255,0.02);backdrop-filter:none;border:none;border-radius:0;box-shadow:none;padding:0;max-height:0;overflow:hidden;transition:max-height .3s ease}.nav-dd.open .nav-dd-menu{max-height:340px;transform:none}.nav-dd-menu a{padding:.6rem clamp(1rem,4vw,3rem) .6rem calc(clamp(1rem,4vw,3rem) + 1rem);font-size:.88rem;border-bottom:1px solid rgba(255,255,255,0.04);border-radius:0}}
 </style>
 </head>
 <body>
@@ -270,6 +271,38 @@ const h=document.querySelector('.nav-hamburger'),n=document.querySelector('.nav-
 if(h&&n)h.addEventListener('click',()=>{const o=n.classList.toggle('open');h.setAttribute('aria-expanded',o);h.innerHTML=o?'<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>':'<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';});
 const els=document.querySelectorAll('.cost-card,.feat-card,.court-card');
 if('IntersectionObserver' in window){const obs=new IntersectionObserver((entries)=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');obs.unobserve(e.target);}});},{threshold:0.15,rootMargin:'0px 0px -40px 0px'});els.forEach(el=>obs.observe(el));}else{els.forEach(el=>el.classList.add('visible'));}
+});
+</script>
+<script>
+/* By Role submenu: click to toggle. Desktop also opens on hover via CSS. */
+document.addEventListener('DOMContentLoaded', function () {
+  var triggers = document.querySelectorAll('.nav-dd-trigger');
+  triggers.forEach(function (t) {
+    t.addEventListener('click', function (e) {
+      e.preventDefault();
+      e.stopPropagation();
+      var dd = t.parentElement;
+      var isOpen = dd.classList.toggle('open');
+      t.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+    });
+  });
+  document.addEventListener('click', function (e) {
+    document.querySelectorAll('.nav-dd.open').forEach(function (dd) {
+      if (!dd.contains(e.target)) {
+        dd.classList.remove('open');
+        var t = dd.querySelector('.nav-dd-trigger');
+        if (t) t.setAttribute('aria-expanded', 'false');
+      }
+    });
+  });
+  document.addEventListener('keydown', function (e) {
+    if (e.key !== 'Escape') return;
+    document.querySelectorAll('.nav-dd.open').forEach(function (dd) {
+      dd.classList.remove('open');
+      var t = dd.querySelector('.nav-dd-trigger');
+      if (t) t.setAttribute('aria-expanded', 'false');
+    });
+  });
 });
 </script>
 </body>
