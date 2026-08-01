@@ -788,14 +788,32 @@
             form.style.display = 'none';
             successEl.classList.add('show');
           } else {
-            throw new Error('Form submission failed');
+            // Surface the server's actual reason instead of discarding it
+            let serverMsg = '';
+            try {
+              const data = await response.json();
+              serverMsg = data && data.error ? data.error : '';
+            } catch (_) {
+              try { serverMsg = (await response.text()).slice(0, 200); } catch (_) {}
+            }
+            const err = new Error(serverMsg || 'Form submission failed');
+            err.status = response.status;
+            throw err;
           }
         } catch (err) {
           btn.disabled = false;
           btnText.textContent = 'Send Message';
           btnArrow.style.display = '';
           btnSpinner.style.display = 'none';
-          alert('Something went wrong. Please try again or email us directly.');
+
+          const status = err && err.status ? err.status : 'network';
+          console.error('[contact form] submission failed:', status, err && err.message);
+
+          alert(
+            'Something went wrong sending your message.\n\n' +
+            'Error ' + status + (err && err.message ? ': ' + err.message : '') +
+            '\n\nPlease try again, or reach us through the contact details on this page.'
+          );
         }
       });
     });
