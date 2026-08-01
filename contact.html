@@ -812,14 +812,23 @@
           } else {
             // Surface the server's actual reason instead of discarding it
             let serverMsg = '';
+            let detail = '';
             try {
               const data = await response.json();
               serverMsg = data && data.error ? data.error : '';
+              // Provider diagnostics, when the API passes them through
+              const bits = [];
+              if (data && data.providerStatus) bits.push('provider HTTP ' + data.providerStatus);
+              if (data && data.providerCode) bits.push('code: ' + data.providerCode);
+              if (data && data.providerError) bits.push('reason: ' + JSON.stringify(data.providerError));
+              if (data && data.providerFailures) bits.push('failures: ' + JSON.stringify(data.providerFailures));
+              detail = bits.join('\n');
             } catch (_) {
               try { serverMsg = (await response.text()).slice(0, 200); } catch (_) {}
             }
             const err = new Error(serverMsg || 'Form submission failed');
             err.status = response.status;
+            err.detail = detail;
             throw err;
           }
         } catch (err) {
@@ -829,11 +838,12 @@
           btnSpinner.style.display = 'none';
 
           const status = err && err.status ? err.status : 'network';
-          console.error('[contact form] submission failed:', status, err && err.message);
+          console.error('[contact form] submission failed:', status, err && err.message, err && err.detail);
 
           alert(
             'Something went wrong sending your message.\n\n' +
             'Error ' + status + (err && err.message ? ': ' + err.message : '') +
+            (err && err.detail ? '\n\n' + err.detail : '') +
             '\n\nPlease try again, or email us directly at info@brassops.com.'
           );
         }
