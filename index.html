@@ -726,57 +726,60 @@
     .status-dot.red { background: #ef4444; box-shadow: 0 0 6px rgba(239,68,68,0.4); }
 
     /* ── Social Proof (Testimonials) ── */
-    .testimonials-grid {
+    /* ── Role outcome cards ── */
+    .role-grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 1.25rem;
     }
-    @media (max-width: 800px) { .testimonials-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 800px) { .role-grid { grid-template-columns: 1fr; } }
 
-    .testimonial-card {
+    .role-card {
       background: var(--glass-bg);
       border: 1px solid var(--glass-border);
       border-radius: 16px;
-      padding: 2rem 1.5rem;
+      padding: 1.9rem 1.6rem;
       position: relative; overflow: hidden;
       opacity: 0; transform: translateY(30px);
       transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .testimonial-card.visible { opacity: 1; transform: translateY(0); }
-    .testimonial-card:hover {
+    .role-card.visible { opacity: 1; transform: translateY(0); }
+    .role-card:hover {
       background: var(--glass-bg-hover);
-      border-color: rgba(255,255,255,0.12);
+      border-color: rgba(239, 68, 68, 0.25);
     }
-    .testimonial-card:nth-child(1) { transition-delay: 0s; }
-    .testimonial-card:nth-child(2) { transition-delay: 0.1s; }
-    .testimonial-card:nth-child(3) { transition-delay: 0.2s; }
+    .role-card:nth-child(1) { transition-delay: 0s; }
+    .role-card:nth-child(2) { transition-delay: 0.1s; }
+    .role-card:nth-child(3) { transition-delay: 0.2s; }
 
-    .testimonial-quote {
-      position: absolute; top: 1rem; right: 1.25rem;
-      font-family: var(--font-heading); font-size: 3rem; font-weight: 800;
-      color: rgba(239, 68, 68, 0.12); line-height: 1;
-    }
-    .testimonial-text {
-      font-size: 0.9rem; color: var(--fg-secondary); line-height: 1.75;
-      margin-bottom: 1.5rem; font-style: italic; position: relative;
-    }
-    .testimonial-author {
-      display: flex; align-items: center; gap: 0.75rem;
-    }
-    .testimonial-avatar {
-      width: 40px; height: 40px; border-radius: 50%;
-      background: var(--red-dim);
-      display: flex; align-items: center; justify-content: center;
-      font-family: var(--font-heading); font-size: 0.85rem; font-weight: 700;
+    .role-label {
+      display: inline-block;
+      font-family: var(--font-heading); font-size: 0.65rem; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
       color: var(--red);
+      background: var(--red-dim);
+      padding: 0.3rem 0.7rem; border-radius: 999px;
+      margin-bottom: 1rem;
     }
-    .testimonial-name {
-      font-family: var(--font-heading); font-size: 0.9rem; font-weight: 700;
-      color: var(--fg); line-height: 1.3;
+    .role-card h3 {
+      font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700;
+      color: var(--fg); line-height: 1.3; margin-bottom: 1rem;
     }
-    .testimonial-role {
-      font-size: 0.72rem; color: var(--fg-tertiary); font-weight: 400;
+    .role-shift { display: flex; flex-direction: column; gap: 0.7rem; }
+    .role-line {
+      display: flex; align-items: flex-start; gap: 0.6rem;
+      font-size: 0.85rem; line-height: 1.6;
     }
+    .role-line .tag {
+      flex-shrink: 0; width: 3.1rem;
+      font-family: var(--font-heading); font-size: 0.62rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      padding-top: 0.22rem;
+    }
+    .role-line.before .tag { color: var(--fg-quaternary); }
+    .role-line.after .tag { color: var(--green); }
+    .role-line.before span:last-child { color: var(--fg-tertiary); }
+    .role-line.after span:last-child { color: var(--fg-secondary); }
 
     /* ── Trust & Compliance ── */
     .trust-grid {
@@ -949,7 +952,7 @@
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
       }
-      .cap-card, .bl-card, .stat-card, .pain-card, .testimonial-card,
+      .cap-card, .bl-card, .stat-card, .pain-card, .role-card,
       .trust-card, .mockup-wrapper, .loop-step { opacity: 1; transform: none; }
       .page-hero h1, .page-hero .hero-lead, .hero-ctas { opacity: 1; transform: none; }
     }
@@ -1406,45 +1409,59 @@
 
     <div class="divider" aria-hidden="true"></div>
 
-    <!-- ═══════════ SOCIAL PROOF ═══════════ -->
+    <!-- ═══════════ WHAT CHANGES BY ROLE ═══════════ -->
     <section class="section">
-      <p class="section-label">From the Field</p>
-      <h2 class="section-title">What Instructors Are Saying</h2>
-      <p class="section-subtitle">Don't take our word for it. Hear from the range masters and instructors who use Brass<span class="brand-ops">Ops</span> every day.</p>
+      <p class="section-label">By Role</p>
+      <h2 class="section-title">What Changes the Week You Switch</h2>
+      <p class="section-subtitle">The same platform looks different depending on where you stand in the program. Here is what it replaces for each of them.</p>
 
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div class="testimonial-quote">&ldquo;</div>
-          <p class="testimonial-text">We went from three binders and a spreadsheet to having everything in one place. I can see who's qualified, who's lapsing, and who needs remedial, in seconds, not hours. Brass<span class="brand-ops">Ops</span> changed how we run our range.</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">MR</div>
-            <div>
-              <div class="testimonial-name">Mike R. <span class="testimonial-role">Range Master, Municipal PD</span></div>
+      <div class="role-grid">
+
+        <div class="role-card">
+          <span class="role-label">Range Master</span>
+          <h3>Stop reconstructing the program from memory.</h3>
+          <div class="role-shift">
+            <div class="role-line before">
+              <span class="tag">Before</span>
+              <span>Binders and a spreadsheet. Finding out an officer lapsed only when someone asks. A compliance report that eats a weekend.</span>
+            </div>
+            <div class="role-line after">
+              <span class="tag">After</span>
+              <span>One screen shows who is current, due, and overdue. Alerts fire thirty days out. Reports run in seconds, and a recalled ammunition lot traces to every officer who touched it.</span>
             </div>
           </div>
         </div>
 
-        <div class="testimonial-card">
-          <div class="testimonial-quote">&ldquo;</div>
-          <p class="testimonial-text">The automatic remedial case alone is worth it. Before Brass<span class="brand-ops">Ops</span>, we'd catch officers weeks after they failed a qual. Now the system opens the case the moment a score is logged. Nobody falls through the cracks.</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">SH</div>
-            <div>
-              <div class="testimonial-name">Sarah H. <span class="testimonial-role">Firearms Instructor, County SO</span></div>
+        <div class="role-card">
+          <span class="role-label">Instructor</span>
+          <h3>Spend the day coaching, not transcribing.</h3>
+          <div class="role-shift">
+            <div class="role-line before">
+              <span class="tag">Before</span>
+              <span>Paper scoresheets copied into a spreadsheet after the range day. Walking onto the line without knowing what each officer struggled with last time.</span>
+            </div>
+            <div class="role-line after">
+              <span class="tag">After</span>
+              <span>Score on a tablet as they shoot. Every officer's history and behavior trends are one tap away, and dry-fire work carries the training between range days.</span>
             </div>
           </div>
         </div>
 
-        <div class="testimonial-card">
-          <div class="testimonial-quote">&ldquo;</div>
-          <p class="testimonial-text">Command staff finally has visibility into our training program without me pulling reports for a week. The dashboards sell themselves. When the chief can see readiness in real-time, everyone takes training more seriously.</p>
-          <div class="testimonial-author">
-            <div class="testimonial-avatar">JT</div>
-            <div>
-              <div class="testimonial-name">James T. <span class="testimonial-role">Training Coordinator, State Agency</span></div>
+        <div class="role-card">
+          <span class="role-label">Command Staff</span>
+          <h3>See readiness without asking anyone.</h3>
+          <div class="role-shift">
+            <div class="role-line before">
+              <span class="tag">Before</span>
+              <span>Requesting a status report and waiting a week for it. No way to tell whether a weakness is one officer or department-wide.</span>
+            </div>
+            <div class="role-line after">
+              <span class="tag">After</span>
+              <span>Readiness scores and grades are visible on demand. Weakness rollups show whether the gap is a personnel issue or a curriculum one, and the court-ready record is already built.</span>
             </div>
           </div>
         </div>
+
       </div>
     </section>
 
@@ -1568,7 +1585,7 @@
       }
 
       const animElements = document.querySelectorAll(
-        '.cap-card, .bl-card, .stat-card, .pain-card, .testimonial-card, .trust-card, .mockup-wrapper, .loop-step'
+        '.cap-card, .bl-card, .stat-card, .pain-card, .role-card, .trust-card, .mockup-wrapper, .loop-step'
       );
 
       if ('IntersectionObserver' in window) {
