@@ -154,7 +154,7 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Server configuration error' });
   }
 
-  const recipient = process.env.CONTACT_RECIPIENT || 'brassops01@gmail.com';
+  const recipient = process.env.CONTACT_RECIPIENT || 'info@brassops.com';
 
   // ── Admin notification email ──
   const adminWeakList = safeWeakAreas.map(w =>
