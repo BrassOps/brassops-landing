@@ -271,6 +271,78 @@
     .intro-block p:last-child { margin-bottom: 0; }
     .intro-block strong { color: var(--fg); font-weight: 600; }
 
+    /* ── Improvement loop ── */
+    .loop-lead {
+      max-width: 780px; margin: 0 auto 2.75rem;
+      font-size: clamp(1rem, 2.2vw, 1.1rem);
+      color: var(--fg-secondary); line-height: 1.75; text-align: center;
+    }
+    .loop-lead strong { color: var(--fg); font-weight: 600; }
+
+    .loop-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.25rem;
+      position: relative;
+    }
+    @media (max-width: 900px) { .loop-grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (max-width: 560px) { .loop-grid { grid-template-columns: 1fr; } }
+
+    .loop-step {
+      background: var(--glass-bg);
+      border: 1px solid var(--glass-border);
+      border-radius: 16px;
+      padding: 1.75rem 1.5rem;
+      position: relative;
+      opacity: 0; transform: translateY(30px);
+      transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .loop-step.visible { opacity: 1; transform: translateY(0); }
+    .loop-step:nth-child(1) { transition-delay: 0s; }
+    .loop-step:nth-child(2) { transition-delay: 0.1s; }
+    .loop-step:nth-child(3) { transition-delay: 0.2s; }
+    .loop-step:nth-child(4) { transition-delay: 0.3s; }
+    .loop-step:hover {
+      background: var(--glass-bg-hover);
+      border-color: rgba(239, 68, 68, 0.28);
+    }
+
+    /* Connector arrow between steps, desktop only */
+    .loop-step:not(:last-child)::after {
+      content: '';
+      position: absolute; top: 50%; right: -0.85rem;
+      width: 0.7rem; height: 1px;
+      background: rgba(239, 68, 68, 0.35);
+    }
+    @media (max-width: 900px) { .loop-step::after { display: none !important; } }
+
+    .loop-num {
+      display: inline-flex; align-items: center; justify-content: center;
+      width: 30px; height: 30px; border-radius: 8px;
+      background: var(--red-dim);
+      font-family: var(--font-heading); font-size: 0.9rem; font-weight: 800;
+      color: var(--red);
+      margin-bottom: 0.9rem;
+    }
+    .loop-step h3 {
+      font-family: var(--font-heading); font-size: 1.15rem; font-weight: 700;
+      color: var(--fg); margin-bottom: 0.5rem; letter-spacing: 0.01em;
+    }
+    .loop-step p {
+      font-size: 0.85rem; color: var(--fg-secondary); line-height: 1.65;
+    }
+
+    .loop-closer {
+      max-width: 780px; margin: 2.5rem auto 0;
+      padding: 1.5rem 1.75rem;
+      background: rgba(239, 68, 68, 0.06);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+      border-radius: 14px;
+      text-align: center;
+      font-size: 1rem; color: var(--fg-secondary); line-height: 1.7;
+    }
+    .loop-closer strong { color: var(--fg); font-weight: 600; }
+
     /* ── Capability cards ── */
     .cap-grid {
       display: grid;
@@ -280,6 +352,16 @@
     @media (max-width: 700px) {
       .cap-grid { grid-template-columns: 1fr; gap: 1rem; }
     }
+    .cap-subhead {
+      font-family: var(--font-heading);
+      font-size: 1.35rem; font-weight: 700; color: var(--fg);
+      margin: 0 0 0.4rem; letter-spacing: 0.01em;
+    }
+    .cap-subhead-desc {
+      font-size: 0.9rem; color: var(--fg-secondary);
+      line-height: 1.6; margin-bottom: 1.5rem; max-width: 640px;
+    }
+    .cap-group + .cap-group { margin-top: 3.5rem; }
 
     .cap-card {
       background: var(--glass-bg);
@@ -868,7 +950,7 @@
         transition-duration: 0.01ms !important;
       }
       .cap-card, .bl-card, .stat-card, .pain-card, .testimonial-card,
-      .trust-card, .mockup-wrapper { opacity: 1; transform: none; }
+      .trust-card, .mockup-wrapper, .loop-step { opacity: 1; transform: none; }
       .page-hero h1, .page-hero .hero-lead, .hero-ctas { opacity: 1; transform: none; }
     }
   </style>
@@ -942,6 +1024,47 @@
           <div class="stat-number" data-target="100" data-suffix="%">0%</div>
           <div class="stat-label">Audit-Ready Records</div>
         </div>
+      </div>
+    </section>
+
+    <div class="divider" aria-hidden="true"></div>
+
+    <!-- ═══════════ THE IMPROVEMENT LOOP ═══════════ -->
+    <section class="section" id="how-officers-improve">
+      <p class="section-label">How Officers Get Better</p>
+      <h2 class="section-title">Most Systems Record a Score. Brass<span class="brand-ops">Ops</span> Improves It.</h2>
+      <p class="loop-lead">A pass/fail column tells you an officer qualified. It does not tell you <strong>what went wrong, why, or what to do about it.</strong> Brass<span class="brand-ops">Ops</span> closes that gap with a loop that runs on every session, for every officer.</p>
+
+      <div class="loop-grid">
+
+        <div class="loop-step">
+          <div class="loop-num">1</div>
+          <h3>Measure</h3>
+          <p>Every session captures accuracy, time, and hit-factor scoring, plus nine range behaviors: muzzle discipline, reload habits, response to coaching, and more. Not just whether they passed.</p>
+        </div>
+
+        <div class="loop-step">
+          <div class="loop-num">2</div>
+          <h3>Diagnose</h3>
+          <p>Photograph the target and AI finds every shot, then the app diagnoses the group pattern against national base rates. Two readiness engines watch practice accuracy and qualification performance, flagging score drops, repeat failures, and safety concerns.</p>
+        </div>
+
+        <div class="loop-step">
+          <div class="loop-num">3</div>
+          <h3>Prescribe</h3>
+          <p>The app recommends the drill that fixes the pattern it found. Instructors assign dry-fire work officers complete between range days, and a failed qualification opens a coaching plan with milestones automatically.</p>
+        </div>
+
+        <div class="loop-step">
+          <div class="loop-num">4</div>
+          <h3>Verify</h3>
+          <p>The next session shows whether it worked. Per-officer trends and department-wide weakness rollups prove the training changed something, instead of proving it merely happened.</p>
+        </div>
+
+      </div>
+
+      <div class="loop-closer">
+        <strong>Every trip through the loop makes the next one sharper.</strong> Officers see their own progress in My Performance, instructors walk onto the range already knowing each officer's gaps, and command staff can see which weaknesses are department-wide rather than individual. The documentation builds itself along the way.
       </div>
     </section>
 
@@ -1039,221 +1162,234 @@
       <h2 class="section-title">Everything Your Range Program Needs</h2>
       <p class="section-subtitle">Built by people who understand the range. Designed for the teams who run it.</p>
 
-      <div class="cap-grid">
+      <div class="cap-group">
+        <h3 class="cap-subhead">Build Better Shooters</h3>
+        <p class="cap-subhead-desc">The capabilities that turn range time into measurable improvement, not just a completed record.</p>
+        <div class="cap-grid">
 
-        <!-- 1: Qualification Tracking -->
-        <div class="cap-card">
-          <div class="cap-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M12 2L2 7l10 5 10-5-10-5z"/>
-              <path d="M2 17l10 5 10-5"/>
-              <path d="M2 12l10 5 10-5"/>
-            </svg>
+          <!-- 2: Officer Readiness -->
+          <div class="cap-card">
+            <div class="cap-icon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="8.5" cy="7" r="4"/>
+                <polyline points="17 11 19 13 23 9"/>
+              </svg>
+            </div>
+            <h3 class="cap-name">Officer Readiness</h3>
+            <p class="cap-desc">Every officer gets a readiness score and a clear grade from Elite Ready to Critical. One engine watches practice accuracy and another watches qualification performance, automatically flagging score drops, repeat failures, and safety concerns.</p>
           </div>
-          <h3 class="cap-name">Qualification Tracking</h3>
-          <p class="cap-desc">Set your own standards per platform, cadence, attempts, and minimum score, and Brass<span class="brand-ops">Ops</span> tracks every officer against them. The Qualification Lapse board shows exactly who is current, who is due, and who has fallen out.</p>
-        </div>
 
-        <!-- 2: Officer Readiness -->
-        <div class="cap-card">
-          <div class="cap-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-              <circle cx="8.5" cy="7" r="4"/>
-              <polyline points="17 11 19 13 23 9"/>
-            </svg>
+          <!-- 3: Remedial Training -->
+          <div class="cap-card">
+            <div class="cap-icon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+              </svg>
+            </div>
+            <h3 class="cap-name">Remedial Training</h3>
+            <p class="cap-desc">The moment an officer fails a qualification, Brass<span class="brand-ops">Ops</span> opens a remedial case, builds a step-by-step coaching plan with milestones, and escalates to a supervisor and then command on a timer. The paper trail builds itself.</p>
           </div>
-          <h3 class="cap-name">Officer Readiness</h3>
-          <p class="cap-desc">Every officer gets a readiness score and a clear grade from Elite Ready to Critical. One engine watches practice accuracy and another watches qualification performance, automatically flagging score drops, repeat failures, and safety concerns.</p>
-        </div>
 
-        <!-- 3: Remedial Training -->
-        <div class="cap-card">
-          <div class="cap-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-              <polyline points="14 2 14 8 20 8"/>
-              <line x1="16" y1="13" x2="8" y2="13"/>
-              <line x1="16" y1="17" x2="8" y2="17"/>
-            </svg>
+          <!-- 5: Analytics -->
+          <div class="cap-card">
+            <div class="cap-icon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </div>
+            <h3 class="cap-name">Analytics</h3>
+            <p class="cap-desc">Department accuracy, trends, rankings, cohorts, readiness funnels, instructor effectiveness, equipment reliability, and cost per qualified officer. See the whole program at a glance. Department drill leaderboards and achievement badges add a competitive edge that keeps officers sharp.</p>
           </div>
-          <h3 class="cap-name">Remedial Training</h3>
-          <p class="cap-desc">The moment an officer fails a qualification, Brass<span class="brand-ops">Ops</span> opens a remedial case, builds a step-by-step coaching plan with milestones, and escalates to a supervisor and then command on a timer. The paper trail builds itself.</p>
-        </div>
 
-        <!-- 4: Session Logging -->
-        <div class="cap-card">
-          <div class="cap-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="9 11 12 14 22 4"/>
-              <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
-            </svg>
+          <!-- 6: Target Analysis -->
+          <div class="cap-card">
+            <div class="cap-icon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="6"/>
+                <circle cx="12" cy="12" r="2"/>
+                <line x1="12" y1="2" x2="12" y2="4"/>
+                <line x1="12" y1="20" x2="12" y2="22"/>
+                <line x1="2" y1="12" x2="4" y2="12"/>
+                <line x1="20" y1="12" x2="22" y2="12"/>
+              </svg>
+            </div>
+            <h3 class="cap-name">Target Analysis</h3>
+            <p class="cap-desc">Point your camera at the target. Photograph it and Brass<span class="brand-ops">Ops</span> uses AI to find every shot. The app then diagnoses the group pattern and recommends the drill to fix it, measured against national base rates. Camera based, no scoring hardware required.</p>
           </div>
-          <h3 class="cap-name">Session Logging</h3>
-          <p class="cap-desc">Log the whole relay, not one officer at a time. Log a single officer through a full-screen wizard, or score an entire relay in one batch screen. Time, accuracy, USPSA hit-factor and pass-fail scoring, multi-stage drills, and per-session behavior ratings. Built for a tablet on the firing line, gloves on.</p>
-        </div>
 
-        <!-- 5: Analytics -->
-        <div class="cap-card">
-          <div class="cap-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
-            </svg>
+          <!-- 6: Dry-Fire Training -->
+          <div class="cap-card">
+            <div class="cap-icon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="12 6 12 12 16 14"/>
+              </svg>
+            </div>
+            <h3 class="cap-name">Dry-Fire Training</h3>
+            <p class="cap-desc">Log and track dry-fire sessions to maintain readiness between range days. Build consistent habits with structured practice that gets recorded and measured. Unlock achievement badges as you hit milestones, keeping training engaging and giving officers something to earn along the way.</p>
           </div>
-          <h3 class="cap-name">Analytics</h3>
-          <p class="cap-desc">Department accuracy, trends, rankings, cohorts, readiness funnels, instructor effectiveness, equipment reliability, and cost per qualified officer. See the whole program at a glance. Department drill leaderboards and achievement badges add a competitive edge that keeps officers sharp.</p>
-        </div>
 
-        <!-- 6: Target Analysis -->
-        <div class="cap-card">
-          <div class="cap-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <circle cx="12" cy="12" r="6"/>
-              <circle cx="12" cy="12" r="2"/>
-              <line x1="12" y1="2" x2="12" y2="4"/>
-              <line x1="12" y1="20" x2="12" y2="22"/>
-              <line x1="2" y1="12" x2="4" y2="12"/>
-              <line x1="20" y1="12" x2="22" y2="12"/>
-            </svg>
+          <!-- 9: Officer Behavioral Scoring -->
+          <div class="cap-card">
+            <div class="cap-icon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+                <line x1="9" y1="9" x2="15" y2="9"/>
+                <line x1="12" y1="6" x2="12" y2="12"/>
+              </svg>
+            </div>
+            <h3 class="cap-name">Behavioral Scoring</h3>
+            <p class="cap-desc">Score more than the target. Rate nine range behaviors every session, from muzzle discipline to reload habits to response to coaching. Roll them up into department weaknesses and per-officer trends.</p>
           </div>
-          <h3 class="cap-name">Target Analysis</h3>
-          <p class="cap-desc">Point your camera at the target. Photograph it and Brass<span class="brand-ops">Ops</span> uses AI to find every shot. The app then diagnoses the group pattern and recommends the drill to fix it, measured against national base rates. Camera based, no scoring hardware required.</p>
-        </div>
 
-        <!-- 6: Dry-Fire Training -->
-        <div class="cap-card">
-          <div class="cap-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <polyline points="12 6 12 12 16 14"/>
-            </svg>
-          </div>
-          <h3 class="cap-name">Dry-Fire Training</h3>
-          <p class="cap-desc">Log and track dry-fire sessions to maintain readiness between range days. Build consistent habits with structured practice that gets recorded and measured. Unlock achievement badges as you hit milestones, keeping training engaging and giving officers something to earn along the way.</p>
         </div>
-
-        <!-- 7: Instructor Tools -->
-        <div class="cap-card">
-          <div class="cap-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
-              <circle cx="9" cy="7" r="4"/>
-              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
-              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
-            </svg>
-          </div>
-          <h3 class="cap-name">Instructor Tools</h3>
-          <p class="cap-desc">Assign instructors, track coaching history, and measure officer progress over time. Give your training cadre the visibility they need to be effective.</p>
-        </div>
-
-        <!-- 8: Automated Alerts -->
-        <div class="cap-card">
-          <div class="cap-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
-              <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
-            </svg>
-          </div>
-          <h3 class="cap-name">Automated Alerts</h3>
-          <p class="cap-desc">Get notified when officers are flagged, qualifications are lapsing, or remedial cases need attention. The system watches so you don't have to.</p>
-        </div>
-
-        <!-- 9: Officer Behavioral Scoring -->
-        <div class="cap-card">
-          <div class="cap-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-              <line x1="9" y1="9" x2="15" y2="9"/>
-              <line x1="12" y1="6" x2="12" y2="12"/>
-            </svg>
-          </div>
-          <h3 class="cap-name">Behavioral Scoring</h3>
-          <p class="cap-desc">Score more than the target. Rate nine range behaviors every session, from muzzle discipline to reload habits to response to coaching. Roll them up into department weaknesses and per-officer trends.</p>
-        </div>
-
-        <!-- 11: Range Ops -->
-        <div class="cap-card">
-          <div class="cap-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="3"/>
-              <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
-            </svg>
-          </div>
-          <h3 class="cap-name">Range Operations</h3>
-          <p class="cap-desc">Run a range day end to end. Schedule the day, take sign-ups, build firing relays, check people in, reconcile ammunition drawn against fired and returned, and generate the after-action report automatically.</p>
-        </div>
-
-        <!-- 12: Armory -->
-        <div class="cap-card">
-          <div class="cap-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
-              <path d="M16 7V5a4 4 0 0 0-8 0v2"/>
-              <line x1="12" y1="11" x2="12" y2="15"/>
-              <line x1="10" y1="13" x2="14" y2="13"/>
-            </svg>
-          </div>
-          <h3 class="cap-name">Armory</h3>
-          <p class="cap-desc">Every weapon, every round, accounted for. Track weapons through their entire life: assignments, attachments and build sheets, holsters, inspections, repairs and work orders, parts, schematics, and disposition. Round-life alerts tell you when a weapon is due for service.</p>
-        </div>
-
-        <!-- 13: Ammunition and Lot Tracking -->
-        <div class="cap-card">
-          <div class="cap-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <rect x="7" y="3" width="4" height="18" rx="1"/>
-              <rect x="14" y="3" width="4" height="18" rx="1"/>
-              <line x1="7" y1="7" x2="11" y2="7"/>
-              <line x1="14" y1="7" x2="18" y2="7"/>
-            </svg>
-          </div>
-          <h3 class="cap-name">Ammunition and Lot Tracking</h3>
-          <p class="cap-desc">Track ammunition by lot with full purchase, storage, and usage history. When a lot is recalled, one click quarantines it and shows every officer, session, and weapon that touched it. Scan an ammo box with your camera and the label fills itself in.</p>
-        </div>
-
-        <!-- 14: Reports and Records -->
-        <div class="cap-card">
-          <div class="cap-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
-              <polyline points="14 2 14 8 20 8"/>
-              <line x1="16" y1="13" x2="8" y2="13"/>
-              <line x1="16" y1="17" x2="8" y2="17"/>
-              <polyline points="10 9 9 9 8 9"/>
-            </svg>
-          </div>
-          <h3 class="cap-name">Reports and Records</h3>
-          <p class="cap-desc">Court-ready and audit-ready, on demand. Eighteen report types, from a court-ready officer training record to an audit-ready qualification status report, plus annual firearms reporting and full data export. Officers acknowledge policies with real, timestamped e-signatures.</p>
-        </div>
-
-        <!-- 15: Shot Timer -->
-        <div class="cap-card">
-          <div class="cap-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="13" r="8"/>
-              <line x1="12" y1="13" x2="12" y2="9"/>
-              <line x1="9" y1="2" x2="15" y2="2"/>
-            </svg>
-          </div>
-          <h3 class="cap-name">Shot Timer</h3>
-          <p class="cap-desc">A shot timer in your pocket. Microphone-based shot detection that rejects its own start beep. No extra hardware to buy.</p>
-        </div>
-
-        <!-- 16: Specialist Training -->
-        <div class="cap-card">
-          <div class="cap-icon">
-            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
-              <circle cx="12" cy="12" r="10"/>
-              <circle cx="12" cy="12" r="6"/>
-              <circle cx="12" cy="12" r="2"/>
-            </svg>
-          </div>
-          <h3 class="cap-name">Specialist Training</h3>
-          <p class="cap-desc">Beyond the qualification line. Dedicated modules for active-shooter response scenarios with scored team runs, Taser certification tracking, and a precision-rifle log with a full ballistics solver.</p>
-        </div>
-
       </div>
+
+      <div class="cap-group">
+        <h3 class="cap-subhead">Run the Program</h3>
+        <p class="cap-subhead-desc">Everything else it takes to operate a firearms program end to end, from the armory to the after-action report.</p>
+        <div class="cap-grid">
+
+          <!-- 1: Qualification Tracking -->
+          <div class="cap-card">
+            <div class="cap-icon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 2L2 7l10 5 10-5-10-5z"/>
+                <path d="M2 17l10 5 10-5"/>
+                <path d="M2 12l10 5 10-5"/>
+              </svg>
+            </div>
+            <h3 class="cap-name">Qualification Tracking</h3>
+            <p class="cap-desc">Set your own standards per platform, cadence, attempts, and minimum score, and Brass<span class="brand-ops">Ops</span> tracks every officer against them. The Qualification Lapse board shows exactly who is current, who is due, and who has fallen out.</p>
+          </div>
+
+          <!-- 4: Session Logging -->
+          <div class="cap-card">
+            <div class="cap-icon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="9 11 12 14 22 4"/>
+                <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+              </svg>
+            </div>
+            <h3 class="cap-name">Session Logging</h3>
+            <p class="cap-desc">Log the whole relay, not one officer at a time. Log a single officer through a full-screen wizard, or score an entire relay in one batch screen. Time, accuracy, USPSA hit-factor and pass-fail scoring, multi-stage drills, and per-session behavior ratings. Built for a tablet on the firing line, gloves on.</p>
+          </div>
+
+          <!-- 7: Instructor Tools -->
+          <div class="cap-card">
+            <div class="cap-icon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <h3 class="cap-name">Instructor Tools</h3>
+            <p class="cap-desc">Assign instructors, track coaching history, and measure officer progress over time. Give your training cadre the visibility they need to be effective.</p>
+          </div>
+
+          <!-- 8: Automated Alerts -->
+          <div class="cap-card">
+            <div class="cap-icon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+              </svg>
+            </div>
+            <h3 class="cap-name">Automated Alerts</h3>
+            <p class="cap-desc">Get notified when officers are flagged, qualifications are lapsing, or remedial cases need attention. The system watches so you don't have to.</p>
+          </div>
+
+          <!-- 11: Range Ops -->
+          <div class="cap-card">
+            <div class="cap-icon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/>
+              </svg>
+            </div>
+            <h3 class="cap-name">Range Operations</h3>
+            <p class="cap-desc">Run a range day end to end. Schedule the day, take sign-ups, build firing relays, check people in, reconcile ammunition drawn against fired and returned, and generate the after-action report automatically.</p>
+          </div>
+
+          <!-- 12: Armory -->
+          <div class="cap-card">
+            <div class="cap-icon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="7" width="20" height="14" rx="2" ry="2"/>
+                <path d="M16 7V5a4 4 0 0 0-8 0v2"/>
+                <line x1="12" y1="11" x2="12" y2="15"/>
+                <line x1="10" y1="13" x2="14" y2="13"/>
+              </svg>
+            </div>
+            <h3 class="cap-name">Armory</h3>
+            <p class="cap-desc">Every weapon, every round, accounted for. Track weapons through their entire life: assignments, attachments and build sheets, holsters, inspections, repairs and work orders, parts, schematics, and disposition. Round-life alerts tell you when a weapon is due for service.</p>
+          </div>
+
+          <!-- 13: Ammunition and Lot Tracking -->
+          <div class="cap-card">
+            <div class="cap-icon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="7" y="3" width="4" height="18" rx="1"/>
+                <rect x="14" y="3" width="4" height="18" rx="1"/>
+                <line x1="7" y1="7" x2="11" y2="7"/>
+                <line x1="14" y1="7" x2="18" y2="7"/>
+              </svg>
+            </div>
+            <h3 class="cap-name">Ammunition and Lot Tracking</h3>
+            <p class="cap-desc">Track ammunition by lot with full purchase, storage, and usage history. When a lot is recalled, one click quarantines it and shows every officer, session, and weapon that touched it. Scan an ammo box with your camera and the label fills itself in.</p>
+          </div>
+
+          <!-- 14: Reports and Records -->
+          <div class="cap-card">
+            <div class="cap-icon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+                <line x1="16" y1="13" x2="8" y2="13"/>
+                <line x1="16" y1="17" x2="8" y2="17"/>
+                <polyline points="10 9 9 9 8 9"/>
+              </svg>
+            </div>
+            <h3 class="cap-name">Reports and Records</h3>
+            <p class="cap-desc">Court-ready and audit-ready, on demand. Eighteen report types, from a court-ready officer training record to an audit-ready qualification status report, plus annual firearms reporting and full data export. Officers acknowledge policies with real, timestamped e-signatures.</p>
+          </div>
+
+          <!-- 15: Shot Timer -->
+          <div class="cap-card">
+            <div class="cap-icon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="13" r="8"/>
+                <line x1="12" y1="13" x2="12" y2="9"/>
+                <line x1="9" y1="2" x2="15" y2="2"/>
+              </svg>
+            </div>
+            <h3 class="cap-name">Shot Timer</h3>
+            <p class="cap-desc">A shot timer in your pocket. Microphone-based shot detection that rejects its own start beep. No extra hardware to buy.</p>
+          </div>
+
+          <!-- 16: Specialist Training -->
+          <div class="cap-card">
+            <div class="cap-icon">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <circle cx="12" cy="12" r="6"/>
+                <circle cx="12" cy="12" r="2"/>
+              </svg>
+            </div>
+            <h3 class="cap-name">Specialist Training</h3>
+            <p class="cap-desc">Beyond the qualification line. Dedicated modules for active-shooter response scenarios with scored team runs, Taser certification tracking, and a precision-rifle log with a full ballistics solver.</p>
+          </div>
+
+        </div>
+      </div>
+
     </section>
 
     <div class="divider" aria-hidden="true"></div>
@@ -1261,7 +1397,7 @@
     <!-- ═══════════ AUTOMATION & AI ═══════════ -->
     <section class="section">
       <p class="section-label">Automation &amp; AI</p>
-      <h2 class="section-title">Automation That Does the Paperwork for You</h2>
+      <h2 class="section-title">Automation That Gives the Time Back to Training</h2>
       <div class="intro-block">
         <p>Brass<span class="brand-ops">Ops</span> puts AI to work on the busywork, not the judgment calls. Photograph an ammo box and the label fills itself in. Finish a range day and generate a full narrative after-action report and the next lesson plan from the day's data. Photograph a target and the app finds every shot automatically. An AI help assistant answers questions inside the app, and automatic alerts flag lapses, service-due weapons, and flagged officers before they become problems.</p>
         <p><strong>Privacy by design.</strong> Officer identities are stripped and replaced before anything is sent to the AI, then restored afterward. Every agency sets a monthly AI spending cap and can switch AI off entirely.</p>
@@ -1432,7 +1568,7 @@
       }
 
       const animElements = document.querySelectorAll(
-        '.cap-card, .bl-card, .stat-card, .pain-card, .testimonial-card, .trust-card, .mockup-wrapper'
+        '.cap-card, .bl-card, .stat-card, .pain-card, .testimonial-card, .trust-card, .mockup-wrapper, .loop-step'
       );
 
       if ('IntersectionObserver' in window) {
