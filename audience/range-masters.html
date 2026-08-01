@@ -113,9 +113,20 @@ nav .nl .la{background:linear-gradient(135deg,var(--red),#dc2626);color:#fff!imp
 .ft .fl a{font-size:.75rem;color:var(--fg4);text-decoration:underline;transition:color .2s}
 .ft .fl a:hover{color:var(--fg2)}
 .ft .cp{font-size:.7rem;color:var(--fg4);letter-spacing:.04em}
+.lp{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+@media(max-width:900px){.lp{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.lp{grid-template-columns:1fr}}
+.ls{background:var(--gb);border:1px solid var(--gbd);border-radius:16px;padding:1.6rem 1.35rem;opacity:0;transform:translateY(20px);transition:all .45s cubic-bezier(.16,1,.3,1)}
+.ls.v{opacity:1;transform:translateY(0)}
+.ls:hover{background:var(--gbh);border-color:rgba(239,68,68,0.25)}
+.ln{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:var(--rdim);font-family:var(--fh);font-size:.85rem;font-weight:800;color:var(--red);margin-bottom:.8rem}
+.ls h3{font-family:var(--fh);font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:.4rem}
+.ls p{font-size:.83rem;color:var(--fg2);line-height:1.6}
+.pn{max-width:700px;margin:2rem auto 0;padding:1rem 1.25rem;background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.18);border-radius:12px;text-align:center;font-size:.85rem;color:var(--fg2);line-height:1.6}
+.pn strong{color:var(--fg);font-weight:600}
 ::selection{background:rgba(239,68,68,0.3);color:#fff}
 @keyframes fu{to{opacity:1;transform:translateY(0)}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.hero h1,.hero .lead,.btns,.pc,.fc,.cc{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.hero h1,.hero .lead,.btns,.pc,.fc,.cc,.ls{opacity:1;transform:none}}
 </style>
 </head>
 <body>
@@ -137,9 +148,9 @@ nav .nl .la{background:linear-gradient(135deg,var(--red),#dc2626);color:#fff!imp
 
 <section class="hero">
   <p class="lab">For Range Masters</p>
-  <h1>You Run the Program. Brass<span class="bo">Ops</span> <span>Runs the Paperwork.</span></h1>
-  <p class="lead">Everything you need to manage qualifications, track officers, run the range, and prove your program is airtight, without spending half your week on spreadsheets.</p>
-  <div class="btns"><a href="../contact.html" class="bp">Schedule a Demo</a><a href="../assessment.html" class="bs">Assess Your Risk</a></div>
+  <h1>You Run the Program. <span>Now You Can Prove It Works.</span></h1>
+  <p class="lead">Brass<span class="bo">Ops</span> takes the qualification tracking, remedial cases, armory, and reporting off your desk, then shows you something a spreadsheet never could: which weaknesses are one officer, and which ones are your whole department.</p>
+  <div class="btns"><a href="../contact.html" class="bp">Schedule a Demo</a><a href="../assessment.html" class="bs">Grade Your Program</a></div>
 </section>
 
 <div class="dv" aria-hidden="true"></div>
@@ -149,7 +160,7 @@ nav .nl .la{background:linear-gradient(135deg,var(--red),#dc2626);color:#fff!imp
   <h2>The Weight on Your Shoulders</h2>
   <div class="pg">
     <div class="pc"><h3>You're the Single Point of Failure</h3><p>The qualification schedule, the remedial tracking, the weapon inventory, the training records, it all lives in your head, your spreadsheet, and your filing cabinet. If you're out for a week, the program stalls. If you retire, it collapses.</p></div>
-    <div class="pc"><h3>40+ Hours a Month on Admin</h3><p>Data entry. Spreadsheet updates. Report compilation. Cross-referencing records. Chasing expired qualifications. You became a range master to train officers, not to be a data clerk.</p></div>
+    <div class="pc"><h3>The Week Goes to Data Entry</h3><p>Spreadsheet updates. Report compilation. Cross-referencing records. Chasing expired qualifications. You became a range master to run a range and train officers, not to be a data clerk.</p></div>
     <div class="pc"><h3>You'll Be the One in the Hot Seat</h3><p>When a documentation failure surfaces, a lapsed qual, a missed remedial, an incomplete record, the questions land on you. "Why wasn't this tracked?" The range master always takes the fall for a system failure.</p></div>
   </div>
 </section>
@@ -163,7 +174,9 @@ nav .nl .la{background:linear-gradient(135deg,var(--red),#dc2626);color:#fff!imp
   <div class="fg">
     <div class="fc"><h3>Qualification Tracking on Autopilot</h3><p>Log sessions from your phone. Pass/fail auto-calculated. Expirations tracked. Alerts fire at 90, 60, and 30 days. You never manually check a date again.</p></div>
     <div class="fc"><h3>Auto Remedial Enrollment</h3><p>Officer fails? Remedial case creates itself instantly. Structured workflow with coaching plan, milestones, and escalation. Zero manual intervention. Zero missed cases.</p></div>
-    <div class="fc"><h3>Officer Readiness Dashboard</h3><p>Open the app. Green, yellow, red for every officer. Filter by unit, shift, rank. Always current, always accurate. No report to compile, the dashboard IS the report.</p></div>
+    <div class="fc"><h3>Officer Readiness Scoring</h3><p>Every officer carries a readiness score and a grade from Elite Ready down to Critical. One engine watches practice accuracy, a second watches qualification performance, and between them they flag score drops, repeat failures, and safety concerns before you would have spotted them. No report to compile, the dashboard is the report.</p></div>
+
+    <div class="fc"><h3>Behavioral Scoring</h3><p>Nine range behaviors rated every session, from muzzle discipline to reload habits to response to coaching. Individually it tells you who needs work. Rolled up, it tells you whether twelve officers failing the same drill is twelve personnel problems or one curriculum problem.</p></div>
     <div class="fc"><h3>Armory &amp; Weapon Management</h3><p>Every firearm tracked by serial. Officer assignments. Inspection scheduling with due-date alerts. Full repair history. Weapon performance monitoring links accuracy to specific firearms.</p></div>
     <div class="fc"><h3>Automated Alerts</h3><p>Expiration warnings, remedial milestones, officer flagging, escalation notifications, all sent to the right people automatically. The system watches so you don't have to.</p></div>
     <div class="fc"><h3>Audit-Ready Records</h3><p>Every qualification, every remedial case, every coaching note, time-stamped and searchable. Complete training history for any officer generated in seconds. Not days. Seconds.</p></div>
@@ -207,21 +220,13 @@ nav .nl .la{background:linear-gradient(135deg,var(--red),#dc2626);color:#fff!imp
 
 <div class="dv" aria-hidden="true"></div>
 
-<section class="sec" style="padding-bottom:2rem">
-  <div class="tb">
-    <div class="q">&ldquo;</div>
-    <p class="tx">We went from three binders and a spreadsheet to having everything in one place. I can see who's qualified, who's lapsing, and who needs remedial, in seconds, not hours. Brass<span class="bo">Ops</span> changed how we run our range.</p>
-    <div class="au">Mike R.</div>
-    <div class="ro">Range Master, Municipal PD</div>
-  </div>
-</section>
 
-<div class="dv" aria-hidden="true"></div>
 
 <section class="cta">
-  <h2>Get Your Time Back</h2>
-  <p>Brass<span class="bo">Ops</span> automates the admin so you can focus on what you were hired to do, run the range and train officers.</p>
-  <div class="btns"><a href="../contact.html" class="bp">Schedule a Demo</a><a href="../assessment.html" class="bs">Take the Risk Assessment</a></div>
+  <h2>Get Your Time Back, and Your Program on Record</h2>
+  <p>We will walk your program end to end: a range day scheduled, a relay logged, a remedial case opened, and the report your chief asks for pulled in front of you.</p>
+  <div class="btns"><a href="../contact.html" class="bp">Schedule a Demo</a><a href="../assessment.html" class="bs">Grade Your Program</a></div>
+  <div class="pn"><strong>Pricing is based on your agency's sworn officer count</strong>, so small departments pay small-department prices. Every agency gets the full platform, with no feature tiers.</div>
 </section>
 
 <div class="dv" aria-hidden="true"></div>
@@ -238,7 +243,7 @@ nav .nl .la{background:linear-gradient(135deg,var(--red),#dc2626);color:#fff!imp
 document.addEventListener('DOMContentLoaded',()=>{
   const h=document.querySelector('.hb'),n=document.querySelector('.nl');
   if(h&&n)h.addEventListener('click',()=>{const o=n.classList.toggle('open');h.setAttribute('aria-expanded',o);h.innerHTML=o?'<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>':'<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';});
-  const els=document.querySelectorAll('.pc,.fc,.cc');
+  const els=document.querySelectorAll('.pc,.fc,.cc,.ls');
   if('IntersectionObserver' in window){const ob=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('v');ob.unobserve(en.target);}});},{threshold:.15,rootMargin:'0px 0px -40px 0px'});els.forEach(el=>ob.observe(el));}else{els.forEach(el=>el.classList.add('v'));}
 });
 </script>

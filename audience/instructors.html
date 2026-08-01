@@ -113,9 +113,20 @@ nav .nl .la{background:linear-gradient(135deg,var(--red),#dc2626);color:#fff!imp
 .ft .fl a{font-size:.75rem;color:var(--fg4);text-decoration:underline;transition:color .2s}
 .ft .fl a:hover{color:var(--fg2)}
 .ft .cp{font-size:.7rem;color:var(--fg4);letter-spacing:.04em}
+.lp{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+@media(max-width:900px){.lp{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:560px){.lp{grid-template-columns:1fr}}
+.ls{background:var(--gb);border:1px solid var(--gbd);border-radius:16px;padding:1.6rem 1.35rem;opacity:0;transform:translateY(20px);transition:all .45s cubic-bezier(.16,1,.3,1)}
+.ls.v{opacity:1;transform:translateY(0)}
+.ls:hover{background:var(--gbh);border-color:rgba(239,68,68,0.25)}
+.ln{display:inline-flex;align-items:center;justify-content:center;width:28px;height:28px;border-radius:8px;background:var(--rdim);font-family:var(--fh);font-size:.85rem;font-weight:800;color:var(--red);margin-bottom:.8rem}
+.ls h3{font-family:var(--fh);font-size:1.05rem;font-weight:700;color:var(--fg);margin-bottom:.4rem}
+.ls p{font-size:.83rem;color:var(--fg2);line-height:1.6}
+.pn{max-width:700px;margin:2rem auto 0;padding:1rem 1.25rem;background:rgba(239,68,68,0.06);border:1px solid rgba(239,68,68,0.18);border-radius:12px;text-align:center;font-size:.85rem;color:var(--fg2);line-height:1.6}
+.pn strong{color:var(--fg);font-weight:600}
 ::selection{background:rgba(239,68,68,0.3);color:#fff}
 @keyframes fu{to{opacity:1;transform:translateY(0)}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.hero h1,.hero .lead,.btns,.pc,.fc,.cc{opacity:1;transform:none}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}.hero h1,.hero .lead,.btns,.pc,.fc,.cc,.ls{opacity:1;transform:none}}
 </style>
 </head>
 <body>
@@ -137,9 +148,9 @@ nav .nl .la{background:linear-gradient(135deg,var(--red),#dc2626);color:#fff!imp
 
 <section class="hero">
   <p class="lab">For Firearms Instructors</p>
-  <h1>Your Job Is Training Officers. <span>Not Paperwork.</span></h1>
-  <p class="lead">Brass<span class="bo">Ops</span> gives you the tools to coach, track, and develop officers, without drowning in administrative busywork. Built by people who understand what it's like on the firing line.</p>
-  <div class="btns"><a href="../contact.html" class="bp">Schedule a Demo</a><a href="../assessment.html" class="bs">Assess Your Risk</a></div>
+  <h1>Diagnose It. Fix It. <span>Prove It Worked.</span></h1>
+  <p class="lead">Brass<span class="bo">Ops</span> gives firearms instructors a diagnosis for every target, a drill for every deficiency, and a record that shows your coaching changed something. The paperwork stops being your job and starts being a byproduct.</p>
+  <div class="btns"><a href="../contact.html" class="bp">Schedule a Demo</a><a href="#coaching-loop" class="bs">See the Coaching Loop</a></div>
 </section>
 
 <div class="dv" aria-hidden="true"></div>
@@ -156,26 +167,56 @@ nav .nl .la{background:linear-gradient(135deg,var(--red),#dc2626);color:#fff!imp
 
 <div class="dv" aria-hidden="true"></div>
 
+<section class="sec" id="coaching-loop">
+  <p class="lab">The Coaching Loop</p>
+  <h2>The Cycle You Already Run, Finally Instrumented</h2>
+  <p class="sub">You already do all four of these on the line. Brass<span class="bo">Ops</span> captures each one so the work compounds instead of evaporating at the end of the day.</p>
+  <div class="lp">
+    <div class="ls">
+      <div class="ln">1</div>
+      <h3>See It</h3>
+      <p>Photograph the target. AI finds every shot and the app diagnoses the group pattern against national base rates, so you get a second read on what you are already seeing.</p>
+    </div>
+    <div class="ls">
+      <div class="ln">2</div>
+      <h3>Score It</h3>
+      <p>Rate nine range behaviors alongside the score: muzzle discipline, reload habits, response to coaching, and more. The things that decide a gunfight but never make it onto a scoresheet.</p>
+    </div>
+    <div class="ls">
+      <div class="ln">3</div>
+      <h3>Fix It</h3>
+      <p>The app recommends the drill that matches the pattern. Assign dry-fire work the officer completes between range days, so your coaching reaches past the four hours you have them.</p>
+    </div>
+    <div class="ls">
+      <div class="ln">4</div>
+      <h3>Prove It</h3>
+      <p>The next session shows whether it worked. Score trends and behavior movement turn "I worked with him on his flinch" into something you can point at.</p>
+    </div>
+  </div>
+</section>
+
+<div class="dv" aria-hidden="true"></div>
+
 <section class="sec">
   <p class="lab">Your New Toolkit</p>
   <h2>What Changes for Instructors</h2>
   <p class="sub">Every feature built to save you time on admin and give you better data for coaching.</p>
   <div class="fg">
-    <div class="fc"><h3>Log Scores From Your Phone</h3><p>Enter qualification scores at the firing line on your phone. Timestamped, linked to the officer and weapon serial, calculated against your agency's thresholds instantly. No paper. No transcription.</p></div>
-    <div class="fc"><h3>Target Analysis</h3><p>Snap a photo of the target. AI finds every shot, then the app diagnoses the group pattern and recommends specific corrective drills, measured against national base rates. Camera based, no scoring hardware required.</p></div>
-    <div class="fc"><h3>Coaching Notes That Stick</h3><p>Log coaching notes directly to the officer's profile. What you worked on, what improved, what needs attention next session. Every instructor who works with that officer sees the full coaching history.</p></div>
-    <div class="fc"><h3>Officer/Instructor Pairing</h3><p>Get paired with officers based on their specific deficiencies and your specialties. The same instructor follows an officer through remedial to re-qualification, continuity instead of random assignment.</p></div>
-    <div class="fc"><h3>See Your Officers' Full Picture</h3><p>Access paired officers' complete profiles, qualification history, score trends, behavioral scoring data, prior coaching notes. Walk onto the range knowing exactly where each officer stands.</p></div>
-    <div class="fc"><h3>Dry-Fire Training Tracking</h3><p>Officers log structured dry-fire practice between range days. You can see who's putting in the work and who isn't. Achievement badges keep officers engaged and give you data on off-range effort.</p></div>
+    <div class="fc"><h3>Your Coaching, Measured</h3><p>Instructor effectiveness is tracked alongside officer performance. When the officers you coach improve, the data says so. Your work stops being invisible and starts being the thing your evaluation points at.</p></div>
+    <div class="fc"><h3>Officer/Instructor Pairing</h3><p>Get paired with officers based on their specific deficiencies and your specialties. The same instructor follows an officer from remedial through re-qualification, continuity instead of random assignment.</p></div>
+    <div class="fc"><h3>Walk On Already Knowing</h3><p>Open any paired officer before they step to the line: qualification history, score trends, behavior ratings, and every coaching note another instructor left. No session starts from scratch again.</p></div>
+    <div class="fc"><h3>Coaching Notes That Stick</h3><p>Log what you worked on, what improved, and what needs attention next time, straight to the officer's profile. The next instructor picks up exactly where you left off instead of rediscovering the same flinch.</p></div>
+    <div class="fc"><h3>Score From the Firing Line</h3><p>Enter scores on a phone or tablet as they shoot. Timestamped, linked to the officer and weapon serial, checked against your agency's thresholds instantly. No clipboard, no Sunday night transcription.</p></div>
+    <div class="fc"><h3>Dry-Fire You Assign</h3><p>Send specific drills to specific officers and see who logged the reps. Most of what makes a shooter happens between range days, and this is how you get a say in it.</p></div>
   </div>
 </section>
 
 <div class="dv" aria-hidden="true"></div>
 
 <section style="text-align:center;padding:2.5rem 1.5rem;max-width:600px;margin:0 auto;">
-  <p style="font-family:var(--fh);font-size:1.1rem;font-weight:700;color:var(--fg);margin-bottom:0.5rem;">How exposed is your department?</p>
-  <p style="font-size:0.9rem;color:var(--fg2);line-height:1.7;margin-bottom:1.25rem;">Take our free 4-minute risk assessment to find out where your training documentation creates liability exposure.</p>
-  <a href="../assessment.html" class="bp" style="display:inline-flex;align-items:center;gap:0.5rem;">Take the Assessment <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+  <p style="font-family:var(--fh);font-size:1.1rem;font-weight:700;color:var(--fg);margin-bottom:0.5rem;">Where does your program actually stand?</p>
+  <p style="font-size:0.9rem;color:var(--fg2);line-height:1.7;margin-bottom:1.25rem;">Four minutes, ten questions. A straight read on what your training program can and cannot currently prove, and a result worth putting in front of your chief.</p>
+  <a href="../assessment.html" class="bp" style="display:inline-flex;align-items:center;gap:0.5rem;">Grade Your Program <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
 </section>
 
 <section class="sec">
@@ -207,21 +248,11 @@ nav .nl .la{background:linear-gradient(135deg,var(--red),#dc2626);color:#fff!imp
 
 <div class="dv" aria-hidden="true"></div>
 
-<section class="sec" style="padding-bottom:2rem">
-  <div class="tb">
-    <div class="q">&ldquo;</div>
-    <p class="tx">The auto remedial enrollment alone is worth it. Before Brass<span class="bo">Ops</span>, we'd catch officers weeks after they failed a qual. Now the system handles it the moment a score is logged. Nobody falls through the cracks.</p>
-    <div class="au">Sarah H.</div>
-    <div class="ro">Firearms Instructor, County SO</div>
-  </div>
-</section>
-
-<div class="dv" aria-hidden="true"></div>
-
 <section class="cta">
   <h2>Built for Instructors Who Take Training Seriously</h2>
-  <p>Brass<span class="bo">Ops</span> gives you better tools, better data, and more time to do what matters, train officers.</p>
-  <div class="btns"><a href="../contact.html" class="bp">Schedule a Demo</a><a href="../assessment.html" class="bs">Take the Risk Assessment</a></div>
+  <p>Bring your range master or your whole cadre. We will show you the coaching loop running on a real program, not a slide deck.</p>
+  <div class="btns"><a href="../contact.html" class="bp">Schedule a Demo</a><a href="../assessment.html" class="bs">Grade Your Program</a></div>
+  <div class="pn"><strong>Pricing is based on your agency's sworn officer count</strong>, so small departments pay small-department prices. Every agency gets the full platform, with no feature tiers.</div>
 </section>
 
 <div class="dv" aria-hidden="true"></div>
@@ -238,7 +269,7 @@ nav .nl .la{background:linear-gradient(135deg,var(--red),#dc2626);color:#fff!imp
 document.addEventListener('DOMContentLoaded',()=>{
   const h=document.querySelector('.hb'),n=document.querySelector('.nl');
   if(h&&n)h.addEventListener('click',()=>{const o=n.classList.toggle('open');h.setAttribute('aria-expanded',o);h.innerHTML=o?'<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>':'<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>';});
-  const els=document.querySelectorAll('.pc,.fc,.cc');
+  const els=document.querySelectorAll('.pc,.fc,.cc,.ls');
   if('IntersectionObserver' in window){const ob=new IntersectionObserver(e=>{e.forEach(en=>{if(en.isIntersecting){en.target.classList.add('v');ob.unobserve(en.target);}});},{threshold:.15,rootMargin:'0px 0px -40px 0px'});els.forEach(el=>ob.observe(el));}else{els.forEach(el=>el.classList.add('v'));}
 });
 </script>
