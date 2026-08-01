@@ -77,7 +77,7 @@ export default async function handler(req, res) {
     return res.status(500).json({ error: 'Server configuration error' });
   }
 
-  const recipient = process.env.CONTACT_RECIPIENT || 'brassops01@gmail.com';
+  const recipient = process.env.CONTACT_RECIPIENT || 'info@brassops.com';
 
   const htmlBody = `
     <h2>New Contact Form Submission</h2>
@@ -127,27 +127,13 @@ export default async function handler(req, res) {
 
     // Log the provider's actual reason so failures are diagnosable in Vercel
     // logs. Only provider metadata is logged, never submitted user data.
-    const providerCode = data?.data?.error_code ?? data?.error_code ?? null;
-    const providerError = data?.data?.error ?? data?.error ?? null;
-    const providerFailures = data?.data?.failures ?? null;
-
     console.error('SMTP2GO send failed', {
       httpStatus: response.status,
-      errorCode: providerCode,
-      error: providerError,
-      failures: providerFailures,
+      errorCode: data?.data?.error_code ?? data?.error_code ?? null,
+      error: data?.data?.error ?? data?.error ?? null,
+      failures: data?.data?.failures ?? null,
     });
-
-    // Echo the provider's own code/message back to the caller. These are
-    // provider diagnostics only: no API key and no submitted user data.
-    // Temporary aid while the delivery issue is being traced.
-    return res.status(502).json({
-      error: 'Email provider rejected the message',
-      providerStatus: response.status,
-      providerCode,
-      providerError,
-      providerFailures,
-    });
+    return res.status(502).json({ error: 'Email provider rejected the message' });
   } catch (err) {
     console.error('SMTP2GO request failed:', err?.message);
     return res.status(502).json({ error: 'Could not reach email provider' });
