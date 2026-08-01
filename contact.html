@@ -304,6 +304,22 @@
       padding: 2.5rem 2rem;
       position: relative; overflow: hidden;
     }
+    .pricing-note {
+      display: flex; align-items: flex-start; gap: 0.7rem;
+      padding: 0.9rem 1rem;
+      margin-bottom: 1.75rem;
+      background: rgba(239, 68, 68, 0.06);
+      border: 1px solid rgba(239, 68, 68, 0.18);
+      border-radius: 10px;
+    }
+    .pricing-note svg {
+      width: 16px; height: 16px; flex-shrink: 0; margin-top: 2px;
+      stroke: var(--red); stroke-width: 2; fill: none;
+    }
+    .pricing-note p {
+      font-size: 0.82rem; color: var(--fg-secondary); line-height: 1.55;
+    }
+    .pricing-note strong { color: var(--fg); font-weight: 600; }
     .form-card::before {
       content: ''; position: absolute; top: 0; left: 0; right: 0; height: 1px;
       background: linear-gradient(90deg, transparent 10%, rgba(239,68,68,0.25) 50%, transparent 90%);
@@ -618,6 +634,15 @@
         <!-- Right: Form -->
         <div class="form-panel">
           <div class="form-card">
+
+            <div class="pricing-note">
+              <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <line x1="12" y1="16" x2="12" y2="12"/>
+                <line x1="12" y1="8" x2="12.01" y2="8"/>
+              </svg>
+              <p><strong>Pricing is based on your sworn officer count</strong>, so small departments pay small-department prices. Every agency gets the full platform, with no feature tiers.</p>
+            </div>
 
             <form id="contactForm">
 
