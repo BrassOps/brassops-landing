@@ -75,6 +75,83 @@ const TIER_COLORS = {
   'High Risk': { bg: '#991b1b', accent: '#ef4444' },
 };
 
+// ── Submission storage ───────────────────────────────────────────────────
+// Submissions are persisted BEFORE the email send is attempted, so a
+// provider outage can never lose a lead. In April a sender-domain
+// misconfiguration silently discarded every submission; storing first makes
+// that class of failure recoverable.
+//
+// Talks to the Vercel KV (Upstash) REST API over plain fetch so the project
+// needs no npm dependency and no package.json, which would change how Vercel
+// builds this otherwise-static site.
+//
+// Storage is strictly best-effort: if KV is unconfigured or erroring, the
+// form still sends. Persistence must never be the reason a lead is lost.
+
+const KV_URL = process.env.KV_REST_API_URL;
+const KV_TOKEN = process.env.KV_REST_API_TOKEN;
+const RETENTION_DAYS = Number(process.env.SUBMISSION_RETENTION_DAYS || 90);
+
+function kvConfigured() {
+  return Boolean(KV_URL && KV_TOKEN);
+}
+
+async function kvPipeline(commands) {
+  const response = await fetch(`${KV_URL}/pipeline`, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${KV_TOKEN}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(commands),
+  });
+  if (!response.ok) {
+    throw new Error(`KV responded ${response.status}`);
+  }
+  return response.json();
+}
+
+async function storeSubmission(record) {
+  if (!kvConfigured()) {
+    console.warn('KV not configured; submission not persisted');
+    return null;
+  }
+  try {
+    const id = `assessment:${Date.now()}:${Math.random().toString(36).slice(2, 10)}`;
+    const ttlSeconds = Math.max(1, RETENTION_DAYS) * 86400;
+    await kvPipeline([
+      ['SET', id, JSON.stringify(record), 'EX', String(ttlSeconds)],
+      ['LPUSH', 'assessment:index', id],
+      ['LTRIM', 'assessment:index', '0', '4999'],
+    ]);
+    return id;
+  } catch (err) {
+    console.error('Failed to persist submission:', err?.message);
+    return null;
+  }
+}
+
+async function markSubmission(id, status, detail) {
+  if (!id || !kvConfigured()) return;
+  try {
+    const read = await kvPipeline([['GET', id]]);
+    const raw = read?.[0]?.result;
+    if (!raw) return;
+    const ttlSeconds = Math.max(1, RETENTION_DAYS) * 86400;
+    const updated = {
+      ...JSON.parse(raw),
+      status,
+      detail: detail ?? null,
+      updatedAt: new Date().toISOString(),
+    };
+    await kvPipeline([
+      ['SET', id, JSON.stringify(updated), 'EX', String(ttlSeconds)],
+    ]);
+  } catch (err) {
+    console.error('Failed to update submission status:', err?.message);
+  }
+}
+
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
     return res.status(405).json({ error: 'Method not allowed' });
@@ -146,11 +223,26 @@ export default async function handler(req, res) {
       )
     : [];
 
+  // Persist before any send is attempted, and before the API key check, so
+  // even a server misconfiguration leaves the lead recoverable.
+  const submissionId = await storeSubmission({
+    type: 'assessment',
+    status: 'pending',
+    receivedAt: new Date().toISOString(),
+    firstName,
+    email,
+    score: scoreNum,
+    maxScore: maxScoreNum,
+    tier: safeTier,
+    weakAreas: safeWeakAreas,
+  });
+
   const smtpKey = process.env.SMTP2GO_API_KEY;
   const brevoKey = process.env.BREVO_API_KEY;
 
   if (!smtpKey) {
     console.error('SMTP2GO_API_KEY not configured');
+    await markSubmission(submissionId, 'failed', 'SMTP2GO_API_KEY not configured');
     return res.status(500).json({ error: 'Server configuration error' });
   }
 
@@ -188,20 +280,38 @@ export default async function handler(req, res) {
   const safeSubjectTier = safeTier.replace(/[\r\n]/g, '').slice(0, 50);
 
   try {
-    await fetch('https://api.smtp2go.com/v3/email/send', {
+    const adminResponse = await fetch('https://api.smtp2go.com/v3/email/send', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
         api_key: smtpKey,
         to: [recipient],
         sender: 'BrassOps Assessment <noreply@brassops.com>',
-        subject: `Assessment Lead: ${safeFirst} — ${safeSubjectTier} (${scoreNum}/${maxScoreNum})`,
+        subject: `Assessment Lead: ${safeFirst} (${safeSubjectTier}, ${scoreNum}/${maxScoreNum})`,
         html_body: adminHtmlBody,
         text_body: adminTextBody,
       }),
     });
+
+    // SMTP2GO returns HTTP 200 even when a send is refused, so the body must
+    // be inspected. Previously this response was ignored entirely, which meant
+    // rejected leads failed silently with no log and no stored record.
+    const adminData = await adminResponse.json();
+    if (adminData?.data?.succeeded > 0) {
+      await markSubmission(submissionId, 'sent');
+    } else {
+      const failureDetail = {
+        httpStatus: adminResponse.status,
+        errorCode: adminData?.data?.error_code ?? adminData?.error_code ?? null,
+        error: adminData?.data?.error ?? adminData?.error ?? null,
+        failures: adminData?.data?.failures ?? null,
+      };
+      console.error('SMTP2GO admin email rejected', failureDetail);
+      await markSubmission(submissionId, 'failed', failureDetail);
+    }
   } catch (err) {
     console.error('SMTP2GO admin email failed:', err.message);
+    await markSubmission(submissionId, 'failed', { error: err?.message ?? 'request failed' });
   }
 
   // ── Results email to the taker ──
