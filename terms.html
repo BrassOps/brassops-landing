@@ -92,7 +92,7 @@
     @media (max-width: 768px) {
       .nav-hamburger { display: block; }
       .top-nav .nav-links { display: none; flex-direction: column; align-items: stretch; gap: 0; position: fixed; top: 56px; left: 0; right: 0; background: rgba(10, 10, 10, 0.95); backdrop-filter: blur(24px); border-bottom: 1px solid rgba(255, 255, 255, 0.08); padding: 0.5rem 0; max-height: 0; overflow: hidden; transition: max-height 0.35s, padding 0.35s; }
-      .top-nav .nav-links.open { display: flex; max-height: 400px; padding: 0.75rem 0; }
+      .top-nav .nav-links.open { display: flex; max-height: 80vh; overflow-y: auto; padding: 0.75rem 0; }
       .top-nav .nav-links a, .top-nav .nav-links span { padding: 0.75rem clamp(1rem, 4vw, 3rem); font-size: 0.95rem; border-bottom: 1px solid rgba(255, 255, 255, 0.04); }
       .top-nav .nav-links .nav-launch { margin: 0.5rem clamp(1rem, 4vw, 3rem) 0.25rem; text-align: center; padding: 0.65rem 1rem; border-radius: 10px; font-size: 0.9rem; }
     }
@@ -124,6 +124,24 @@
     ::selection { background: rgba(239, 68, 68, 0.3); color: #fff; }
     .brand-ops { color: var(--red); }
     @keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+
+    /* By Role dropdown */
+    .nav-dd { position: relative; display: flex; align-items: center; }
+    .nav-dd-trigger { display: inline-flex; align-items: center; gap: 0.3rem; background: none; border: none; cursor: pointer; font-family: var(--font-body); font-size: 0.85rem; font-weight: 500; color: var(--fg-tertiary); padding: 0; transition: color 0.2s; }
+    .nav-dd:hover .nav-dd-trigger, .nav-dd:focus-within .nav-dd-trigger { color: var(--fg); }
+    .nav-dd-trigger svg { width: 12px; height: 12px; stroke: currentColor; stroke-width: 2; fill: none; transition: transform 0.2s; }
+    .nav-dd:hover .nav-dd-trigger svg, .nav-dd:focus-within .nav-dd-trigger svg { transform: rotate(180deg); }
+    .nav-dd-menu { position: absolute; top: 100%; left: 50%; transform: translateX(-50%) translateY(6px); min-width: 212px; background: rgba(16,16,16,0.98); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px); border: 1px solid rgba(255,255,255,0.09); border-radius: 12px; padding: 0.4rem; display: flex; flex-direction: column; opacity: 0; visibility: hidden; transition: opacity 0.18s, transform 0.18s; box-shadow: 0 12px 32px rgba(0,0,0,0.45); z-index: 120; }
+    .nav-dd:hover .nav-dd-menu, .nav-dd:focus-within .nav-dd-menu { opacity: 1; visibility: visible; transform: translateX(-50%) translateY(2px); }
+    .nav-dd-menu a { padding: 0.55rem 0.75rem; border-radius: 8px; font-size: 0.82rem; color: var(--fg-secondary); white-space: nowrap; }
+    .nav-dd-menu a:hover { background: rgba(239,68,68,0.1); color: var(--fg); }
+    @media (max-width: 768px) {
+      .nav-dd { flex-direction: column; align-items: stretch; }
+      .nav-dd-trigger { width: 100%; justify-content: space-between; padding: 0.75rem clamp(1rem,4vw,3rem); font-size: 0.95rem; border-bottom: 1px solid rgba(255,255,255,0.04); }
+      .nav-dd-trigger svg { display: none; }
+      .nav-dd-menu { position: static; transform: none; opacity: 1; visibility: visible; min-width: 0; background: none; backdrop-filter: none; border: none; border-radius: 0; box-shadow: none; padding: 0; }
+      .nav-dd-menu a { padding: 0.6rem clamp(1rem,4vw,3rem) 0.6rem calc(clamp(1rem,4vw,3rem) + 1rem); font-size: 0.88rem; border-bottom: 1px solid rgba(255,255,255,0.04); border-radius: 0; }
+    }
   </style>
 </head>
 <body>
@@ -135,6 +153,15 @@
     </button>
     <div class="nav-links">
       <a href="why-brassops.html">Why Brass<span class="brand-ops">Ops</span></a>
+      <div class="nav-dd">
+        <button class="nav-dd-trigger" aria-haspopup="true" aria-expanded="false">By Role<svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></button>
+        <div class="nav-dd-menu">
+        <a href="audience/instructors.html">Firearms Instructors</a>
+        <a href="audience/range-masters.html">Range Masters</a>
+        <a href="audience/command-staff.html">Command Staff</a>
+        <a href="audience/budget.html">Budget Decision-Makers</a>
+        </div>
+      </div>
       <a href="briefing.html">Briefing</a>
       <a href="faq.html">FAQ</a>
       <a href="contact.html">Contact</a>
