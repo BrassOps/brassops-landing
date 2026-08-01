@@ -113,7 +113,7 @@ export default async function handler(req, res) {
         api_key: apiKey,
         to: [recipient],
         sender: 'BrassOps Contact Form <noreply@brassops.com>',
-        subject: `New Contact: ${safeFirst} ${safeLast} — ${safeInterest}`,
+        subject: `New Contact: ${safeFirst} ${safeLast} (${safeInterest})`,
         html_body: htmlBody,
         text_body: textBody,
       }),
@@ -123,13 +123,20 @@ export default async function handler(req, res) {
 
     if (data.data?.succeeded > 0) {
       return res.status(200).json({ success: true });
-    } else {
-      console.error('SMTP2GO error');
-      return res.status(502).json({ error: 'Failed to send email' });
     }
+
+    // Log the provider's actual reason so failures are diagnosable in Vercel
+    // logs. Only provider metadata is logged, never submitted user data.
+    console.error('SMTP2GO send failed', {
+      httpStatus: response.status,
+      errorCode: data?.data?.error_code ?? data?.error_code ?? null,
+      error: data?.data?.error ?? data?.error ?? null,
+      failures: data?.data?.failures ?? null,
+    });
+    return res.status(502).json({ error: 'Email provider rejected the message' });
   } catch (err) {
-    console.error('SMTP2GO request failed');
-    return res.status(502).json({ error: 'Failed to send email' });
+    console.error('SMTP2GO request failed:', err?.message);
+    return res.status(502).json({ error: 'Could not reach email provider' });
   }
 }
 
