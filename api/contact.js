@@ -18,58 +18,68 @@ const LIMITS = {
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // ── Submission storage ───────────────────────────────────────────────────
-// Submissions are persisted BEFORE the email send is attempted, so a
-// provider outage can never lose a lead. In April a sender-domain
-// misconfiguration silently discarded every submission; storing first makes
-// that class of failure recoverable.
+// Submissions are persisted BEFORE the email send is attempted, so a provider
+// outage can never lose one. In April a sender domain misconfiguration
+// silently discarded every submission; storing first makes that class of
+// failure recoverable.
 //
-// Talks to the Vercel KV (Upstash) REST API over plain fetch so the project
-// needs no npm dependency and no package.json, which would change how Vercel
-// builds this otherwise-static site.
+// Talks to Supabase PostgREST over plain fetch so the project needs no npm
+// dependency and no package.json, which would change how Vercel builds this
+// otherwise static site.
 //
-// Storage is strictly best-effort: if KV is unconfigured or erroring, the
-// form still sends. Persistence must never be the reason a lead is lost.
+// Storage here is deliberately best effort, unlike api/lead.js. The contact
+// form has two independent channels, the database and the notification email,
+// so a storage outage must not stop the message reaching the inbox.
 
-// Vercel's own KV integration and the Upstash marketplace integration inject
-// different variable names for the same Redis instance. Accept either so the
-// endpoint works regardless of which one the project was provisioned with.
-const KV_URL = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
-const KV_TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
-const RETENTION_DAYS = Number(process.env.SUBMISSION_RETENTION_DAYS || 90);
+// The Vercel Supabase integration and a hand created project expose these
+// under different names. Accept the common variants.
+const SUPABASE_URL = (
+  process.env.SUPABASE_URL ||
+  process.env.NEXT_PUBLIC_SUPABASE_URL ||
+  process.env.POSTGRES_SUPABASE_URL ||
+  ''
+).replace(/\/+$/, '');
+const SERVICE_KEY =
+  process.env.SUPABASE_SERVICE_ROLE_KEY ||
+  process.env.SUPABASE_SERVICE_KEY ||
+  process.env.POSTGRES_SUPABASE_SERVICE_ROLE_KEY;
 
-function kvConfigured() {
-  return Boolean(KV_URL && KV_TOKEN);
+const STORE_TABLE = 'contact_submissions';
+
+function storageConfigured() {
+  return Boolean(SUPABASE_URL && SERVICE_KEY);
 }
 
-async function kvPipeline(commands) {
-  const response = await fetch(`${KV_URL}/pipeline`, {
-    method: 'POST',
+async function sb(path, init = {}) {
+  const r = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
+    ...init,
     headers: {
-      Authorization: `Bearer ${KV_TOKEN}`,
+      apikey: SERVICE_KEY,
+      Authorization: `Bearer ${SERVICE_KEY}`,
       'Content-Type': 'application/json',
+      ...(init.headers || {}),
     },
-    body: JSON.stringify(commands),
   });
-  if (!response.ok) {
-    throw new Error(`KV responded ${response.status}`);
+  if (!r.ok) {
+    const detail = await r.text().catch(() => '');
+    throw new Error(`Supabase ${r.status}: ${detail.slice(0, 200)}`);
   }
-  return response.json();
+  return r;
 }
 
 async function storeSubmission(record) {
-  if (!kvConfigured()) {
-    console.warn('KV not configured; submission not persisted');
+  if (!storageConfigured()) {
+    console.warn('Supabase not configured; submission not persisted');
     return null;
   }
   try {
-    const id = `contact:${Date.now()}:${Math.random().toString(36).slice(2, 10)}`;
-    const ttlSeconds = Math.max(1, RETENTION_DAYS) * 86400;
-    await kvPipeline([
-      ['SET', id, JSON.stringify(record), 'EX', String(ttlSeconds)],
-      ['LPUSH', 'contact:index', id],
-      ['LTRIM', 'contact:index', '0', '4999'],
-    ]);
-    return id;
+    const r = await sb(STORE_TABLE, {
+      method: 'POST',
+      headers: { Prefer: 'return=representation' },
+      body: JSON.stringify(record),
+    });
+    const rows = await r.json();
+    return (Array.isArray(rows) ? rows[0] : rows)?.id ?? null;
   } catch (err) {
     console.error('Failed to persist submission:', err?.message);
     return null;
@@ -77,21 +87,15 @@ async function storeSubmission(record) {
 }
 
 async function markSubmission(id, status, detail) {
-  if (!id || !kvConfigured()) return;
+  if (id == null || !storageConfigured()) return;
   try {
-    const read = await kvPipeline([['GET', id]]);
-    const raw = read?.[0]?.result;
-    if (!raw) return;
-    const ttlSeconds = Math.max(1, RETENTION_DAYS) * 86400;
-    const updated = {
-      ...JSON.parse(raw),
-      status,
-      detail: detail ?? null,
-      updatedAt: new Date().toISOString(),
-    };
-    await kvPipeline([
-      ['SET', id, JSON.stringify(updated), 'EX', String(ttlSeconds)],
-    ]);
+    await sb(`${STORE_TABLE}?id=eq.${encodeURIComponent(id)}`, {
+      method: 'PATCH',
+      body: JSON.stringify({
+        status,
+        detail: detail == null ? null : (typeof detail === 'string' ? detail : JSON.stringify(detail)),
+      }),
+    });
   } catch (err) {
     console.error('Failed to update submission status:', err?.message);
   }
@@ -154,16 +158,16 @@ export default async function handler(req, res) {
   // Persist before any send is attempted, and before the API key check, so
   // even a server misconfiguration leaves the lead recoverable.
   const submissionId = await storeSubmission({
-    type: 'contact',
     status: 'pending',
-    receivedAt: new Date().toISOString(),
-    firstName,
-    lastName,
+    first_name: firstName,
+    last_name: lastName,
     email,
     department: department || null,
     role: role || null,
     interest: interest || null,
     message: message || null,
+    ip: clientIp(req),
+    user_agent: String(req.headers['user-agent'] || '').slice(0, 400) || null,
   });
 
   const apiKey = process.env.SMTP2GO_API_KEY;
@@ -238,6 +242,12 @@ export default async function handler(req, res) {
     await markSubmission(submissionId, 'failed', { error: err?.message ?? 'request failed' });
     return res.status(502).json({ error: 'Could not reach email provider' });
   }
+}
+
+function clientIp(req) {
+  const fwd = req.headers['x-forwarded-for'];
+  if (typeof fwd === 'string' && fwd.length) return fwd.split(',')[0].trim();
+  return req.headers['x-real-ip'] || 'unknown';
 }
 
 function escapeHtml(str) {
