@@ -11,8 +11,19 @@
 //   curl -H "Authorization: Bearer $LEADS_ADMIN_TOKEN" \
 //     "https://brassops.com/api/leads?format=csv" -o leads.csv
 
-const SUPABASE_URL = (process.env.SUPABASE_URL || '').replace(/\/+$/, '');
-const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+// The Vercel Supabase integration and a hand-created project expose these
+// under slightly different names depending on how the project was linked.
+// Accept the common variants so setup works either way.
+const SUPABASE_URL = (
+  process.env.SUPABASE_URL ||
+  process.env.NEXT_PUBLIC_SUPABASE_URL ||
+  process.env.POSTGRES_SUPABASE_URL ||
+  ''
+).replace(/\/+$/, '');
+const SERVICE_KEY =
+  process.env.SUPABASE_SERVICE_ROLE_KEY ||
+  process.env.SUPABASE_SERVICE_KEY ||
+  process.env.POSTGRES_SUPABASE_SERVICE_ROLE_KEY;
 const ADMIN_TOKEN = process.env.LEADS_ADMIN_TOKEN;
 const BOOTH_TOKEN = process.env.BOOTH_TOKEN;
 
