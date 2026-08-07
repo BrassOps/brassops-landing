@@ -1,3 +1,9 @@
 User-agent: *
 Allow: /
+Disallow: /demo
+Disallow: /demo.html
+Disallow: /booth
+Disallow: /booth.html
+Disallow: /api/
+
 Sitemap: https://brassops.com/sitemap.xml

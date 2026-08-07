@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>See the BrassOps Demo</title>
+<meta name="description" content="Request the BrassOps AI target-analysis demo.">
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+:root{--bg:#0a0a0a;--card:#141414;--fg:#ededed;--fg2:#a1a1aa;--fg3:#71717a;--red:#ef4444;--rdim:rgba(239,68,68,.12);--bd:rgba(255,255,255,.09);--green:#22c55e;--fh:'Rajdhani',sans-serif;--fb:'Barlow',sans-serif}
+body{background:var(--bg);color:var(--fg);font-family:var(--fb);line-height:1.6;min-height:100dvh;overflow-x:hidden;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.wrap{width:100%;max-width:520px;margin:0 auto;padding:2rem 1.1rem 3rem}
+.brand{font-family:var(--fh);font-weight:700;font-size:1.35rem;letter-spacing:.04em;text-align:center;margin-bottom:.4rem}
+.brand .bo{color:var(--red)}
+.tag{text-align:center;font-size:.78rem;color:var(--fg3);letter-spacing:.02em;margin-bottom:1.8rem}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:1.6rem 1.25rem}
+h1{font-family:var(--fh);font-size:1.6rem;font-weight:700;line-height:1.2;margin-bottom:.5rem}
+h1 span{color:var(--red)}
+.lead{font-size:.95rem;color:var(--fg2);margin-bottom:1.5rem}
+label{display:block;font-family:var(--fh);font-size:.8rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fg2);margin-bottom:.45rem}
+.f{margin-bottom:1.15rem}
+input,select{width:100%;min-height:52px;background:rgba(255,255,255,.04);border:1px solid var(--bd);border-radius:12px;padding:.85rem 1rem;color:var(--fg);font-family:var(--fb);font-size:16px;transition:border-color .18s,background .18s}
+input::placeholder{color:#5a5a61}
+input:focus,select:focus{outline:none;border-color:var(--red);background:rgba(255,255,255,.06)}
+select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a1a1aa' stroke-width='2' stroke-linecap='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;background-size:18px;padding-right:2.8rem}
+button{width:100%;min-height:56px;border:none;border-radius:14px;background:linear-gradient(135deg,var(--red),#dc2626);color:#fff;font-family:var(--fh);font-size:1rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:transform .15s,opacity .15s}
+button:active{transform:translateY(1px)}
+button[disabled]{opacity:.6;cursor:not-allowed}
+button.ghost{background:none;border:1px solid var(--bd);color:var(--fg)}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.err{display:none;background:rgba(239,68,68,.09);border:1px solid rgba(239,68,68,.35);border-radius:12px;padding:.9rem 1rem;margin-bottom:1.15rem;font-size:.88rem;color:#fca5a5}
+.err.show{display:block}
+.err a{color:var(--red);font-weight:600}
+.ok{display:none;text-align:center;padding:1rem .25rem}
+.ok.show{display:block}
+.tick{width:64px;height:64px;border-radius:50%;background:rgba(34,197,94,.12);display:flex;align-items:center;justify-content:center;margin:0 auto 1.1rem}
+.tick svg{width:30px;height:30px;stroke:var(--green);stroke-width:2.5;fill:none}
+.ok h2{font-family:var(--fh);font-size:1.5rem;font-weight:700;margin-bottom:.5rem}
+.ok p{color:var(--fg2);font-size:.95rem}
+.foot{text-align:center;font-size:.72rem;color:#4a4a52;margin-top:1.6rem}
+@media(max-width:390px){.wrap{padding:1.5rem .85rem 2.5rem}.card{padding:1.35rem 1rem;border-radius:16px}h1{font-size:1.42rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <p class="brand">Brass<span class="bo">Ops</span></p>
+  <p class="tag">Firearms qualification, training, and records</p>
+
+  <div class="card">
+    <div id="formView">
+      <h1>See the <span>AI target analysis</span> in action.</h1>
+      <p class="lead">Leave your details and we will send you the demo, including the target analysis that finds every shot and names the drill that fixes the group.</p>
+
+      <div class="err" id="err"></div>
+
+      <form id="leadForm" novalidate>
+        <div class="hp" aria-hidden="true">
+          <label for="website">Website</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="f">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" autocomplete="name" enterkeyhint="next" required>
+        </div>
+        <div class="f">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" autocomplete="email" inputmode="email" enterkeyhint="next" required>
+        </div>
+        <div class="f">
+          <label for="agency">Agency</label>
+          <input type="text" id="agency" name="agency" autocomplete="organization" enterkeyhint="next">
+        </div>
+        <div class="f">
+          <label for="role">Role</label>
+          <select id="role" name="role">
+            <option value="">Select your role</option>
+            <option>Instructor</option>
+            <option>Rangemaster</option>
+            <option>Admin-Command</option>
+            <option>Chief-Sheriff</option>
+            <option>Academy-Trainer</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <button type="submit" id="btn">Send Me the Demo</button>
+      </form>
+    </div>
+
+    <div class="ok" id="okView">
+      <div class="tick"><svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></div>
+      <h2>Done.</h2>
+      <p>Watch your inbox for the AI target-analysis demo.</p>
+    </div>
+  </div>
+
+  <p class="foot">brassops.com</p>
+</div>
+
+<script>
+(function () {
+  var loadedAt = Date.now();
+  var form = document.getElementById('leadForm');
+  var btn = document.getElementById('btn');
+  var err = document.getElementById('err');
+  var formView = document.getElementById('formView');
+  var okView = document.getElementById('okView');
+
+  function showError(html) {
+    err.innerHTML = html;
+    err.classList.add('show');
+    err.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+  }
+
+  function mailtoFallback() {
+    var body =
+      'Name: ' + form.name.value +
+      '\nEmail: ' + form.email.value +
+      '\nAgency: ' + form.agency.value +
+      '\nRole: ' + form.role.value;
+    return 'mailto:brassops01@gmail.com?subject=' +
+      encodeURIComponent('BrassOps demo request') +
+      '&body=' + encodeURIComponent(body);
+  }
+
+  form.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    err.classList.remove('show');
+
+    var name = form.name.value.trim();
+    var email = form.email.value.trim();
+    if (!name || !email) {
+      showError('Please enter your name and email.');
+      return;
+    }
+
+    btn.disabled = true;
+    var original = btn.textContent;
+    btn.textContent = 'Sending...';
+
+    try {
+      var res = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          source: 'qr',
+          name: name,
+          email: email,
+          agency: form.agency.value.trim(),
+          role: form.role.value,
+          website: form.website.value,
+          elapsedMs: Date.now() - loadedAt
+        })
+      });
+
+      if (!res.ok) {
+        var msg = 'We could not save your details.';
+        try { var d = await res.json(); if (d && d.error) msg = d.error; } catch (_) {}
+        throw new Error(msg);
+      }
+
+      // Only clear the view once the database has confirmed the write.
+      formView.style.display = 'none';
+      okView.classList.add('show');
+    } catch (ex) {
+      // Input is deliberately left untouched so nothing the prospect typed is lost.
+      btn.disabled = false;
+      btn.textContent = original;
+      showError(
+        (ex && ex.message ? ex.message : 'Something went wrong.') +
+        ' Your details are still here. Tap send to try again, or ' +
+        '<a href="' + mailtoFallback() + '">email them to us directly</a>.'
+      );
+    }
+  });
+})();
+</script>
+</body>
+</html>
