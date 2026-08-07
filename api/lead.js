@@ -13,8 +13,11 @@
 // dependency and no package.json, which would change how Vercel builds this
 // otherwise-static site.
 
-const KV_URL = process.env.KV_REST_API_URL;
-const KV_TOKEN = process.env.KV_REST_API_TOKEN;
+// Vercel's own KV integration and the Upstash marketplace integration inject
+// different variable names for the same Redis instance. Accept either so the
+// endpoint works regardless of which one the project was provisioned with.
+const KV_URL = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
+const KV_TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
 const SMTP_KEY = process.env.SMTP2GO_API_KEY;
 const NOTIFY_TO = process.env.LEAD_NOTIFY_RECIPIENT || 'brassops01@gmail.com';
 
