@@ -16,8 +16,19 @@
 // The service role key bypasses row level security and must never reach the
 // browser. It is read here, server side, only.
 
-const SUPABASE_URL = (process.env.SUPABASE_URL || '').replace(/\/+$/, '');
-const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
+// The Vercel Supabase integration and a hand-created project expose these
+// under slightly different names depending on how the project was linked.
+// Accept the common variants so setup works either way.
+const SUPABASE_URL = (
+  process.env.SUPABASE_URL ||
+  process.env.NEXT_PUBLIC_SUPABASE_URL ||
+  process.env.POSTGRES_SUPABASE_URL ||
+  ''
+).replace(/\/+$/, '');
+const SERVICE_KEY =
+  process.env.SUPABASE_SERVICE_ROLE_KEY ||
+  process.env.SUPABASE_SERVICE_KEY ||
+  process.env.POSTGRES_SUPABASE_SERVICE_ROLE_KEY;
 const SMTP_KEY = process.env.SMTP2GO_API_KEY;
 const NOTIFY_TO = process.env.LEAD_NOTIFY_RECIPIENT || 'brassops01@gmail.com';
 
