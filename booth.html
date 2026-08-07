@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>Booth Capture</title>
+<meta name="robots" content="noindex, nofollow">
+<meta name="theme-color" content="#0a0a0a">
+<link rel="icon" href="/favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600;700;800&family=Rajdhani:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-font-smoothing:antialiased;-webkit-text-size-adjust:100%}
+:root{--bg:#0a0a0a;--card:#141414;--fg:#ededed;--fg2:#a1a1aa;--fg3:#71717a;--red:#ef4444;--bd:rgba(255,255,255,.09);--green:#22c55e;--amber:#f59e0b;--blue:#3b82f6;--fh:'Rajdhani',sans-serif;--fb:'Barlow',sans-serif}
+body{background:var(--bg);color:var(--fg);font-family:var(--fb);line-height:1.6;min-height:100dvh;overflow-x:hidden;padding:env(safe-area-inset-top) env(safe-area-inset-right) env(safe-area-inset-bottom) env(safe-area-inset-left)}
+.wrap{width:100%;max-width:520px;margin:0 auto;padding:1.4rem 1.1rem 3rem}
+.top{display:flex;align-items:center;justify-content:space-between;margin-bottom:1rem;gap:.75rem}
+.brand{font-family:var(--fh);font-weight:700;font-size:1.15rem;letter-spacing:.04em}
+.brand .bo{color:var(--red)}
+.badge{font-family:var(--fh);font-size:.62rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--red);background:rgba(239,68,68,.12);border:1px solid rgba(239,68,68,.3);padding:.25rem .6rem;border-radius:999px;white-space:nowrap}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:.7rem;margin-bottom:1rem}
+.stat{background:var(--card);border:1px solid var(--bd);border-radius:14px;padding:.85rem 1rem;text-align:center}
+.stat .n{font-family:var(--fh);font-size:1.9rem;font-weight:800;line-height:1;color:var(--red)}
+.stat .l{font-size:.68rem;color:var(--fg3);letter-spacing:.1em;text-transform:uppercase;margin-top:.3rem}
+.card{background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:1.35rem 1.1rem;margin-bottom:1.1rem}
+label{display:block;font-family:var(--fh);font-size:.75rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--fg2);margin-bottom:.4rem}
+.f{margin-bottom:.95rem}
+input,select{width:100%;min-height:52px;background:rgba(255,255,255,.04);border:1px solid var(--bd);border-radius:12px;padding:.8rem .95rem;color:var(--fg);font-family:var(--fb);font-size:16px}
+input:focus,select:focus{outline:none;border-color:var(--red);background:rgba(255,255,255,.06)}
+select{appearance:none;-webkit-appearance:none;background-image:url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23a1a1aa' stroke-width='2' stroke-linecap='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1rem center;background-size:18px;padding-right:2.8rem}
+.temps{display:grid;grid-template-columns:repeat(3,1fr);gap:.55rem}
+.temp{min-height:52px;border:1px solid var(--bd);border-radius:12px;background:rgba(255,255,255,.03);color:var(--fg2);font-family:var(--fh);font-size:.9rem;font-weight:700;letter-spacing:.08em;cursor:pointer}
+.temp[aria-pressed="true"][data-t="HOT"]{background:rgba(239,68,68,.16);border-color:var(--red);color:var(--red)}
+.temp[aria-pressed="true"][data-t="WARM"]{background:rgba(245,158,11,.16);border-color:var(--amber);color:var(--amber)}
+.temp[aria-pressed="true"][data-t="COLD"]{background:rgba(59,130,246,.16);border-color:var(--blue);color:var(--blue)}
+button.save{width:100%;min-height:58px;border:none;border-radius:14px;background:linear-gradient(135deg,var(--red),#dc2626);color:#fff;font-family:var(--fh);font-size:1.05rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer}
+button.save:active{transform:translateY(1px)}
+button.save[disabled]{opacity:.6}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.msg{display:none;border-radius:12px;padding:.8rem .95rem;margin-bottom:.95rem;font-size:.86rem}
+.msg.show{display:block}
+.msg.bad{background:rgba(239,68,68,.09);border:1px solid rgba(239,68,68,.35);color:#fca5a5}
+.msg.good{background:rgba(34,197,94,.1);border:1px solid rgba(34,197,94,.32);color:#86efac}
+.msg a{color:var(--red);font-weight:600}
+.listh{font-family:var(--fh);font-size:.72rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--fg3);margin:0 0 .6rem .25rem}
+.row{background:var(--card);border:1px solid var(--bd);border-radius:12px;padding:.7rem .9rem;margin-bottom:.5rem;display:flex;align-items:flex-start;gap:.7rem}
+.dot{width:9px;height:9px;border-radius:50%;flex-shrink:0;margin-top:.45rem}
+.dot.HOT{background:var(--red)}.dot.WARM{background:var(--amber)}.dot.COLD{background:var(--blue)}.dot.none{background:#3f3f46}
+.row .who{font-weight:600;font-size:.92rem;word-break:break-word}
+.row .sub{font-size:.76rem;color:var(--fg3);word-break:break-word}
+.row .t{margin-left:auto;font-size:.68rem;color:#52525b;white-space:nowrap;padding-top:.2rem}
+.gate{background:var(--card);border:1px solid var(--bd);border-radius:20px;padding:1.5rem 1.1rem;text-align:center}
+.gate p{color:var(--fg2);font-size:.9rem;margin-bottom:1rem}
+@media(max-width:390px){.wrap{padding:1.1rem .8rem 2.5rem}.card{padding:1.1rem .9rem;border-radius:16px}.stat .n{font-size:1.65rem}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top">
+    <p class="brand">Brass<span class="bo">Ops</span></p>
+    <span class="badge">Booth Capture</span>
+  </div>
+
+  <div id="gate" class="gate" style="display:none">
+    <p>This page needs the booth access key. Open it with <code>?k=YOUR_KEY</code> in the address, or paste it here.</p>
+    <div class="f"><input type="password" id="gateKey" placeholder="Booth key" autocomplete="off"></div>
+    <button class="save" id="gateGo">Unlock</button>
+  </div>
+
+  <div id="app" style="display:none">
+    <div class="stats">
+      <div class="stat"><div class="n" id="statTotal">0</div><div class="l">Total Leads</div></div>
+      <div class="stat"><div class="n" id="statToday">0</div><div class="l">Today</div></div>
+    </div>
+
+    <div class="card">
+      <div class="msg" id="msg"></div>
+
+      <form id="f" novalidate>
+        <div class="hp" aria-hidden="true">
+          <label for="website">Website</label>
+          <input type="text" id="website" name="website" tabindex="-1" autocomplete="off">
+        </div>
+
+        <div class="f"><label for="name">Name</label>
+          <input type="text" id="name" autocomplete="off" enterkeyhint="next"></div>
+        <div class="f"><label for="email">Email</label>
+          <input type="email" id="email" autocomplete="off" inputmode="email" enterkeyhint="next"></div>
+        <div class="f"><label for="agency">Agency</label>
+          <input type="text" id="agency" autocomplete="off" enterkeyhint="next"></div>
+        <div class="f"><label for="role">Role</label>
+          <select id="role">
+            <option value="">Select role</option>
+            <option>Instructor</option><option>Rangemaster</option>
+            <option>Admin-Command</option><option>Chief-Sheriff</option>
+            <option>Academy-Trainer</option><option>Other</option>
+          </select></div>
+
+        <div class="f"><label>Temperature</label>
+          <div class="temps">
+            <button type="button" class="temp" data-t="HOT" aria-pressed="false">HOT</button>
+            <button type="button" class="temp" data-t="WARM" aria-pressed="true">WARM</button>
+            <button type="button" class="temp" data-t="COLD" aria-pressed="false">COLD</button>
+          </div></div>
+
+        <div class="f"><label for="notes">Note</label>
+          <input type="text" id="notes" placeholder="Optional, one line" autocomplete="off" enterkeyhint="done"></div>
+
+        <button type="submit" class="save" id="save">Save Lead</button>
+      </form>
+    </div>
+
+    <p class="listh">Today, newest first</p>
+    <div id="list"></div>
+  </div>
+</div>
+
+<script>
+(function () {
+  var qs = new URLSearchParams(location.search);
+  var key = qs.get('k') || '';
+  var gate = document.getElementById('gate');
+  var app = document.getElementById('app');
+  var f = document.getElementById('f');
+  var save = document.getElementById('save');
+  var msg = document.getElementById('msg');
+  var list = document.getElementById('list');
+  var temp = 'WARM';
+  var loadedAt = Date.now();
+
+  // The key stays in memory and in the address only. Nothing is written to
+  // localStorage, sessionStorage, or any file.
+  function authHeaders() { return { 'Authorization': 'Bearer ' + key }; }
+
+  function show(kind, html) {
+    msg.className = 'msg show ' + kind;
+    msg.innerHTML = html;
+  }
+  function hide() { msg.className = 'msg'; }
+
+  function esc(s) {
+    return String(s == null ? '' : s).replace(/[&<>"']/g, function (c) {
+      return { '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c];
+    });
+  }
+
+  document.querySelectorAll('.temp').forEach(function (b) {
+    b.addEventListener('click', function () {
+      temp = b.dataset.t;
+      document.querySelectorAll('.temp').forEach(function (x) {
+        x.setAttribute('aria-pressed', String(x === b));
+      });
+    });
+  });
+  function resetTemp() {
+    temp = 'WARM';
+    document.querySelectorAll('.temp').forEach(function (x) {
+      x.setAttribute('aria-pressed', String(x.dataset.t === 'WARM'));
+    });
+  }
+
+  async function refresh() {
+    try {
+      var r = await fetch('/api/leads', { headers: authHeaders() });
+      if (r.status === 401) { gate.style.display = 'block'; app.style.display = 'none'; return false; }
+      if (!r.ok) return false;
+      var d = await r.json();
+      document.getElementById('statTotal').textContent = d.total;
+      document.getElementById('statToday').textContent = d.today;
+      list.innerHTML = (d.leads || []).map(function (l) {
+        var t = l.temperature || 'none';
+        var when = new Date(l.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+        var sub = [l.agency, l.role, l.email].filter(Boolean).join(' · ');
+        return '<div class="row"><span class="dot ' + esc(t) + '"></span><div>' +
+          '<div class="who">' + esc(l.name || l.email || 'Unnamed') + '</div>' +
+          (sub ? '<div class="sub">' + esc(sub) + '</div>' : '') +
+          (l.notes ? '<div class="sub">' + esc(l.notes) + '</div>' : '') +
+          '</div><span class="t">' + esc(when) + '</span></div>';
+      }).join('') || '<div class="row"><div class="sub">No captures yet today.</div></div>';
+      return true;
+    } catch (e) { return false; }
+  }
+
+  f.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    hide();
+    var name = document.getElementById('name').value.trim();
+    var email = document.getElementById('email').value.trim();
+    if (!name && !email) { show('bad', 'Enter a name or an email.'); return; }
+
+    save.disabled = true;
+    var label = save.textContent;
+    save.textContent = 'Saving...';
+
+    try {
+      var r = await fetch('/api/lead', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          source: 'staff', name: name, email: email,
+          agency: document.getElementById('agency').value.trim(),
+          role: document.getElementById('role').value,
+          temperature: temp,
+          notes: document.getElementById('notes').value.trim(),
+          website: document.getElementById('website').value,
+          elapsedMs: Date.now() - loadedAt
+        })
+      });
+      if (!r.ok) {
+        var m = 'Could not save.';
+        try { var d = await r.json(); if (d && d.error) m = d.error; } catch (_) {}
+        throw new Error(m);
+      }
+      // Clear only after the database confirms the write.
+      f.reset();
+      resetTemp();
+      show('good', 'Saved.');
+      document.getElementById('name').focus();
+      refresh();
+      setTimeout(hide, 1600);
+    } catch (ex) {
+      // Fields are left as typed so a failed save never costs the capture.
+      show('bad', esc(ex.message) + ' Details kept on screen, tap save to retry.');
+    } finally {
+      save.disabled = false;
+      save.textContent = label;
+    }
+  });
+
+  document.getElementById('gateGo').addEventListener('click', async function () {
+    key = document.getElementById('gateKey').value.trim();
+    if (!key) return;
+    if (await refresh()) {
+      gate.style.display = 'none';
+      app.style.display = 'block';
+      document.getElementById('name').focus();
+    }
+  });
+
+  (async function init() {
+    if (key && await refresh()) {
+      app.style.display = 'block';
+      document.getElementById('name').focus();
+    } else {
+      gate.style.display = 'block';
+    }
+  })();
+})();
+</script>
+</body>
+</html>
