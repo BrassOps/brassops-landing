@@ -1,23 +1,23 @@
 // Trade show lead capture.
 //
-// Every lead is written to the hosted database (Vercel KV / Upstash) at the
-// moment of submission. Nothing is kept in localStorage or on the filesystem.
+// Every lead is written to Postgres (Supabase) at the moment of submission.
+// Nothing touches localStorage, sessionStorage, or the filesystem.
 //
-// Unlike api/contact.js, persistence here is NOT best effort. If the write
+// Talks to PostgREST over plain fetch so the project needs no npm dependency
+// and no package.json, which would change how Vercel builds this otherwise
+// static site.
+//
+// Unlike api/contact.js, persistence here is NOT best effort. If the insert
 // fails this endpoint returns an error so the page can keep the prospect's
 // input on screen and offer retry plus a mailto fallback. A lead captured at a
-// booth cannot be re-collected, so a silent success on a failed write would be
-// the worst possible outcome.
+// booth cannot be collected twice, so a silent success on a failed write is
+// the worst outcome available.
 //
-// Talks to the KV REST API over plain fetch so the project needs no npm
-// dependency and no package.json, which would change how Vercel builds this
-// otherwise-static site.
+// The service role key bypasses row level security and must never reach the
+// browser. It is read here, server side, only.
 
-// Vercel's own KV integration and the Upstash marketplace integration inject
-// different variable names for the same Redis instance. Accept either so the
-// endpoint works regardless of which one the project was provisioned with.
-const KV_URL = process.env.KV_REST_API_URL || process.env.UPSTASH_REDIS_REST_URL;
-const KV_TOKEN = process.env.KV_REST_API_TOKEN || process.env.UPSTASH_REDIS_REST_TOKEN;
+const SUPABASE_URL = (process.env.SUPABASE_URL || '').replace(/\/+$/, '');
+const SERVICE_KEY = process.env.SUPABASE_SERVICE_ROLE_KEY;
 const SMTP_KEY = process.env.SMTP2GO_API_KEY;
 const NOTIFY_TO = process.env.LEAD_NOTIFY_RECIPIENT || 'brassops01@gmail.com';
 
@@ -30,18 +30,30 @@ const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 // Minimum time on page before a submission is considered organic.
 const MIN_ELAPSED_MS = 3000;
-// Per-IP ceiling and window.
-const RATE_MAX = 12;
-const RATE_WINDOW_S = 600;
+// Per-IP ceiling and window. Venue wifi puts many booth visitors behind one
+// address, so breaching this flags a row rather than rejecting it.
+const RATE_MAX = 30;
+const RATE_WINDOW_MS = 10 * 60 * 1000;
 
-async function kv(commands) {
-  const r = await fetch(`${KV_URL}/pipeline`, {
-    method: 'POST',
-    headers: { Authorization: `Bearer ${KV_TOKEN}`, 'Content-Type': 'application/json' },
-    body: JSON.stringify(commands),
+function configured() {
+  return Boolean(SUPABASE_URL && SERVICE_KEY);
+}
+
+async function sb(path, init = {}) {
+  const r = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
+    ...init,
+    headers: {
+      apikey: SERVICE_KEY,
+      Authorization: `Bearer ${SERVICE_KEY}`,
+      'Content-Type': 'application/json',
+      ...(init.headers || {}),
+    },
   });
-  if (!r.ok) throw new Error(`KV responded ${r.status}`);
-  return r.json();
+  if (!r.ok) {
+    const detail = await r.text().catch(() => '');
+    throw new Error(`Supabase ${r.status}: ${detail.slice(0, 200)}`);
+  }
+  return r;
 }
 
 function clientIp(req) {
@@ -53,12 +65,6 @@ function clientIp(req) {
 function str(v, max) {
   if (typeof v !== 'string') return '';
   return v.trim().slice(0, max);
-}
-
-function csvSafe(v) {
-  // Neutralise spreadsheet formula injection on export.
-  const s = String(v ?? '');
-  return /^[=+\-@\t\r]/.test(s) ? `'${s}` : s;
 }
 
 export default async function handler(req, res) {
@@ -98,8 +104,8 @@ export default async function handler(req, res) {
   const temperature = source === 'staff' && TEMPERATURES.includes(tempRaw) ? tempRaw : null;
   const notes = source === 'staff' && notesRaw ? notesRaw : null;
 
-  if (!KV_URL || !KV_TOKEN) {
-    console.error('Lead capture: KV not configured, refusing to accept the lead');
+  if (!configured()) {
+    console.error('Lead capture: Supabase not configured, refusing to accept the lead');
     return res.status(503).json({ error: 'Lead storage is not configured' });
   }
 
@@ -107,7 +113,7 @@ export default async function handler(req, res) {
   const flags = [];
 
   // Validation problems are recorded rather than discarded. The caller still
-  // gets a 400 so the person can correct the field, but a half-captured lead
+  // gets a 400 so the person can correct the field, but a half captured lead
   // is kept and flagged: someone who mistypes their email at a booth cannot be
   // chased down again afterwards.
   let validationError = null;
@@ -135,43 +141,44 @@ export default async function handler(req, res) {
     flags.push('too_fast');
   }
 
-  // Per-IP rate limit. Also flagged rather than dropped. Booth traffic can
-  // legitimately share one venue NAT address.
+  // Per-IP rate check, counted from the table itself. Never rejects.
   try {
-    const key = `leadrate:${ip}`;
-    const out = await kv([['INCR', key], ['EXPIRE', key, String(RATE_WINDOW_S), 'NX']]);
-    const count = Number(out?.[0]?.result ?? 0);
-    if (count > RATE_MAX) flags.push('rate_limited');
+    const since = new Date(Date.now() - RATE_WINDOW_MS).toISOString();
+    const q =
+      `leads?select=id&ip=eq.${encodeURIComponent(ip)}` +
+      `&created_at=gte.${encodeURIComponent(since)}&limit=${RATE_MAX + 1}`;
+    const recent = await (await sb(q)).json();
+    if (Array.isArray(recent) && recent.length > RATE_MAX) flags.push('rate_limited');
   } catch (err) {
     console.error('Lead capture: rate check failed:', err?.message);
   }
 
-  const record = {
-    created_at: new Date().toISOString(),
-    name,
-    email,
-    agency,
-    role,
+  const row = {
+    name: name || null,
+    email: email || null,
+    agency: agency || null,
+    role: role || null,
     temperature,
     notes,
     source,
     ip,
-    user_agent: str(req.headers['user-agent'], 400),
+    user_agent: str(req.headers['user-agent'], 400) || null,
     flags,
   };
 
-  let id;
+  let saved;
   try {
-    id = `lead:${Date.now()}:${Math.random().toString(36).slice(2, 10)}`;
-    record.id = id;
-    // Duplicates are stored, never rejected. A duplicate row is cheap; a lost
-    // lead is not.
-    await kv([
-      ['SET', id, JSON.stringify(record)],
-      ['LPUSH', 'leads:index', id],
-    ]);
+    // Duplicates are inserted, never rejected. A duplicate row is cheap; a
+    // lost lead is not.
+    const r = await sb('leads', {
+      method: 'POST',
+      headers: { Prefer: 'return=representation' },
+      body: JSON.stringify(row),
+    });
+    const returned = await r.json();
+    saved = Array.isArray(returned) ? returned[0] : returned;
   } catch (err) {
-    console.error('Lead capture: write failed:', err?.message);
+    console.error('Lead capture: insert failed:', err?.message);
     return res.status(502).json({ error: 'Could not save the lead' });
   }
 
@@ -191,7 +198,7 @@ export default async function handler(req, res) {
         `Temperature: ${temperature || 'not set'}`,
         `Notes: ${notes || 'none'}`,
         `Source: ${source}`,
-        `Captured: ${record.created_at}`,
+        `Captured: ${saved?.created_at || new Date().toISOString()}`,
         flags.length ? `Flags: ${flags.join(', ')}` : '',
       ].filter(Boolean);
       const subjName = (name || email || 'Unnamed').replace(/[\r\n]/g, '').slice(0, 60);
@@ -211,7 +218,5 @@ export default async function handler(req, res) {
     }
   }
 
-  return res.status(200).json({ ok: true, id });
+  return res.status(200).json({ ok: true, id: saved?.id ?? null });
 }
-
-export { csvSafe };
