@@ -64,8 +64,9 @@ button.save[disabled]{opacity:.6}
   </div>
 
   <div id="gate" class="gate" style="display:none">
-    <p>This page needs the booth access key. Open it with <code>?k=YOUR_KEY</code> in the address, or paste it here.</p>
-    <div class="f"><input type="password" id="gateKey" placeholder="Booth key" autocomplete="off"></div>
+    <p>Paste your booth key below to unlock this page.</p>
+    <div class="msg bad" id="gateErr" style="display:none"></div>
+    <div class="f"><input type="text" id="gateKey" placeholder="Booth key" autocomplete="off" autocapitalize="none" autocorrect="off" spellcheck="false"></div>
     <button class="save" id="gateGo">Unlock</button>
   </div>
 
@@ -161,11 +162,23 @@ button.save[disabled]{opacity:.6}
     });
   }
 
+  // Throws with the server's actual reason. Returning a bare false used to
+  // leave the unlock button doing nothing visible, which is the least helpful
+  // possible response to a failure.
   async function refresh() {
-    try {
-      var r = await fetch('/api/leads', { headers: authHeaders() });
-      if (r.status === 401) { gate.style.display = 'block'; app.style.display = 'none'; return false; }
-      if (!r.ok) return false;
+    var r = await fetch('/api/leads', { headers: authHeaders() });
+    if (!r.ok) {
+      var reason = 'HTTP ' + r.status;
+      try {
+        var body = await r.json();
+        if (body && body.error) reason = body.error;
+      } catch (_) {}
+      if (r.status === 401) reason = 'That key was not accepted';
+      var err = new Error(reason);
+      err.status = r.status;
+      throw err;
+    }
+    {
       var d = await r.json();
       document.getElementById('statTotal').textContent = d.total;
       document.getElementById('statToday').textContent = d.today;
@@ -180,7 +193,7 @@ button.save[disabled]{opacity:.6}
           '</div><span class="t">' + esc(when) + '</span></div>';
       }).join('') || '<div class="row"><div class="sub">No captures yet today.</div></div>';
       return true;
-    } catch (e) { return false; }
+    }
   }
 
   f.addEventListener('submit', async function (e) {
@@ -229,22 +242,57 @@ button.save[disabled]{opacity:.6}
     }
   });
 
-  document.getElementById('gateGo').addEventListener('click', async function () {
-    key = document.getElementById('gateKey').value.trim();
-    if (!key) return;
-    if (await refresh()) {
-      gate.style.display = 'none';
-      app.style.display = 'block';
-      document.getElementById('name').focus();
+  var gateErr = document.getElementById('gateErr');
+  var gateGo = document.getElementById('gateGo');
+
+  function gateFail(message) {
+    gateErr.textContent = message;
+    gateErr.style.display = 'block';
+    gate.style.display = 'block';
+    app.style.display = 'none';
+  }
+
+  function unlocked() {
+    gateErr.style.display = 'none';
+    gate.style.display = 'none';
+    app.style.display = 'block';
+    document.getElementById('name').focus();
+  }
+
+  async function tryUnlock() {
+    gateErr.style.display = 'none';
+    if (!key) { gateFail('Enter your booth key.'); return; }
+    gateGo.disabled = true;
+    var label = gateGo.textContent;
+    gateGo.textContent = 'Checking...';
+    try {
+      await refresh();
+      unlocked();
+    } catch (ex) {
+      console.error('[booth] unlock failed:', ex && ex.status, ex && ex.message);
+      gateFail((ex && ex.message ? ex.message : 'Could not reach the server') + '.');
+    } finally {
+      gateGo.disabled = false;
+      gateGo.textContent = label;
     }
+  }
+
+  gateGo.addEventListener('click', function () {
+    key = document.getElementById('gateKey').value.trim();
+    tryUnlock();
+  });
+  document.getElementById('gateKey').addEventListener('keydown', function (e) {
+    if (e.key === 'Enter') { key = this.value.trim(); tryUnlock(); }
   });
 
   (async function init() {
-    if (key && await refresh()) {
-      app.style.display = 'block';
-      document.getElementById('name').focus();
-    } else {
-      gate.style.display = 'block';
+    if (!key) { gate.style.display = 'block'; return; }
+    try {
+      await refresh();
+      unlocked();
+    } catch (ex) {
+      console.error('[booth] key in address rejected:', ex && ex.status, ex && ex.message);
+      gateFail((ex && ex.message ? ex.message : 'Could not reach the server') + '.');
     }
   })();
 })();
