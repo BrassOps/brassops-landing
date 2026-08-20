@@ -27,7 +27,7 @@ const SERVICE_KEY =
 const ADMIN_TOKEN = process.env.LEADS_ADMIN_TOKEN;
 const BOOTH_TOKEN = process.env.BOOTH_TOKEN;
 
-const MAX_ROWS = 10000;
+const MAX_ROWS = 1000;
 
 async function sb(path, init = {}) {
   const r = await fetch(`${SUPABASE_URL}/rest/v1/${path}`, {
@@ -153,6 +153,11 @@ export default async function handler(req, res) {
     return res.status(200).json({ total, today: todays.length, leads });
   } catch (err) {
     console.error('Leads read failed:', err?.message);
-    return res.status(500).json({ error: 'Could not read leads' });
+    // Echo the database's own message. Provider diagnostics only: never the
+    // service key, never a lead's details. Temporary aid while this is traced.
+    return res.status(500).json({
+      error: 'Could not read leads',
+      detail: String(err?.message || '').slice(0, 300),
+    });
   }
 }
