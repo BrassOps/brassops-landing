@@ -111,6 +111,11 @@
     .legal-section ul { list-style: none; margin-bottom: 0.75rem; padding-left: 0; }
     .legal-section ul li { font-size: 0.9rem; color: var(--fg-secondary); line-height: 1.8; padding-left: 1.25rem; position: relative; margin-bottom: 0.25rem; }
     .legal-section ul li::before { content: ''; position: absolute; left: 0; top: 0.65rem; width: 5px; height: 5px; border-radius: 50%; background: var(--red); opacity: 0.5; }
+    /* Nested lists, such as the named service providers, need their own indent
+       and a quieter bullet. Without this they inherit the parent list's styling
+       exactly and read as siblings of the item they belong to. */
+    .legal-section ul ul { margin: 0.5rem 0 0.5rem; padding-left: 1rem; }
+    .legal-section ul ul li::before { background: var(--fg-tertiary); opacity: 0.7; width: 4px; height: 4px; }
     .legal-section .effective-date { font-size: 0.8rem; color: var(--fg-tertiary); margin-bottom: 2rem; }
 
     .footer { padding: 3rem 1.5rem 2.5rem; text-align: center; }
@@ -188,7 +193,7 @@
     <div class="divider" aria-hidden="true"></div>
 
     <section class="legal-section">
-      <p class="effective-date">Effective Date: April 1, 2026</p>
+      <p class="effective-date">Effective Date: September 18, 2026<br>Previous version: April 1, 2026</p>
 
       <h2>1. Introduction</h2>
       <p>Brass<span class="brand-ops">Ops</span> ("we," "our," or "us") operates the brassops.com website and the Brass<span class="brand-ops">Ops</span> range intelligence platform (collectively, the "Service"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our Service.</p>
@@ -199,6 +204,8 @@
       <h3>Information You Provide</h3>
       <ul>
         <li><strong>Account Information:</strong> Name, email address, department/agency name, role, and contact information when you create an account or submit a contact form.</li>
+        <li><strong>Event and Trade Show Information:</strong> Name, email address, agency, role, and any notes you provide when you request a demonstration at a conference, trade show, or other event, whether you complete the form yourself or a member of our staff records it at our booth.</li>
+        <li><strong>Assessment Responses:</strong> Your answers to the readiness assessment on our website, along with the resulting score, so we can send you your results.</li>
         <li><strong>Training Data:</strong> Officer qualification scores, remedial training records, coaching notes, dry-fire session logs, and other training-related data entered into the platform by authorized users.</li>
         <li><strong>Armory Data:</strong> Weapon inventory records including serial numbers, inspection logs, repair history, and officer assignments.</li>
         <li><strong>Media Uploads:</strong> Target photographs uploaded for AI-assisted target analysis.</li>
@@ -229,7 +236,14 @@
       <p>We do not sell, rent, or trade your personal information or training data to third parties. We may share information only in the following circumstances:</p>
       <ul>
         <li><strong>Within Your Agency:</strong> Training data is accessible to authorized users within your department based on their assigned role and permissions.</li>
-        <li><strong>Service Providers:</strong> We use third-party service providers for hosting, email delivery, and analytics. These providers are contractually obligated to protect your data and use it only to perform services on our behalf.</li>
+        <li><strong>Service Providers:</strong> We use a small number of third-party providers to operate the Service. These providers are contractually obligated to protect your data and use it only to perform services on our behalf. They are:
+          <ul>
+            <li><strong>Vercel:</strong> website and application hosting.</li>
+            <li><strong>Supabase:</strong> database storage for website form submissions, including contact requests, assessment responses, and event inquiries.</li>
+            <li><strong>SMTP2GO:</strong> delivery of notification and transactional email.</li>
+            <li><strong>Google Analytics:</strong> website traffic measurement. See Section 8.</li>
+          </ul>
+          We will update this list if we add or replace a provider.</li>
         <li><strong>Legal Requirements:</strong> We may disclose information if required by law, subpoena, court order, or government request.</li>
         <li><strong>Aggregated Data:</strong> We may share anonymized, aggregated data that cannot be used to identify any individual officer or agency (e.g., national benchmarking statistics through N.A.R.M.S.).</li>
       </ul>
@@ -261,7 +275,9 @@
       <p>To exercise any of these rights, contact us at the email address below.</p>
 
       <h2>8. Cookies and Tracking</h2>
-      <p>The Brass<span class="brand-ops">Ops</span> website uses minimal cookies necessary for the Service to function. We use Vercel Analytics for anonymous, aggregated website traffic analysis. We do not use third-party advertising trackers or sell browsing data.</p>
+      <p>The Brass<span class="brand-ops">Ops</span> website uses Google Analytics to measure website traffic. Google Analytics sets cookies in your browser and collects your IP address, device and browser details, and the pages you visit, so we can understand which parts of the site are useful. This information is processed by Google on our behalf.</p>
+      <p>You can opt out of Google Analytics across every site that uses it by installing Google's <a href="https://tools.google.com/dlpage/gaoptout" rel="noopener noreferrer" target="_blank" style="color: var(--red); text-decoration: none;">browser opt-out add-on</a>, or by blocking cookies in your browser settings. Blocking analytics cookies does not affect your ability to use the site or the platform.</p>
+      <p>Aside from analytics, the website and platform set only the cookies needed to keep you signed in and to keep the Service working. We do not use advertising trackers, we do not build advertising profiles, and we do not sell browsing data.</p>
 
       <h2>9. Children's Privacy</h2>
       <p>The Service is designed for use by law enforcement professionals and is not intended for individuals under the age of 18. We do not knowingly collect personal information from children.</p>
@@ -272,7 +288,7 @@
       <h2>11. Contact Us</h2>
       <p>If you have questions about this Privacy Policy or our data practices, please contact us:</p>
       <p><strong>Brass<span class="brand-ops">Ops</span></strong><br>
-      Email: brassops01@gmail.com<br>
+      Email: info@brassops.com<br>
       Web: <a href="contact.html" style="color: var(--red); text-decoration: none;">brassops.com/contact</a></p>
     </section>
 
