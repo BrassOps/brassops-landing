@@ -91,6 +91,8 @@ button.save[disabled]{opacity:.6}
           <input type="email" id="email" autocomplete="off" inputmode="email" enterkeyhint="next"></div>
         <div class="f"><label for="agency">Agency</label>
           <input type="text" id="agency" autocomplete="off" enterkeyhint="next"></div>
+        <div class="f"><label for="agencySize">Agency Size</label>
+          <input type="text" id="agencySize" placeholder="e.g. 40 officers" autocomplete="off" enterkeyhint="next"></div>
         <div class="f"><label for="role">Role</label>
           <select id="role">
             <option value="">Select role</option>
@@ -185,7 +187,7 @@ button.save[disabled]{opacity:.6}
       list.innerHTML = (d.leads || []).map(function (l) {
         var t = l.temperature || 'none';
         var when = new Date(l.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
-        var sub = [l.agency, l.role, l.email].filter(Boolean).join(' · ');
+        var sub = [l.agency, l.agency_size, l.role, l.email].filter(Boolean).join(' · ');
         return '<div class="row"><span class="dot ' + esc(t) + '"></span><div>' +
           '<div class="who">' + esc(l.name || l.email || 'Unnamed') + '</div>' +
           (sub ? '<div class="sub">' + esc(sub) + '</div>' : '') +
@@ -214,6 +216,7 @@ button.save[disabled]{opacity:.6}
         body: JSON.stringify({
           source: 'staff', name: name, email: email,
           agency: document.getElementById('agency').value.trim(),
+          agencySize: document.getElementById('agencySize').value.trim(),
           role: document.getElementById('role').value,
           temperature: temp,
           notes: document.getElementById('notes').value.trim(),

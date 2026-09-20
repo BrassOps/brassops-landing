@@ -79,6 +79,10 @@ button.ghost{background:none;border:1px solid var(--bd);color:var(--fg)}
           <input type="text" id="agency" name="agency" autocomplete="organization" enterkeyhint="next">
         </div>
         <div class="f">
+          <label for="agencySize">Agency Size</label>
+          <input type="text" id="agencySize" name="agencySize" placeholder="e.g. 40 officers" enterkeyhint="next">
+        </div>
+        <div class="f">
           <label for="role">Role</label>
           <select id="role" name="role">
             <option value="">Select your role</option>
@@ -124,6 +128,7 @@ button.ghost{background:none;border:1px solid var(--bd);color:var(--fg)}
       'Name: ' + form.name.value +
       '\nEmail: ' + form.email.value +
       '\nAgency: ' + form.agency.value +
+      '\nAgency Size: ' + form.agencySize.value +
       '\nRole: ' + form.role.value;
     return 'mailto:brassops01@gmail.com?subject=' +
       encodeURIComponent('BrassOps demo request') +
@@ -154,6 +159,7 @@ button.ghost{background:none;border:1px solid var(--bd);color:var(--fg)}
           name: name,
           email: email,
           agency: form.agency.value.trim(),
+          agencySize: form.agencySize.value.trim(),
           role: form.role.value,
           website: form.website.value,
           elapsedMs: Date.now() - loadedAt

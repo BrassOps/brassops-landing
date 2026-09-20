@@ -34,7 +34,7 @@ const NOTIFY_TO = process.env.LEAD_NOTIFY_RECIPIENT || 'brassops01@gmail.com';
 
 const ALLOWED_ORIGINS = ['https://brassops.com', 'https://www.brassops.com'];
 
-const LIMITS = { name: 120, email: 255, agency: 200, role: 60, notes: 500 };
+const LIMITS = { name: 120, email: 255, agency: 200, agencySize: 100, role: 60, notes: 500 };
 const ROLES = ['Instructor', 'Rangemaster', 'Admin-Command', 'Chief-Sheriff', 'Academy-Trainer', 'Other'];
 const TEMPERATURES = ['HOT', 'WARM', 'COLD'];
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -105,6 +105,9 @@ export default async function handler(req, res) {
   const name = str(req.body.name, LIMITS.name);
   const email = str(req.body.email, LIMITS.email).toLowerCase();
   const agency = str(req.body.agency, LIMITS.agency);
+  // Free text rather than a fixed range. A booth conversation yields "about
+  // 60 sworn" or "small department" more naturally than a bucketed picklist.
+  const agencySize = str(req.body.agencySize, LIMITS.agencySize);
   const roleRaw = str(req.body.role, LIMITS.role);
   const role = ROLES.includes(roleRaw) ? roleRaw : '';
   const notesRaw = str(req.body.notes, LIMITS.notes);
@@ -168,6 +171,7 @@ export default async function handler(req, res) {
     name: name || null,
     email: email || null,
     agency: agency || null,
+    agency_size: agencySize || null,
     role: role || null,
     temperature,
     notes,
@@ -205,6 +209,7 @@ export default async function handler(req, res) {
         `Name: ${name || 'not given'}`,
         `Email: ${email || 'not given'}`,
         `Agency: ${agency || 'not given'}`,
+        `Agency Size: ${agencySize || 'not given'}`,
         `Role: ${role || 'not given'}`,
         `Temperature: ${temperature || 'not set'}`,
         `Notes: ${notes || 'none'}`,
