@@ -28,6 +28,9 @@ INK = "#0a0a0a"
 TARGETS = [
     ("brassops-contact", "https://brassops.com/contact", "Scan to get in touch"),
     ("brassops-why", "https://brassops.com/why-brassops", "Scan to see why agencies switch"),
+    # Public lead form only: no stats, no list of prior leads. That view lives
+    # behind /booth, which is staff-only and separately gated by a key.
+    ("brassops-demo", "https://brassops.com/demo", "Scan to see it in action"),
 ]
 
 MODULE = 12      # SVG units per QR module
