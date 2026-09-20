@@ -152,12 +152,11 @@ export default async function handler(req, res) {
 
     return res.status(200).json({ total, today: todays.length, leads });
   } catch (err) {
+    // The full reason goes to the server log only. A paused or misconfigured
+    // Supabase project surfaced here once as a bare "fetch failed" with no
+    // way to see it; check the Vercel function log for this line rather than
+    // widening what the response tells the caller.
     console.error('Leads read failed:', err?.message);
-    // Echo the database's own message. Provider diagnostics only: never the
-    // service key, never a lead's details. Temporary aid while this is traced.
-    return res.status(500).json({
-      error: 'Could not read leads',
-      detail: String(err?.message || '').slice(0, 300),
-    });
+    return res.status(500).json({ error: 'Could not read leads' });
   }
 }
