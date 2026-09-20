@@ -7,6 +7,7 @@ create table if not exists public.leads (
   name        text,
   email       text,
   agency      text,
+  agency_size text,
   role        text,
   temperature text,
   notes       text,
@@ -27,6 +28,10 @@ create index if not exists leads_ip_created_idx on public.leads (ip, created_at 
 -- browser, bypasses RLS. Leads are therefore unreadable publicly even if the
 -- anon key is exposed, which it always is in client side code.
 alter table public.leads enable row level security;
+
+-- Adds the agency size field to a leads table created before it existed.
+-- Safe to run against a table that already has the column; it is a no-op then.
+alter table public.leads add column if not exists agency_size text;
 
 
 -- ---------------------------------------------------------------------------

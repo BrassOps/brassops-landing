@@ -105,13 +105,13 @@ export default async function handler(req, res) {
 
   try {
     if (wantsCsv) {
-      const cols = 'created_at,name,email,agency,role,temperature,notes,source';
+      const cols = 'created_at,name,email,agency,agency_size,role,temperature,notes,source';
       const r = await sb(`leads?select=${cols}&order=created_at.desc&limit=${MAX_ROWS}`);
       const rows = await r.json();
       const body = [
         cols,
         ...rows.map(l =>
-          [l.created_at, l.name, l.email, l.agency, l.role, l.temperature, l.notes, l.source]
+          [l.created_at, l.name, l.email, l.agency, l.agency_size, l.role, l.temperature, l.notes, l.source]
             .map(csvCell)
             .join(',')
         ),
