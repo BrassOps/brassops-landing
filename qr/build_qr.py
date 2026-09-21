@@ -17,6 +17,7 @@ a fold, or a poor phone camera.
 """
 import io
 import os
+from urllib.parse import urlencode
 
 import segno
 from PIL import Image
@@ -24,13 +25,36 @@ from PIL import Image
 RED = "#ef4444"
 INK = "#0a0a0a"
 
-# slug, url, prompt shown under the wordmark
+# A QR scan carries no HTTP referrer, so without a tag every one of these
+# lands in Google Analytics as plain "direct" traffic, indistinguishable
+# from someone typing the URL in by hand or from a bookmark. UTM parameters
+# are the fix: GA reads them automatically, no GA-side setup required. The
+# printed card still shows the clean URL; only the encoded payload carries
+# the tag. See utm_content in TARGETS to tell one physical code from another
+# in GA even when several point at the same page.
+UTM_SOURCE = "qr"
+UTM_MEDIUM = "qr_code"
+UTM_CAMPAIGN = "qr_codes"
+
+
+def tagged(url, content):
+    qs = urlencode({
+        "utm_source": UTM_SOURCE,
+        "utm_medium": UTM_MEDIUM,
+        "utm_campaign": UTM_CAMPAIGN,
+        "utm_content": content,
+    })
+    return f"{url}?{qs}"
+
+
+# slug, base url (shown on the card), prompt, utm_content (what this scan
+# shows up as in GA's Acquisition reports)
 TARGETS = [
-    ("brassops-contact", "https://brassops.com/contact", "Scan to get in touch"),
-    ("brassops-why", "https://brassops.com/why-brassops", "Scan to see why agencies switch"),
+    ("brassops-contact", "https://brassops.com/contact", "Scan to get in touch", "contact"),
+    ("brassops-why", "https://brassops.com/why-brassops", "Scan to see why agencies switch", "why-brassops"),
     # Public lead form only: no stats, no list of prior leads. That view lives
     # behind /booth, which is staff-only and separately gated by a key.
-    ("brassops-demo", "https://brassops.com/demo", "Scan to see it in action"),
+    ("brassops-demo", "https://brassops.com/demo", "Scan to see it in action", "demo"),
 ]
 
 MODULE = 12      # SVG units per QR module
@@ -103,8 +127,8 @@ def fit_size(text, max_w, start, font_path="/usr/share/fonts/truetype/dejavu/Dej
     return s
 
 
-def write_card(slug, url, prompt):
-    rows, n = matrix(url)
+def write_card(slug, encoded_url, display_url, prompt):
+    rows, n = matrix(encoded_url)
     code = (n + QUIET * 2) * MODULE
     pad = 0
     w = code
@@ -112,7 +136,9 @@ def write_card(slug, url, prompt):
     h = code + 210
 
     mid = w / 2
-    shown_url = url.replace("https://", "")
+    # The card shows the clean, human-legible URL. The UTM tag lives only in
+    # what the QR pattern above it actually encodes.
+    shown_url = display_url.replace("https://", "")
     # Keep both lines inside a side margin so a long prompt cannot run to the
     # card edge, which reads as a crop rather than a design.
     inner = w * 0.84
@@ -149,15 +175,16 @@ def main():
     os.chdir(os.path.dirname(os.path.abspath(__file__)))
     import cairosvg
 
-    for slug, url, prompt in TARGETS:
-        n = write_plain(slug, url)
-        svg = write_card(slug, url, prompt)
+    for slug, url, prompt, utm_content in TARGETS:
+        encoded = tagged(url, utm_content)
+        n = write_plain(slug, encoded)
+        svg = write_card(slug, encoded, url, prompt)
         cairosvg.svg2png(
             bytestring=svg.encode(),
             write_to=f"{slug}-qr-card.png",
             output_width=1200,
         )
-        print(f"{slug}: {n}x{n} modules  {url}")
+        print(f"{slug}: {n}x{n} modules  {encoded}")
 
 
 if __name__ == "__main__":
