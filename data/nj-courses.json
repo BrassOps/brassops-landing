@@ -568,7 +568,7 @@
    ],
    "category": "rifle",
    "is_uspsa": false,
-   "pass_pct": 90,
+   "pass_pct": 80,
    "pass_time": null,
    "scored_by": "pct",
    "drill_type": "qualification",
