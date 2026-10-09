@@ -250,16 +250,30 @@
       animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.75s forwards;
     }
     .page-hero .hero-press {
-      margin: 1.1rem auto 0;
-      max-width: 620px;
-      font-size: 0.85rem;
-      color: var(--fg-tertiary);
-      line-height: 1.6;
+      display: flex; flex-wrap: wrap; align-items: center; justify-content: center;
+      gap: 0.5rem 0.9rem;
+      width: fit-content; max-width: 100%;
+      margin: 1.5rem auto 0;
+      padding: 0.6rem 1.1rem;
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      font-size: 0.85rem; line-height: 1.4;
+      color: var(--fg-secondary);
       opacity: 0;
       animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards;
     }
-    .page-hero .hero-press a { color: var(--fg-secondary); text-decoration: underline; text-underline-offset: 3px; }
-    .page-hero .hero-press a:hover { color: #fff; }
+    .page-hero .hero-press-label {
+      font-size: 0.7rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+      color: var(--red);
+    }
+    .page-hero .hero-press-outlets { display: inline-flex; flex-wrap: wrap; justify-content: center; gap: 0.25rem 0.6rem; }
+    .page-hero .hero-press-outlets a { color: #ededed; font-weight: 600; text-decoration: none; }
+    .page-hero .hero-press-outlets a:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; }
+    .page-hero .hero-press-outlets .sep { color: var(--fg-quaternary); }
+    .page-hero .hero-press-more { color: var(--red); font-weight: 600; text-decoration: none; white-space: nowrap; }
+    .page-hero .hero-press-more:hover { text-decoration: underline; text-underline-offset: 3px; }
+    @media (max-width: 480px) { .page-hero .hero-press { border-radius: 16px; } }
 
     /* ── Section styles ── */
     .section {
@@ -988,7 +1002,7 @@
       }
       .cap-card, .bl-card, .stat-card, .pain-card, .role-card,
       .trust-card, .mockup-wrapper, .loop-step { opacity: 1; transform: none; }
-      .page-hero h1, .page-hero .hero-lead, .hero-ctas { opacity: 1; transform: none; }
+      .page-hero h1, .page-hero .hero-lead, .hero-ctas, .page-hero .hero-trust, .page-hero .hero-press { opacity: 1; transform: none; }
     }
   </style>
 </head>
@@ -1049,7 +1063,15 @@
         <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
       </a>
       <p class="hero-trust">Mandatory two-factor security, full agency data isolation, and private file storage.</p>
-      <p class="hero-press">Our founder's writing on training records has appeared in <a href="https://www.police1.com/firearms-training/6-firearms-training-records-mistakes-that-can-come-back-to-haunt-your-agency" rel="noopener">Police1</a> and the <a href="https://iupa.org/index.php/2026/08/03/two-years-from-now-can-you-prove-it/" rel="noopener">I.U.P.A.</a>, and BrassOps is featured in <a href="https://www.evergreeneditions.com/publication/?i=870377&amp;p=1&amp;view=issueViewer" rel="noopener">Police &amp; Security News</a>. <a href="https://brassops.com/resources#press">Read them &rsaquo;</a></p>
+      <p class="hero-press">
+        <span class="hero-press-label">As seen in</span>
+        <span class="hero-press-outlets">
+          <a href="https://www.police1.com/firearms-training/6-firearms-training-records-mistakes-that-can-come-back-to-haunt-your-agency" rel="noopener">Police1</a><span class="sep" aria-hidden="true">&middot;</span>
+          <a href="https://iupa.org/index.php/2026/08/03/two-years-from-now-can-you-prove-it/" rel="noopener">I.U.P.A.</a><span class="sep" aria-hidden="true">&middot;</span>
+          <a href="https://www.evergreeneditions.com/publication/?i=870377&amp;p=1&amp;view=issueViewer" rel="noopener">Police &amp; Security News</a>
+        </span>
+        <a class="hero-press-more" href="https://brassops.com/resources#press">Read the articles &rsaquo;</a>
+      </p>
     </section>
 
     <!-- ═══════════ ROI STATS BAR ═══════════ -->
