@@ -33,7 +33,7 @@ GTAG_ID = "G-KJM9SJ714M"
 
 # The Attorney General's Guidelines page at the Division of Criminal Justice
 # (the "Semi-Annual Firearms Qualification and Requalification Standards for
-# New Jersey Law Enforcement", issued December 1989, last revised May 2003).
+# New Jersey Law Enforcement", issued December 1989, last revised June 2003).
 AG_PAGE_URL = "https://www.nj.gov/oag/dcj/agguide/firearms.htm"
 AG_PDF_URL = "https://www.nj.gov/oag/dcj/agguide/AGs%20Firearms%20Qualification%20Standards_2003.pdf"
 
@@ -530,7 +530,7 @@ def index_page(courses: list[dict]) -> str:
 
 <article>
 <h2 id="about">Semi-annual qualification in New Jersey</h2>
-<p>New Jersey law enforcement firearms qualification runs under the Attorney General's <a href="{AG_PAGE_URL}" rel="noopener">Semi-Annual Firearms Qualification and Requalification Standards for New Jersey Law Enforcement</a>, issued in December 1989 and revised through May 2003, which every agency in the state is directed to adopt as its own policy. The standards define a semi-annual program as two prescribed qualification sessions within a 12-month period with at least three months between them. Handgun qualification includes a day course and a Handgun Night Qualification Course (HNQC), fired under low light conditions, natural or simulated, with a handheld or weapon-mounted light and a passing score of 80% or higher; shotgun qualification likewise has day and subdued light courses. The twice-yearly requirement was adjusted to a single round for 2020 and again for 2021 by Attorney General directives. The courses below are the versions modelled in BrassOps; confirm each against the <a href="{AG_PDF_URL}" rel="noopener">current standards document</a> before use.</p>
+<p>New Jersey law enforcement firearms qualification runs under the Attorney General's <a href="{AG_PAGE_URL}" rel="noopener">Semi-Annual Firearms Qualification and Requalification Standards for New Jersey Law Enforcement</a>, issued in December 1989 and revised through June 2003, which every agency in the state is directed to adopt as its own policy. The standards define a semi-annual program as two prescribed qualification sessions within a 12-month period with at least three months between them. Handgun qualification includes a day course and a Handgun Night Qualification Course (HNQC), fired under low light conditions, natural or simulated, with a handheld or weapon-mounted light and a passing score of 80% or higher; shotgun qualification likewise has day and subdued light courses. The twice-yearly requirement was adjusted to a single round for 2020 and again for 2021 by Attorney General directives. The courses below are the versions modelled in BrassOps; confirm each against the <a href="{AG_PDF_URL}" rel="noopener">current standards document</a> before use.</p>
 
 {chr(10).join(sections)}
 
