@@ -213,7 +213,7 @@ NAV = f"""<nav class="site-nav">
 FOOTER = f"""<footer class="site-footer">
   <p class="fb">Brass<span class="bo">Ops</span></p>
   <p class="tl">Built for those who train to protect.</p>
-  <div class="fl"><a href="{SITE}/privacy">Privacy Policy</a><a href="{SITE}/terms">Terms of Service</a><a href="{SITE}{INDEX_PATH}">NJ Qualification Courses</a></div>
+  <div class="fl"><a href="{SITE}/privacy">Privacy Policy</a><a href="{SITE}/terms">Terms of Service</a><a href="{SITE}{INDEX_PATH}">NJ Qualification Courses</a><a href="{SITE}/resources">Resources</a></div>
   <p class="cp">&copy; 2026 BrassOps. All rights reserved.</p>
 </footer>
 <script>
@@ -444,6 +444,9 @@ def course_page(course: dict, courses: list[dict]) -> str:
 <h2 id="course-of-fire">Course of fire</h2>
 {night_note}{course_table(course)}
 {defensible_record_section(course)}
+<div class="callout">
+  <p><strong>The documentation checklist.</strong> What the Attorney General's Standards require in the file for every course on this page, as a tick list with the section cited for each item: courses and scores, the Firearms Record fields, what to keep when an officer fails, instructor records, the annual report. <a href="/resources/nj-qualification-checklist">Get the NJ qualification checklist (PDF)</a>.</p>
+</div>
 <div class="cta-block">
   <h3>Track this course in BrassOps</h3>
   <p>{esc(name)} is already in the BrassOps library. Log every officer against it, with the serial number, the instructor, the lighting condition and the standard in force, and pull the record in seconds when someone asks.</p>
@@ -536,6 +539,9 @@ def index_page(courses: list[dict]) -> str:
 
 <p class="table-note">Courses of fire as modelled in BrassOps. Confirm stage details against the current <a href="{AG_PAGE_URL}" rel="noopener">Attorney General firearms qualification standards</a> before use.</p>
 
+<div class="callout">
+  <p><strong>The documentation checklist.</strong> What the Attorney General's Standards require in the file for every course on this page, as a tick list with the section cited for each item: courses and scores, the Firearms Record fields, what to keep when an officer fails, instructor records, the annual report. <a href="/resources/nj-qualification-checklist">Get the NJ qualification checklist (PDF)</a>.</p>
+</div>
 <div class="cta-block">
   <h3>Track every course in BrassOps</h3>
   <p>All {len(courses)} New Jersey courses ship in the BrassOps library. Log officers against them by serial number, instructor, lighting condition and the standard in force, and the record is ready when someone asks for it.</p>
