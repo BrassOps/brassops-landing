@@ -78,3 +78,29 @@ create index if not exists assessment_created_at_idx on public.assessment_submis
 -- role key held server side can read or write these.
 alter table public.contact_submissions enable row level security;
 alter table public.assessment_submissions enable row level security;
+
+
+-- ---------------------------------------------------------------------------
+-- Gated downloads (lead magnets): /resources/*. api/lead-magnet.js persists
+-- here BEFORE the download email, the Brevo sync and the notification are
+-- attempted, so a provider outage leaves the lead recoverable.
+-- ---------------------------------------------------------------------------
+
+create table if not exists public.lead_magnet_submissions (
+  id          bigint generated always as identity primary key,
+  created_at  timestamptz not null default now(),
+  magnet      text not null,
+  first_name  text,
+  email       text,
+  agency      text,
+  status      text not null default 'pending',
+  detail      text,
+  ip          text,
+  user_agent  text
+);
+
+create index if not exists lead_magnet_created_at_idx on public.lead_magnet_submissions (created_at desc);
+
+-- Same posture as the other submission tables: RLS on, no policies, so only
+-- the service role key held server side can read or write this.
+alter table public.lead_magnet_submissions enable row level security;
