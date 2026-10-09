@@ -1,0 +1,2232 @@
+[
+ {
+  "title": "Subgun Day",
+  "slug": "subgun-day",
+  "payload": {
+   "name": "Subgun Day",
+   "tags": [],
+   "stages": [
+    {
+     "name": "3 yards, Standing, Auto",
+     "rounds": 6,
+     "targets": 1,
+     "distance": 3,
+     "description": "Standing, Auto, 2 round burst in 1.5 seconds - x3",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "5 yards, Standing, Auto",
+     "rounds": 6,
+     "targets": 1,
+     "distance": 6,
+     "description": "Standing, Auto, 2 round burst in 1.5 seconds - x3",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "7 yards, Standing, Auto",
+     "rounds": 6,
+     "targets": 1,
+     "distance": 7,
+     "description": "Standing, Auto, 2 round burst to body, 1 to head in 2 seconds - x2",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "7 yards, Standing to Kneeling, Auto",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 7,
+     "description": "Auto, standing 2 rounds, assume kneeling position and fire 2 more in 6 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "10 yards, Standing, Auto",
+     "rounds": 6,
+     "targets": 1,
+     "distance": 10,
+     "description": "Standing, 2 round burst in 1.5 seconds - x3",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "15 yards, Standing to Kneeling",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 15,
+     "description": "2 rounds standing, assume kneeling position and fire 2 rounds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "25 yards, Standing",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 25,
+     "description": "Standing, 1 round in 1 second - x4",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "25 yards, Kneeling strong side",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 25,
+     "description": "Kneeling, roll out strong side of cover, fire 2 rounds in 2 seconds - x2",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "25 yards, Standing",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 25,
+     "description": "Standing, roll out strong side of cover or over top of cover, fire 2 rounds in 2 seconds - x2",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "25 yards, Kneeling support side",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 25,
+     "description": "Kneeling, roll out support side of cover, fire 2 rounds in 3 seconds - x2",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "25 yards, Standing",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 25,
+     "description": "Standing, roll out support side of cover or over top of cover, fire 2 rounds in 3 seconds - x2",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "50 yards, Prone",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 50,
+     "description": "Prone, 2 rounds in 4 seconds - x2",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "50 yards, Kneeling strong side",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 50,
+     "description": "Kneeling strong side of cover, 2 rounds in 4 seconds - x2",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    }
+   ],
+   "category": "subgun",
+   "is_uspsa": false,
+   "pass_pct": 80,
+   "pass_time": null,
+   "scored_by": "pct",
+   "drill_type": "qualification",
+   "description": "ASQC",
+   "miss_penalty": 0,
+   "qual_context": "subgun_day",
+   "threat_level": null,
+   "uspsa_config": null,
+   "range_diagram": null,
+   "scenario_type": null,
+   "target_image_key": null,
+   "expected_resolution": null
+  }
+ },
+ {
+  "title": "Taser 7",
+  "slug": "taser-7",
+  "payload": {
+   "name": "Taser 7",
+   "tags": [],
+   "stages": [
+    {
+     "name": "Manufacture Maximum Distance - 8 yards  (25 feet)",
+     "rounds": 1,
+     "targets": 1,
+     "distance": 8,
+     "description": "1 Stand-off Cartridge",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "6 yards (18 feet)",
+     "rounds": 1,
+     "targets": 1,
+     "distance": 6,
+     "description": "1 Stand-off Cartridge",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "Manufacture Minimum Distance - 4 yards  (11.5 feet)",
+     "rounds": 1,
+     "targets": 1,
+     "distance": 4,
+     "description": "1 Stand-off Cartridge",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    }
+   ],
+   "category": "taser",
+   "is_uspsa": false,
+   "pass_pct": 60,
+   "pass_time": null,
+   "scored_by": "pct",
+   "drill_type": "qualification",
+   "description": "Taser 7 Stand-Off Qualification - Requirement is 2 of 3 sucessful hits on the acceptable target zones",
+   "miss_penalty": 0,
+   "qual_context": "taser",
+   "threat_level": null,
+   "uspsa_config": null,
+   "range_diagram": null,
+   "scenario_type": null,
+   "target_image_key": null,
+   "expected_resolution": null
+  }
+ },
+ {
+  "title": "RPO Day (HQC-2)",
+  "slug": "rpo-day-hqc-2",
+  "payload": {
+   "name": "RPO Day (HQC-2)",
+   "tags": [],
+   "stages": [
+    {
+     "name": "25 yards, strong side, kneeling",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 25,
+     "description": "Start standing 2 yards behind barricade. Move forward and fire 4 rounds from the strong side of cover kneeling. Remain behind cover in a ready position with visual focus towards the threat area. 30 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "25 yards, over top of cover",
+     "rounds": 3,
+     "targets": 1,
+     "distance": 25,
+     "description": "Fire 3 rounds over the top of cover. Remain behind cover in a ready position with visual focus towards the threat area. 25 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "25 yards, support side cover, standing or kneeling",
+     "rounds": 3,
+     "targets": 1,
+     "distance": 25,
+     "description": "Fire 4 rounds with the strong hand (supported is recommended) from the support side of cover kneeling or standing. 25 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "15 yards, standing",
+     "rounds": 3,
+     "targets": 1,
+     "distance": 15,
+     "description": "Draw, fire 3 rounds standing in 5 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "15 yards, standing to kneeling",
+     "rounds": 7,
+     "targets": 1,
+     "distance": 15,
+     "description": "Draw, fire 3 rounds standing, assume a kneeling position and fire 4 rounds kneeling in 25 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "10 yards, standing",
+     "rounds": 6,
+     "targets": 1,
+     "distance": 10,
+     "description": "From ready position, on each command, fire 2 rounds in 3 seconds. x3",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "7 yards, standing",
+     "rounds": 3,
+     "targets": 1,
+     "distance": 7,
+     "description": "Draw, fire 3 rounds in 4 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "7 yards, standing, magazine change",
+     "rounds": 6,
+     "targets": 1,
+     "distance": 7,
+     "description": "Draw, fire 3 rounds, make a magazine change, fire 3 more rounds in 15 seconds.",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "7 yards, standing",
+     "rounds": 3,
+     "targets": 1,
+     "distance": 7,
+     "description": "Draw, fire 3 rounds in 4 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "5 yards, strong hand only",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 5,
+     "description": "Draw, fire 2 rounds one-handed with the strong hand in 4 seconds. x2",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "5 yards, support hand only",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 5,
+     "description": "Ready position, support hand only, fire 2 rounds with the support hand only on each command in 3 seconds. x2",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "1 yard, retention",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 1,
+     "description": "Assume interview stance position. Draw and fire 2 rounds from the weapon retention position in 2 seconds. x2",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    }
+   ],
+   "category": "handgun",
+   "is_uspsa": false,
+   "pass_pct": 80,
+   "pass_time": null,
+   "scored_by": "pct",
+   "drill_type": "qualification",
+   "description": "HQC-2",
+   "miss_penalty": 0,
+   "qual_context": "none",
+   "threat_level": null,
+   "uspsa_config": null,
+   "range_diagram": null,
+   "scenario_type": null,
+   "target_image_key": null,
+   "expected_resolution": null
+  }
+ },
+ {
+  "title": "Rifle Day (ARQC)",
+  "slug": "rifle-day-arqc",
+  "payload": {
+   "name": "Rifle Day (ARQC)",
+   "tags": [],
+   "stages": [
+    {
+     "name": "100 yards, prone",
+     "rounds": 5,
+     "targets": 1,
+     "distance": 100,
+     "description": "Prone, 5 rounds in 1 minute",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "100 yards, Sitting or Squatting",
+     "rounds": 5,
+     "targets": 1,
+     "distance": 100,
+     "description": "Sitting or squatting, 5 rounds in 1 minute",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "75 yards, Standing",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 75,
+     "description": "Standing, 2 rounds in 5 seconds - x2",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "75 yards, Kneeling",
+     "rounds": 6,
+     "targets": 3,
+     "distance": 75,
+     "description": "Kneeling, 2 rounds in 5 seconds - x3",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "50 yards, Standing",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 50,
+     "description": "Standing, 2 rounds in 5 seconds - x2",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "50 yards, Kneeling",
+     "rounds": 6,
+     "targets": 1,
+     "distance": 50,
+     "description": "Kneeling, 1 round in 5 seconds - x6",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "50 yards, Strong Side",
+     "rounds": 5,
+     "targets": 1,
+     "distance": 50,
+     "description": "Standing or kneeling, strong side of cover, 1 round in 5 seconds - x5",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "50 yards, Support Side",
+     "rounds": 5,
+     "targets": 1,
+     "distance": 50,
+     "description": "Standing or kneeling, support side of cover, 1 round in 5 seconds - x5",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "25 yards, Kneeling strong side",
+     "rounds": 2,
+     "targets": 1,
+     "distance": 25,
+     "description": "Kneeling, 2 rounds from strong side of cover in 10 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "25 yards, Top of Cover",
+     "rounds": 2,
+     "targets": 1,
+     "distance": 25,
+     "description": "2 rounds over top of cover in 10 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "25 yard, Kneeling support side",
+     "rounds": 2,
+     "targets": 1,
+     "distance": 25,
+     "description": "Kneeling, 2 rounds from support side of cover in 10 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "15 yards, Standing to Kneeling",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 15,
+     "description": "Standing, 2 rounds double tap, drop to a knee and fire 2 rounds double tap in 8 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "7 yards, Standing",
+     "rounds": 2,
+     "targets": 1,
+     "distance": 7,
+     "description": "Standing, 2 rounds double tap in 3 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "7 yards, Standing",
+     "rounds": 3,
+     "targets": 1,
+     "distance": 7,
+     "description": "Standing, 3 rounds double tap chest, 2 to the head in 4 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "5 yards, Standing",
+     "rounds": 2,
+     "targets": 1,
+     "distance": 5,
+     "description": "Standing, 2 rounds double tap in 3 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "5 yards, Standing",
+     "rounds": 3,
+     "targets": 1,
+     "distance": 5,
+     "description": "Standing, 3 rounds double tap chest, 2 to the head in 4 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    }
+   ],
+   "category": "rifle",
+   "is_uspsa": false,
+   "pass_pct": 80,
+   "pass_time": null,
+   "scored_by": "pct",
+   "drill_type": "qualification",
+   "description": "ARQC",
+   "miss_penalty": 0,
+   "qual_context": "rifle_day",
+   "threat_level": null,
+   "uspsa_config": null,
+   "range_diagram": null,
+   "scenario_type": null,
+   "target_image_key": null,
+   "expected_resolution": null
+  }
+ },
+ {
+  "title": "Duty Day (HQC1)",
+  "slug": "duty-day-hqc1",
+  "payload": {
+   "name": "Duty Day (HQC1)",
+   "tags": [],
+   "stages": [
+    {
+     "name": "25 yards strong side kneeling",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 25,
+     "description": "4 rounds, strong side, kneeling, 30 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "25 yards, top of cover",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 25,
+     "description": "4 rounds, over top of cover, 30 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "25 yards, support, standing or kneeling",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 25,
+     "description": "4 rounds, support side of cover, standing or kneeling, 30 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "15 yards, standing",
+     "rounds": 3,
+     "targets": 1,
+     "distance": 15,
+     "description": "Draw and fire 3 rounds standing in 5 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "15 yards, standing to kneeling",
+     "rounds": 9,
+     "targets": 1,
+     "distance": 15,
+     "description": "Draw and fire 3 rounds standing, assume kneeling position and fire 6 rounds kneeling, 25 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "10 yards, ready position",
+     "rounds": 6,
+     "targets": 1,
+     "distance": 10,
+     "description": "From the ready position, fire 2 rounds in 3 seconds on each command to fire.  3X",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "7 yards, standing",
+     "rounds": 3,
+     "targets": 1,
+     "distance": 7,
+     "description": "Draw, fire 3 rounds, decock and holster in 4 seconds.",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "7 yards, reload",
+     "rounds": 6,
+     "targets": 1,
+     "distance": 7,
+     "description": "Draw, fire 3 rounds, mandatory magazine change, fire 3 rounds, decock and holster in 15 seconds.",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "7 yards, standing",
+     "rounds": 3,
+     "targets": 1,
+     "distance": 7,
+     "description": "Draw, fire 3 rounds, decock and holster in 4 seconds.",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "5 yards, strong hand only",
+     "rounds": 6,
+     "targets": 1,
+     "distance": 5,
+     "description": "Draw, fire 2 rounds, strong hand only in 4 seconds. 3x",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "5 yards, support hand only",
+     "rounds": 6,
+     "targets": 1,
+     "distance": 5,
+     "description": "Support hand only, from ready position, fire 2 rounds, support hand only in 3 seconds. 3x",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "1 yard, weapon retention",
+     "rounds": 6,
+     "targets": 1,
+     "distance": 1,
+     "description": "Assume an interview stance position, draw and fire 2 rounds from the weapon retention position in 2 seconds. 3x",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    }
+   ],
+   "category": "handgun",
+   "is_uspsa": false,
+   "pass_pct": 80,
+   "pass_time": null,
+   "scored_by": "pct",
+   "drill_type": "qualification",
+   "description": "HQC-1",
+   "miss_penalty": 0,
+   "qual_context": "duty_day",
+   "threat_level": null,
+   "uspsa_config": null,
+   "range_diagram": [
+    {
+     "x": 49.238311767578125,
+     "y": 6.19612884521484,
+     "type": "uspsa_white_target",
+     "rotation": 0
+    },
+    {
+     "x": 48.019583129882825,
+     "y": 94.96628243582587,
+     "type": "shooter",
+     "rotation": 270
+    },
+    {
+     "x": 56.09359741210937,
+     "y": 93.24303327287949,
+     "type": "kneeling_shooter",
+     "rotation": 270
+    },
+    {
+     "x": 0,
+     "y": 37.60609218052456,
+     "type": "yard_line",
+     "label": "7 yd",
+     "rotation": 0
+    },
+    {
+     "x": 0,
+     "y": 11.398751395089285,
+     "type": "yard_line",
+     "label": "1 yd",
+     "rotation": 0
+    },
+    {
+     "x": 0,
+     "y": 25.418927873883923,
+     "type": "yard_line",
+     "label": "5 yd",
+     "rotation": 0
+    },
+    {
+     "x": 0,
+     "y": 51.64309256417411,
+     "type": "yard_line",
+     "label": "10 yd",
+     "rotation": 0
+    },
+    {
+     "x": 0,
+     "y": 69.27093941824776,
+     "type": "yard_line",
+     "label": "15 yd",
+     "rotation": 0
+    },
+    {
+     "x": 0,
+     "y": 90.07188633510047,
+     "type": "yard_line",
+     "label": "25 yd",
+     "rotation": 0
+    },
+    {
+     "x": 54.390686035156236,
+     "y": 73.6510968889509,
+     "type": "kneeling_shooter",
+     "rotation": 270
+    },
+    {
+     "x": 47.07835388183595,
+     "y": 75.04789515904015,
+     "type": "shooter",
+     "rotation": 270
+    },
+    {
+     "x": 47.05118408203126,
+     "y": 57.64961024693078,
+     "type": "shooter",
+     "rotation": 270
+    },
+    {
+     "x": 47.48103942871094,
+     "y": 43.18906511579239,
+     "type": "shooter",
+     "rotation": 270
+    },
+    {
+     "x": 47.75857849121095,
+     "y": 30.686989920479885,
+     "type": "shooter",
+     "rotation": 270
+    },
+    {
+     "x": 48.1884490966797,
+     "y": 17.096601213727656,
+     "type": "shooter",
+     "rotation": 270
+    }
+   ],
+   "scenario_type": null,
+   "target_image_key": null,
+   "expected_resolution": null
+  }
+ },
+ {
+  "title": "Subgun Night",
+  "slug": "subgun-night",
+  "payload": {
+   "name": "Subgun Night",
+   "tags": [],
+   "stages": [
+    {
+     "name": "5 yards, Standing",
+     "rounds": 10,
+     "targets": 1,
+     "distance": 5,
+     "description": "Standing, 2 rounds double tap in 3 seconds - x5",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "7 yards, Standing",
+     "rounds": 10,
+     "targets": 1,
+     "distance": 7,
+     "description": "Standing, 2 rounds double tap in 3 seconds - x5",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "10 yards, Standing",
+     "rounds": 10,
+     "targets": 1,
+     "distance": 10,
+     "description": "Standing, 2 rounds double tap in 3 seconds - x5",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "15 yards, Standing",
+     "rounds": 6,
+     "targets": 1,
+     "distance": 15,
+     "description": "Standing, 2 rounds double tap in 6 seconds - x3",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "15 yards, Standing",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 15,
+     "description": "Standing, 4 rounds in 10 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "25 yards, Standing to kneeling",
+     "rounds": 10,
+     "targets": 1,
+     "distance": 25,
+     "description": "2 rounds standing then 3 rounds kneeling in 10 seconds - x2",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    }
+   ],
+   "category": "subgun",
+   "is_uspsa": false,
+   "pass_pct": 80,
+   "pass_time": null,
+   "scored_by": "pct",
+   "drill_type": "qualification",
+   "description": "Subgun Night Qualification",
+   "miss_penalty": 0,
+   "qual_context": "subgun_night",
+   "threat_level": null,
+   "uspsa_config": null,
+   "range_diagram": null,
+   "scenario_type": null,
+   "target_image_key": null,
+   "expected_resolution": null
+  }
+ },
+ {
+  "title": "Off Duty Day (HQC1)",
+  "slug": "off-duty-day-hqc1",
+  "payload": {
+   "name": "Off Duty Day (HQC1)",
+   "tags": [],
+   "stages": [
+    {
+     "name": "25 yards strong side kneeling",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 25,
+     "description": "4 rounds, strong side, kneeling, 30 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "25 yards, top of cover",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 25,
+     "description": "4 rounds, over top of cover, 30 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "25 yards, support, standing or kneeling",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 25,
+     "description": "4 rounds, support side of cover, standing or kneeling, 30 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "15 yards, standing",
+     "rounds": 3,
+     "targets": 1,
+     "distance": 15,
+     "description": "Draw and fire 3 rounds standing in 5 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "15 yards, standing to kneeling",
+     "rounds": 9,
+     "targets": 1,
+     "distance": 15,
+     "description": "Draw and fire 3 rounds standing, assume kneeling position and fire 6 rounds kneeling, 25 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "10 yards, ready position",
+     "rounds": 6,
+     "targets": 1,
+     "distance": 10,
+     "description": "From the ready position, fire 2 rounds in 3 seconds on each command to fire.  3X",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "7 yards, standing",
+     "rounds": 3,
+     "targets": 1,
+     "distance": 7,
+     "description": "Draw, fire 3 rounds, decock and holster in 4 seconds.",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "7 yards, reload",
+     "rounds": 6,
+     "targets": 1,
+     "distance": 7,
+     "description": "Draw, fire 3 rounds, mandatory magazine change, fire 3 rounds, decock and holster in 15 seconds.",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "7 yards, standing",
+     "rounds": 3,
+     "targets": 1,
+     "distance": 7,
+     "description": "Draw, fire 3 rounds, decock and holster in 4 seconds.",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "5 yards, strong hand only",
+     "rounds": 6,
+     "targets": 1,
+     "distance": 5,
+     "description": "Draw, fire 2 rounds, strong hand only in 4 seconds. 3x",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "5 yards, support hand only",
+     "rounds": 6,
+     "targets": 1,
+     "distance": 5,
+     "description": "Support hand only, from ready position, fire 2 rounds, support hand only in 3 seconds. 3x",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "1 yard, weapon retention",
+     "rounds": 6,
+     "targets": 1,
+     "distance": 1,
+     "description": "Assume an interview stance position, draw and fire 2 rounds from the weapon retention position in 2 seconds. 3x",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    }
+   ],
+   "category": "handgun",
+   "is_uspsa": false,
+   "pass_pct": 80,
+   "pass_time": null,
+   "scored_by": "pct",
+   "drill_type": "qualification",
+   "description": "HQC-1",
+   "miss_penalty": 0,
+   "qual_context": "off_duty_day",
+   "threat_level": null,
+   "uspsa_config": null,
+   "range_diagram": [
+    {
+     "x": 49.84765625000001,
+     "y": 6.196131569998607,
+     "type": "uspsa_white_target",
+     "rotation": 0
+    },
+    {
+     "x": 0,
+     "y": 32.274215698242195,
+     "type": "yard_line",
+     "label": "7 yd",
+     "rotation": 0
+    },
+    {
+     "x": 0,
+     "y": 21.736131940569194,
+     "type": "yard_line",
+     "label": "5 yd",
+     "rotation": 0
+    },
+    {
+     "x": 0,
+     "y": 11.817188807896203,
+     "type": "yard_line",
+     "label": "1 yd",
+     "rotation": 0
+    },
+    {
+     "x": 0,
+     "y": 45.00544084821429,
+     "type": "yard_line",
+     "label": "10 yd",
+     "rotation": 0
+    },
+    {
+     "x": 0,
+     "y": 61.76278686523438,
+     "type": "yard_line",
+     "label": "15 yd",
+     "rotation": 0
+    },
+    {
+     "x": 0,
+     "y": 84.84868512834821,
+     "type": "yard_line",
+     "label": "25 yd",
+     "rotation": 0
+    },
+    {
+     "x": 49.39063415527343,
+     "y": 89.61697823660714,
+     "type": "shooter",
+     "rotation": 270
+    },
+    {
+     "x": 57.15995788574218,
+     "y": 88.7638898577009,
+     "type": "kneeling_shooter",
+     "rotation": 270
+    },
+    {
+     "x": 48.90640869140625,
+     "y": 67.19586181640624,
+     "type": "shooter",
+     "rotation": 270
+    },
+    {
+     "x": 55.76169738769529,
+     "y": 66.99566214425224,
+     "type": "kneeling_shooter",
+     "rotation": 270
+    },
+    {
+     "x": 48.72692565917968,
+     "y": 50.45036533900669,
+     "type": "shooter",
+     "rotation": 270
+    },
+    {
+     "x": 48.85204772949218,
+     "y": 37.60487365722656,
+     "type": "shooter",
+     "rotation": 270
+    },
+    {
+     "x": 49.58652648925781,
+     "y": 27.262115478515625,
+     "type": "shooter",
+     "rotation": 270
+    },
+    {
+     "x": 49.86408081054687,
+     "y": 17.262526375906805,
+     "type": "shooter",
+     "rotation": 270
+    }
+   ],
+   "scenario_type": null,
+   "target_image_key": null,
+   "expected_resolution": null
+  }
+ },
+ {
+  "title": "OOBuck Day",
+  "slug": "oobuck-day",
+  "payload": {
+   "name": "OOBuck Day",
+   "tags": [],
+   "stages": [
+    {
+     "name": "20 yards, 5 rounds",
+     "rounds": 45,
+     "targets": 1,
+     "distance": 20,
+     "description": "Load 4 rounds, fire all 4, combat load 1 and fire in 25 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "10 yards, 5 rounds",
+     "rounds": 45,
+     "targets": 1,
+     "distance": 10,
+     "description": "Combat load 1 round, load 2 more and fire all 3, combat load 1, load 1 more and fire 2 rounds in 35 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    }
+   ],
+   "category": "shotgun",
+   "is_uspsa": false,
+   "pass_pct": 80,
+   "pass_time": null,
+   "scored_by": "pct",
+   "drill_type": "qualification",
+   "description": "OOBuck 9 Pellet Shotgun Qualification",
+   "miss_penalty": 0,
+   "qual_context": "shotgun_day",
+   "threat_level": null,
+   "uspsa_config": null,
+   "range_diagram": [
+    {
+     "x": 50,
+     "y": 4.128696986607145,
+     "type": "uspsa_white_target",
+     "rotation": 0
+    },
+    {
+     "x": 0,
+     "y": 45.22306169782367,
+     "type": "yard_line",
+     "label": "20 yd",
+     "rotation": 0
+    },
+    {
+     "x": 0,
+     "y": 24.43960789271764,
+     "type": "yard_line",
+     "label": "10 yd",
+     "rotation": 0
+    },
+    {
+     "x": 50,
+     "y": 50.443961007254465,
+     "type": "shooter",
+     "rotation": 270
+    },
+    {
+     "x": 50,
+     "y": 29.442868913922997,
+     "type": "shooter",
+     "rotation": 270
+    },
+    {
+     "x": 44.51577453613281,
+     "y": 48.11751883370536,
+     "type": "shotgun",
+     "rotation": 270
+    },
+    {
+     "x": 44.51577453613281,
+     "y": 28.09575980050224,
+     "type": "shotgun",
+     "rotation": 270
+    }
+   ],
+   "scenario_type": null,
+   "target_image_key": null,
+   "expected_resolution": null
+  }
+ },
+ {
+  "title": "Less Lethal Shotgun",
+  "slug": "less-lethal-shotgun",
+  "payload": {
+   "name": "Less Lethal Shotgun",
+   "tags": [],
+   "stages": [
+    {
+     "name": "Manufacture Maximum Distance",
+     "rounds": 1,
+     "targets": 1,
+     "distance": 25,
+     "description": "Standing or kneeling, announce \"Less-Lethal\" and fire",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "20 yards",
+     "rounds": 1,
+     "targets": 1,
+     "distance": 20,
+     "description": "Standing or kneeling, announce \"Less-Lethal\" and fire",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "15 yards",
+     "rounds": 1,
+     "targets": 1,
+     "distance": 15,
+     "description": "Standing or kneeling, announce \"Less-Lethal\" and fire",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "Stage 4",
+     "rounds": 1,
+     "targets": 1,
+     "distance": 10,
+     "description": "Standing or kneeling, announce \"Less-Lethal\" and fire",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "Manufacture Minimum Distance",
+     "rounds": 1,
+     "targets": 1,
+     "distance": 7,
+     "description": "Standing or kneeling, announce \"Less-Lethal\" and fire",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    }
+   ],
+   "category": "less_lethal",
+   "is_uspsa": false,
+   "pass_pct": 80,
+   "pass_time": null,
+   "scored_by": "pct",
+   "drill_type": "qualification",
+   "description": "Less Lethal Shotgun Qualification",
+   "miss_penalty": 0,
+   "qual_context": "less_lethal",
+   "threat_level": null,
+   "uspsa_config": null,
+   "range_diagram": [
+    {
+     "x": 50,
+     "y": 4.672766549246654,
+     "type": "uspsa_white_target",
+     "rotation": 0
+    },
+    {
+     "x": 0,
+     "y": 36.40914045061384,
+     "type": "yard_line",
+     "label": "15 yd",
+     "rotation": 0
+    },
+    {
+     "x": 0,
+     "y": 65.46245465959822,
+     "type": "yard_line",
+     "label": "25 yd",
+     "rotation": 0
+    },
+    {
+     "x": 0,
+     "y": 50.44613211495536,
+     "type": "yard_line",
+     "label": "20 yd",
+     "rotation": 0
+    },
+    {
+     "x": 0,
+     "y": 23.24265398297991,
+     "type": "yard_line",
+     "label": "10 yd",
+     "rotation": 0
+    },
+    {
+     "x": 0,
+     "y": 13.231772286551344,
+     "type": "yard_line",
+     "label": "7 yd",
+     "rotation": 0
+    },
+    {
+     "x": 42.68769226074219,
+     "y": 18.343849182128896,
+     "type": "shooter",
+     "rotation": 270
+    },
+    {
+     "x": 55.02718200683594,
+     "y": 28.46355329241071,
+     "type": "shooter",
+     "rotation": 270
+    },
+    {
+     "x": 32.93796691894532,
+     "y": 41.7388436453683,
+     "type": "shooter",
+     "rotation": 270
+    },
+    {
+     "x": 68.12841186523437,
+     "y": 55.88465663364954,
+     "type": "shooter",
+     "rotation": 270
+    },
+    {
+     "x": 47.714898681640626,
+     "y": 71.00979614257811,
+     "type": "shooter",
+     "rotation": 270
+    }
+   ],
+   "scenario_type": null,
+   "target_image_key": null,
+   "expected_resolution": null
+  }
+ },
+ {
+  "title": "OOBuck Night",
+  "slug": "oobuck-night",
+  "payload": {
+   "name": "OOBuck Night",
+   "tags": [],
+   "stages": [
+    {
+     "name": "20 yards, 5 rounds",
+     "rounds": 45,
+     "targets": 1,
+     "distance": 20,
+     "description": "Load 4 rounds, fire all 4, combat load 1 and fire in 25 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "10 yards, 5 rounds",
+     "rounds": 45,
+     "targets": 1,
+     "distance": 10,
+     "description": "Combat load 1 round, load 2 more and fire all 3, combat load 1, load 1 more and fire 2 rounds in 35 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    }
+   ],
+   "category": "shotgun",
+   "is_uspsa": false,
+   "pass_pct": 80,
+   "pass_time": null,
+   "scored_by": "pct",
+   "drill_type": "qualification",
+   "description": "OOBuck 9 Pellet Shotgun Qualification",
+   "miss_penalty": 0,
+   "qual_context": "shotgun_night",
+   "threat_level": null,
+   "uspsa_config": null,
+   "range_diagram": [
+    {
+     "x": 50,
+     "y": 5.21681649344308,
+     "type": "uspsa_white_target",
+     "rotation": 0
+    },
+    {
+     "x": 0,
+     "y": 49.249176025390625,
+     "type": "yard_line",
+     "label": "20 yd",
+     "rotation": 0
+    },
+    {
+     "x": 0,
+     "y": 23.89553615025111,
+     "type": "yard_line",
+     "label": "10 yd",
+     "rotation": 0
+    },
+    {
+     "x": 43.44939575195312,
+     "y": 53.01414271763393,
+     "type": "shotgun",
+     "rotation": 270
+    },
+    {
+     "x": 43.44939575195312,
+     "y": 27.660502842494417,
+     "type": "shotgun",
+     "rotation": 270
+    },
+    {
+     "x": 50,
+     "y": 29.007629394531236,
+     "type": "shooter",
+     "rotation": 270
+    },
+    {
+     "x": 50,
+     "y": 54.36125837053573,
+     "type": "shooter",
+     "rotation": 270
+    }
+   ],
+   "scenario_type": null,
+   "target_image_key": null,
+   "expected_resolution": null
+  }
+ },
+ {
+  "title": "Duty Night (HNQC)",
+  "slug": "duty-night-hnqc",
+  "payload": {
+   "name": "Duty Night (HNQC)",
+   "tags": [],
+   "stages": [
+    {
+     "name": "15 yards, standing to kneeling",
+     "rounds": 3,
+     "targets": 1,
+     "distance": 15,
+     "description": "With flashlight, holster, 1 round standing then 2 rounds kneeling rounds in 20 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "15 yards, standing to kneeling",
+     "rounds": 3,
+     "targets": 1,
+     "distance": 15,
+     "description": "With flashlight, low ready, 1 round standing then 2 rounds kneeling rounds in 20 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "10 yards, point shoulder",
+     "rounds": 2,
+     "targets": 1,
+     "distance": 10,
+     "description": "With flashlight, low ready, 2 rounds, step to the right in 5 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "10 yards, point shoulder",
+     "rounds": 2,
+     "targets": 1,
+     "distance": 10,
+     "description": "With flashlight, low ready, 2 rounds, step to the left in 5 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "10 yards, point shoulder",
+     "rounds": 2,
+     "targets": 1,
+     "distance": 10,
+     "description": "With flashlight, low ready, 2 rounds, step to the right in 5 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "7 yards, point shoulder",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 7,
+     "description": "With flashlight, low ready, 2 rounds in 6 seconds - x2",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "7 yards, reload",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 7,
+     "description": "With flashlight, low ready, 2 rounds, reload, 2 rounds in 20 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "5 yards, strong handed",
+     "rounds": 6,
+     "targets": 1,
+     "distance": 5,
+     "description": "With flashlight, from holster, 2 rounds strong hand only in 5 seconds - x3",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "5 yards, support handed",
+     "rounds": 6,
+     "targets": 1,
+     "distance": 5,
+     "description": "With flashlight, low ready, 2 rounds strong hand only in 5 seconds - x3",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "3 yards, interview",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 3,
+     "description": "Holding flashlight, from holster, 2 rounds in 3 seconds - x2",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "1 yard, weapon retention",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 1,
+     "description": "No flashlight, from holster, 2 rounds in 3 seconds - x2",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    }
+   ],
+   "category": "handgun",
+   "is_uspsa": false,
+   "pass_pct": 80,
+   "pass_time": null,
+   "scored_by": "pct",
+   "drill_type": "qualification",
+   "description": "HNQC",
+   "miss_penalty": 0,
+   "qual_context": "duty_night",
+   "threat_level": null,
+   "uspsa_config": null,
+   "range_diagram": [
+    {
+     "x": 49.39066467285157,
+     "y": 6.304947444370812,
+     "type": "uspsa_white_target",
+     "rotation": 0
+    },
+    {
+     "x": 0,
+     "y": 68.40005493164061,
+     "type": "yard_line",
+     "label": "15 yd",
+     "rotation": 0
+    },
+    {
+     "x": 0,
+     "y": 49.57550048828125,
+     "type": "yard_line",
+     "label": "10 yd",
+     "rotation": 0
+    },
+    {
+     "x": 0,
+     "y": 38.694244384765625,
+     "type": "yard_line",
+     "label": "7 yd",
+     "rotation": 0
+    },
+    {
+     "x": 0,
+     "y": 27.81299918038505,
+     "type": "yard_line",
+     "label": "5 yd",
+     "rotation": 0
+    },
+    {
+     "x": 5,
+     "y": 18.014516557965965,
+     "type": "yard_line",
+     "label": "3 yd",
+     "rotation": 0
+    },
+    {
+     "x": 10,
+     "y": 9.630582536969865,
+     "type": "yard_line",
+     "label": "1 yd",
+     "rotation": 0
+    },
+    {
+     "x": 49.69533081054687,
+     "y": 33.033711024693076,
+     "type": "shooter",
+     "rotation": 270
+    },
+    {
+     "x": 50.15232543945312,
+     "y": 44.241559709821445,
+     "type": "shooter",
+     "rotation": 270
+    },
+    {
+     "x": 49.84767456054687,
+     "y": 55.44939749581473,
+     "type": "shooter",
+     "rotation": 270
+    },
+    {
+     "x": 49.54299926757813,
+     "y": 74.70963396344864,
+     "type": "shooter",
+     "rotation": 270
+    },
+    {
+     "x": 49.515802001953126,
+     "y": 23.235022408621646,
+     "type": "shooter",
+     "rotation": 270
+    },
+    {
+     "x": 49.6409912109375,
+     "y": 14.867599487304682,
+     "type": "shooter",
+     "rotation": 270
+    },
+    {
+     "x": 57.31231384277343,
+     "y": 74.61825125558036,
+     "type": "kneeling_shooter",
+     "rotation": 270
+    }
+   ],
+   "scenario_type": null,
+   "target_image_key": null,
+   "expected_resolution": null
+  }
+ },
+ {
+  "title": "Rifle Night",
+  "slug": "rifle-night",
+  "payload": {
+   "name": "Rifle Night",
+   "tags": [],
+   "stages": [
+    {
+     "name": "5 yards, Standing",
+     "rounds": 10,
+     "targets": 1,
+     "distance": 5,
+     "description": "Standing, 2 rounds double tap in 3 seconds - x5",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "7 yards, Standing",
+     "rounds": 10,
+     "targets": 1,
+     "distance": 7,
+     "description": "Standing, 2 rounds double tap in 3 seconds - x5",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "10 yards, Standing",
+     "rounds": 10,
+     "targets": 1,
+     "distance": 10,
+     "description": "Standing, 2 rounds double tap in 3 seconds - x5",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "15 yards, Standing",
+     "rounds": 6,
+     "targets": 1,
+     "distance": 15,
+     "description": "Standing, 2 rounds double tap in 6 seconds - x3",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "15 yards, Standing",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 15,
+     "description": "Standing, 4 rounds in 10 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "25 yards, Standing to kneeling",
+     "rounds": 10,
+     "targets": 1,
+     "distance": 25,
+     "description": "2 rounds standing then 3 rounds kneeling in 10 seconds - x2",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    }
+   ],
+   "category": "rifle",
+   "is_uspsa": false,
+   "pass_pct": 80,
+   "pass_time": null,
+   "scored_by": "pct",
+   "drill_type": "qualification",
+   "description": "Rifle Night Qualification",
+   "miss_penalty": 0,
+   "qual_context": "rifle_night",
+   "threat_level": null,
+   "uspsa_config": null,
+   "range_diagram": null,
+   "scenario_type": null,
+   "target_image_key": null,
+   "expected_resolution": null
+  }
+ },
+ {
+  "title": "RPO Night (HNQC)",
+  "slug": "rpo-night-hnqc",
+  "payload": {
+   "name": "RPO Night (HNQC)",
+   "tags": [],
+   "stages": [
+    {
+     "name": "15 yards, standing to kneeling",
+     "rounds": 3,
+     "targets": 1,
+     "distance": 15,
+     "description": "With flashlight, holster, 1 round standing then 2 rounds kneeling rounds in 20 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "15 yards, standing to kneeling",
+     "rounds": 3,
+     "targets": 1,
+     "distance": 15,
+     "description": "With flashlight, low ready, 1 round standing then 2 rounds kneeling rounds in 20 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "10 yards, point shoulder",
+     "rounds": 2,
+     "targets": 1,
+     "distance": 10,
+     "description": "With flashlight, low ready, 2 rounds, step to the right in 5 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "10 yards, point shoulder",
+     "rounds": 2,
+     "targets": 1,
+     "distance": 10,
+     "description": "With flashlight, low ready, 2 rounds, step to the left in 5 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "10 yards, point shoulder",
+     "rounds": 2,
+     "targets": 1,
+     "distance": 10,
+     "description": "With flashlight, low ready, 2 rounds, step to the right in 5 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "7 yards, point shoulder",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 7,
+     "description": "With flashlight, low ready, 2 rounds in 6 seconds - x2",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "7 yards, reload",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 7,
+     "description": "With flashlight, low ready, 2 rounds, reload, 2 rounds in 20 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "5 yards, strong handed",
+     "rounds": 6,
+     "targets": 1,
+     "distance": 5,
+     "description": "With flashlight, from holster, 2 rounds strong hand only in 5 seconds - x3",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "5 yards, support handed",
+     "rounds": 6,
+     "targets": 1,
+     "distance": 5,
+     "description": "With flashlight, low ready, 2 rounds strong hand only in 5 seconds - x3",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "3 yards, interview",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 3,
+     "description": "Holding flashlight, from holster, 2 rounds in 3 seconds - x2",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "1 yard, weapon retention",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 1,
+     "description": "No flashlight, from holster, 2 rounds in 3 seconds - x2",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    }
+   ],
+   "category": "handgun",
+   "is_uspsa": false,
+   "pass_pct": 80,
+   "pass_time": null,
+   "scored_by": "pct",
+   "drill_type": "qualification",
+   "description": "HNQC",
+   "miss_penalty": 0,
+   "qual_context": "none",
+   "threat_level": null,
+   "uspsa_config": null,
+   "range_diagram": null,
+   "scenario_type": null,
+   "target_image_key": null,
+   "expected_resolution": null
+  }
+ },
+ {
+  "title": "Off Duty Night (HNQC)",
+  "slug": "off-duty-night-hnqc",
+  "payload": {
+   "name": "Off Duty Night (HNQC)",
+   "tags": [],
+   "stages": [
+    {
+     "name": "15 yards, standing to kneeling",
+     "rounds": 3,
+     "targets": 1,
+     "distance": 15,
+     "description": "With flashlight, holster, 1 round standing then 2 rounds kneeling rounds in 20 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "15 yards, standing to kneeling",
+     "rounds": 3,
+     "targets": 1,
+     "distance": 15,
+     "description": "With flashlight, holster, 1 round standing then 2 rounds kneeling rounds in 20 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "10 yards, point shoulder",
+     "rounds": 2,
+     "targets": 1,
+     "distance": 15,
+     "description": "With flashlight, low ready, 2 rounds, step to the right in 5 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "10 yards, point shoulder",
+     "rounds": 2,
+     "targets": 1,
+     "distance": 10,
+     "description": "With flashlight, low ready, 2 rounds, step to the left in 5 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "10 yards, point shoulder",
+     "rounds": 2,
+     "targets": 1,
+     "distance": 10,
+     "description": "With flashlight, low ready, 2 rounds, step to the right in 5 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "7 yards, point shoulder",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 7,
+     "description": "With flashlight, low ready, 2 rounds in 6 seconds - x2",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "7 yards, reload",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 7,
+     "description": "With flashlight, low ready, 2 rounds, reload, 2 rounds in 20 seconds",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "5 yards, strong handed",
+     "rounds": 6,
+     "targets": 1,
+     "distance": 5,
+     "description": "With flashlight, from holster, 2 rounds strong hand only in 5 seconds - x3",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "5 yards, support handed",
+     "rounds": 6,
+     "targets": 1,
+     "distance": 5,
+     "description": "With flashlight, low ready, 2 rounds strong hand only in 5 seconds - x3",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "3 yards, interview",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 3,
+     "description": "Holding flashlight, from holster, 2 rounds in 3 seconds - x2",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    },
+    {
+     "name": "1 yard, weapon retention",
+     "rounds": 4,
+     "targets": 1,
+     "distance": 1,
+     "description": "No flashlight, from holster, 2 rounds in 3 seconds - x2",
+     "weapon_category": null,
+     "transition_rounds": null,
+     "transition_targets": null,
+     "transition_weapon_category": null
+    }
+   ],
+   "category": "handgun",
+   "is_uspsa": false,
+   "pass_pct": 80,
+   "pass_time": null,
+   "scored_by": "pct",
+   "drill_type": "qualification",
+   "description": "HNQC",
+   "miss_penalty": 0,
+   "qual_context": "off_duty_night",
+   "threat_level": null,
+   "uspsa_config": null,
+   "range_diagram": [
+    {
+     "x": 49.84765625,
+     "y": 6.957823617117746,
+     "type": "uspsa_white_target",
+     "rotation": 0
+    },
+    {
+     "x": 0,
+     "y": 40.76170131138393,
+     "type": "yard_line",
+     "label": "7 yd",
+     "rotation": 0
+    },
+    {
+     "x": 0,
+     "y": 51.44251796177454,
+     "type": "yard_line",
+     "label": "10 yd",
+     "rotation": 0
+    },
+    {
+     "x": 0,
+     "y": 31.512512207031246,
+     "type": "yard_line",
+     "label": "5 yd",
+     "rotation": 0
+    },
+    {
+     "x": 0,
+     "y": 20.63112095424107,
+     "type": "yard_line",
+     "label": "3 yd",
+     "rotation": 0
+    },
+    {
+     "x": 0,
+     "y": 11.708377293178012,
+     "type": "yard_line",
+     "label": "1 yd",
+     "rotation": 0
+    },
+    {
+     "x": 0,
+     "y": 66.5902666364397,
+     "type": "yard_line",
+     "label": "15 yd",
+     "rotation": 0
+    },
+    {
+     "x": 48.93363647460937,
+     "y": 72.44177682059153,
+     "type": "shooter",
+     "rotation": 270
+    },
+    {
+     "x": 56.09359436035157,
+     "y": 71.33623395647321,
+     "type": "kneeling_shooter",
+     "rotation": 270
+    },
+    {
+     "x": 50.457037353515624,
+     "y": 25.525571550641743,
+     "type": "shooter",
+     "rotation": 270
+    },
+    {
+     "x": 49.695126342773435,
+     "y": 45.890755789620535,
+     "type": "shooter",
+     "rotation": 270
+    },
+    {
+     "x": 50.30471191406251,
+     "y": 36.3155757359096,
+     "type": "shooter",
+     "rotation": 270
+    },
+    {
+     "x": 49.54297790527343,
+     "y": 57.190416608537944,
+     "type": "shooter",
+     "rotation": 270
+    },
+    {
+     "x": 50.27757568359375,
+     "y": 16.940558297293528,
+     "type": "shooter",
+     "rotation": 270
+    }
+   ],
+   "scenario_type": null,
+   "target_image_key": null,
+   "expected_resolution": null
+  }
+ }
+]
