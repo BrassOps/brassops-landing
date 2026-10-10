@@ -40,6 +40,27 @@
   </div>
   <button class="btn" id="copy" type="button">Copy signature</button><span class="ok" id="ok" hidden>Copied. Paste it into Gmail.</span>
   <p class="note">Works on a computer in Chrome, Edge or Safari. The Gmail phone app cannot paste a formatted signature.</p>
+  <h1 style="margin-top:40px">Brevo automation emails</h1>
+  <ol>
+    <li>In Brevo: Automations, open the workflow, click the email step, then <b>Edit design</b>.</li>
+    <li>Click the old sign-off ("Rich, BrassOps, Founder") and delete that block.</li>
+    <li>From the content blocks on the left, drag an <b>HTML</b> block into the same spot.</li>
+    <li>Click <b>Copy code for Brevo</b> below, paste it into the HTML block, then save the email.</li>
+  </ol>
+  <div class="box">
+<table role="presentation" cellpadding="0" cellspacing="0" border="0" data-bo-signature="v1" style="font-family:Arial,Helvetica,sans-serif;color:#111827">
+<tr><td style="font-size:15px;line-height:1.5"><b>Rich O&#39;Brien</b><br><span style="color:#6b7280">CEO, BrassOps</span></td></tr>
+<tr><td style="padding-top:4px;font-size:13px;line-height:1.5"><a href="https://brassops.com" style="color:#dc2626;text-decoration:none">brassops.com</a> <span style="color:#d1d5db">&middot;</span> <a href="mailto:rich@brassops.com" style="color:#6b7280;text-decoration:none">rich@brassops.com</a></td></tr>
+<tr><td style="padding-top:10px;border-top:1px solid #e5e7eb;font-size:12px;line-height:1.6;color:#6b7280"><span style="font-size:10px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;color:#dc2626">As seen in</span>&nbsp;&nbsp;<a href="https://www.police1.com/firearms-training/6-firearms-training-records-mistakes-that-can-come-back-to-haunt-your-agency" style="color:#111827;font-weight:bold;text-decoration:none;white-space:nowrap">Police1</a> <span style="color:#d1d5db">&middot;</span> <a href="https://iupa.org/index.php/2026/08/03/two-years-from-now-can-you-prove-it/" style="color:#111827;font-weight:bold;text-decoration:none;white-space:nowrap">I.U.P.A.</a> <span style="color:#d1d5db">&middot;</span> <a href="https://www.evergreeneditions.com/publication/?i=870377&amp;p=1&amp;view=issueViewer" style="color:#111827;font-weight:bold;text-decoration:none;white-space:nowrap">Police &amp; Security News</a>&nbsp;&nbsp;<a href="https://brassops.com/resources#press" style="color:#dc2626;text-decoration:none">Read&nbsp;&rsaquo;</a></td></tr>
+</table>
+  </div>
+  <textarea id="brevo-code" readonly style="position:absolute;left:-9999px">&lt;table role=&quot;presentation&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot; data-bo-signature=&quot;v1&quot; style=&quot;font-family:Arial,Helvetica,sans-serif;color:#111827&quot;&gt;
+&lt;tr&gt;&lt;td style=&quot;font-size:15px;line-height:1.5&quot;&gt;&lt;b&gt;Rich O&amp;#39;Brien&lt;/b&gt;&lt;br&gt;&lt;span style=&quot;color:#6b7280&quot;&gt;CEO, BrassOps&lt;/span&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;padding-top:4px;font-size:13px;line-height:1.5&quot;&gt;&lt;a href=&quot;https://brassops.com&quot; style=&quot;color:#dc2626;text-decoration:none&quot;&gt;brassops.com&lt;/a&gt; &lt;span style=&quot;color:#d1d5db&quot;&gt;&amp;middot;&lt;/span&gt; &lt;a href=&quot;mailto:rich@brassops.com&quot; style=&quot;color:#6b7280;text-decoration:none&quot;&gt;rich@brassops.com&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;tr&gt;&lt;td style=&quot;padding-top:10px;border-top:1px solid #e5e7eb;font-size:12px;line-height:1.6;color:#6b7280&quot;&gt;&lt;span style=&quot;font-size:10px;font-weight:bold;letter-spacing:1px;text-transform:uppercase;color:#dc2626&quot;&gt;As seen in&lt;/span&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;https://www.police1.com/firearms-training/6-firearms-training-records-mistakes-that-can-come-back-to-haunt-your-agency&quot; style=&quot;color:#111827;font-weight:bold;text-decoration:none;white-space:nowrap&quot;&gt;Police1&lt;/a&gt; &lt;span style=&quot;color:#d1d5db&quot;&gt;&amp;middot;&lt;/span&gt; &lt;a href=&quot;https://iupa.org/index.php/2026/08/03/two-years-from-now-can-you-prove-it/&quot; style=&quot;color:#111827;font-weight:bold;text-decoration:none;white-space:nowrap&quot;&gt;I.U.P.A.&lt;/a&gt; &lt;span style=&quot;color:#d1d5db&quot;&gt;&amp;middot;&lt;/span&gt; &lt;a href=&quot;https://www.evergreeneditions.com/publication/?i=870377&amp;amp;p=1&amp;amp;view=issueViewer&quot; style=&quot;color:#111827;font-weight:bold;text-decoration:none;white-space:nowrap&quot;&gt;Police &amp;amp; Security News&lt;/a&gt;&amp;nbsp;&amp;nbsp;&lt;a href=&quot;https://brassops.com/resources#press&quot; style=&quot;color:#dc2626;text-decoration:none&quot;&gt;Read&amp;nbsp;&amp;rsaquo;&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</textarea>
+  <button class="btn" id="copy-brevo" type="button">Copy code for Brevo</button><span class="ok" id="ok-brevo" hidden>Copied. Paste it into the HTML block.</span>
+  <p class="note">This version has no logo because Brevo emails already show it at the top.</p>
 </div>
 <script>
 document.getElementById('copy').addEventListener('click', async () => {
@@ -55,6 +76,12 @@ document.getElementById('copy').addEventListener('click', async () => {
     document.execCommand('copy');
   }
   ok.hidden = false;
+});
+document.getElementById('copy-brevo').addEventListener('click', async () => {
+  const code = document.getElementById('brevo-code').value;
+  try { await navigator.clipboard.writeText(code); }
+  catch (e) { const t = document.getElementById('brevo-code'); t.select(); document.execCommand('copy'); }
+  document.getElementById('ok-brevo').hidden = false;
 });
 </script>
 </body>
